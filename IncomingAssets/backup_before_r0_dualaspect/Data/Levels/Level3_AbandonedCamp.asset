@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73b7e353b5093e4b9fe8fd6417b7de3, type: 3}
+  m_Name: Level3_AbandonedCamp
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.LevelConfig
+  levelNumber: 3
+  levelId: level_03
+  levelTitle: ABANDONED CAMP
+  mapLayoutId: AbandonedCamp
+  heroSpawn: {x: 0.2, y: -8.2}
+  spawnZones:
+  - {x: -4.8, y: 1.4}
+  - {x: -5.4, y: -0.6}
+  - {x: 4.6, y: 0.8}
+  - {x: 5.1, y: 2.2}
+  - {x: -2.6, y: 2.4}
+  - {x: 2.7, y: 1.8}
+  - {x: -2.2, y: 6.4}
+  - {x: 2.3, y: 6.1}
+  - {x: 0.1, y: 7.6}
+  cameraBoundsMin: {x: -18, y: -12}
+  cameraBoundsMax: {x: 18, y: 14}
+  objectiveType: 0
+  exitPosition: {x: 0.2, y: 8}
+  exitSize: {x: 1.6, y: 1.2}
+  waves:
+  - displayName: "WAVE 1 \u2014 ABANDONED GUARDS"
+    goblins: 3
+    gobriders: 0
+    transitionDelay: 1.8
+    aliveCap: 3
+    allowTopUp: 1
+  - displayName: "WAVE 2 \u2014 SIDE AMBUSH"
+    goblins: 5
+    gobriders: 0
+    transitionDelay: 1.85
+    aliveCap: 5
+    allowTopUp: 1
+  - displayName: "WAVE 3 \u2014 RIDER ARRIVAL"
+    goblins: 5
+    gobriders: 1
+    transitionDelay: 2
+    aliveCap: 5
+    allowTopUp: 1
+  - displayName: "WAVE 4 \u2014 FINAL DEFENSE"
+    goblins: 6
+    gobriders: 1
+    transitionDelay: 1.9
+    aliveCap: 6
+    allowTopUp: 1
+  targetCompletionTime: 160
+  starHpRatio: 0.4
+  recommendedMaxAlive: 8
+  nextLevelNumber: 4

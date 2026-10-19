@@ -1,0 +1,9 @@
+unity=6000.3.26f1
+screenDefault=1920x1080
+orientDefault=LandscapeLeft landLR=True/True portrait=False/False
+ppc=True assetsPPU=16 ref=480x270 crop=None
+camOrtho=True size=8.44
+maps=Camp;Trail;AbandonedCamp;GoblinOutpost;GobriderStronghold;
+hero=pos=(0.20, -6.20, 0.00) scale=(1.00, 1.00, 1.00) anim=none visual=True combat=True
+texRows=115 animators=3 clips=24
+csv=IncomingAssets/R0_Audit/ASSET_INVENTORY.csv

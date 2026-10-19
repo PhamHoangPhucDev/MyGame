@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameplayPrototype.unity
     guid: a937a61e35bea544b911254d7bc79800
+  - enabled: 0
+    path: Assets/Scenes/ReferenceCombatSandbox.unity
+    guid: d61df57e995931b47bbd11482dd0cedc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

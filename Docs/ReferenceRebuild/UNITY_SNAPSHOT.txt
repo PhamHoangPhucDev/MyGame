@@ -1,0 +1,33 @@
+Unity 6000.3.26f1
+Scene GameplayPrototype_Phase4Test
+PPC 480x270 ppu=16
+Ortho 8.4375
+Player.Transform
+Player.SpriteRenderer
+Player.SpriteSorter
+Player.Rigidbody2D
+Player.CircleCollider2D
+Player.PlayerMovement
+Player.Health
+Player.PlayerCombat
+Player.PlayerVisual
+PlayerChild.Visual
+PlayerChild.Sword
+PlayerChild.ContactShadow
+Systems.Transform
+Systems.PrototypeForestBuilder
+Systems.HitComboCounter
+Systems.SkillHotbarUI
+Systems.EnemySpawner
+Systems.GameOverController
+Systems.HitStop
+Systems.GameAudio
+Systems.EnvironmentAmbience
+Systems.LevelFlow
+Systems.LevelFlowUI
+Systems.LevelMapController
+Map.Camp active=True
+Map.Trail active=False
+Map.AbandonedCamp active=False
+Map.GoblinOutpost active=False
+Map.GobriderStronghold active=False

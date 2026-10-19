@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73b7e353b5093e4b9fe8fd6417b7de3, type: 3}
+  m_Name: Level5_GobriderStronghold
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.LevelConfig
+  levelNumber: 5
+  levelId: level_05
+  levelTitle: GOBRIDER STRONGHOLD
+  mapLayoutId: GobriderStronghold
+  heroSpawn: {x: 0.2, y: -10.5}
+  spawnZones:
+  - {x: -3.2, y: -3.5}
+  - {x: 3.2, y: -3.5}
+  - {x: -6.5, y: 1.5}
+  - {x: 6.5, y: 1.8}
+  - {x: -2.5, y: 6.5}
+  - {x: 2.5, y: 6.8}
+  - {x: 0.2, y: 9.5}
+  cameraBoundsMin: {x: -22, y: -24}
+  cameraBoundsMax: {x: 22, y: 26}
+  objectiveType: 2
+  exitPosition: {x: 0.2, y: 12.5}
+  exitSize: {x: 2, y: 1.5}
+  waves:
+  - displayName: "ENCOUNTER 1 \u2014 STRONGHOLD GUARDS"
+    goblins: 4
+    gobriders: 0
+    transitionDelay: 1.9
+    aliveCap: 4
+    allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+  - displayName: "ENCOUNTER 2 \u2014 INNER DEFENSE"
+    goblins: 5
+    gobriders: 1
+    transitionDelay: 2.1
+    aliveCap: 6
+    allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+  - displayName: "ENCOUNTER 3 \u2014 WARLORD BATTLE"
+    goblins: 0
+    gobriders: 0
+    transitionDelay: 1.5
+    aliveCap: 4
+    allowTopUp: 0
+    eliteGobrider: 0
+    bossWarlord: 1
+  targetCompletionTime: 280
+  starHpRatio: 0.35
+  recommendedMaxAlive: 8
+  nextLevelNumber: 0

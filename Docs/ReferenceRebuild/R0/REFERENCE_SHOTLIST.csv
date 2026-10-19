@@ -1,0 +1,31 @@
+shot_id,clip,timecode,frame_file,priority_group,component,what_to_take,palette_sampled,scale_note,exclude_from_design,status
+S01,04,0:09.5,ref_frames/frame_04_9.5.png,R1-Ground,Grass/Dirt edge,"Mảng cỏ có viền tối răng cưa phủ lên đất; đất sáng giữa, tối dần sát mép cỏ; ngọn cỏ ngắn rải thưa; đường đất hình hữu cơ",grass #6CA27A..#71A77F (có lớp nắng); dirt #E2AE81..#E7B081 (có lớp nắng),Ô đất ≈ 3.3 px video / 1 px art,"Watermark TikTok; tia nắng chéo (hiệu ứng ánh sáng, không vẽ vào tile); hotbar",REVIEWED
+S02,04,0:08.1,ref_frames/frame_04_8.1.png,R1-Ground,Dirt clearing + light shaft,"Bãi đất rộng, mép cỏ cong; cột sáng hồi sinh",dirt như S01,—,"Cột sáng (VFX khác); watermark",REVIEWED
+S03,04,0:11.0,ref_frames/frame_04_11.0.png,R1-Ground,Grass field,"Nền cỏ đồng, mảng cỏ tối, cây viền",—,—,Watermark; chữ phụ đề,REVIEWED
+S04,25,0:02.9,ref_frames/frame_25_2.9.png,R1-Ground,Grass/Dirt (daylight neutral),"Màu chuẩn ban ngày không phủ ánh sáng; mép cỏ răng cưa 1 px tối đè lên đất",grass #76A989; dirt #D59C6B; edge/outline #3F635C,—,Watermark; hotbar,REVIEWED
+S05,22,0:04.8,ref_frames/frame_22_4.8.png,R1-Ground,Dark grass patch,"Mảng cỏ tối quanh bát lửa, viền răng cưa",grass #71A184; dark patch #5A665B,—,"Watermark; chữ Souls (UI sự kiện)",REVIEWED
+S06,19,0:08.4,ref_frames/frame_19_8.4.png,R1-Tree,Tree trunk/canopy/shadow,"Tán tròn mép vảy, 2 tông (sáng trên / xanh lam dưới), viền tối 1 px; thân nâu có rễ loe; cây bạch dương; bóng tối dưới gốc lan sang phải",canopy #6A9F81 / shadow #4A727C; trunk #70463B..#6D4F42 (đã bị tông đêm),"Cây ≈ 73×80 px art (canopy ≈73×45, thân thấy ≈30 px)","Lớp tối ngày/đêm (hiệu ứng); watermark",REVIEWED
+S07,19,0:02.3,ref_frames/frame_19_2.3.png,R1-Tree,Tree + tent,"Cùng bố cục, tông khác",—,—,Lớp ánh sáng; watermark,REVIEWED
+S08,25,0:02.9,ref_frames/frame_25_2.9.png,R1-Tree,Tree (daylight),"Màu tán ban ngày; bóng tròn dưới gốc",canopy light #7FC09F; deep #3F635C; blue shadow #66919D; trunk #88574A; ground shadow #6A8D80,"Cây ≈ 95×100 px art","Viền tím #7F60B6 quanh tán: chỉ có ở một số clip (C25, C01, C24) → hiệu ứng outline/shader, KHÔNG vẽ cứng; watermark",REVIEWED
+S09,12,0:12.7,ref_frames/frame_12_12.7.png,R1-Tree,Large oak,"Cây rất lớn, rễ loe rộng",—,"≈ 120 px rộng — cỡ L, ngoài phạm vi drop-in",Vòng sóng âm (VFX sự kiện); watermark,REVIEWED
+S10,24,0:14.5,ref_frames/frame_24_14.5.png,R1-Tree,Tree source sprite,"Hình dáng tán và thân không bị lớp ánh sáng; thước pixel cho thấy ≈ 96 px rộng",—,≈96×112 px art,"TOÀN BỘ là giao diện Godot editor — chỉ dùng để đo, không dùng làm hình",REVIEWED
+S11,25,0:02.9,ref_frames/frame_25_2.9.png,R1-Slash,Sword Slash R,"Lưỡi liềm lõi trắng đặc, mép cyan, đầu nhọn thuôn; hero ở phía lõm; cung lồi về hướng chém",core #FFFFFF; edge #6CE1D6,"Khung bao ≈ 86×91 px art; dày nhất ≈ 21 px; ≈ 5 lần chiều cao hero",Watermark; ô bình máu,REVIEWED
+S12,06,0:49.2,ref_frames/frame_06_49.2.png,R1-Slash,Sword Slash R (alt),"Lưỡi liềm trắng→cyan có đuôi tan dần, nhát chém từ trên xuống",core #FFFFFF → cyan,≈ 90 px art cao,"Phụ đề REALLY che giữa hình; watermark",REVIEWED
+S13,03,0:53.4,ref_frames/frame_03_53.4.png,R1-Slash,Dual slash (older),"2 lưỡi liềm cyan nhỏ đối xứng; số 58 to; x14 HITS",cyan #6CE1D6,—,"Phiên bản cũ của đòn chém; watermark",REVIEWED
+S14,03,0:57.7,contact_sheets/sheet_03.png,R1-Slash,Big crescent + x52 HITS,"Lưỡi liềm lớn xanh nhạt, combo cao",—,—,Watermark,REVIEWED (sheet)
+S15,09,0:11.4,ref_frames/frame_09_11.4.png,Later-Combat,Double crescent + x98 HITS,"2 lưỡi liềm cyan quanh hero, số chồng",—,—,"Bảng DAMAGE TEST là UI debug — loại",REVIEWED
+S16,03,0:19.2,ref_frames/frame_03_19.2.png,Hero/HUD,Hero + slash + HITS,"Lưỡi liềm cyan, x35 HITS, hotbar dưới + 2 ô tiêu hao",—,—,"Ô bình luận TikTok; watermark",REVIEWED
+S17,03,0:44.9,ref_frames/frame_03_44.9.png,Hero/HUD,Damage numbers,"Số trắng 100 to, x43 HITS",white numerals,"Số ≈ 12 px art cao",Watermark,REVIEWED
+S18,06,0:35.7,ref_frames/frame_06_35.7.png,Hero/HUD,Damage + label + HP + target bar,"Số vàng 74 (chí mạng) + trắng 37; nhãn 'Satyr Lv.2' + HP bar viền tối khi bị đánh; thanh mục tiêu trên đỉnh; thanh XP 22/30; hotbar 2..Z",—,—,Phụ đề ADDING; watermark,REVIEWED
+S19,06,0:28.9,ref_frames/frame_06_28.9.png,Hero/HUD,Gameplay framing,"Hero giữa, quái quanh, hotbar dưới",—,—,Phụ đề; watermark,REVIEWED
+S20,20,0:46.7,ref_frames/frame_20_46.7.png,Camp/Labels,Goblin camp night + labels,"Nhãn 'Gob Archer Lv.8' + HP bar; nhãn quái ở xa không có HP bar; thanh mục tiêu trên đỉnh; hero cầm kiếm chéo; lều sừng",—,—,"Phụ đề TO EFFICIENTLY CLEAR; lớp tối ban đêm",REVIEWED
+S21,20,0:02.7,ref_frames/frame_20_2.7.png,Camp/Labels,Camp overview night,"Lều sừng + nhãn quái",—,—,Phụ đề; lớp tối,REVIEWED
+S22,22,0:08.0,ref_frames/frame_22_8.0.png,Camp/Labels,Camp day,"Trại ban ngày, nhiều nhãn Goblin Lv.3",—,—,Watermark; chữ Souls,REVIEWED
+S23,22,0:37.0,ref_frames/frame_22_37.0.png,Camp/Labels,Crowd combat,"x91 HITS, đông quái",—,—,Watermark,REVIEWED
+S24,22,0:33.8,ref_frames/frame_22_33.8.png,Camp/Labels,Crowd + damage stack,"Số 34 chồng nhiều lớp, HP bar nhiều quái",—,—,Watermark,REVIEWED
+S25,12,0:04.9,ref_frames/frame_12_4.9.png,Multi-enemy,Dryad crowd,"5 quái có nhãn, KHÔNG HP bar khi chưa bị đánh; nhà tròn; cây lớn",—,—,"Vòng sóng âm (VFX sự kiện); watermark",REVIEWED
+S26,26,0:03.7,ref_frames/frame_26_3.7.png,Later-Boss,Red AoE telegraph,"Vòng đỏ lớn quanh boss",—,—,Watermark,DEFERRED (giai đoạn boss)
+S27,26,0:13.6,ref_frames/frame_26_13.6.png,Later-Boss,Ice burst + hotbar cooldown,"Băng chữ X; hotbar số cooldown",—,—,Watermark,DEFERRED
+S28,18,0:24.7,contact_sheets/sheet_18.png,Later-Boss,Ring telegraph (tutorial),"Vòng cam cảnh báo; nền gạch",—,—,"Hộp thoại tutorial; bia tập",DEFERRED
+S29,15,0:26.1,ref_frames/frame_15_26.1.png,Landscape-ref,PC landscape HUD,"HUD chân dung trái trên, hotbar nhỏ giữa đáy, quest tracker phải",—,—,"Quest text (tính năng tuỳ chọn); letterbox",REVIEWED
+S30,21,—,—,—,—,—,—,—,—,NOT REVIEWED (MP4 không giải mã được)

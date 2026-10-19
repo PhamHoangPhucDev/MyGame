@@ -17,6 +17,9 @@ namespace GameplayPrototype
         [SerializeField] bool useBounds = true;
         [SerializeField] Vector2 boundsMin = new Vector2(-14f, -12f);
         [SerializeField] Vector2 boundsMax = new Vector2(14f, 14f);
+        [SerializeField] float keepMarginX = 3f;
+        [SerializeField] float keepMarginTop = 2.2f;
+        [SerializeField] float keepMarginBottom = 4f;
 
         Vector3 _velocity;
         Vector3 _basePos;
@@ -42,6 +45,19 @@ namespace GameplayPrototype
             useBounds = true;
             boundsMin = min;
             boundsMax = max;
+        }
+
+        public void SetFollowOffset(Vector3 followOffset)
+        {
+            offset = followOffset;
+            _initialized = false;
+        }
+
+        public void SetKeepOnScreenMargins(float marginX, float marginTop, float marginBottom)
+        {
+            keepMarginX = marginX;
+            keepMarginTop = marginTop;
+            keepMarginBottom = marginBottom;
         }
 
         public void Shake(float amplitude, float duration)
@@ -136,9 +152,9 @@ namespace GameplayPrototype
             if (_cam == null) _cam = GetComponent<Camera>();
             float halfH = _cam != null ? _cam.orthographicSize : 8f;
             float halfW = halfH * (_cam != null ? _cam.aspect : 16f / 9f);
-            const float marginX = 3f;
-            const float marginTop = 2.2f;
-            const float marginBottom = 4f; // keep the hero above the landscape hotbar
+            float marginX = keepMarginX;
+            float marginTop = keepMarginTop;
+            float marginBottom = keepMarginBottom;
 
             float heroX = target.position.x;
             float heroY = target.position.y;

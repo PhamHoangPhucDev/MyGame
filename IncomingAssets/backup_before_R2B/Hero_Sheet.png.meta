@@ -1,0 +1,1107 @@
+fileFormatVersion: 2
+guid: ddd0aeab66a9dd04c8010af2f75fb614
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -725792458435902786
+    second: Hero_Sheet_0
+  - first:
+      213: -2234772273781502906
+    second: Hero_Sheet_1
+  - first:
+      213: 3539530376662812126
+    second: Hero_Sheet_2
+  - first:
+      213: 4384826749283271414
+    second: Hero_Sheet_3
+  - first:
+      213: -5638218405811408920
+    second: Hero_Sheet_4
+  - first:
+      213: -4111131922249808675
+    second: Hero_Sheet_5
+  - first:
+      213: 247097580754850242
+    second: Hero_Sheet_6
+  - first:
+      213: -3621503884120308497
+    second: Hero_Sheet_7
+  - first:
+      213: -4047373168491397374
+    second: Hero_Sheet_8
+  - first:
+      213: -1601578721857903829
+    second: Hero_Sheet_9
+  - first:
+      213: -4211590786074564861
+    second: Hero_Sheet_10
+  - first:
+      213: 1505081920169777776
+    second: Hero_Sheet_11
+  - first:
+      213: -3562473256555718295
+    second: Hero_Sheet_12
+  - first:
+      213: 728148342402257886
+    second: Hero_Sheet_13
+  - first:
+      213: 7857132103780351594
+    second: Hero_Sheet_14
+  - first:
+      213: 3332800409079026244
+    second: Hero_Sheet_15
+  - first:
+      213: -2603353507333757102
+    second: Hero_Sheet_16
+  - first:
+      213: 8584739586163711447
+    second: Hero_Sheet_17
+  - first:
+      213: -5748007307737002828
+    second: Hero_Sheet_18
+  - first:
+      213: -5062394959771189048
+    second: Hero_Sheet_19
+  - first:
+      213: 1492996801620444646
+    second: Hero_Sheet_20
+  - first:
+      213: 5859078639298127312
+    second: Hero_Sheet_21
+  - first:
+      213: 602055681436938763
+    second: Hero_Sheet_22
+  - first:
+      213: -6109484719786113247
+    second: Hero_Sheet_23
+  - first:
+      213: 2526596412837022312
+    second: Hero_Sheet_24
+  - first:
+      213: 484364293613274123
+    second: Hero_Sheet_25
+  - first:
+      213: 8310018588492303424
+    second: Hero_Sheet_26
+  - first:
+      213: -8034266266405710145
+    second: Hero_Sheet_27
+  - first:
+      213: -2210366859040298037
+    second: Hero_Sheet_28
+  - first:
+      213: -606895043996708025
+    second: Hero_Sheet_29
+  - first:
+      213: -8048531320737216171
+    second: Hero_Sheet_30
+  - first:
+      213: 7203219704179679214
+    second: Hero_Sheet_31
+  - first:
+      213: 4127519347214001380
+    second: Hero_Sheet_32
+  - first:
+      213: 3475077570189352369
+    second: Hero_Sheet_Hero_Idle_Down_0
+  - first:
+      213: -1613744364362439692
+    second: Hero_Sheet_Hero_Idle_Down_1
+  - first:
+      213: -975464445397469936
+    second: Hero_Sheet_Hero_Idle_Down_2
+  - first:
+      213: 1190094442234009097
+    second: Hero_Sheet_Hero_Idle_Down_3
+  - first:
+      213: 5200230881356277835
+    second: Hero_Sheet_Hero_Idle_Up_0
+  - first:
+      213: 5024357884485579476
+    second: Hero_Sheet_Hero_Idle_Up_1
+  - first:
+      213: 3198279129813553931
+    second: Hero_Sheet_Hero_Idle_Up_2
+  - first:
+      213: 3591925229296512425
+    second: Hero_Sheet_Hero_Idle_Up_3
+  - first:
+      213: -2062516608702135850
+    second: Hero_Sheet_Hero_Idle_Side_0
+  - first:
+      213: 616006705530818389
+    second: Hero_Sheet_Hero_Idle_Side_1
+  - first:
+      213: 5587384283970988401
+    second: Hero_Sheet_Hero_Idle_Side_2
+  - first:
+      213: -6021278537538410617
+    second: Hero_Sheet_Hero_Idle_Side_3
+  - first:
+      213: 2957000096803075089
+    second: Hero_Sheet_Hero_Walk_Down_0
+  - first:
+      213: 3418118473005173357
+    second: Hero_Sheet_Hero_Walk_Down_1
+  - first:
+      213: 975492463013952679
+    second: Hero_Sheet_Hero_Walk_Down_2
+  - first:
+      213: 5630305008651446520
+    second: Hero_Sheet_Hero_Walk_Down_3
+  - first:
+      213: 8978676215325420823
+    second: Hero_Sheet_Hero_Walk_Up_0
+  - first:
+      213: -7930005175121220444
+    second: Hero_Sheet_Hero_Walk_Up_1
+  - first:
+      213: 4402908160209051053
+    second: Hero_Sheet_Hero_Walk_Up_2
+  - first:
+      213: -7193860075718250669
+    second: Hero_Sheet_Hero_Walk_Up_3
+  - first:
+      213: -22208517769120096
+    second: Hero_Sheet_Hero_Walk_Side_0
+  - first:
+      213: -2466700699780474921
+    second: Hero_Sheet_Hero_Walk_Side_1
+  - first:
+      213: 5513144928985272745
+    second: Hero_Sheet_Hero_Walk_Side_2
+  - first:
+      213: 5452686615783517342
+    second: Hero_Sheet_Hero_Walk_Side_3
+  - first:
+      213: -681096882885597697
+    second: Hero_Sheet_Hero_Attack_Down_0
+  - first:
+      213: -3263271512239494911
+    second: Hero_Sheet_Hero_Attack_Down_1
+  - first:
+      213: -5432671668988433944
+    second: Hero_Sheet_Hero_Attack_Down_2
+  - first:
+      213: -2935642167068798869
+    second: Hero_Sheet_Hero_Attack_Up_0
+  - first:
+      213: -5529761543306292519
+    second: Hero_Sheet_Hero_Attack_Up_1
+  - first:
+      213: -3550636767252938283
+    second: Hero_Sheet_Hero_Attack_Up_2
+  - first:
+      213: 3916770700630029373
+    second: Hero_Sheet_Hero_Attack_Side_0
+  - first:
+      213: 1693986897724912797
+    second: Hero_Sheet_Hero_Attack_Side_1
+  - first:
+      213: -9194392743334559573
+    second: Hero_Sheet_Hero_Attack_Side_2
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bd501a63a4f93030800000000000000
+      internalID: 3475077570189352369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Down_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 256
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f363e3fc04da99e0800000000000000
+      internalID: -1613744364362439692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Down_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0157f0151447672f0800000000000000
+      internalID: -975464445397469936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Down_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 256
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 906568ef690148010800000000000000
+      internalID: 1190094442234009097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b48e1414f6eea2840800000000000000
+      internalID: 5200230881356277835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Up_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d2323130ea1ab540800000000000000
+      internalID: 5024357884485579476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Up_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0315116ce1926c20800000000000000
+      internalID: 3198279129813553931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Up_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ad6bf717f419d130800000000000000
+      internalID: 3591925229296512425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d147f272187063e0800000000000000
+      internalID: -2062516608702135850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Side_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55f4c6eb5de7c8800800000000000000
+      internalID: 616006705530818389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Side_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 179e0bd27606a8d40800000000000000
+      internalID: 5587384283970988401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Idle_Side_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 787e65c721f107ca0800000000000000
+      internalID: -6021278537538410617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1143eb2dbef590920800000000000000
+      internalID: 2957000096803075089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Down_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6a8ca724a89f6f20800000000000000
+      internalID: 3418118473005173357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Down_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ac740b0a35a98d00800000000000000
+      internalID: 975492463013952679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Down_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f8a5c1239cd22e40800000000000000
+      internalID: 5630305008651446520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71d68bf527aaa9c70800000000000000
+      internalID: 8978676215325420823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Up_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ace3e5ee46f2f190800000000000000
+      internalID: -7930005175121220444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Up_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daddde3e4a54a1d30800000000000000
+      internalID: 4402908160209051053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Up_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35fe2f630664a2c90800000000000000
+      internalID: -7193860075718250669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a63263887911bff0800000000000000
+      internalID: -22208517769120096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Side_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d7906e58c484cdd0800000000000000
+      internalID: -2466700699780474921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Side_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a1d96f5a10a28c40800000000000000
+      internalID: 5513144928985272745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Walk_Side_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9cad456695dbab40800000000000000
+      internalID: 5452686615783517342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Attack_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff56afd5ef14c86f0800000000000000
+      internalID: -681096882885597697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Attack_Down_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 109205369d786b2d0800000000000000
+      internalID: -3263271512239494911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Attack_Down_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e9ad9c86e54b94b0800000000000000
+      internalID: -5432671668988433944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Attack_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b60d434b0018247d0800000000000000
+      internalID: -2935642167068798869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Attack_Up_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d2dc9e9c275243b0800000000000000
+      internalID: -5529761543306292519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Attack_Up_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d182791caa99bec0800000000000000
+      internalID: -3550636767252938283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Attack_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d34f5b5433a2b5630800000000000000
+      internalID: 3916770700630029373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Attack_Side_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d943f0dbb10428710800000000000000
+      internalID: 1693986897724912797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Sheet_Hero_Attack_Side_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba04d109384f66080800000000000000
+      internalID: -9194392743334559573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hero_Sheet_0: -725792458435902786
+      Hero_Sheet_1: -2234772273781502906
+      Hero_Sheet_10: -4211590786074564861
+      Hero_Sheet_11: 1505081920169777776
+      Hero_Sheet_12: -3562473256555718295
+      Hero_Sheet_13: 728148342402257886
+      Hero_Sheet_14: 7857132103780351594
+      Hero_Sheet_15: 3332800409079026244
+      Hero_Sheet_16: -2603353507333757102
+      Hero_Sheet_17: 8584739586163711447
+      Hero_Sheet_18: -5748007307737002828
+      Hero_Sheet_19: -5062394959771189048
+      Hero_Sheet_2: 3539530376662812126
+      Hero_Sheet_20: 1492996801620444646
+      Hero_Sheet_21: 5859078639298127312
+      Hero_Sheet_22: 602055681436938763
+      Hero_Sheet_23: -6109484719786113247
+      Hero_Sheet_24: 2526596412837022312
+      Hero_Sheet_25: 484364293613274123
+      Hero_Sheet_26: 8310018588492303424
+      Hero_Sheet_27: -8034266266405710145
+      Hero_Sheet_28: -2210366859040298037
+      Hero_Sheet_29: -606895043996708025
+      Hero_Sheet_3: 4384826749283271414
+      Hero_Sheet_30: -8048531320737216171
+      Hero_Sheet_31: 7203219704179679214
+      Hero_Sheet_32: 4127519347214001380
+      Hero_Sheet_4: -5638218405811408920
+      Hero_Sheet_5: -4111131922249808675
+      Hero_Sheet_6: 247097580754850242
+      Hero_Sheet_7: -3621503884120308497
+      Hero_Sheet_8: -4047373168491397374
+      Hero_Sheet_9: -1601578721857903829
+      Hero_Sheet_Hero_Attack_Down_0: -681096882885597697
+      Hero_Sheet_Hero_Attack_Down_1: -3263271512239494911
+      Hero_Sheet_Hero_Attack_Down_2: -5432671668988433944
+      Hero_Sheet_Hero_Attack_Side_0: 3916770700630029373
+      Hero_Sheet_Hero_Attack_Side_1: 1693986897724912797
+      Hero_Sheet_Hero_Attack_Side_2: -9194392743334559573
+      Hero_Sheet_Hero_Attack_Up_0: -2935642167068798869
+      Hero_Sheet_Hero_Attack_Up_1: -5529761543306292519
+      Hero_Sheet_Hero_Attack_Up_2: -3550636767252938283
+      Hero_Sheet_Hero_Idle_Down_0: 3475077570189352369
+      Hero_Sheet_Hero_Idle_Down_1: -1613744364362439692
+      Hero_Sheet_Hero_Idle_Down_2: -975464445397469936
+      Hero_Sheet_Hero_Idle_Down_3: 1190094442234009097
+      Hero_Sheet_Hero_Idle_Side_0: -2062516608702135850
+      Hero_Sheet_Hero_Idle_Side_1: 616006705530818389
+      Hero_Sheet_Hero_Idle_Side_2: 5587384283970988401
+      Hero_Sheet_Hero_Idle_Side_3: -6021278537538410617
+      Hero_Sheet_Hero_Idle_Up_0: 5200230881356277835
+      Hero_Sheet_Hero_Idle_Up_1: 5024357884485579476
+      Hero_Sheet_Hero_Idle_Up_2: 3198279129813553931
+      Hero_Sheet_Hero_Idle_Up_3: 3591925229296512425
+      Hero_Sheet_Hero_Walk_Down_0: 2957000096803075089
+      Hero_Sheet_Hero_Walk_Down_1: 3418118473005173357
+      Hero_Sheet_Hero_Walk_Down_2: 975492463013952679
+      Hero_Sheet_Hero_Walk_Down_3: 5630305008651446520
+      Hero_Sheet_Hero_Walk_Side_0: -22208517769120096
+      Hero_Sheet_Hero_Walk_Side_1: -2466700699780474921
+      Hero_Sheet_Hero_Walk_Side_2: 5513144928985272745
+      Hero_Sheet_Hero_Walk_Side_3: 5452686615783517342
+      Hero_Sheet_Hero_Walk_Up_0: 8978676215325420823
+      Hero_Sheet_Hero_Walk_Up_1: -7930005175121220444
+      Hero_Sheet_Hero_Walk_Up_2: 4402908160209051053
+      Hero_Sheet_Hero_Walk_Up_3: -7193860075718250669
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

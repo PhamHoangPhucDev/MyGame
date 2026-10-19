@@ -1,0 +1,417 @@
+fileFormatVersion: 2
+guid: 824ee02aef2a0fc41b2942e3f74867c0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8303650038365723421
+    second: Gobrider_Sheet_0
+  - first:
+      213: 3900857903187411136
+    second: Gobrider_Sheet_1
+  - first:
+      213: -8780316177642313257
+    second: Gobrider_Sheet_2
+  - first:
+      213: -4453278677874328617
+    second: Gobrider_Sheet_3
+  - first:
+      213: -1702113295234050809
+    second: Gobrider_Sheet_4
+  - first:
+      213: -4557889866558189527
+    second: Gobrider_Sheet_5
+  - first:
+      213: 2726508711529496326
+    second: Gobrider_Sheet_6
+  - first:
+      213: 7622308546649228090
+    second: Gobrider_Sheet_7
+  - first:
+      213: -8298284762254331962
+    second: Gobrider_Sheet_8
+  - first:
+      213: -8910077806397279980
+    second: Gobrider_Sheet_9
+  - first:
+      213: -8589756632189713404
+    second: Gobrider_Sheet_Idle_0
+  - first:
+      213: -145612306033754782
+    second: Gobrider_Sheet_Idle_1
+  - first:
+      213: -1704836731817834404
+    second: Gobrider_Sheet_Walk_0
+  - first:
+      213: 3520373253185504164
+    second: Gobrider_Sheet_Walk_1
+  - first:
+      213: 2358956089540522134
+    second: Gobrider_Sheet_Walk_2
+  - first:
+      213: -4229956761130507256
+    second: Gobrider_Sheet_Walk_3
+  - first:
+      213: -5199085766818918390
+    second: Gobrider_Sheet_Attack_0
+  - first:
+      213: 4647674609011479886
+    second: Gobrider_Sheet_Attack_1
+  - first:
+      213: 3171567385466066536
+    second: Gobrider_Sheet_Attack_2
+  - first:
+      213: -9196190049781466419
+    second: Gobrider_Sheet_Hurt_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gobrider_Sheet_Idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 30
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 404c64f7add0bc880800000000000000
+      internalID: -8589756632189713404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gobrider_Sheet_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 72
+        width: 30
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26dbeef016eaafdf0800000000000000
+      internalID: -145612306033754782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gobrider_Sheet_Walk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 30
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c58c5f766043758e0800000000000000
+      internalID: -1704836731817834404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gobrider_Sheet_Walk_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 48
+        width: 30
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a388e072d0ead030800000000000000
+      internalID: 3520373253185504164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gobrider_Sheet_Walk_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 48
+        width: 30
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 690becda012bcb020800000000000000
+      internalID: 2358956089540522134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gobrider_Sheet_Walk_3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 48
+        width: 30
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 804ed8dacbc2c45c0800000000000000
+      internalID: -4229956761130507256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gobrider_Sheet_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 24
+        width: 30
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0018ff7a0329d7b0800000000000000
+      internalID: -5199085766818918390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gobrider_Sheet_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 24
+        width: 30
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e455bb5be6bdf7040800000000000000
+      internalID: 4647674609011479886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gobrider_Sheet_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 24
+        width: 30
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8665befbbbba30c20800000000000000
+      internalID: 3171567385466066536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gobrider_Sheet_Hurt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 30
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dca3bcb8fd1906080800000000000000
+      internalID: -9196190049781466419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Gobrider_Sheet_0: -8303650038365723421
+      Gobrider_Sheet_1: 3900857903187411136
+      Gobrider_Sheet_2: -8780316177642313257
+      Gobrider_Sheet_3: -4453278677874328617
+      Gobrider_Sheet_4: -1702113295234050809
+      Gobrider_Sheet_5: -4557889866558189527
+      Gobrider_Sheet_6: 2726508711529496326
+      Gobrider_Sheet_7: 7622308546649228090
+      Gobrider_Sheet_8: -8298284762254331962
+      Gobrider_Sheet_9: -8910077806397279980
+      Gobrider_Sheet_Attack_0: -5199085766818918390
+      Gobrider_Sheet_Attack_1: 4647674609011479886
+      Gobrider_Sheet_Attack_2: 3171567385466066536
+      Gobrider_Sheet_Hurt_0: -9196190049781466419
+      Gobrider_Sheet_Idle_0: -8589756632189713404
+      Gobrider_Sheet_Idle_1: -145612306033754782
+      Gobrider_Sheet_Walk_0: -1704836731817834404
+      Gobrider_Sheet_Walk_1: 3520373253185504164
+      Gobrider_Sheet_Walk_2: 2358956089540522134
+      Gobrider_Sheet_Walk_3: -4229956761130507256
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

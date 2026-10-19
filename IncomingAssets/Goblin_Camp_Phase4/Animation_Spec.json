@@ -1,0 +1,18 @@
+{
+  "pixels_per_unit": 16,
+  "pivot": "bottom-center (feet baseline)",
+  "filter": "Point", "compression": "None",
+  "sheets": {
+    "Hero_Sheet.png": {"cell": [32, 32], "feet_row_in_cell": 29,
+      "rows": ["idle_down x4", "idle_up x4", "idle_side x4 (faces LEFT, flipX for right)",
+               "walk_down x4", "walk_up x4", "walk_side x4",
+               "attack_down x3", "attack_up x3", "attack_side x3"],
+      "suggested_fps": {"idle": 6, "walk": 8, "attack": 14}},
+    "Goblin_Sheet.png": {"cell": [26, 22],
+      "rows": ["idle x2", "walk x4", "attack x3", "hurt x1"], "facing": "front (flipX for left/right)",
+      "suggested_fps": {"idle": 4, "walk": 8, "attack": 10}},
+    "Gobrider_Sheet.png": {"cell": [30, 24],
+      "rows": ["idle x2", "walk x4", "attack x3 (charge)", "hurt x1"], "facing": "LEFT (flipX for right)",
+      "suggested_fps": {"idle": 4, "walk": 8, "attack": 10}}
+  }
+}

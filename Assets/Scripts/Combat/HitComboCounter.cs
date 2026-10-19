@@ -1,0 +1,69 @@
+using UnityEngine;
+
+namespace GameplayPrototype
+{
+    /// <summary>
+    /// Tracks rapid hits and drives the on-screen "xN HITS" readout.
+    /// </summary>
+    public class HitComboCounter : MonoBehaviour
+    {
+        public static HitComboCounter Instance { get; private set; }
+
+        [SerializeField] float comboResetTime = 1.8f;
+
+        int _hits;
+        int _bestHits;
+        float _timer;
+
+        public int CurrentHits => _hits;
+        public int BestHits => _bestHits;
+        public event System.Action<int> ComboChanged;
+
+        void Awake()
+        {
+            Instance = this;
+        }
+
+        void OnDestroy()
+        {
+            if (Instance == this)
+                Instance = null;
+        }
+
+        void Update()
+        {
+            if (_hits <= 0) return;
+            _timer -= Time.unscaledDeltaTime;
+            if (_timer <= 0f)
+            {
+                _hits = 0;
+                ComboChanged?.Invoke(0);
+            }
+        }
+
+        public void RegisterHit()
+        {
+            _hits++;
+            if (_hits > _bestHits) _bestHits = _hits;
+            _timer = comboResetTime;
+            ComboChanged?.Invoke(_hits);
+            if (_hits == 10 || _hits == 25 || _hits == 50 || _hits % 100 == 0)
+                GameAudio.Play(Sfx.ComboMilestone);
+        }
+
+        public void ResetCombo()
+        {
+            _hits = 0;
+            _timer = 0f;
+            ComboChanged?.Invoke(0);
+        }
+
+        public void ResetRun()
+        {
+            _hits = 0;
+            _bestHits = 0;
+            _timer = 0f;
+            ComboChanged?.Invoke(0);
+        }
+    }
+}

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73b7e353b5093e4b9fe8fd6417b7de3, type: 3}
+  m_Name: Level2_ForestTrail
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.LevelConfig
+  levelNumber: 2
+  levelId: level_02
+  levelTitle: FOREST TRAIL
+  mapLayoutId: Trail
+  heroSpawn: {x: 0.2, y: -7.5}
+  spawnZones:
+  - {x: -1.2, y: -4.2}
+  - {x: 1.6, y: -2.4}
+  - {x: -1.8, y: -0.2}
+  - {x: 1.4, y: 2}
+  - {x: -1, y: 4.2}
+  - {x: 1.2, y: 6}
+  cameraBoundsMin: {x: -18, y: -12}
+  cameraBoundsMax: {x: 18, y: 14}
+  objectiveType: 1
+  exitPosition: {x: 0.3, y: 8.2}
+  exitSize: {x: 1.8, y: 1.4}
+  waves:
+  - displayName: "WAVE 1 \u2014 TRAIL SCOUTS"
+    goblins: 3
+    gobriders: 0
+    transitionDelay: 1.6
+    aliveCap: 3
+    allowTopUp: 1
+  - displayName: "WAVE 2 \u2014 FLANK AMBUSH"
+    goblins: 4
+    gobriders: 0
+    transitionDelay: 1.75
+    aliveCap: 4
+    allowTopUp: 1
+  - displayName: "WAVE 3 \u2014 RIDER PATROL"
+    goblins: 3
+    gobriders: 1
+    transitionDelay: 1.85
+    aliveCap: 4
+    allowTopUp: 1
+  - displayName: "WAVE 4 \u2014 PATH BLOCKADE"
+    goblins: 4
+    gobriders: 1
+    transitionDelay: 1.75
+    aliveCap: 5
+    allowTopUp: 1
+  targetCompletionTime: 140
+  starHpRatio: 0.4
+  recommendedMaxAlive: 6
+  nextLevelNumber: 3

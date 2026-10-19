@@ -55,6 +55,54 @@ namespace GameplayPrototype
             return slash;
         }
 
+        // R1 authored slash sheets (Assets/Resources/VFX), 4 frames each: A = chain hit 1, B = hit 2, C = finisher.
+        static readonly string[] SlashSheets = { "VFX/VFX_SwordSlash_A", "VFX/VFX_SwordSlash_B", "VFX/VFX_SwordSlash_C" };
+        // The sprite pivot is the arc centre; pull it back so the arc sweeps across the hit zone in front of the hero.
+        static readonly float[] SlashPullBack = { 1.0f, 0.9f, 1.8f };
+        static readonly float[] SlashLife = { 0.14f, 0.14f, 0.2f };
+        static Sprite[][] _slashFrames;
+
+        /// <summary>
+        /// Plays an authored slash at scale 1 (pixel-exact), facing snapped to 8 directions.
+        /// Returns false when the sheet is missing so callers can fall back to the procedural arc.
+        /// </summary>
+        public static bool SpawnSwordSlashFrames(Vector3 chest, Vector2 facing, int variant)
+        {
+            variant = Mathf.Clamp(variant, 0, 2);
+            var frames = SlashFrames(variant);
+            if (frames == null) return false;
+
+            float raw = Mathf.Atan2(facing.y, facing.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Round(raw / 45f) * 45f;
+            Vector2 dir = new(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+            var vfx = Spawn(Style.SwordSlash, chest - (Vector3)(dir * SlashPullBack[variant]), angle, 1f,
+                SlashLife[variant], Color.white, Color.white, 1f, 1f);
+            // Sheets are drawn sweeping for a rightward swing; flip when facing left so the sweep keeps its direction.
+            vfx.SetFrames(frames, dir.x < -0.01f);
+            return true;
+        }
+
+        static Sprite[] SlashFrames(int variant)
+        {
+            _slashFrames ??= new Sprite[SlashSheets.Length][];
+            var cached = _slashFrames[variant];
+            if (cached != null && cached.Length > 0 && cached[0] != null) return cached;
+            var loaded = Resources.LoadAll<Sprite>(SlashSheets[variant]);
+            if (loaded == null || loaded.Length == 0) return null;
+            System.Array.Sort(loaded, (a, b) => string.CompareOrdinal(a.name, b.name));
+            _slashFrames[variant] = loaded;
+            return loaded;
+        }
+
+        Sprite[] _frames;
+
+        void SetFrames(Sprite[] frames, bool flipY)
+        {
+            _frames = frames;
+            _sr.sprite = frames[0];
+            _sr.flipY = flipY;
+        }
+
         public static CombatVfx SpawnShockwave(Vector3 pos, float scale = 2.2f)
         {
             return Spawn(Style.Shockwave, pos, 0f, scale, 0.35f,
@@ -100,6 +148,7 @@ namespace GameplayPrototype
             Pool.Clear();
             _poolRoot = null;
             _created = 0;
+            _slashFrames = null;
         }
 
         static CombatVfx Spawn(Style style, Vector3 pos, float angle, float scale, float life,
@@ -143,6 +192,8 @@ namespace GameplayPrototype
 
             if (_sr == null)
                 _sr = gameObject.AddComponent<SpriteRenderer>();
+            _frames = null; // pooled instance may have played a frame slash last time
+            _sr.flipY = false;
             _sr.sprite = GetSprite(style);
             _sr.sharedMaterial = ProceduralSprites.Unlit;
             _sr.color = a;
@@ -155,7 +206,13 @@ namespace GameplayPrototype
             _age += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(_age / _life);
             transform.localScale = Vector3.one * Mathf.Lerp(_startScale, _endScale, t);
-            if (_sr != null)
+            if (_frames != null)
+            {
+                // Authored frames carry their own fade; no tint or scale tween (keeps pixels exact).
+                int idx = Mathf.Min(_frames.Length - 1, (int)(t * _frames.Length));
+                _sr.sprite = _frames[idx];
+            }
+            else if (_sr != null)
             {
                 float fade = _style == Style.Crescent || _style == Style.SwordSlash
                     ? Mathf.InverseLerp(0.55f, 1f, t)

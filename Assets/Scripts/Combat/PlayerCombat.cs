@@ -91,6 +91,7 @@ namespace GameplayPrototype
         int _pendingDamage;
         float _pendingKnockback;
         float _pendingVfxScale = 1f;
+        int _pendingSlashVariant;
         Vector2 _slashSwing;
         Health _stickyTarget;
         bool _debugSwordHeld;
@@ -334,6 +335,7 @@ namespace GameplayPrototype
                 _pendingVfxScale = 1.45f;
             }
 
+            _pendingSlashVariant = _slashChain; // 0 = VFX A, 1 = B, 2 = finisher C
             _slashChain = (_slashChain + 1) % 3;
             _lastSlashUnscaled = Time.unscaledTime;
             _visual?.PlaySlashSwing(_slashSwing);
@@ -378,7 +380,9 @@ namespace GameplayPrototype
             Vector2 swing = _slashSwing.sqrMagnitude > 0.01f ? _slashSwing : _slashFacing;
             Vector2 hitOrigin = (Vector2)transform.position + swing * 0.35f;
             Vector3 slashPos = transform.position + (Vector3)(swing * 0.32f) + Vector3.up * 0.42f;
-            CombatVfx.SpawnSwordSlash(slashPos, swing, _pendingVfxScale);
+            // R1 authored slash frames; falls back to the procedural arc if the sheets are missing.
+            if (!CombatVfx.SpawnSwordSlashFrames(transform.position + Vector3.up * 0.42f, swing, _pendingSlashVariant))
+                CombatVfx.SpawnSwordSlash(slashPos, swing, _pendingVfxScale);
             ApplyAreaDamage(hitOrigin, _pendingRadius, _pendingDamage, _pendingKnockback, new Color(0.7f, 0.95f, 1f));
         }
 
@@ -466,7 +470,8 @@ namespace GameplayPrototype
             _crescentPending = false;
             Vector2 origin = (Vector2)transform.position + _facing * 0.55f;
             CombatVfx.SpawnCrescent(origin, _facing, 2.35f);
-            CombatVfx.SpawnSwordSlash(transform.position + (Vector3)(_facing * 0.4f) + Vector3.up * 0.45f, _facing, 1.7f);
+            if (!CombatVfx.SpawnSwordSlashFrames(transform.position + Vector3.up * 0.45f, _facing, 2))
+                CombatVfx.SpawnSwordSlash(transform.position + (Vector3)(_facing * 0.4f) + Vector3.up * 0.45f, _facing, 1.7f);
             ApplyAreaDamage(origin, crescentRadius, crescentDamage, crescentKnockback, new Color(0.7f, 0.95f, 1f));
         }
 

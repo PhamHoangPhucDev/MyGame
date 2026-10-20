@@ -37,6 +37,14 @@ namespace GameplayPrototype
                 0.96f, 1.08f);
         }
 
+        /// <summary>R2C class kits: same crescent as SpawnCrescent with the class colour (e.g. Vex crimson).</summary>
+        public static CombatVfx SpawnCrescentTinted(Vector3 pos, Vector2 facing, float scale, Color color, float life = 0.14f)
+        {
+            float angle = Mathf.Atan2(facing.y, facing.x) * Mathf.Rad2Deg;
+            return Spawn(Style.Crescent, pos, angle, scale, life, color,
+                new Color(color.r, color.g, color.b, 0f), 0.96f, 1.08f);
+        }
+
         /// <summary>
         /// R only. Pivot sits on the blade's inner edge so the arc grows out from the weapon.
         /// </summary>

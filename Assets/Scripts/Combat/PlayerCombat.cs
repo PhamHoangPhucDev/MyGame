@@ -95,6 +95,34 @@ namespace GameplayPrototype
         Vector2 _slashSwing;
         Health _stickyTarget;
         bool _debugSwordHeld;
+        // R2C: optional class kit (Sandbox, via ClassCombat). Null = the serialized fields below drive everything.
+        ClassKit _kit;
+        int _pendingStep = -1;
+        SkillDef _whirlDef;
+        SkillDef _crescentDef;
+
+        public ClassKit Kit => _kit;
+        public event Action<ClassKit> KitChanged;
+
+        /// <summary>Runs this class kit (null restores the scene's own values). Resets cooldowns and the combo.</summary>
+        public void SetKit(ClassKit kit)
+        {
+            _kit = kit;
+            ApplyCooldownTotals();
+            ResetCombatState();
+            KitChanged?.Invoke(kit);
+        }
+
+        float AutoTargetRadius => _kit != null ? _kit.combo.autoTargetRadius : slashAutoTargetRadius;
+
+        /// <summary>Combo step of the swing in flight (kit path only; -1 otherwise). EquipmentVisual picks per-step poses/VFX.</summary>
+        public int CurrentComboStep => _pendingStep;
+        public bool IsStealthed => _stealthTimer > 0f;
+        public float NextHitMultiplier => _nextHitMul;
+
+        float _nextHitMul = 1f;
+        float _stealthTimer;
+        float _stealthAlpha = 1f;
 
         public int SlashChainStep => _slashChain;
         public bool IsGuarding => _guardTimer > 0f;
@@ -134,6 +162,8 @@ namespace GameplayPrototype
             _lastSlashUnscaled = -999f;
             _debugSwordHeld = false;
             _stickyTarget = null;
+            _nextHitMul = 1f;
+            if (_stealthTimer > 0f) EndStealth();
             GetComponent<Health>()?.SetDamageTakenMultiplier(1f);
             enabled = true;
             CooldownsChanged?.Invoke();
@@ -146,6 +176,17 @@ namespace GameplayPrototype
             if (_visual == null) _visual = gameObject.AddComponent<PlayerVisual>();
             _visual.EnsureHierarchy();
 
+            ApplyCooldownTotals();
+        }
+
+        void ApplyCooldownTotals()
+        {
+            if (_kit != null)
+            {
+                foreach (SkillId id in Enum.GetValues(typeof(SkillId)))
+                    _cooldownTotal[(int)id] = _kit.Cooldown(id);
+                return;
+            }
             // Key map kept: 2/3/4/R/V/C. Behaviors remapped for Phase 8C (see report).
             _cooldownTotal[(int)SkillId.FireDash] = flameCooldown;
             _cooldownTotal[(int)SkillId.MultiSlash] = dashCooldown;
@@ -180,6 +221,7 @@ namespace GameplayPrototype
             TickSlashStrike();
             TickWhirlwind();
             TickCrescentStrike();
+            TickStealth();
         }
 
         void TickCooldowns()
@@ -282,6 +324,18 @@ namespace GameplayPrototype
             if (!IsReady(id))
                 return false;
 
+            if (_kit != null && id != SkillId.Sword)
+            {
+                var def = _kit.Get(id);
+                if (def == null || def.behaviour == SkillBehaviour.None)
+                    return false;
+                _activeSkill = id;
+                if (!RunBehaviour(def))
+                    return false;
+                StartCooldown(id);
+                return true;
+            }
+
             _activeSkill = id;
             switch (id)
             {
@@ -294,6 +348,23 @@ namespace GameplayPrototype
             }
 
             StartCooldown(id);
+            return true;
+        }
+
+        bool RunBehaviour(SkillDef def)
+        {
+            switch (def.behaviour)
+            {
+                case SkillBehaviour.ShadowStep: return PerformShadowStep(def);
+                case SkillBehaviour.ProjectileFan: PerformProjectileFan(def); GameAudio.Play(Sfx.SkillDash); return true;
+                case SkillBehaviour.Stealth: BeginStealth(def); GameAudio.Play(Sfx.SkillGuard); return true;
+                case SkillBehaviour.Execute: return PerformExecute(def);
+                case SkillBehaviour.BurstAhead: PerformFlameBurst(def); GameAudio.Play(Sfx.SkillFlame); break;
+                case SkillBehaviour.DashStrike: PerformDashSlash(def); GameAudio.Play(Sfx.SkillDash); break;
+                case SkillBehaviour.Whirlwind: BeginWhirlwind(def); break;
+                case SkillBehaviour.Guard: BeginGuard(def); GameAudio.Play(Sfx.SkillGuard); break;
+                case SkillBehaviour.CrescentStrike: BeginCrescentStrike(def); GameAudio.Play(Sfx.SkillCrescent); break;
+            }
             return true;
         }
 
@@ -313,6 +384,12 @@ namespace GameplayPrototype
 
         void PerformSlash()
         {
+            if (_kit != null)
+            {
+                PerformKitCombo(_kit.combo);
+                return;
+            }
+
             if (Time.unscaledTime - _lastSlashUnscaled > SlashChainReset)
                 _slashChain = 0;
 
@@ -344,13 +421,39 @@ namespace GameplayPrototype
             _slashDelay = slashImpactDelay;
         }
 
+        // Same flow as the legacy chain, every number from the kit's ComboStep.
+        void PerformKitCombo(ComboDef c)
+        {
+            int n = Mathf.Max(1, c.steps != null ? c.steps.Length : 0);
+            if (Time.unscaledTime - _lastSlashUnscaled > SlashChainReset || _slashChain >= n)
+                _slashChain = 0;
+
+            AimSlash();
+            var s = c.steps != null && c.steps.Length > 0 ? c.steps[_slashChain] : null;
+            Vector2 perp = new Vector2(-_slashFacing.y, _slashFacing.x);
+            float offset = s != null ? s.swingOffset : 0f;
+            _slashSwing = offset == 0f ? _slashFacing : (_slashFacing + perp * offset).normalized;
+            _pendingRadius = c.radius * (s != null ? s.radiusMul : 1f);
+            _pendingDamage = Mathf.RoundToInt(c.damage * (s != null ? s.damageMul : 1f));
+            _pendingKnockback = c.knockback * (s != null ? s.knockbackMul : 1f);
+            _pendingVfxScale = s != null ? s.vfxScale : 1f;
+            _pendingSlashVariant = s != null ? s.vfxVariant : 0;
+            _pendingStep = _slashChain;
+
+            _slashChain = (_slashChain + 1) % n;
+            _lastSlashUnscaled = Time.unscaledTime;
+            _visual?.PlaySlashSwing(_slashSwing);
+            _slashPending = true;
+            _slashDelay = c.impactDelay;
+        }
+
         void AimSlash()
         {
             // Keep sticky target while it stays alive and in range so facing does not flicker.
             if (_stickyTarget != null && !_stickyTarget.IsDead)
             {
                 float d = Vector2.Distance(transform.position, _stickyTarget.transform.position);
-                if (d <= slashAutoTargetRadius)
+                if (d <= AutoTargetRadius)
                 {
                     Vector2 toSticky = (Vector2)_stickyTarget.transform.position - (Vector2)transform.position;
                     if (toSticky.sqrMagnitude > 0.0001f)
@@ -360,7 +463,7 @@ namespace GameplayPrototype
                 }
             }
 
-            _stickyTarget = CombatTargeting.FindNearestEnemy(transform.position, slashAutoTargetRadius, enemyMask);
+            _stickyTarget = CombatTargeting.FindNearestEnemy(transform.position, AutoTargetRadius, enemyMask);
             if (_stickyTarget != null)
             {
                 Vector2 to = (Vector2)_stickyTarget.transform.position - (Vector2)transform.position;
@@ -381,31 +484,157 @@ namespace GameplayPrototype
             Vector2 hitOrigin = (Vector2)transform.position + swing * 0.35f;
             Vector3 slashPos = transform.position + (Vector3)(swing * 0.32f) + Vector3.up * 0.42f;
             // R1 authored slash frames; falls back to the procedural arc if the sheets are missing.
-            if (!CombatVfx.SpawnSwordSlashFrames(transform.position + Vector3.up * 0.42f, swing, _pendingSlashVariant))
+            // Skipped only when this hero's EquipmentVisual draws its own blade-tip slash (Sandbox R2C).
+            if (!EquipmentVisual.ReplacesLegacySlash(this) &&
+                !CombatVfx.SpawnSwordSlashFrames(transform.position + Vector3.up * 0.42f, swing, _pendingSlashVariant))
                 CombatVfx.SpawnSwordSlash(slashPos, swing, _pendingVfxScale);
-            ApplyAreaDamage(hitOrigin, _pendingRadius, _pendingDamage, _pendingKnockback, new Color(0.7f, 0.95f, 1f));
+            int strikeDamage = _pendingDamage;
+            if (_kit != null && _nextHitMul != 1f)
+            {
+                strikeDamage = Mathf.RoundToInt(strikeDamage * _nextHitMul);
+                _nextHitMul = 1f;
+            }
+            ApplyAreaDamage(hitOrigin, _pendingRadius, strikeDamage, _pendingKnockback, new Color(0.7f, 0.95f, 1f));
+            if (_kit != null) ApplyStepBleed();
         }
 
-        void PerformFlameBurst()
+        // ---------- R2C class behaviours (kit path only) ----------
+
+        void ApplyStepBleed()
         {
-            Vector2 origin = (Vector2)transform.position + _facing * flameRange;
+            var steps = _kit.combo.steps;
+            if (steps == null || _pendingStep < 0 || _pendingStep >= steps.Length) return;
+            var s = steps[_pendingStep];
+            if (s.bleedDamage <= 0 || s.bleedDuration <= 0f) return;
+            foreach (var h in _hitBuffer)
+                if (h != null && !h.IsDead) StatusBleed.Apply(h, s.bleedDamage, s.bleedTick, s.bleedDuration);
+        }
+
+        Rigidbody2D Body2D => GetComponent<Rigidbody2D>();
+
+        void Blink(Vector2 to)
+        {
+            var rb = Body2D;
+            if (rb != null) { rb.position = to; rb.linearVelocity = Vector2.zero; }
+            transform.position = to;
+        }
+
+        // Vex 2: blink behind the nearest enemy in range; the next R hit deals x multiplier. No target = not cast.
+        bool PerformShadowStep(SkillDef d)
+        {
+            var target = CombatTargeting.FindNearestEnemy(transform.position, d.range, enemyMask);
+            if (target == null) return false;
+            Vector2 from = transform.position, tp = target.transform.position;
+            Vector2 dir = (tp - from).sqrMagnitude > 0.0001f ? (tp - from).normalized : _facing;
+            KitVfx.Play(d.vfxFrames, from + Vector2.up * 0.5f, d.vfxFps);
+            Blink(tp + dir * d.radius);
+            _facing = -dir;
+            _stickyTarget = target;
+            _nextHitMul = d.multiplier > 0f ? d.multiplier : 1f;
+            KitVfx.Play(d.vfxFrames, (Vector2)transform.position + Vector2.up * 0.5f, d.vfxFps);
+            GameAudio.Play(Sfx.SkillDash);
+            return true;
+        }
+
+        // Vex 3: fan of projectiles around the facing.
+        void PerformProjectileFan(SkillDef d)
+        {
+            int n = Mathf.Max(1, d.count);
+            Vector2 baseDir = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.right;
+            var aim = CombatTargeting.FindNearestEnemy(transform.position, d.range, enemyMask);
+            if (aim != null) baseDir = ((Vector2)aim.transform.position - (Vector2)transform.position).normalized;
+            if (!_slashPending) _pendingStep = -1; // skill swing: no combo-step pose/VFX
+            _facing = baseDir;
+            _visual?.PlaySlashSwing(baseDir, skipWindup: true);
+            float start = n > 1 ? -d.spreadDeg * 0.5f : 0f, step = n > 1 ? d.spreadDeg / (n - 1) : 0f;
+            for (int i = 0; i < n; i++)
+            {
+                Vector2 dir = Quaternion.Euler(0f, 0f, start + step * i) * baseDir;
+                KitProjectile.Fire((Vector2)transform.position + Vector2.up * 0.45f + dir * 0.3f, dir, d.projectilePoses, d.speed, d.range,
+                    d.damage, d.knockback, d.bleedDamage, d.bleedTick, d.bleedDuration, enemyMask, d.popupColor);
+            }
+        }
+
+        // Vex V: translucent + immune for the duration (enemy AI is untouched, they just cannot hurt the hero).
+        void BeginStealth(SkillDef d)
+        {
+            KitVfx.Play(d.vfxFrames, (Vector2)transform.position + Vector2.up * 0.5f, d.vfxFps);
+            _stealthTimer = Mathf.Max(0.1f, d.duration);
+            _stealthAlpha = Mathf.Clamp01(d.alpha);
+            GetComponent<Health>()?.SetDamageTakenMultiplier(0f);
+        }
+
+        void TickStealth()
+        {
+            if (_stealthTimer <= 0f) return;
+            _stealthTimer -= Time.deltaTime;
+            var sr = BodyRenderer();
+            if (sr != null) { var c = sr.color; c.a = _stealthAlpha; sr.color = c; }
+            if (_stealthTimer <= 0f) EndStealth();
+        }
+
+        void EndStealth()
+        {
+            _stealthTimer = 0f;
+            var sr = BodyRenderer();
+            if (sr != null) { var c = sr.color; c.a = 1f; sr.color = c; }
+            if (_guardTimer <= 0f) GetComponent<Health>()?.SetDamageTakenMultiplier(1f);
+        }
+
+        SpriteRenderer BodyRenderer()
+        {
+            var anim = GetComponentInChildren<Animator>();
+            return anim != null ? anim.GetComponent<SpriteRenderer>() : null;
+        }
+
+        // Vex C: blink next to the target and strike it; x multiplier when its HP ratio is below threshold.
+        bool PerformExecute(SkillDef d)
+        {
+            var target = CombatTargeting.FindNearestEnemy(transform.position, d.range, enemyMask);
+            if (target == null) return false;
+            Vector2 from = transform.position, tp = target.transform.position;
+            Vector2 dir = (tp - from).sqrMagnitude > 0.0001f ? (tp - from).normalized : _facing;
+            Blink(tp - dir * 0.6f);
+            if (!_slashPending) _pendingStep = -1;
+            _facing = dir;
+            _visual?.PlaySlashSwing(dir, skipWindup: true);
+            bool low = target.Normalized < d.threshold;
+            int dmg = Mathf.RoundToInt(d.damage * (low ? d.multiplier : 1f));
+            KitVfx.Play(d.vfxFrames, tp + Vector2.up * 0.4f, d.vfxFps, false, 80);
+            if (low) KitVfx.ScreenTint(new Color(0.08f, 0.02f, 0.05f, 0.45f), 0.22f);
+            ApplyAreaDamage(tp, 0.6f, dmg, d.knockback, d.popupColor);
+            GameAudio.Play(Sfx.SkillCrescent);
+            return true;
+        }
+
+        // Each routine takes an optional kit SkillDef; null = the serialized fields and constants (Level 1-4, unchanged).
+        void PerformFlameBurst(SkillDef d = null)
+        {
+            float range = d != null ? d.range : flameRange;
+            Vector2 origin = (Vector2)transform.position + _facing * range;
             CombatVfx.SpawnBurst(origin, new Color(1f, 0.45f, 0.15f), 1.55f);
             CombatVfx.SpawnBurst(origin + _facing * 0.35f, new Color(1f, 0.75f, 0.2f), 1.1f);
-            ApplyAreaDamage(origin, flameRadius, flameDamage, 2.8f, new Color(1f, 0.55f, 0.25f));
+            ApplyAreaDamage(origin, d != null ? d.radius : flameRadius, d != null ? d.damage : flameDamage,
+                d != null ? d.knockback : 2.8f, d != null ? d.popupColor : new Color(1f, 0.55f, 0.25f));
         }
 
-        void PerformDashSlash()
+        void PerformDashSlash(SkillDef d = null)
         {
             Vector2 dir = _facing.sqrMagnitude > 0.01f ? _facing : Vector2.right;
-            _movement.OverrideVelocity(dir * dashSpeed, dashDuration);
+            _movement.OverrideVelocity(dir * (d != null ? d.speed : dashSpeed), d != null ? d.duration : dashDuration);
             CombatVfx.SpawnCrescent(transform.position + (Vector3)(dir * 0.35f), dir, 1.5f);
             CombatVfx.SpawnShockwave(transform.position, 1.25f);
-            ApplyAreaDamage((Vector2)transform.position + dir * 0.4f, dashRadius, dashDamage, 4.2f, new Color(0.55f, 0.9f, 1f));
+            ApplyAreaDamage((Vector2)transform.position + dir * 0.4f, d != null ? d.radius : dashRadius, d != null ? d.damage : dashDamage,
+                d != null ? d.knockback : 4.2f, d != null ? d.popupColor : new Color(0.55f, 0.9f, 1f));
         }
 
-        void BeginWhirlwind()
+        SkillId _whirlSlot = SkillId.MawBite;
+
+        void BeginWhirlwind(SkillDef d = null)
         {
-            _whirlLeft = whirlWaves;
+            _whirlDef = d;
+            _whirlSlot = d != null ? _activeSkill : SkillId.MawBite;
+            _whirlLeft = d != null ? d.count : whirlWaves;
             _whirlTimer = 0f;
             WhirlWave();
             _whirlLeft--;
@@ -418,25 +647,39 @@ namespace GameplayPrototype
             if (_whirlTimer > 0f) return;
             WhirlWave();
             _whirlLeft--;
-            _whirlTimer = whirlWaveInterval;
+            _whirlTimer = _whirlDef != null ? _whirlDef.interval : whirlWaveInterval;
         }
 
         void WhirlWave()
         {
-            _activeSkill = SkillId.MawBite;
+            var d = _whirlDef;
+            _activeSkill = _whirlSlot;
+            if (d != null && d.useTint && !_slashPending) _pendingStep = -1; // class flurry: no combo-step VFX
             _visual?.PlaySlashSwing(_facing, skipWindup: true);
             GameAudio.Play(Sfx.SkillWhirl);
-            CombatVfx.SpawnCrescent(transform.position, _facing, 2.0f);
-            CombatVfx.SpawnCrescent(transform.position, -_facing, 1.7f);
-            CombatVfx.SpawnBurst(transform.position, new Color(0.75f, 0.95f, 1f), 1.5f);
-            ApplyAreaDamage(transform.position, whirlRadius, whirlDamage, 3.0f, new Color(0.8f, 0.95f, 1f));
+            if (d != null && d.useTint)
+            {
+                // class-coloured flurry: crescents rotating around the hero wave by wave
+                float a = (_whirlLeft * 60f) * Mathf.Deg2Rad;
+                Vector2 dir = new Vector2(Mathf.Cos(a), Mathf.Sin(a));
+                CombatVfx.SpawnCrescentTinted(transform.position + Vector3.up * 0.35f, dir, 1.5f, d.tintColor);
+                CombatVfx.SpawnCrescentTinted(transform.position + Vector3.up * 0.35f, -dir, 1.2f, d.tintColor * 0.8f);
+            }
+            else
+            {
+                CombatVfx.SpawnCrescent(transform.position, _facing, 2.0f);
+                CombatVfx.SpawnCrescent(transform.position, -_facing, 1.7f);
+                CombatVfx.SpawnBurst(transform.position, new Color(0.75f, 0.95f, 1f), 1.5f);
+            }
+            ApplyAreaDamage(transform.position, d != null ? d.radius : whirlRadius, d != null ? d.damage : whirlDamage,
+                d != null ? d.knockback : 3.0f, d != null ? d.popupColor : new Color(0.8f, 0.95f, 1f));
         }
 
-        void BeginGuard()
+        void BeginGuard(SkillDef d = null)
         {
-            _guardTimer = guardDuration;
+            _guardTimer = d != null ? d.duration : guardDuration;
             var health = GetComponent<Health>();
-            health?.SetDamageTakenMultiplier(guardDamageMultiplier);
+            health?.SetDamageTakenMultiplier(d != null ? d.multiplier : guardDamageMultiplier);
             CombatVfx.SpawnShockwave(transform.position, 1.1f);
             CombatVfx.SpawnBurst(transform.position, new Color(0.65f, 0.85f, 1f), 0.9f);
         }
@@ -455,11 +698,12 @@ namespace GameplayPrototype
             GetComponent<Health>()?.SetDamageTakenMultiplier(1f);
         }
 
-        void BeginCrescentStrike()
+        void BeginCrescentStrike(SkillDef d = null)
         {
+            _crescentDef = d;
             _visual?.PlaySlashSwing(_facing);
             _crescentPending = true;
-            _crescentDelay = crescentAnticipation;
+            _crescentDelay = d != null ? d.anticipation : crescentAnticipation;
         }
 
         void TickCrescentStrike()
@@ -468,11 +712,13 @@ namespace GameplayPrototype
             _crescentDelay -= Time.unscaledDeltaTime;
             if (_crescentDelay > 0f) return;
             _crescentPending = false;
+            var d = _crescentDef;
             Vector2 origin = (Vector2)transform.position + _facing * 0.55f;
             CombatVfx.SpawnCrescent(origin, _facing, 2.35f);
             if (!CombatVfx.SpawnSwordSlashFrames(transform.position + Vector3.up * 0.45f, _facing, 2))
                 CombatVfx.SpawnSwordSlash(transform.position + (Vector3)(_facing * 0.4f) + Vector3.up * 0.45f, _facing, 1.7f);
-            ApplyAreaDamage(origin, crescentRadius, crescentDamage, crescentKnockback, new Color(0.7f, 0.95f, 1f));
+            ApplyAreaDamage(origin, d != null ? d.radius : crescentRadius, d != null ? d.damage : crescentDamage,
+                d != null ? d.knockback : crescentKnockback, d != null ? d.popupColor : new Color(0.7f, 0.95f, 1f));
         }
 
         void ApplyAreaDamage(Vector2 center, float radius, int damage, float knockback, Color popupColor)
@@ -496,7 +742,40 @@ namespace GameplayPrototype
             }
 
             if (landed > 0)
-                ApplyHitFeedback(_activeSkill, _activeSkill == SkillId.Sword && _pendingVfxScale > 1.2f);
+            {
+                if (_kit != null) ApplyKitHitFeedback();
+                else ApplyHitFeedback(_activeSkill, _activeSkill == SkillId.Sword && _pendingVfxScale > 1.2f);
+            }
+        }
+
+        void ApplyKitHitFeedback()
+        {
+            float stop, amp, dur;
+            bool finisher = false;
+            if (_activeSkill == SkillId.Sword)
+            {
+                var steps = _kit.combo.steps;
+                var s = steps != null && _pendingStep >= 0 && _pendingStep < steps.Length ? steps[_pendingStep] : null;
+                stop = s != null ? s.hitstop : 0.048f;
+                amp = s != null ? s.shakeAmp : 0.0625f;
+                dur = s != null ? s.shakeDur : 0.07f;
+                finisher = s != null && s.finisher;
+            }
+            else
+            {
+                var d = _kit.Get(_activeSkill);
+                stop = d != null ? d.hitstop : 0.05f;
+                amp = d != null ? d.shakeAmp : 0.08f;
+                dur = d != null ? d.shakeDur : 0.09f;
+            }
+            if (HitStop.Instance != null && stop > 0f)
+                HitStop.Instance.Trigger(stop);
+            if (_cameraFollow != null && amp > 0f)
+                _cameraFollow.Shake(amp, dur);
+            if (_activeSkill == SkillId.Sword)
+                GameAudio.Play(finisher ? Sfx.SlashFinisher : Sfx.SlashHit);
+            else
+                GameAudio.Play(Sfx.SlashHit, 0.6f);
         }
 
         void ApplyHitFeedback(SkillId skill, bool finisher)

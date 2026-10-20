@@ -1,0 +1,10 @@
+character,view,frame,timing_s,body_slice,main_grip_x,main_grip_y,main_pose,main_order,off_grip_x,off_grip_y,off_pose,off_order,note
+Aren,Down,0,0.08,Aren_Attack_Down_0,10,20,UL,behind,21,23,shield_Down,front,windup: kiem gio sau vai
+Aren,Down,1,0.10,Aren_Attack_Down_1,13,25,DR,front,21,24,shield_Down,front,strike: chem cheo xuong truoc (impact)
+Aren,Down,2,0.08,Aren_Attack_Down_2,16,25,D,front,21,23,shield_Down,front,recover: kiem chuc xuong
+Aren,Up,0,0.08,Aren_Attack_Up_0,21,20,UR,front,10,23,shield_Up,front,windup: kiem qua vai phai (gan camera)
+Aren,Up,1,0.10,Aren_Attack_Up_1,17,17,U,behind,10,24,shield_Up,front,strike: chem len phia truoc (xa camera)
+Aren,Up,2,0.08,Aren_Attack_Up_2,14,19,UL,behind,10,23,shield_Up,front,recover
+Aren,Side,0,0.08,Aren_Attack_Side_0,12,20,UL,behind,20,23,shield_Side,front,windup: kiem gio ra sau
+Aren,Side,1,0.10,Aren_Attack_Side_1,20,24,R,front,19,24,shield_Side,front,strike: chem ngang ve truoc (impact)
+Aren,Side,2,0.08,Aren_Attack_Side_2,20,26,DR,front,20,23,shield_Side,front,recover: kiem cheo xuong

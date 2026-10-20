@@ -1,0 +1,246 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b74814bc4f95924d9feeda7006ef7a0, type: 3}
+  m_Name: ClassKit_Vex
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.ClassKit
+  classId: vex
+  displayName: Vex
+  role: 'Sat thu Ma toc: song dao, don sat thuong nhanh, co dong. Mau x0.8, toc chay
+    x1.15.'
+  maxHpMultiplier: 0.8
+  moveSpeedMultiplier: 1.15
+  bodyController: {fileID: 9100000, guid: 674c98ead6f65aa42b838633bbf1ee1d, type: 2}
+  equipment: {fileID: 11400000, guid: 5da1116f35a9fab4cab5f32a98724e96, type: 2}
+  combo:
+    displayName: Song Dao
+    cooldown: 0.26
+    radius: 1.1
+    damage: 10
+    knockback: 1.4
+    autoTargetRadius: 1.8
+    impactDelay: 0.12
+    steps:
+    - swingOffset: 0.6
+      damageMul: 1
+      radiusMul: 1
+      knockbackMul: 1
+      vfxVariant: 0
+      vfxScale: 1
+      finisher: 0
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.04
+      shakeAmp: 0
+      shakeDur: 0
+    - swingOffset: -0.6
+      damageMul: 1
+      radiusMul: 1
+      knockbackMul: 1
+      vfxVariant: 1
+      vfxScale: 1
+      finisher: 0
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.04
+      shakeAmp: 0
+      shakeDur: 0
+    - swingOffset: 0
+      damageMul: 1
+      radiusMul: 1
+      knockbackMul: 1
+      vfxVariant: 1
+      vfxScale: 1
+      finisher: 0
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.04
+      shakeAmp: 0
+      shakeDur: 0
+    - swingOffset: 0
+      damageMul: 2.2
+      radiusMul: 1.3
+      knockbackMul: 2
+      vfxVariant: 2
+      vfxScale: 1.3
+      finisher: 1
+      bleedDamage: 3
+      bleedTick: 0.5
+      bleedDuration: 3
+      hitstop: 0.05
+      shakeAmp: 0.07
+      shakeDur: 0.07
+  slot2:
+    displayName: Buoc Bong
+    behaviour: 6
+    cooldown: 6
+    damage: 0
+    radius: 0.7
+    range: 5
+    knockback: 0
+    speed: 0
+    duration: 0
+    interval: 0
+    count: 0
+    multiplier: 2
+    anticipation: 0
+    hitstop: 0.05
+    shakeAmp: 0.08
+    shakeDur: 0.09
+    popupColor: {r: 1, g: 0.3, b: 0.35, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: -73400378642911122, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
+    - {fileID: 5154045692758359372, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
+    - {fileID: -1419699749374244652, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
+    - {fileID: -1279410459661439991, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
+    vfxFps: 14
+    projectilePoses: []
+  slot3:
+    displayName: Phi Dao
+    behaviour: 7
+    cooldown: 5
+    damage: 14
+    radius: 0
+    range: 6
+    knockback: 1.2
+    speed: 11
+    duration: 0
+    interval: 0
+    count: 3
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.04
+    shakeAmp: 0
+    shakeDur: 0
+    popupColor: {r: 1, g: 0.3, b: 0.35, a: 1}
+    spreadDeg: 30
+    threshold: 0
+    alpha: 1
+    bleedDamage: 2
+    bleedTick: 0.5
+    bleedDuration: 2
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames: []
+    vfxFps: 12
+    projectilePoses:
+    - {fileID: -799795402, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
+    - {fileID: -1991057351, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
+    - {fileID: -1512589892, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
+    - {fileID: -526365435, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
+    - {fileID: 686767059, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
+    - {fileID: -2072828094, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
+    - {fileID: 8574341, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
+    - {fileID: 727049316, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
+  slot4:
+    displayName: Vu Dieu Luoi Dao
+    behaviour: 3
+    cooldown: 8
+    damage: 9
+    radius: 1.6
+    range: 0
+    knockback: 1.5
+    speed: 0
+    duration: 0
+    interval: 0.1
+    count: 6
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.04
+    shakeAmp: 0.04
+    shakeDur: 0.05
+    popupColor: {r: 1, g: 0.3, b: 0.35, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 1
+    tintColor: {r: 0.86, g: 0.16, b: 0.22, a: 1}
+    vfxFrames: []
+    vfxFps: 12
+    projectilePoses: []
+  slotV:
+    displayName: Bom Khoi
+    behaviour: 8
+    cooldown: 12
+    damage: 0
+    radius: 0
+    range: 0
+    knockback: 0
+    speed: 0
+    duration: 2
+    interval: 0
+    count: 0
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.05
+    shakeAmp: 0.08
+    shakeDur: 0.09
+    popupColor: {r: 1, g: 1, b: 1, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 0.35
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: -73400378642911122, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
+    - {fileID: 5154045692758359372, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
+    - {fileID: -1419699749374244652, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
+    - {fileID: -1279410459661439991, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
+    vfxFps: 10
+    projectilePoses: []
+  slotC:
+    displayName: Doat Menh
+    behaviour: 9
+    cooldown: 12
+    damage: 35
+    radius: 0
+    range: 4
+    knockback: 3
+    speed: 0
+    duration: 0
+    interval: 0
+    count: 0
+    multiplier: 3
+    anticipation: 0
+    hitstop: 0.06
+    shakeAmp: 0.14
+    shakeDur: 0.12
+    popupColor: {r: 0.86, g: 0.16, b: 0.22, a: 1}
+    spreadDeg: 0
+    threshold: 0.3
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: 2619458250601886284, guid: c1a1a5317c483ff45ab3fde644eaefab, type: 3}
+    - {fileID: -3577618153968017305, guid: c1a1a5317c483ff45ab3fde644eaefab, type: 3}
+    vfxFps: 10
+    projectilePoses: []

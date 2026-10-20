@@ -382,6 +382,19 @@ namespace GameplayPrototype
             }
         }
 
+        /// <summary>
+        /// R2C ClassCombat (Sandbox): swap the body animator controller at runtime (class change) and replay the
+        /// current state on the new controller. Not called anywhere in Level 1-4.
+        /// </summary>
+        public void RebindBodyController(RuntimeAnimatorController controller)
+        {
+            if (controller == null) return;
+            bodyController = controller;
+            if (_bodyAnim == null) return;
+            _bodyAnim.runtimeAnimatorController = controller;
+            _bodyState = null;
+        }
+
         /// <param name="skipWindup">True for instant skills (whirlwind waves) that strike on the same frame.</param>
         public void PlaySlashSwing(Vector2 facing, bool skipWindup = false)
         {

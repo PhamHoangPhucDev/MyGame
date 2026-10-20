@@ -149,57 +149,137 @@ public static class R1SandboxBuilder
         for (int m = 0; m < 16; m++)
             dirtEdges[m] = LoadTile($"DirtM{m}");
 
-        // Small fantasy glade: ~14x18 tiles centered.
+        PaintGlade(groundMap, dirtMap, null, grass, grassV1, grassV2, dark, dirt, dirtEdges);
+    }
+
+    /// <summary>Repaint sandbox ground only. Does not touch Level 1–4 maps or regenerate art.</summary>
+    [MenuItem("Tools/Gameplay Prototype/R1/Repaint Sandbox Ground")]
+    public static void RepaintSandboxGround()
+    {
+        var grid = GameObject.Find("RebuildGrid");
+        if (grid == null)
+        {
+            Debug.LogError("[R1.1] RebuildGrid missing. Open ReferenceCombatSandbox.");
+            return;
+        }
+        var ground = grid.transform.Find("Ground")?.GetComponent<Tilemap>();
+        var dirtMap = grid.transform.Find("DirtPath")?.GetComponent<Tilemap>();
+        if (ground == null || dirtMap == null) return;
+
+        var icT = grid.transform.Find("DirtCorners");
+        Tilemap corners;
+        if (icT == null)
+        {
+            var go = new GameObject("DirtCorners");
+            go.transform.SetParent(grid.transform, false);
+            corners = go.AddComponent<Tilemap>();
+            var r = go.AddComponent<TilemapRenderer>();
+            r.sortingOrder = -18;
+        }
+        else corners = icT.GetComponent<Tilemap>();
+
+        ground.ClearAllTiles();
+        dirtMap.ClearAllTiles();
+        corners.ClearAllTiles();
+
+        Tile grass = LoadTile("GrassSoft");
+        Tile grassV1 = LoadTile("GrassSoft_V1");
+        Tile grassV2 = LoadTile("GrassSoft_V2");
+        Tile dark = LoadTile("GrassDark");
+        Tile dirt = LoadTile("Dirt");
+        var dirtEdges = new Tile[16];
+        for (int m = 0; m < 16; m++) dirtEdges[m] = LoadTile($"DirtM{m}");
+        PaintGlade(ground, dirtMap, corners, grass, grassV1, grassV2, dark, dirt, dirtEdges);
+        UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(ground.gameObject.scene);
+        UnityEditor.SceneManagement.EditorSceneManager.SaveScene(ground.gameObject.scene);
+        Debug.Log("[R1.1] Sandbox ground repainted.");
+    }
+
+    static void PaintGlade(Tilemap groundMap, Tilemap dirtMap, Tilemap corners,
+        Tile grass, Tile grassV1, Tile grassV2, Tile dark, Tile dirt, Tile[] dirtEdges)
+    {
         int x0 = -7, x1 = 6, y0 = -8, y1 = 9;
         for (int y = y0; y <= y1; y++)
         for (int x = x0; x <= x1; x++)
         {
             Tile t = grass;
-            int h = (x * 17 + y * 31) & 7;
-            if (h == 0) t = grassV1;
-            else if (h == 1) t = grassV2;
-            else if (h == 2) t = dark;
+            // Irregular variants. Dark cells are rare and never adjacent, so they do not form a lattice.
+            int h = HashTile(x, y);
+            if (h % 11 == 0) t = grassV1;
+            else if (h % 13 == 0) t = grassV2;
+            else if (h % 29 == 0 && HashTile(x + 3, y - 2) % 5 != 0) t = dark;
             if (t != null) groundMap.SetTile(new Vector3Int(x, y, 0), t);
         }
 
-        // Winding dirt path (natural corridor through the glade).
+        var dirtCells = new bool[32, 32];
+        int ox = 16, oy = 16;
+        bool Inside(int x, int y) => x >= x0 && x <= x1 && y >= y0 && y <= y1;
+        void Mark(int x, int y)
+        {
+            if (!Inside(x, y)) return;
+            dirtCells[x + ox, y + oy] = true;
+        }
+
         for (int y = y0 + 1; y <= y1 - 1; y++)
         {
-            int cx = Mathf.RoundToInt(Mathf.Sin(y * 0.35f) * 1.2f);
-            for (int dx = -1; dx <= 1; dx++)
-            {
-                int x = cx + dx;
-                if (x < x0 || x > x1) continue;
-                // Edge mask: N=1 S=2 E=4 W=8 relative to dirt cells — approximate filled dirt.
-                if (dirt != null) dirtMap.SetTile(new Vector3Int(x, y, 0), dirt);
-            }
+            float wobble = Mathf.Sin(y * 0.62f) * 1.7f + Mathf.Sin(y * 0.21f + 1.3f) * 0.9f;
+            int cx = Mathf.RoundToInt(wobble);
+            int half = 1;
+            if (HashTile(cx, y) % 5 == 0) half = 2;
+            if (HashTile(y, 4) % 7 == 0) half = 0;
+            for (int dx = -half; dx <= half; dx++)
+                Mark(cx + dx, y);
         }
-        // Path mouth near hero spawn.
-        for (int x = -1; x <= 1; x++)
-        for (int y = -3; y <= -1; y++)
-            if (dirt != null) dirtMap.SetTile(new Vector3Int(x, y, 0), dirt);
+        // Shoulder bulge and a short spur so the path is not a uniform ribbon.
+        for (int y = 1; y <= 4; y++)
+            Mark(Mathf.RoundToInt(Mathf.Sin(2f) * 1.7f) + 2, y);
+        for (int x = -1; x <= 2; x++)
+            Mark(x, -2);
 
-        // Soft dirt edge ring using DirtM masks where neighbour missing.
-        if (dirtEdges[0] != null)
+        for (int y = y0; y <= y1; y++)
+        for (int x = x0; x <= x1; x++)
+            if (dirtCells[x + ox, y + oy] && dirt != null)
+                dirtMap.SetTile(new Vector3Int(x, y, 0), dirt);
+
+        bool DirtAt(int x, int y) => Inside(x, y) && dirtCells[x + ox, y + oy];
+
+        for (int y = y0; y <= y1; y++)
+        for (int x = x0; x <= x1; x++)
         {
-            for (int y = y0; y <= y1; y++)
-            for (int x = x0; x <= x1; x++)
-            {
-                if (dirtMap.GetTile(new Vector3Int(x, y, 0)) == null) continue;
-                bool n = dirtMap.GetTile(new Vector3Int(x, y + 1, 0)) != null;
-                bool s = dirtMap.GetTile(new Vector3Int(x, y - 1, 0)) != null;
-                bool e = dirtMap.GetTile(new Vector3Int(x + 1, y, 0)) != null;
-                bool w = dirtMap.GetTile(new Vector3Int(x - 1, y, 0)) != null;
-                if (n && s && e && w) continue;
-                // DirtM bits: project convention — keep fill Dirt for interiors; edges get mask.
-                int mask = 0;
-                if (!n) mask |= 1;
-                if (!s) mask |= 2;
-                if (!e) mask |= 4;
-                if (!w) mask |= 8;
-                if (mask != 0 && dirtEdges[mask] != null)
-                    dirtMap.SetTile(new Vector3Int(x, y, 0), dirtEdges[mask]);
-            }
+            if (!DirtAt(x, y)) continue;
+            bool n = DirtAt(x, y + 1);
+            bool e = DirtAt(x + 1, y);
+            bool s = DirtAt(x, y - 1);
+            bool w = DirtAt(x - 1, y);
+            if (n && e && s && w) continue;
+            // Generator bits: grass on N=1, E=2, S=4, W=8.
+            int mask = 0;
+            if (!n) mask |= 1;
+            if (!e) mask |= 2;
+            if (!s) mask |= 4;
+            if (!w) mask |= 8;
+            if (mask != 0 && dirtEdges[mask] != null)
+                dirtMap.SetTile(new Vector3Int(x, y, 0), dirtEdges[mask]);
+
+            if (corners == null) continue;
+            int diag = 0;
+            if (!n && !e && !DirtAt(x + 1, y + 1)) diag |= 1;
+            if (!s && !e && !DirtAt(x + 1, y - 1)) diag |= 2;
+            if (!s && !w && !DirtAt(x - 1, y - 1)) diag |= 4;
+            if (!n && !w && !DirtAt(x - 1, y + 1)) diag |= 8;
+            if (diag == 0) continue;
+            var ic = LoadTile(R1ArtGenerator.InnerCornerName(diag));
+            if (ic != null) corners.SetTile(new Vector3Int(x, y, 0), ic);
+        }
+    }
+
+    static int HashTile(int x, int y)
+    {
+        unchecked
+        {
+            uint h = (uint)(x * 374761393 + y * 668265263);
+            h = (h ^ (h >> 13)) * 1274126177u;
+            return (int)(h & 0x7fffffff);
         }
     }
 

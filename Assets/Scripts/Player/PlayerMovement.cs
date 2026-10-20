@@ -24,6 +24,8 @@ namespace GameplayPrototype
         public Vector2 MoveInput => _input;
         public bool IsMoving => _input.sqrMagnitude > 0.0001f;
         public float MoveSpeed => moveSpeed;
+        /// <summary>Class stat (R2C ClassCombat, Sandbox). 1 = scene value, unchanged everywhere else.</summary>
+        public float SpeedMultiplier { get; set; } = 1f;
 
         public void SetExternalInput(Vector2 input, bool enabled = true)
         {
@@ -87,7 +89,7 @@ namespace GameplayPrototype
                 return;
             }
 
-            _rb.linearVelocity = _input * moveSpeed;
+            _rb.linearVelocity = _input * moveSpeed * SpeedMultiplier;
         }
 
         static Vector2 ReadMoveInput()

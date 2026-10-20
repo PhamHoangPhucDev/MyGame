@@ -149,8 +149,10 @@ namespace GameplayPrototype
                         Vector2 pb = b.ScreenAnchor + b._layoutNudge;
                         float dx = pb.x - pa.x;
                         float dy = pb.y - pa.y;
-                        const float minX = 78f;
-                        const float minY = 22f;
+                        // Sandbox QA uses a slightly wider keep-out. Campaign spacing is unchanged.
+                        bool sandbox = ReferenceSandboxController.IsActive;
+                        float minX = sandbox ? 92f : 78f;
+                        float minY = sandbox ? 30f : 22f;
                         if (Mathf.Abs(dx) >= minX || Mathf.Abs(dy) >= minY)
                             continue;
 
@@ -178,8 +180,9 @@ namespace GameplayPrototype
             {
                 var ui = Active[i];
                 if (ui == null) continue;
-                ui._layoutNudge.x = Mathf.Clamp(ui._layoutNudge.x, -ui.maxNudge, ui.maxNudge);
-                ui._layoutNudge.y = Mathf.Clamp(ui._layoutNudge.y, -ui.maxNudge, ui.maxNudge);
+                float limit = ReferenceSandboxController.IsActive ? 72f : ui.maxNudge;
+                ui._layoutNudge.x = Mathf.Clamp(ui._layoutNudge.x, -limit, limit);
+                ui._layoutNudge.y = Mathf.Clamp(ui._layoutNudge.y, -limit, limit);
             }
         }
 

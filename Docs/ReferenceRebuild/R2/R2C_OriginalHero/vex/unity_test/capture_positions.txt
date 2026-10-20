@@ -1,0 +1,9 @@
+﻿V01_combo_hit1|Attack_Side_1|False|1117|765|1920|1080
+V02_combo_hit2|Attack_Side_1|True|1045|768|1920|1080
+V03_combo_hit3|Attack_Side_1|True|1045|768|1920|1080
+V04_combo_hit4|Attack_Side_1|True|1045|768|1920|1080
+V2_PhiDao|Attack_Side_1|False|928|636|1920|1080
+V2_BladeDance|Attack_Side_1|True|928|636|1920|1080
+V2_ShadowStep|Attack_Side_1|False|1043|641|1920|1080
+V2_SmokeBomb|Attack_Side_2|True|928|636|1920|1080
+V2_Execute|Attack_Side_1|True|960|637|1920|1080

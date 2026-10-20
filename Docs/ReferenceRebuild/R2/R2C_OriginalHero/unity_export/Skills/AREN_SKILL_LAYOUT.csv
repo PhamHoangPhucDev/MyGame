@@ -1,0 +1,14 @@
+row,skill,view,frames,keys
+0,ShieldBash,Down,2,Skill_ShieldBash_Down_0 Skill_ShieldBash_Down_1
+1,ShieldBash,Up,2,Skill_ShieldBash_Up_0 Skill_ShieldBash_Up_1
+2,ShieldBash,Side,2,Skill_ShieldBash_Side_0 Skill_ShieldBash_Side_1
+3,Charge,Down,2,Skill_Charge_Down_0 Skill_Charge_Down_1
+4,Charge,Up,2,Skill_Charge_Up_0 Skill_Charge_Up_1
+5,Charge,Side,2,Skill_Charge_Side_0 Skill_Charge_Side_1
+6,Bulwark,Down,1,Skill_Bulwark_Down_0
+7,Bulwark,Up,1,Skill_Bulwark_Up_0
+8,Bulwark,Side,1,Skill_Bulwark_Side_0
+9,Dawnbreaker,Down,3,Skill_Dawnbreaker_Down_0 Skill_Dawnbreaker_Down_1 Skill_Dawnbreaker_Down_2
+10,Dawnbreaker,Up,3,Skill_Dawnbreaker_Up_0 Skill_Dawnbreaker_Up_1 Skill_Dawnbreaker_Up_2
+11,Dawnbreaker,Side,3,Skill_Dawnbreaker_Side_0 Skill_Dawnbreaker_Side_1 Skill_Dawnbreaker_Side_2
+12,Whirl,Any,4,Skill_Whirl_0 Skill_Whirl_1 Skill_Whirl_2 Skill_Whirl_3

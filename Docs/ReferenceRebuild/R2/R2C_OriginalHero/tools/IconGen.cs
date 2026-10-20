@@ -552,6 +552,68 @@ public static class IconGen
         { "Vex", new[] { "Buoc Bong", "Phi Dao", "Vu Dieu Luoi Dao", "Bom Khoi", "Doat Menh" } },
     };
 
+    // ================= R (basic combo) icons: the class weapon + its basic-attack VFX =================
+    public static readonly Dictionary<string, string> ComboNamesVi = new Dictionary<string, string>
+    {
+        { "Aren", "Kiem Hiep Si" }, { "Brom", "Bua Ren" }, { "Lyra", "Mui Ten Rung" }, { "Selene", "Tia Phep" }, { "Vex", "Song Dao" },
+    };
+
+    public static Bitmap Combo(string cls)
+    {
+        var cv = Canvas(); var t = Themes[cls];
+        if (cls == "Aren")
+        {
+            // longsword slashing diagonally with an ice crescent and a thrust glint at the tip
+            ArenKitSheets.Crescent(cv, Ice, 15, 17, 11, -60, -120, 3.4);
+            Spr(cv, ArenSword(1, 13), 9, 23);
+            ArenKitSheets.Star(cv, new[] { "FFFFFF", "D8F0FF", "8CC8F0" }, 25, 6, 2);
+        }
+        else if (cls == "Brom")
+        {
+            // forge hammer mid-swing: orange arc, gold-banded head, sparks off the strike
+            ArenKitSheets.Crescent(cv, BromFx, 13, 18, 11, -20, -130, 3.4);
+            for (int k = 0; k < 13; k++) cv.Set(7 + k, 25 - k, C(k % 3 == 0 ? "A06A40" : "7A4E2E"));
+            Grid(cv, 16, 5, new[] { ".ZZZZa", "ZWZmZA", "ZZamaA", "ZaamAA", "aaamAA", "ZaaAA.", ".AAA.." }, Steel);
+            ArenKitSheets.Star(cv, new[] { "FFFFFF", BromFx[0], BromFx[1] }, 26, 15, 2);
+            ArenKitSheets.Dots(cv, new[] { BromFx[4], BromFx[1], BromFx[0] }, 61, 24, 13, 4, 4, 5);
+        }
+        else if (cls == "Lyra")
+        {
+            // bow at full draw, glowing arrow nocked and aimed right
+            ArenKitSheets.Ring(cv, C("8A5A34"), 6, 16, 11, 1.6, 1.0, (bx, by) => bx >= 9);
+            ArenKitSheets.Ring(cv, C("B07A48"), 6, 16, 10, 1.0, 1.0, (bx, by) => bx >= 9 && by < 16);
+            cv.Set(14, 15, C("5E8A34")); cv.Set(14, 16, C("5E8A34")); cv.Set(14, 17, C("5E8A34")); cv.Set(16, 16, C("5E8A34"));
+            ArenKitSheets.Line(cv, C("EEE8DC"), 10, 6, 5, 16, 1); ArenKitSheets.Line(cv, C("EEE8DC"), 5, 16, 10, 26, 1);
+            ArenKitSheets.Line(cv, C(LyraFx[2]), 6, 16, 24, 16, 1);
+            ArenKitSheets.Line(cv, C("B07A48"), 7, 16, 22, 16, 1);
+            cv.Set(5, 15, C(LyraFx[2])); cv.Set(5, 17, C(LyraFx[2])); cv.Set(6, 15, C(LyraFx[1])); cv.Set(6, 17, C(LyraFx[1]));
+            cv.Set(23, 16, C("D8DCE4")); cv.Set(24, 16, C("D8DCE4")); cv.Set(25, 16, C("FFFFFF")); cv.Set(23, 15, C("D8DCE4")); cv.Set(23, 17, C("D8DCE4"));
+            ArenKitSheets.Ring(cv, C(LyraFx[2]), 24, 16, 3.5, 1.0, 1.0, null);
+            ArenKitSheets.Star(cv, new[] { LyraFx[0], LyraFx[4], LyraFx[1] }, 26, 9, 1);
+            Leaf(cv, 20, 21, 1); Leaf(cv, 17, 10, 2);
+        }
+        else if (cls == "Selene")
+        {
+            // short staff with the round gem, a magic orb flying off it with a sparkle trail
+            var staff = SeleneGen.Staff(1, false);
+            foreach (var kv in staff.Px) cv.Set(7 + kv.Key.X, 25 + kv.Key.Y, kv.Value);
+            for (int k = 0; k < 4; k++) { double x = 19 + k * 1.6, y = 13 - k * 1.6; cv.Set(x, y + (k % 2 == 0 ? 1 : -1), C(k % 2 == 0 ? SeleneFx[1] : SeleneFx[4])); }
+            ArenKitSheets.Disc(cv, C(SeleneFx[3]), 25, 7, 3.6);
+            ArenKitSheets.Disc(cv, C(SeleneFx[2]), 25, 7, 2.8);
+            ArenKitSheets.Disc(cv, C(SeleneFx[1]), 24.3, 6.3, 1.4); cv.Set(24, 6, C(SeleneFx[0]));
+            ArenKitSheets.Star(cv, new[] { SeleneFx[0], SeleneFx[1], SeleneFx[2] }, 18, 15, 2);
+        }
+        else
+        {
+            // twin daggers crossed, thin crimson slash lines through them
+            ArenKitSheets.Line(cv, C(VexFx[3]), 5, 9, 26, 22, 2); ArenKitSheets.Line(cv, C(VexFx[1]), 6, 10, 25, 21, 1);
+            ArenKitSheets.Line(cv, C(VexFx[3]), 5, 22, 26, 9, 2); ArenKitSheets.Line(cv, C(VexFx[1]), 6, 21, 25, 10, 1);
+            Spr(cv, VexDagger(1, 8), 10, 22); Spr(cv, VexDagger(3, 8), 22, 22);
+            ArenKitSheets.Star(cv, new[] { "FFFFFF", VexFx[0], VexFx[1] }, 16, 9, 1);
+        }
+        return Finish(cv, t);
+    }
+
     public static Bitmap Icon(string cls, int i)
     {
         switch (cls) { case "Aren": return Aren(i); case "Brom": return Brom(i); case "Lyra": return Lyra(i); case "Selene": return Selene(i); default: return Vex(i); }

@@ -4,23 +4,28 @@ Icon_Aren_3_Charge.png,Aren,3,Charge,Xung Phong,1,0,32
 Icon_Aren_4_WhirlSlash.png,Aren,4,WhirlSlash,Loc Kiem,2,0,32
 Icon_Aren_V_Bulwark.png,Aren,V,Bulwark,Thanh Luy,3,0,32
 Icon_Aren_C_Dawnbreaker.png,Aren,C,Dawnbreaker,Chem Binh Minh,4,0,32
+Icon_Aren_R_Combo.png,Aren,R,Combo,Kiem Hiep Si,5,0,32
 Icon_Brom_2_GroundSlam.png,Brom,2,GroundSlam,Nen Dat,0,1,32
 Icon_Brom_3_ShieldCharge.png,Brom,3,ShieldCharge,Huc Khien,1,1,32
 Icon_Brom_4_TauntRoar.png,Brom,4,TauntRoar,Gam Thach,2,1,32
 Icon_Brom_V_IronWall.png,Brom,V,IronWall,Tuong Sat,3,1,32
 Icon_Brom_C_Earthquake.png,Brom,C,Earthquake,Dong Dat,4,1,32
+Icon_Brom_R_Combo.png,Brom,R,Combo,Bua Ren,5,1,32
 Icon_Lyra_2_FanShot.png,Lyra,2,FanShot,Ten Quat,0,2,32
 Icon_Lyra_3_LeapBack.png,Lyra,3,LeapBack,Nhay Lui,1,2,32
 Icon_Lyra_4_ArrowRain.png,Lyra,4,ArrowRain,Mua Ten,2,2,32
 Icon_Lyra_V_WindStep.png,Lyra,V,WindStep,Buoc Gio,3,2,32
 Icon_Lyra_C_ForestPierce.png,Lyra,C,ForestPierce,Ten Xuyen Rung,4,2,32
+Icon_Lyra_R_Combo.png,Lyra,R,Combo,Mui Ten Rung,5,2,32
 Icon_Selene_2_StarOrb.png,Selene,2,StarOrb,Cau Tinh Tu,0,3,32
 Icon_Selene_3_Blink.png,Selene,3,Blink,Dich Chuyen,1,3,32
 Icon_Selene_4_RuneCircle.png,Selene,4,RuneCircle,Vong Phu Chu,2,3,32
 Icon_Selene_V_ManaShield.png,Selene,V,ManaShield,Khien Ma Luc,3,3,32
 Icon_Selene_C_MeteorShower.png,Selene,C,MeteorShower,Mua Sao Bang,4,3,32
+Icon_Selene_R_Combo.png,Selene,R,Combo,Tia Phep,5,3,32
 Icon_Vex_2_ShadowStep.png,Vex,2,ShadowStep,Buoc Bong,0,4,32
 Icon_Vex_3_KnifeThrow.png,Vex,3,KnifeThrow,Phi Dao,1,4,32
 Icon_Vex_4_BladeDance.png,Vex,4,BladeDance,Vu Dieu Luoi Dao,2,4,32
 Icon_Vex_V_SmokeBomb.png,Vex,V,SmokeBomb,Bom Khoi,3,4,32
 Icon_Vex_C_Execute.png,Vex,C,Execute,Doat Menh,4,4,32
+Icon_Vex_R_Combo.png,Vex,R,Combo,Song Dao,5,4,32

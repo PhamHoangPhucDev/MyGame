@@ -110,3 +110,11 @@
 1. Duyệt bản thiết kế này và ảnh VFX concept.
 2. `ClassKit` + `ClassCombat` với **bộ của Aren** (trùng hành vi hiện tại) trong Sandbox.
 3. Lần lượt từng class: frame tấn công của thân → VFX → số liệu → thử trong Sandbox. Thứ tự gợi ý: Vex (cận chiến, gần Aren nhất) → Brom → Lyra → Selene (cần hệ đạn).
+
+## 9. Quyết định 2026-10-20
+
+**Bộ skill hiện tại của `PlayerCombat`** (Flame Burst, Dash Slash, Whirlwind, Guard, Crescent) **chỉ là bản demo.** Mỗi class dùng bộ riêng như các mục 2–6:
+- **Aren:** chuyển từ bộ "giống hệt cũ" (`ClassKit_Aren` hiện tại, chỉ để chuyển đổi an toàn) sang bộ đã thiết kế: Khiên Đập, Xung Phong, Lốc Kiếm, Thành Lũy, Chém Bình Minh, đòn kết đâm thẳng 26.
+- **Vex:** đã xong (commit `bee0df0`).
+- **Brom, Lyra, Selene:** còn thiếu animation và bộ kỹ năng.
+- **Kiểm thử "giống hệt cũ":** chỉ còn dùng để kiểm tra Level 1–4 cho tới khi các level này chuyển sang class kit. Việc chuyển đó cần duyệt riêng.

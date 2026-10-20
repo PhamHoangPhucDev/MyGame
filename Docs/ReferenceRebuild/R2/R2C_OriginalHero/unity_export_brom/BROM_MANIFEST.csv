@@ -1,0 +1,14 @@
+file,cell_w,cell_h,cols,rows,pivot_px_x,pivot_px_y_from_top,unity_pivot_x,unity_pivot_y,layout
+Brom_Sheet.png,32,32,4,9,16,30,0.5,0.0625,rows Idle D/U/S, Walk D/U/S, Attack D/U/S (Attack 3 cols); Side faces left
+Gear/Brom_Hammer.png,48,48,8,1,24,24,0.5,0.5,poses R UR U UL L DL D DR; pivot = hand
+Gear/Brom_Shield.png,16,16,3,1,8,8,0.5,0.5,Down (face) / Up (straps) / Side (edge, faces left)
+Gear/Brom_Hand.png,4,4,1,1,1,1,0.25,0.75,glove over the hammer grip
+Gear/Brom_ComboVfx.png,48,48,18,1,24,38,0.5,0.2083,18 cells: step*6 + view*2 + frame (views Down/Up/Side; Side faces left)
+Skills/Brom_GroundSlam.png,80,56,4,1,40,36,0.5,0.3571,2 Nen Dat: frames 0-3 (impact, spread, wide, fade); ground layer, draw BEHIND body
+Skills/Brom_ShieldGlow.png,24,24,3,1,12,12,0.5,0.5,3 Huc Khien: rim flare on the shield anchor, frames 0-2
+Skills/Brom_ChargeDust.png,16,16,3,1,8,15,0.5,0.0625,3 Huc Khien: dust at the feet, frames 0-2
+Skills/Brom_Roar.png,64,64,4,1,32,48,0.5,0.25,4 Gam Thach: sound rings from the head, frames 0-3, in FRONT of body
+Skills/Brom_TauntMark.png,16,16,2,1,8,15,0.5,0.0625,4 Gam Thach: '!' above taunted enemies, frames 0-1 loop
+Skills/Brom_IronWall_Back.png,48,48,6,1,24,40,0.5,0.1667,V Tuong Sat: 0-1 appear, 2-3 hold loop, 4-5 break; BEHIND body
+Skills/Brom_IronWall_Front.png,48,48,6,1,24,40,0.5,0.1667,V Tuong Sat: same frames; IN FRONT of body
+Skills/Brom_Quake.png,112,64,2,3,56,40,0.5,0.375,C Dong Dat: rows = wave 1-3 (R 12/20/28), cols = strong/fade; ground layer, BEHIND body

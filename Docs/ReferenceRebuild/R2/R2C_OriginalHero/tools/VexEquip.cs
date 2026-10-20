@@ -17,12 +17,26 @@ public static class VexEquip
 
     static P Pz(int mx, int my, int md, int mo, int ox, int oy, int od, int oo) { return new P { MX = mx, MY = my, MD = md, MO = mo, OX = ox, OY = oy, OD = od, OO = oo }; }
 
+    // Idle / Walk: both daggers sheathed crossed (X) in the middle of the back, hilts up, blades down; drawn on Attack.
+    // Up: full X on the back (in front of the body). Side: X behind the back edge, half shows. Down: the X is hidden by
+    // the body, so the two hilts peek over the shoulders (dagger sheet cells 8 / 9, drawn behind the body).
+    public const int PeekL = 8, PeekR = 9;
     public static P Rest(string v)
     {
-        if (v == "Down") return Pz(10, 24, 5, 2, 21, 24, 7, 1);
-        if (v == "Up") return Pz(21, 24, 7, 2, 10, 24, 5, 1);
-        return Pz(12, 24, 5, -2, 20, 24, 7, 1);
+        if (v == "Down") return Pz(9, 20, PeekL, -2, 22, 20, PeekR, -1);
+        if (v == "Up") return Pz(14, 20, 7, 1, 18, 20, 5, 2);
+        return Pz(8, 19, 7, -2, 12, 19, 5, -1);
     }
+
+    // hilt peeking over a shoulder (anchor = top of the grip at the shoulder notch); left points up-left, right up-right
+    public static EquipGen.Spr Peek(bool left)
+    {
+        var w = EquipGen.Dagger; var s = new EquipGen.Spr(); int sx = left ? -1 : 1;
+        s.Set(-sx, 1, EquipGen.Hex(w.Guard)); s.Set(0, 0, EquipGen.Hex(w.Wrap)); s.Set(sx, -1, EquipGen.Hex(w.Wrap)); s.Set(2 * sx, -2, EquipGen.Hex(w.Pommel));
+        return EquipGen.Outline(s, EquipGen.Hex(w.Outline));
+    }
+
+    public static EquipGen.Spr DaggerSprite(int d) { return d == PeekL ? Peek(true) : d == PeekR ? Peek(false) : EquipGen.Blade(Dagger, d); }
 
     public static P Move(string anim, string v, int f)
     {
@@ -66,7 +80,15 @@ public static class VexEquip
         }
     }
 
-    public static P Recover(string v) { var r = Rest(v); r.MY++; r.OY++; return r; }
+    // daggers still in hand, lowered (the pre-2026-10-20 rest pose); Attack F2 recover uses it
+    public static P HandRest(string v)
+    {
+        if (v == "Down") return Pz(10, 24, 5, 2, 21, 24, 7, 1);
+        if (v == "Up") return Pz(21, 24, 7, 2, 10, 24, 5, 1);
+        return Pz(12, 24, 5, -2, 20, 24, 7, 1);
+    }
+
+    public static P Recover(string v) { var r = HandRest(v); r.MY++; r.OY++; return r; }
 
     public static EquipGen.BladeDef Dagger { get { return EquipGen.Dagger; } }
 
@@ -191,8 +213,8 @@ public static class VexEquip
     {
         bool m = v == "Side";
         int mx = p.MX, md = p.MD, ox = p.OX, od = p.OD;
-        if (m && mx > -99) { mx = 31 - mx; md = MirrorDir[md]; }
-        if (m && ox > -99) { ox = 31 - ox; if (od >= 0) od = MirrorDir[od]; }
+        if (m && mx > -99) { mx = 31 - mx; if (md < 8) md = MirrorDir[md]; }
+        if (m && ox > -99) { ox = 31 - ox; if (od >= 0 && od < 8) od = MirrorDir[od]; }
         // key,main_x,main_y,main_dir,main_order,hand_x,hand_y,off_x,off_y,off_view,off_order,slash,slash_order,off_dir
         return string.Format("{0},{1},{2},{3},{4},-99,0,{5},{6},{7},{8},{9},{10},{11}\n", key, mx, p.MY, md, p.MO, ox, p.OY, v, p.OO, slash, slashOrder, od);
     }
@@ -233,8 +255,8 @@ public static class VexEquip
             }
         }
         // gear
-        var dag = new Bitmap(48 * 8, 48, PixelFormat.Format32bppArgb);
-        for (int d = 0; d < 8; d++) foreach (var kv in EquipGen.Blade(Dagger, d).Px) dag.SetPixel(d * 48 + 24 + kv.Key.X, 24 + kv.Key.Y, kv.Value);
+        var dag = new Bitmap(48 * 10, 48, PixelFormat.Format32bppArgb);   // 0-7 dirs, 8 / 9 shoulder-hilt peeks (Down idle)
+        for (int d = 0; d < 10; d++) foreach (var kv in DaggerSprite(d).Px) dag.SetPixel(d * 48 + 24 + kv.Key.X, 24 + kv.Key.Y, kv.Value);
         dag.Save(Path.Combine(outDir, "Gear", "Vex_Dagger.png"), ImageFormat.Png); dag.Dispose();
         using (var b = SlashSheet()) b.Save(Path.Combine(outDir, "Gear", "Vex_Slash.png"), ImageFormat.Png);
         using (var b = Smoke()) b.Save(Path.Combine(outDir, "Gear", "Vex_Smoke.png"), ImageFormat.Png);
@@ -276,8 +298,8 @@ public static class VexEquip
         var body = EquipGen.Body(g, VexGen.Pal);
         P p = anim == "Attack" ? (f == 0 ? Windup(v) : f == 1 ? Strike(v, step) : Recover(v)) : Move(anim, v, f);
         var behind = new List<EquipGen.Layer>(); var front = new List<EquipGen.Layer>();
-        var main = new EquipGen.Layer { S = EquipGen.Blade(Dagger, p.MD), X = p.MX, Y = p.MY };
-        var off = new EquipGen.Layer { S = EquipGen.Blade(Dagger, p.OD), X = p.OX, Y = p.OY };
+        var main = new EquipGen.Layer { S = DaggerSprite(p.MD), X = p.MX, Y = p.MY };
+        var off = new EquipGen.Layer { S = DaggerSprite(p.OD), X = p.OX, Y = p.OY };
         var items = new List<KeyValuePair<int, EquipGen.Layer>> { new KeyValuePair<int, EquipGen.Layer>(p.MO, main), new KeyValuePair<int, EquipGen.Layer>(p.OO, off) };
         foreach (var it in items.OrderBy(i => i.Key)) (it.Key > 0 ? front : behind).Add(it.Value);
         var bmp = EquipGen.Compose(body, behind, front);

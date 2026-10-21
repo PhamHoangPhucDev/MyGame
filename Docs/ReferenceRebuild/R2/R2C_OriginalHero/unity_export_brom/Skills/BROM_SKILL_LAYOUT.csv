@@ -1,0 +1,13 @@
+row,skill,view,frames,keys
+0,GroundSlam,Down,3,Skill_GroundSlam_Down_0 Skill_GroundSlam_Down_1 Skill_GroundSlam_Down_2
+1,GroundSlam,Up,3,Skill_GroundSlam_Up_0 Skill_GroundSlam_Up_1 Skill_GroundSlam_Up_2
+2,GroundSlam,Side,3,Skill_GroundSlam_Side_0 Skill_GroundSlam_Side_1 Skill_GroundSlam_Side_2
+3,ShieldCharge,Down,2,Skill_ShieldCharge_Down_0 Skill_ShieldCharge_Down_1
+4,ShieldCharge,Up,2,Skill_ShieldCharge_Up_0 Skill_ShieldCharge_Up_1
+5,ShieldCharge,Side,2,Skill_ShieldCharge_Side_0 Skill_ShieldCharge_Side_1
+6,TauntRoar,Down,2,Skill_TauntRoar_Down_0 Skill_TauntRoar_Down_1
+7,TauntRoar,Up,2,Skill_TauntRoar_Up_0 Skill_TauntRoar_Up_1
+8,TauntRoar,Side,2,Skill_TauntRoar_Side_0 Skill_TauntRoar_Side_1
+9,IronWall,Down,1,Skill_IronWall_Down_0
+10,IronWall,Up,1,Skill_IronWall_Up_0
+11,IronWall,Side,1,Skill_IronWall_Side_0

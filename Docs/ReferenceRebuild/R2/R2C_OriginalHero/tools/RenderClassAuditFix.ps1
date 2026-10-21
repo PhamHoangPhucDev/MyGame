@@ -52,7 +52,7 @@ $vex = @($H,
 [System.IO.File]::WriteAllLines((Join-Path $D "unity_export_vex\VEX_MANIFEST.csv"), [string[]]$vex, (New-Object System.Text.UTF8Encoding $false))
 foreach ($c in @(@("Brom", "unity_export_brom\BROM_MANIFEST.csv"), @("Lyra", "unity_export_lyra\LYRA_MANIFEST.csv"), @("Selene", "unity_export_selene\SELENE_MANIFEST.csv"))) {
     $p = Join-Path $D $c[1]
-    $lines = @(Get-Content $p | Where-Object { $_ -notmatch "_Death_(Up|Side)_" -and $_ -notmatch "Lyra_ArrowHit" })
+    $lines = @(Get-Content -Encoding UTF8 $p | Where-Object { $_ -notmatch "_Death_(Up|Side)_" -and $_ -notmatch "Lyra_ArrowHit" })
     $new = @(); foreach ($v in "Up", "Side") { foreach ($f in 0, 1, 2) { $new += "Extra/$($c[0])_Death_${v}_$f.png,32,32,1,1,16,30,0.5,0.0625,""death: 0 kneel, 1 fall, 2 lying (hold); Side faces left""" } }
     if ($c[0] -eq "Lyra") { $new += "Gear/Lyra_ArrowHit.png,24,24,4,2,12,12,0.5,0.5,""arrow impact on an enemy: row 0 normal, row 1 charged (pierce shot, play at each enemy hit); pivot = hit point; 0.05 s/frame, in front of the enemy""" }
     [System.IO.File]::WriteAllLines($p, [string[]]($lines + $new), (New-Object System.Text.UTF8Encoding $false))

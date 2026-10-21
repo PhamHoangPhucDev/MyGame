@@ -115,6 +115,9 @@ namespace GameplayPrototype
         public float SurfaceGap { get; private set; }
         public static int ActiveAttackers => _activeAttackers;
 
+        public void SetHitDelay(float seconds) => telegraphTime = Mathf.Max(0.02f, seconds);
+        public void SetChargeDamage(int damage) => chargeDamage = damage;
+
         public void Setup(EnemyKind enemyKind, string nameLabel, int hp, float speed, float aggro, float range, int damage, float cooldown)
         {
             kind = enemyKind;
@@ -291,6 +294,8 @@ namespace GameplayPrototype
                     ReleaseAttackSlot();
                     ReleaseSurroundSlot();
                     HideWarn();
+                    GetComponent<R2CMonsterShot>()?.HideAim();
+                    GetComponent<EnemyVisual>()?.NotifyDeath();
                     break;
             }
         }
@@ -323,6 +328,8 @@ namespace GameplayPrototype
             SurfaceGap = MeasureSurfaceGap();
             Vector2 toPlayer = (Vector2)_player.position - _rb.position;
             float centerDist = toPlayer.magnitude;
+            if (toPlayer.sqrMagnitude > 0.0001f)
+                GetComponent<EnemyVisual>()?.SetAim(toPlayer);
             ComputeSeparation(toPlayer);
 
             switch (_state)
@@ -371,6 +378,7 @@ namespace GameplayPrototype
                 Enter(EnemyAiState.Patrol);
                 return;
             }
+            if (HoldRanged(toPlayer, centerDist)) return;
 
             // Prefer charge window before collapsing into melee approach.
             if (kind == EnemyKind.Gobrider && _chargeCd <= 0f && centerDist < 4.2f && centerDist > 1.4f && HasLos())
@@ -398,6 +406,7 @@ namespace GameplayPrototype
         void TickApproach(Vector2 toPlayer, float centerDist)
         {
             if (centerDist > loseAggroRadius) { Enter(EnemyAiState.Patrol); return; }
+            if (HoldRanged(toPlayer, centerDist)) return;
 
             if (SurfaceGap <= AttackSurfaceGap)
             {
@@ -419,12 +428,35 @@ namespace GameplayPrototype
                 Enter(EnemyAiState.Chase);
         }
 
+        bool HoldRanged(Vector2 toPlayer, float centerDist)
+        {
+            var shot = GetComponent<R2CMonsterShot>();
+            if (shot == null || !shot.Ranged) return false;
+            if (centerDist < shot.StandOff)
+            {
+                ApplyMove(-toPlayer.normalized * moveSpeed, -toPlayer);
+                return true;
+            }
+            if (centerDist <= shot.Range && _attackTimer <= 0f && TryClaimAttackSlot())
+            {
+                Enter(EnemyAiState.Attack);
+                return true;
+            }
+            return false;
+        }
+
         void TickAttack(Vector2 toPlayer)
         {
             _rb.linearVelocity = _avoid * 0.15f;
+            var shot = GetComponent<R2CMonsterShot>();
+            if (shot != null && shot.ShowsAim && _player != null)
+                shot.ShowAim(_player.position);
             _stateTimer -= Time.fixedDeltaTime;
             if (_stateTimer > 0f) return;
-            DealDamage(toPlayer, attackDamage, 1.5f);
+            if (shot != null && shot.Ranged)
+                shot.Fire(_player != null ? _player.position : (Vector2)transform.position + toPlayer);
+            else
+                DealDamage(toPlayer, attackDamage, 1.5f);
             _attackTimer = attackCooldown;
             _slotHoldTimer = AttackSlotHold;
             Enter(EnemyAiState.Recovery);

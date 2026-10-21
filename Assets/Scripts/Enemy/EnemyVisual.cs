@@ -18,6 +18,11 @@ namespace GameplayPrototype
         bool _facesLeft;
         float _actionTimer;
         string _state;
+        Vector2 _aim;
+        bool _dead;
+
+        public string View { get; private set; } = "Down";
+        public bool FacingRight => _sr != null && _sr.flipX;
 
         public void Init(Sprite idle, Sprite walk)
         {
@@ -40,11 +45,25 @@ namespace GameplayPrototype
             Play("Idle", true);
         }
 
+        public void SetAim(Vector2 worldDir)
+        {
+            if (worldDir.sqrMagnitude > 0.0001f)
+                _aim = worldDir;
+        }
+
         public void NotifyAttack()
         {
-            if (_anim == null) return;
+            if (_anim == null || _dead) return;
             _actionTimer = 0.3f;
             Play("Attack", true);
+        }
+
+        public void NotifyDeath()
+        {
+            _dead = true;
+            _actionTimer = 10f;
+            if (_rb != null) _rb.linearVelocity = Vector2.zero;
+            Play("Death", true);
         }
 
         void Awake()
@@ -57,14 +76,22 @@ namespace GameplayPrototype
         void OnEnable()
         {
             if (_health != null)
+            {
                 _health.Damaged += OnDamaged;
+                _health.Died += OnDied;
+            }
         }
 
         void OnDisable()
         {
             if (_health != null)
+            {
                 _health.Damaged -= OnDamaged;
+                _health.Died -= OnDied;
+            }
         }
+
+        void OnDied(Health _) => NotifyDeath();
 
         void OnDamaged(Health health, int amount, Vector2 point)
         {
@@ -75,9 +102,9 @@ namespace GameplayPrototype
 
         void Update()
         {
-            if (_sr == null) return;
+            if (_sr == null || _dead) return;
             Vector2 velocity = _rb != null ? _rb.linearVelocity : Vector2.zero;
-            UpdateFacing(velocity);
+            UpdateFacing(_aim.sqrMagnitude > 0.01f ? _aim : velocity);
             if (_anim != null)
             {
                 if (_actionTimer > 0f)
@@ -122,9 +149,23 @@ namespace GameplayPrototype
         void Play(string state, bool restart)
         {
             if (_anim == null) return;
-            if (!restart && _state == state) return;
-            _state = state;
-            _anim.Play(state, 0, 0f);
+            ResolveView();
+            string full = state + "_" + View;
+            if (!Has(full)) full = state;
+            if (!Has(full)) return;
+            if (!restart && _state == full) return;
+            _state = full;
+            _anim.Play(full, 0, 0f);
         }
+
+        void ResolveView()
+        {
+            Vector2 facing = _aim.sqrMagnitude > 0.01f ? _aim : (_rb != null ? _rb.linearVelocity : Vector2.down);
+            if (facing.sqrMagnitude < 0.0001f) return;
+            bool side = Mathf.Abs(facing.x) > Mathf.Abs(facing.y);
+            View = side ? "Side" : (facing.y > 0f ? "Up" : "Down");
+        }
+
+        bool Has(string state) => _anim != null && _anim.HasState(0, Animator.StringToHash(state));
     }
 }

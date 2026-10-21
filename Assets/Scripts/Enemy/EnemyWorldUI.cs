@@ -21,6 +21,8 @@ namespace GameplayPrototype
         Health _health;
         EnemyController _enemy;
         BossWarlordController _boss;
+        bool _alwaysHp;
+        bool AlwaysHp => _boss != null || _alwaysHp;
         RectTransform _root;
         Text _label;
         Image _barBg;
@@ -90,6 +92,7 @@ namespace GameplayPrototype
             _health = GetComponent<Health>();
             _enemy = GetComponent<EnemyController>();
             _boss = GetComponent<BossWarlordController>();
+            _alwaysHp = GetComponent<R2CBossMark>() != null;
             WorldLabelsCanvas.Ensure();
             Build();
             _health.Changed += OnChanged;
@@ -455,7 +458,7 @@ namespace GameplayPrototype
         {
             Refresh();
             // Configure / ReviveFull refill HP without a damage event. Do not treat that as a hit.
-            if (_boss != null || h == null || h.CurrentHp < h.MaxHp)
+            if (AlwaysHp || h == null || h.CurrentHp < h.MaxHp)
                 return;
             _hpVisibleUntil = -1f;
             SetHpBarVisible(false);
@@ -466,7 +469,7 @@ namespace GameplayPrototype
             if (applied <= 0)
                 return;
             Refresh();
-            if (_boss != null)
+            if (AlwaysHp)
                 return;
             _hpVisibleUntil = Time.time + Mathf.Max(0f, showHpAfterHitSeconds);
             SetHpBarVisible(true);
@@ -475,12 +478,12 @@ namespace GameplayPrototype
         void ResetHpReveal()
         {
             _hpVisibleUntil = -1f;
-            SetHpBarVisible(_boss != null);
+            SetHpBarVisible(AlwaysHp);
         }
 
         void TickHpBar()
         {
-            if (_boss != null)
+            if (AlwaysHp)
             {
                 SetHpBarVisible(true);
                 return;
@@ -490,7 +493,7 @@ namespace GameplayPrototype
 
         void SetHpBarVisible(bool visible)
         {
-            if (_boss != null)
+            if (AlwaysHp)
                 visible = true;
             if (_barBg == null || _barBg.gameObject.activeSelf == visible)
                 return;
@@ -520,7 +523,7 @@ namespace GameplayPrototype
                 var rt = _barFill.rectTransform;
                 rt.sizeDelta = new Vector2(barWidth * n, 0f);
             }
-            if (_boss != null && _barFill != null)
+            if (AlwaysHp && _barFill != null)
                 _barFill.color = new Color(0.95f, 0.35f, 0.12f, 1f);
         }
 

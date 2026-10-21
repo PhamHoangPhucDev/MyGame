@@ -138,6 +138,17 @@ namespace GameplayPrototype
             spawner.SetSpawningEnabled(false);
             spawner.SetSpawnZones(new[] { Vector2.zero });
 
+            var roster = Resources.Load<R2CMonsterRoster>("R2C/R2CMonsterRoster");
+            if (roster != null && roster.monsters != null && roster.monsters.Length > 0)
+            {
+                for (int i = 0; i < roster.monsters.Length; i++)
+                {
+                    float x = (i - (roster.monsters.Length - 1) * 0.5f) * 2.1f;
+                    spawner.SpawnR2C(roster.monsters[i], new Vector2(x, 2.4f));
+                }
+                return;
+            }
+
             int n = Mathf.Min(goblinCount, goblinSlots.Length);
             for (int i = 0; i < n; i++)
                 spawner.SpawnGoblin(goblinSlots[i]);

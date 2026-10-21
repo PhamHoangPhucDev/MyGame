@@ -316,6 +316,24 @@ namespace GameplayPrototype
             return sp.z > 0f && sp.x > -0.02f && sp.x < 1.02f && sp.y > -0.02f && sp.y < 1.02f;
         }
 
+        public GameObject SpawnR2C(R2CMonsterDef def, Vector2 pos)
+        {
+            if (def == null) return null;
+            var kind = def.rider ? EnemyKind.Gobrider : EnemyKind.Goblin;
+            var go = CreateEnemy(pos, kind, def.label, def.hp, def.speed, def.aggro, def.meleeRange, def.damage, def.cooldown,
+                null, Color.white, def.colliderSize);
+            var enemy = go.GetComponent<EnemyController>();
+            enemy.SetHitDelay(0.1f);
+            if (def.chargeDamage > 0) enemy.SetChargeDamage(def.chargeDamage);
+            go.GetComponent<EnemyVisual>().UseAnimator(def.controller, true);
+            if (def.ranged)
+                go.AddComponent<R2CMonsterShot>().Configure(def, def.damage);
+            if (def.bossBar)
+                go.AddComponent<R2CBossMark>();
+            RegisterEnemy(go, def.rider, elite: false, boss: def.bossBar, countTowardWave: false);
+            return go;
+        }
+
         public GameObject SpawnGoblin(Vector2 pos)
         {
             var go = CreateEnemy(pos, EnemyKind.Goblin, "Goblin Lv.3", 60, 2.05f, 5.2f, 0.75f, 4, 1.35f,

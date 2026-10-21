@@ -1,0 +1,207 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27579b120741ee248935d187c8c056bb, type: 3}
+  m_Name: R2CMonsterRoster
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.R2CMonsterRoster
+  monsters:
+  - label: Goblin Lv.3
+    controller: {fileID: 9100000, guid: a94ae0bcfcf9f8c428ed41b1f8b90cba, type: 2}
+    hp: 60
+    damage: 4
+    speed: 2.05
+    aggro: 5.2
+    meleeRange: 0.75
+    cooldown: 1.35
+    colliderSize: {x: 0.625, y: 0.375}
+    rider: 0
+    bossBar: 0
+    chargeDamage: 0
+    ranged: 0
+    aimLine: 0
+    standOff: 2.2
+    shotRange: 6.5
+    shotSpeed: 8
+    bolt: []
+    spawnDown: {x: 0, y: 0}
+    spawnUp: {x: 0, y: 0}
+    spawnSide: {x: 0, y: 0}
+  - label: Goblin Archer Lv.3
+    controller: {fileID: 9100000, guid: 6a7653f70a7f0c34c873a02533c0b153, type: 2}
+    hp: 60
+    damage: 4
+    speed: 1.85
+    aggro: 5.2
+    meleeRange: 0.75
+    cooldown: 1.35
+    colliderSize: {x: 0.625, y: 0.375}
+    rider: 0
+    bossBar: 0
+    chargeDamage: 0
+    ranged: 1
+    aimLine: 1
+    standOff: 2.4
+    shotRange: 7
+    shotSpeed: 9
+    bolt:
+    - {fileID: -790476689, guid: 246689911bc8a2249a00aa15e60c0e16, type: 3}
+    - {fileID: -740325832, guid: 246689911bc8a2249a00aa15e60c0e16, type: 3}
+    - {fileID: -221697365, guid: 246689911bc8a2249a00aa15e60c0e16, type: 3}
+    - {fileID: 810139441, guid: 246689911bc8a2249a00aa15e60c0e16, type: 3}
+    - {fileID: -1628777201, guid: 246689911bc8a2249a00aa15e60c0e16, type: 3}
+    - {fileID: 1370654743, guid: 246689911bc8a2249a00aa15e60c0e16, type: 3}
+    - {fileID: -1196591188, guid: 246689911bc8a2249a00aa15e60c0e16, type: 3}
+    - {fileID: -897339084, guid: 246689911bc8a2249a00aa15e60c0e16, type: 3}
+    spawnDown: {x: 0, y: 0.125}
+    spawnUp: {x: 0, y: 0.625}
+    spawnSide: {x: -0.625, y: 0.4375}
+  - label: Satyr Lv.3
+    controller: {fileID: 9100000, guid: 6e0be758ee7e8734b8b8265436b48d3b, type: 2}
+    hp: 60
+    damage: 4
+    speed: 2.3
+    aggro: 5.2
+    meleeRange: 0.75
+    cooldown: 1.35
+    colliderSize: {x: 0.625, y: 0.375}
+    rider: 0
+    bossBar: 0
+    chargeDamage: 0
+    ranged: 0
+    aimLine: 0
+    standOff: 2.2
+    shotRange: 6.5
+    shotSpeed: 8
+    bolt: []
+    spawnDown: {x: 0, y: 0}
+    spawnUp: {x: 0, y: 0}
+    spawnSide: {x: 0, y: 0}
+  - label: Dryad Lv.3
+    controller: {fileID: 9100000, guid: 22fbe251e8b5afc4cbf1f7efda932ca0, type: 2}
+    hp: 60
+    damage: 4
+    speed: 1.8
+    aggro: 5.2
+    meleeRange: 0.75
+    cooldown: 1.35
+    colliderSize: {x: 0.625, y: 0.375}
+    rider: 0
+    bossBar: 0
+    chargeDamage: 0
+    ranged: 1
+    aimLine: 0
+    standOff: 2.2
+    shotRange: 5.5
+    shotSpeed: 5
+    bolt:
+    - {fileID: -1776557755, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: 1562928022, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: 764998252, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: -1272804047, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: -948015705, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: 417841982, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: 1856296407, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: 333686935, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    spawnDown: {x: 0, y: 0.25}
+    spawnUp: {x: 0, y: 1.125}
+    spawnSide: {x: -0.4375, y: 0.375}
+  - label: Dryad Rider Lv.4
+    controller: {fileID: 9100000, guid: 36bb98999776cc94d80b244e96fb60e1, type: 2}
+    hp: 78
+    damage: 5
+    speed: 2.67
+    aggro: 5.2
+    meleeRange: 0.75
+    cooldown: 1.7
+    colliderSize: {x: 1, y: 0.5}
+    rider: 1
+    bossBar: 0
+    chargeDamage: 0
+    ranged: 1
+    aimLine: 0
+    standOff: 2.2
+    shotRange: 6
+    shotSpeed: 5
+    bolt:
+    - {fileID: -1776557755, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: 1562928022, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: 764998252, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: -1272804047, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: -948015705, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: 417841982, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: 1856296407, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    - {fileID: 333686935, guid: 3816f73e72a92c84baed3010243a9aa3, type: 3}
+    spawnDown: {x: 0, y: 0.5625}
+    spawnUp: {x: 0, y: 1.5}
+    spawnSide: {x: -0.625, y: 0.6875}
+  - label: Gobrider Lv.5
+    controller: {fileID: 9100000, guid: 709c33dc509d5a04288b8bffe9cefb79, type: 2}
+    hp: 90
+    damage: 6
+    speed: 1.7
+    aggro: 5.2
+    meleeRange: 0.75
+    cooldown: 1.7
+    colliderSize: {x: 1, y: 0.5}
+    rider: 1
+    bossBar: 0
+    chargeDamage: 10
+    ranged: 0
+    aimLine: 0
+    standOff: 2.2
+    shotRange: 6.5
+    shotSpeed: 8
+    bolt: []
+    spawnDown: {x: 0, y: 0}
+    spawnUp: {x: 0, y: 0}
+    spawnSide: {x: 0, y: 0}
+  - label: Elite Gobrider Lv.6
+    controller: {fileID: 9100000, guid: bcb0e030c079caa47a26501249892d92, type: 2}
+    hp: 120
+    damage: 8
+    speed: 1.6
+    aggro: 5.2
+    meleeRange: 0.75
+    cooldown: 1.7
+    colliderSize: {x: 1, y: 0.5}
+    rider: 1
+    bossBar: 0
+    chargeDamage: 14
+    ranged: 0
+    aimLine: 0
+    standOff: 2.2
+    shotRange: 6.5
+    shotSpeed: 8
+    bolt: []
+    spawnDown: {x: 0, y: 0}
+    spawnUp: {x: 0, y: 0}
+    spawnSide: {x: 0, y: 0}
+  - label: Warlord Lv.7
+    controller: {fileID: 9100000, guid: 1679c82e39c669b4cb03c3ce9375da88, type: 2}
+    hp: 180
+    damage: 10
+    speed: 1.5
+    aggro: 5.2
+    meleeRange: 0.75
+    cooldown: 1.7
+    colliderSize: {x: 1.25, y: 0.625}
+    rider: 1
+    bossBar: 1
+    chargeDamage: 16
+    ranged: 0
+    aimLine: 0
+    standOff: 2.2
+    shotRange: 6.5
+    shotSpeed: 8
+    bolt: []
+    spawnDown: {x: 0, y: 0}
+    spawnUp: {x: 0, y: 0}
+    spawnSide: {x: 0, y: 0}

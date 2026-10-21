@@ -1,0 +1,1443 @@
+fileFormatVersion: 2
+guid: 94ecd8dc7adc0564cafe2f7240b1a383
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1498590407739266111
+    second: GobriderWarlord_GobriderWarlord_Sheet_0
+  - first:
+      213: 5219154806038362916
+    second: GobriderWarlord_GobriderWarlord_Sheet_1
+  - first:
+      213: 4456860095468612324
+    second: GobriderWarlord_GobriderWarlord_Sheet_2
+  - first:
+      213: 1711864603435818489
+    second: GobriderWarlord_GobriderWarlord_Sheet_3
+  - first:
+      213: -9130794869593558475
+    second: GobriderWarlord_GobriderWarlord_Sheet_4
+  - first:
+      213: -7004273013538057830
+    second: GobriderWarlord_GobriderWarlord_Sheet_5
+  - first:
+      213: 7485493883162029739
+    second: GobriderWarlord_GobriderWarlord_Sheet_6
+  - first:
+      213: -4336452301269045413
+    second: GobriderWarlord_GobriderWarlord_Sheet_7
+  - first:
+      213: -6469772718849614259
+    second: GobriderWarlord_GobriderWarlord_Sheet_8
+  - first:
+      213: 8215901480094912674
+    second: GobriderWarlord_GobriderWarlord_Sheet_9
+  - first:
+      213: -7515172548487952819
+    second: GobriderWarlord_GobriderWarlord_Sheet_10
+  - first:
+      213: 4244002924225413799
+    second: GobriderWarlord_GobriderWarlord_Sheet_11
+  - first:
+      213: 88535023442574561
+    second: GobriderWarlord_GobriderWarlord_Sheet_12
+  - first:
+      213: -5363124474926748968
+    second: GobriderWarlord_GobriderWarlord_Sheet_13
+  - first:
+      213: 5723269128443486123
+    second: GobriderWarlord_GobriderWarlord_Sheet_14
+  - first:
+      213: 822691829935085533
+    second: GobriderWarlord_GobriderWarlord_Sheet_15
+  - first:
+      213: 2520717394763389719
+    second: GobriderWarlord_GobriderWarlord_Sheet_16
+  - first:
+      213: 240704651529433958
+    second: GobriderWarlord_GobriderWarlord_Sheet_17
+  - first:
+      213: -246559002451123054
+    second: GobriderWarlord_GobriderWarlord_Sheet_18
+  - first:
+      213: -2318726762540726508
+    second: GobriderWarlord_GobriderWarlord_Sheet_19
+  - first:
+      213: 395830601628809188
+    second: GobriderWarlord_GobriderWarlord_Sheet_20
+  - first:
+      213: 5204705919180620166
+    second: GobriderWarlord_GobriderWarlord_Sheet_21
+  - first:
+      213: -6370059161002699183
+    second: GobriderWarlord_GobriderWarlord_Sheet_22
+  - first:
+      213: 8465194475911531899
+    second: GobriderWarlord_GobriderWarlord_Sheet_23
+  - first:
+      213: -3424831000860283019
+    second: GobriderWarlord_GobriderWarlord_Sheet_24
+  - first:
+      213: -3641842989582771759
+    second: GobriderWarlord_GobriderWarlord_Sheet_25
+  - first:
+      213: 970734466952991805
+    second: GobriderWarlord_GobriderWarlord_Sheet_26
+  - first:
+      213: -5669342874548544180
+    second: GobriderWarlord_GobriderWarlord_Sheet_27
+  - first:
+      213: 5797372957580282159
+    second: GobriderWarlord_GobriderWarlord_Sheet_28
+  - first:
+      213: 5751528948398429458
+    second: GobriderWarlord_GobriderWarlord_Sheet_29
+  - first:
+      213: -6472528050974940523
+    second: GobriderWarlord_GobriderWarlord_Sheet_30
+  - first:
+      213: -1453359822472578087
+    second: GobriderWarlord_GobriderWarlord_Sheet_31
+  - first:
+      213: -7812619869789464649
+    second: GobriderWarlord_GobriderWarlord_Sheet_32
+  - first:
+      213: -8763149120620632500
+    second: GobriderWarlord_GobriderWarlord_Sheet_33
+  - first:
+      213: -1466709328062790628
+    second: GobriderWarlord_GobriderWarlord_Sheet_34
+  - first:
+      213: -4331211627383401024
+    second: GobriderWarlord_GobriderWarlord_Sheet_35
+  - first:
+      213: 2784144938189179999
+    second: GobriderWarlord_GobriderWarlord_Sheet_36
+  - first:
+      213: -7433145884916664290
+    second: GobriderWarlord_GobriderWarlord_Sheet_37
+  - first:
+      213: -6738742615340601266
+    second: GobriderWarlord_GobriderWarlord_Sheet_38
+  - first:
+      213: 7113245399400835000
+    second: GobriderWarlord_GobriderWarlord_Sheet_39
+  - first:
+      213: 8034209905308547283
+    second: GobriderWarlord_GobriderWarlord_Sheet_40
+  - first:
+      213: -5140813356575073752
+    second: GobriderWarlord_GobriderWarlord_Sheet_41
+  - first:
+      213: 5675651175817749414
+    second: GobriderWarlord_GobriderWarlord_Sheet_42
+  - first:
+      213: 7795877280163211077
+    second: GobriderWarlord_GobriderWarlord_Sheet_43
+  - first:
+      213: 4278649902568861459
+    second: GobriderWarlord_GobriderWarlord_Sheet_44
+  - first:
+      213: 6601343336759589748
+    second: GobriderWarlord_GobriderWarlord_Sheet_45
+  - first:
+      213: 2545548318597810261
+    second: GobriderWarlord_GobriderWarlord_Sheet_46
+  - first:
+      213: 8078768451028630808
+    second: GobriderWarlord_GobriderWarlord_Sheet_47
+  - first:
+      213: 4707493719104794003
+    second: GobriderWarlord_GobriderWarlord_Sheet_48
+  - first:
+      213: 772404467267982502
+    second: GobriderWarlord_GobriderWarlord_Sheet_49
+  - first:
+      213: 4063410762448941068
+    second: GobriderWarlord_GobriderWarlord_Sheet_50
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 896
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 602f1e61ffe8aae4ba61106424d835f8
+      internalID: -689469028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Down_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 896
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bef32d51b5d7444ea89296a2caa54ec
+      internalID: 1441405425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Down_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 896
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e60b8380a4ce6444a69e8ade958415a
+      internalID: -1545791113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Down_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 896
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aad5cf91fe61e77498ed86707a74035b
+      internalID: -313119289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 832
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f27ae2629376e984bbd8973b20239706
+      internalID: -1037433065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Up_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 832
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 565a68e7689e1d14dafc3aab44d9eac0
+      internalID: 379130778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Up_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 832
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aeb2871009a61a458302297527840c9
+      internalID: -1100341727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Up_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 832
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40ae57750d05c2c4b9d8df2800150158
+      internalID: 1560603203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a34564f9a95d2943be1034a407e3ad0
+      internalID: -807844340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Side_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 768
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dfc6bae422bd874d8c229f29c6b0b96
+      internalID: -1914864005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Side_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0fe900cb13144745a6af5d8249a46f2
+      internalID: -1529795345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Idle_Side_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 768
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d4fd6de546bc924d9ed747251e43d38
+      internalID: -1955641126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 704
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26b43c8caeee2514abf9c28717e3689a
+      internalID: 1325369619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Down_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 704
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80294a188ca2cb54581ca7a605ba7003
+      internalID: -368374863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Down_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 704
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6d03fd70adeb92438f34d2a9211e284
+      internalID: -406176438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Down_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 704
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afca38843ca3e3041a83824a4481ea56
+      internalID: -157580888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bf88e3504c33854f90244eb2f327fd4
+      internalID: -627804638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Up_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 640
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80493c422558e224c86871517e14d6d7
+      internalID: -1178829183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Up_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 640
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4fa85ba76523d0428893497c4a7f86e
+      internalID: 867443487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Up_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 640
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f5efa7ec80f82e4686e573c9596df12
+      internalID: -1902946080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e040b6f52716b34c8cc7e04a38c3643
+      internalID: -776915205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Side_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 576
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89e0a781de9a60d4a9d1a2f4d0278932
+      internalID: 1713209410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Side_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 576
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bd26572ba3fbe14890e70ec5ead6d44
+      internalID: 861105146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Walk_Side_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1eed3115df94fd4fa3eb2c94897463d
+      internalID: 1973313833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Attack_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74abb7c01fca7484c91f1491ab7387fd
+      internalID: 46840284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Attack_Down_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 512
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74cf8acad86b1844b8e49753fbd93ccd
+      internalID: 1971617582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Attack_Down_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa877c421dfd95a4e987304ba82ecf78
+      internalID: 51923726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Attack_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbc79630bce69f04a8c466cb061556aa
+      internalID: 499934400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Attack_Up_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b51c5c0b2177804c93f1fd8ff9bef07
+      internalID: 206587951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Attack_Up_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4ebd3cc572ec65409a1da7487a3beb7
+      internalID: -679944082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Attack_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2e190bba64f7e047b26526f56ff84f6
+      internalID: -1379452042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Attack_Side_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ea90727c9b4edd4e901a674a7603b15
+      internalID: -58049859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Attack_Side_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7782b0bf1499fc348ae5d11188f20a3c
+      internalID: -1529977494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Hurt_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 667b8ed1c2c56274ca5ae0a552ff012e
+      internalID: -527759333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Hurt_Down_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c171bef563ea9fa4b8570290754cc36c
+      internalID: 503169170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Hurt_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 349a7b55966690f42a94290654aa5471
+      internalID: 2087848641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Hurt_Up_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8348184d034f6fc4bb70e35fc6b78881
+      internalID: -1441788101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Hurt_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 790e546e933af1f46bdd9d6f920db11a
+      internalID: 1044711301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Hurt_Side_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d64d231b5251e840b1c2bdc66dbbbb2
+      internalID: -509701352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 781f5b7bc4c6e2745984d5f05eefbfe2
+      internalID: -1946464317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Down_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5c4d7f0822f78b46a81927a759fae78
+      internalID: -1748269657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Down_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdf73a0fc562a5a4b8730c77a97eb184
+      internalID: -91629339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Down_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6d0ccb013584e3489a548e8513ec8bf
+      internalID: 1656077480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bee300f9a3036b24abc021e76ab8445f
+      internalID: -1330402999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Up_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e6fa22bfe5220840b591e70000e5868
+      internalID: -1535033074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Up_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36e873b9219e66f4a9562d206c0134cf
+      internalID: 408999753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Up_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d073d95e5fb63a647b772159ddbd3b6a
+      internalID: 1479998850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0846436a1605c44c8437ea1ed8f358a
+      internalID: -1416029266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Side_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6853395a490999848bc716c66322cd9a
+      internalID: -1689117164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Side_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb74fee28719d314796819414140f083
+      internalID: 877265644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderWarlord_Death_Side_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18d713b3d454ed241b2c702c6cc4ae4a
+      internalID: 182643323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f857bca3122b0f24b8fde088d20ba464
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      GobriderWarlord_Attack_Down_0: 46840284
+      GobriderWarlord_Attack_Down_1: 1971617582
+      GobriderWarlord_Attack_Down_2: 51923726
+      GobriderWarlord_Attack_Side_0: -1379452042
+      GobriderWarlord_Attack_Side_1: -58049859
+      GobriderWarlord_Attack_Side_2: -1529977494
+      GobriderWarlord_Attack_Up_0: 499934400
+      GobriderWarlord_Attack_Up_1: 206587951
+      GobriderWarlord_Attack_Up_2: -679944082
+      GobriderWarlord_Death_Down_0: -1946464317
+      GobriderWarlord_Death_Down_1: -1748269657
+      GobriderWarlord_Death_Down_2: -91629339
+      GobriderWarlord_Death_Down_3: 1656077480
+      GobriderWarlord_Death_Side_0: -1416029266
+      GobriderWarlord_Death_Side_1: -1689117164
+      GobriderWarlord_Death_Side_2: 877265644
+      GobriderWarlord_Death_Side_3: 182643323
+      GobriderWarlord_Death_Up_0: -1330402999
+      GobriderWarlord_Death_Up_1: -1535033074
+      GobriderWarlord_Death_Up_2: 408999753
+      GobriderWarlord_Death_Up_3: 1479998850
+      GobriderWarlord_Hurt_Down_0: -527759333
+      GobriderWarlord_Hurt_Down_1: 503169170
+      GobriderWarlord_Hurt_Side_0: 1044711301
+      GobriderWarlord_Hurt_Side_1: -509701352
+      GobriderWarlord_Hurt_Up_0: 2087848641
+      GobriderWarlord_Hurt_Up_1: -1441788101
+      GobriderWarlord_Idle_Down_0: -689469028
+      GobriderWarlord_Idle_Down_1: 1441405425
+      GobriderWarlord_Idle_Down_2: -1545791113
+      GobriderWarlord_Idle_Down_3: -313119289
+      GobriderWarlord_Idle_Side_0: -807844340
+      GobriderWarlord_Idle_Side_1: -1914864005
+      GobriderWarlord_Idle_Side_2: -1529795345
+      GobriderWarlord_Idle_Side_3: -1955641126
+      GobriderWarlord_Idle_Up_0: -1037433065
+      GobriderWarlord_Idle_Up_1: 379130778
+      GobriderWarlord_Idle_Up_2: -1100341727
+      GobriderWarlord_Idle_Up_3: 1560603203
+      GobriderWarlord_Walk_Down_0: 1325369619
+      GobriderWarlord_Walk_Down_1: -368374863
+      GobriderWarlord_Walk_Down_2: -406176438
+      GobriderWarlord_Walk_Down_3: -157580888
+      GobriderWarlord_Walk_Side_0: -776915205
+      GobriderWarlord_Walk_Side_1: 1713209410
+      GobriderWarlord_Walk_Side_2: 861105146
+      GobriderWarlord_Walk_Side_3: 1973313833
+      GobriderWarlord_Walk_Up_0: -627804638
+      GobriderWarlord_Walk_Up_1: -1178829183
+      GobriderWarlord_Walk_Up_2: 867443487
+      GobriderWarlord_Walk_Up_3: -1902946080
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

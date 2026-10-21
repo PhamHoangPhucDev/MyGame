@@ -1,0 +1,1443 @@
+fileFormatVersion: 2
+guid: 3a73194905429a24cbcaab73427843aa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5537056451199782495
+    second: GobriderElite_GobriderElite_Sheet_0
+  - first:
+      213: 2842888151841083836
+    second: GobriderElite_GobriderElite_Sheet_1
+  - first:
+      213: -2151500226289944955
+    second: GobriderElite_GobriderElite_Sheet_2
+  - first:
+      213: 5798428837723398156
+    second: GobriderElite_GobriderElite_Sheet_3
+  - first:
+      213: 7560836472654769709
+    second: GobriderElite_GobriderElite_Sheet_4
+  - first:
+      213: -7957271502625106105
+    second: GobriderElite_GobriderElite_Sheet_5
+  - first:
+      213: 2632132663742198667
+    second: GobriderElite_GobriderElite_Sheet_6
+  - first:
+      213: 6587166582614873677
+    second: GobriderElite_GobriderElite_Sheet_7
+  - first:
+      213: -7767166710394151634
+    second: GobriderElite_GobriderElite_Sheet_8
+  - first:
+      213: 417154134329594915
+    second: GobriderElite_GobriderElite_Sheet_9
+  - first:
+      213: 5152510580693145867
+    second: GobriderElite_GobriderElite_Sheet_10
+  - first:
+      213: -5722734418021502821
+    second: GobriderElite_GobriderElite_Sheet_11
+  - first:
+      213: -869489675899965103
+    second: GobriderElite_GobriderElite_Sheet_12
+  - first:
+      213: 5203728553787775475
+    second: GobriderElite_GobriderElite_Sheet_13
+  - first:
+      213: -6633404855557502012
+    second: GobriderElite_GobriderElite_Sheet_14
+  - first:
+      213: 4365573843962351573
+    second: GobriderElite_GobriderElite_Sheet_15
+  - first:
+      213: 1267246678081699754
+    second: GobriderElite_GobriderElite_Sheet_16
+  - first:
+      213: 3917788139303714098
+    second: GobriderElite_GobriderElite_Sheet_17
+  - first:
+      213: 7331709602786372483
+    second: GobriderElite_GobriderElite_Sheet_18
+  - first:
+      213: -4740085860752884620
+    second: GobriderElite_GobriderElite_Sheet_19
+  - first:
+      213: 5864875041013729305
+    second: GobriderElite_GobriderElite_Sheet_20
+  - first:
+      213: -4125051156212423659
+    second: GobriderElite_GobriderElite_Sheet_21
+  - first:
+      213: 2108757778765791725
+    second: GobriderElite_GobriderElite_Sheet_22
+  - first:
+      213: 4591129607576457306
+    second: GobriderElite_GobriderElite_Sheet_23
+  - first:
+      213: -5713212598295793114
+    second: GobriderElite_GobriderElite_Sheet_24
+  - first:
+      213: -3758428587040809032
+    second: GobriderElite_GobriderElite_Sheet_25
+  - first:
+      213: -4572457474068266009
+    second: GobriderElite_GobriderElite_Sheet_26
+  - first:
+      213: 5595053873136821546
+    second: GobriderElite_GobriderElite_Sheet_27
+  - first:
+      213: 8789585961282012112
+    second: GobriderElite_GobriderElite_Sheet_28
+  - first:
+      213: 2798814402821294997
+    second: GobriderElite_GobriderElite_Sheet_29
+  - first:
+      213: 3044455053784146592
+    second: GobriderElite_GobriderElite_Sheet_30
+  - first:
+      213: -3420439640945309471
+    second: GobriderElite_GobriderElite_Sheet_31
+  - first:
+      213: -3129650885067775938
+    second: GobriderElite_GobriderElite_Sheet_32
+  - first:
+      213: 5658445285479378887
+    second: GobriderElite_GobriderElite_Sheet_33
+  - first:
+      213: -6708936107581201126
+    second: GobriderElite_GobriderElite_Sheet_34
+  - first:
+      213: -905044292985131127
+    second: GobriderElite_GobriderElite_Sheet_35
+  - first:
+      213: 1928667828681867941
+    second: GobriderElite_GobriderElite_Sheet_36
+  - first:
+      213: -8308340636046282103
+    second: GobriderElite_GobriderElite_Sheet_37
+  - first:
+      213: 5346557263873179017
+    second: GobriderElite_GobriderElite_Sheet_38
+  - first:
+      213: 3628640356473191684
+    second: GobriderElite_GobriderElite_Sheet_39
+  - first:
+      213: 830825679270494957
+    second: GobriderElite_GobriderElite_Sheet_40
+  - first:
+      213: 4289614638248198606
+    second: GobriderElite_GobriderElite_Sheet_41
+  - first:
+      213: -317914691709768674
+    second: GobriderElite_GobriderElite_Sheet_42
+  - first:
+      213: 2804209719833534943
+    second: GobriderElite_GobriderElite_Sheet_43
+  - first:
+      213: 5217323333054584437
+    second: GobriderElite_GobriderElite_Sheet_44
+  - first:
+      213: 318087329987255006
+    second: GobriderElite_GobriderElite_Sheet_45
+  - first:
+      213: 6738708090787739613
+    second: GobriderElite_GobriderElite_Sheet_46
+  - first:
+      213: 1698940690018040644
+    second: GobriderElite_GobriderElite_Sheet_47
+  - first:
+      213: -8292034144080841299
+    second: GobriderElite_GobriderElite_Sheet_48
+  - first:
+      213: 898326270726861310
+    second: GobriderElite_GobriderElite_Sheet_49
+  - first:
+      213: -6050833527719839410
+    second: GobriderElite_GobriderElite_Sheet_50
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67908dbe18e82004b86146aa02980fc1
+      internalID: -2128521160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Down_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 672
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 377bc3c09e73505428abd65f764428ee
+      internalID: 1956521395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Down_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 672
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c32d4a605fa0f429bb848e22972f6c
+      internalID: -459170131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Down_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 672
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8da5b59d5886a43a474c722903c4be
+      internalID: 955551441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 624
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 074f9e45a7f281b439527ccdf9cb530a
+      internalID: -1467889022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Up_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 624
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d8276cac01fe824d8bce978b9bee463
+      internalID: 1996837585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Up_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 624
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d9c01a0586eb84fb78c606c04596cb
+      internalID: -1978401153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Up_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 624
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aa71b9d8ed75d04f9ebf1c80e51f095
+      internalID: 1462269480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 866c4318c2d5b0d4e86964f163e7a865
+      internalID: 1532902372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Side_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 576
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 615cbadb5a600664dbbb9e5dd6deec04
+      internalID: -1289116105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Side_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 576
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acfbe9029bfd1144da057d96cc98b07b
+      internalID: -766298202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Idle_Side_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 576
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e4cef2bc24e9f439052e6d98dc0f16
+      internalID: -923199446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 528
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf359b6b331da0849a3996fbd3040213
+      internalID: -11929076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Down_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 528
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37dc8dd6ea06f2a4d812249f7defb0e7
+      internalID: 1130011231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Down_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 528
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 141f42899dd779849ae64bab01e0ff56
+      internalID: 573104985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Down_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 528
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2a634efd99587c42aabc4c66ead659d
+      internalID: 449320210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24fd110f578d0884b8b6f1abc187c2f5
+      internalID: 1752244052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Up_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 480
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 109f9913035ded745871dddbe949202b
+      internalID: -730401678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Up_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 480
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56b002839ceb4be4eb402571387a0fae
+      internalID: -1464492803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Up_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 480
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ffc1f774116524b93f0dc26718e965
+      internalID: -1043083473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 432
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ca8b945a50a0f648985d08587a203df
+      internalID: -744223447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Side_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 432
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7013cf0ad988714d915abf32d6d7411
+      internalID: 486540917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Side_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 432
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aac482eb52644d34c8eb62da1f8ed008
+      internalID: 583664026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Walk_Side_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 432
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895b18ce6b56e6a41a84ebbf3a328a94
+      internalID: -1600336376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Attack_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e5e471d01fab64984edb8362cd3c95
+      internalID: 1450054630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Attack_Down_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 384
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20017f6f3ee96ac47b727bad50126c57
+      internalID: -2043338897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Attack_Down_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09b3b114acdcf004897f227818e6eb4d
+      internalID: -1308609981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Attack_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5657e8506a493054bb38e60369b4d607
+      internalID: -632308874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Attack_Up_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 336
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6759fe772ecfb7c4eb997b2d94e24e27
+      internalID: 1264022243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Attack_Up_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 336
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2567d1eeaaa5dca43a1e679c81809466
+      internalID: -1651417505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Attack_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8ee536a545ab274f9060c19f73dbe1c
+      internalID: -1866354490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Attack_Side_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 288
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4424cce35c968794692ca80bd82dc266
+      internalID: 851753186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Attack_Side_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9245f456ae22d714fb3ace46c753b438
+      internalID: 1483156128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Hurt_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a9d680b6ebc9f04cbc2d2eb5d2d58b0
+      internalID: 1866374766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Hurt_Down_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 240
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f519e1911f8fb04d984626766642ece
+      internalID: 1968746390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Hurt_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae535dbbcc4ab544f9f3a4adc26de7f8
+      internalID: 54947481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Hurt_Up_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 192
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d007bf51b48a0478a870c2525fb3c6
+      internalID: 90476731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Hurt_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e91542f83230de142ad887e00fe12744
+      internalID: -48262249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Hurt_Side_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 144
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7191ea871c83be3418d003c49f95248e
+      internalID: 920493310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Down_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f0ac51ff2e443540bb2b1462a93b60b
+      internalID: -1557474264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Down_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8a734a7ff6b33d44907e5c557459e70
+      internalID: 1400820641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Down_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fad9a30a1da2cb48ab01769bdfcb6e5
+      internalID: 547806468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Down_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 96
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab4a9a852a54b214ea30805b2558ad10
+      internalID: -1541412492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba23e226ed5b7874dbedafa3fe576d3c
+      internalID: -1591972625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Up_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38f874b00a160a64c83077d15f18c60e
+      internalID: 579885470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Up_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ebeafc8972d18b41a42496bcb6891d3
+      internalID: 1308518951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Up_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da60e544d53104844bd60ccd4da483b2
+      internalID: -1361166556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fea796a1003a2747a4f6afe9e479e87
+      internalID: -2035665474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Side_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8d52616afe95154b8ddade7a59aab89
+      internalID: -870235316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Side_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80a4d06ae5ca69e418301e3144919260
+      internalID: -1087353097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobriderElite_Death_Side_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7186bf1cf8747904ba1800f4ffda57ba
+      internalID: -535911668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9d820763fbb24414d97bad3c4e31ba90
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      GobriderElite_Attack_Down_0: 1450054630
+      GobriderElite_Attack_Down_1: -2043338897
+      GobriderElite_Attack_Down_2: -1308609981
+      GobriderElite_Attack_Side_0: -1866354490
+      GobriderElite_Attack_Side_1: 851753186
+      GobriderElite_Attack_Side_2: 1483156128
+      GobriderElite_Attack_Up_0: -632308874
+      GobriderElite_Attack_Up_1: 1264022243
+      GobriderElite_Attack_Up_2: -1651417505
+      GobriderElite_Death_Down_0: -1557474264
+      GobriderElite_Death_Down_1: 1400820641
+      GobriderElite_Death_Down_2: 547806468
+      GobriderElite_Death_Down_3: -1541412492
+      GobriderElite_Death_Side_0: -2035665474
+      GobriderElite_Death_Side_1: -870235316
+      GobriderElite_Death_Side_2: -1087353097
+      GobriderElite_Death_Side_3: -535911668
+      GobriderElite_Death_Up_0: -1591972625
+      GobriderElite_Death_Up_1: 579885470
+      GobriderElite_Death_Up_2: 1308518951
+      GobriderElite_Death_Up_3: -1361166556
+      GobriderElite_Hurt_Down_0: 1866374766
+      GobriderElite_Hurt_Down_1: 1968746390
+      GobriderElite_Hurt_Side_0: -48262249
+      GobriderElite_Hurt_Side_1: 920493310
+      GobriderElite_Hurt_Up_0: 54947481
+      GobriderElite_Hurt_Up_1: 90476731
+      GobriderElite_Idle_Down_0: -2128521160
+      GobriderElite_Idle_Down_1: 1956521395
+      GobriderElite_Idle_Down_2: -459170131
+      GobriderElite_Idle_Down_3: 955551441
+      GobriderElite_Idle_Side_0: 1532902372
+      GobriderElite_Idle_Side_1: -1289116105
+      GobriderElite_Idle_Side_2: -766298202
+      GobriderElite_Idle_Side_3: -923199446
+      GobriderElite_Idle_Up_0: -1467889022
+      GobriderElite_Idle_Up_1: 1996837585
+      GobriderElite_Idle_Up_2: -1978401153
+      GobriderElite_Idle_Up_3: 1462269480
+      GobriderElite_Walk_Down_0: -11929076
+      GobriderElite_Walk_Down_1: 1130011231
+      GobriderElite_Walk_Down_2: 573104985
+      GobriderElite_Walk_Down_3: 449320210
+      GobriderElite_Walk_Side_0: -744223447
+      GobriderElite_Walk_Side_1: 486540917
+      GobriderElite_Walk_Side_2: 583664026
+      GobriderElite_Walk_Side_3: -1600336376
+      GobriderElite_Walk_Up_0: 1752244052
+      GobriderElite_Walk_Up_1: -730401678
+      GobriderElite_Walk_Up_2: -1464492803
+      GobriderElite_Walk_Up_3: -1043083473
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

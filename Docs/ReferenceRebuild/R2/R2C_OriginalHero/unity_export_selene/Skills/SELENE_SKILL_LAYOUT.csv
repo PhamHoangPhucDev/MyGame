@@ -1,0 +1,16 @@
+row,skill,view,frames,keys
+0,StarOrb,Down,2,Skill_StarOrb_Down_0 Skill_StarOrb_Down_1
+1,StarOrb,Up,2,Skill_StarOrb_Up_0 Skill_StarOrb_Up_1
+2,StarOrb,Side,2,Skill_StarOrb_Side_0 Skill_StarOrb_Side_1
+3,Blink,Down,2,Skill_Blink_Down_0 Skill_Blink_Down_1
+4,Blink,Up,2,Skill_Blink_Up_0 Skill_Blink_Up_1
+5,Blink,Side,2,Skill_Blink_Side_0 Skill_Blink_Side_1
+6,RuneCircle,Down,2,Skill_RuneCircle_Down_0 Skill_RuneCircle_Down_1
+7,RuneCircle,Up,2,Skill_RuneCircle_Up_0 Skill_RuneCircle_Up_1
+8,RuneCircle,Side,2,Skill_RuneCircle_Side_0 Skill_RuneCircle_Side_1
+9,ManaShield,Down,1,Skill_ManaShield_Down_0
+10,ManaShield,Up,1,Skill_ManaShield_Up_0
+11,ManaShield,Side,1,Skill_ManaShield_Side_0
+12,MeteorShower,Down,2,Skill_MeteorShower_Down_0 Skill_MeteorShower_Down_1
+13,MeteorShower,Up,2,Skill_MeteorShower_Up_0 Skill_MeteorShower_Up_1
+14,MeteorShower,Side,2,Skill_MeteorShower_Side_0 Skill_MeteorShower_Side_1

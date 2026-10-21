@@ -1,0 +1,14 @@
+row,skill,view,frames,keys
+0,ShadowStep,Down,2,Skill_ShadowStep_Down_0 Skill_ShadowStep_Down_1
+1,ShadowStep,Up,2,Skill_ShadowStep_Up_0 Skill_ShadowStep_Up_1
+2,ShadowStep,Side,2,Skill_ShadowStep_Side_0 Skill_ShadowStep_Side_1
+3,KnifeThrow,Down,2,Skill_KnifeThrow_Down_0 Skill_KnifeThrow_Down_1
+4,KnifeThrow,Up,2,Skill_KnifeThrow_Up_0 Skill_KnifeThrow_Up_1
+5,KnifeThrow,Side,2,Skill_KnifeThrow_Side_0 Skill_KnifeThrow_Side_1
+6,SmokeBomb,Down,1,Skill_SmokeBomb_Down_0
+7,SmokeBomb,Up,1,Skill_SmokeBomb_Up_0
+8,SmokeBomb,Side,1,Skill_SmokeBomb_Side_0
+9,Execute,Down,2,Skill_Execute_Down_0 Skill_Execute_Down_1
+10,Execute,Up,2,Skill_Execute_Up_0 Skill_Execute_Up_1
+11,Execute,Side,2,Skill_Execute_Side_0 Skill_Execute_Side_1
+12,BladeDance,Any,4,Skill_BladeDance_0 Skill_BladeDance_1 Skill_BladeDance_2 Skill_BladeDance_3

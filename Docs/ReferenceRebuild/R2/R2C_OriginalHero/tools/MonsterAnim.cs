@@ -194,6 +194,81 @@ public static class MonsterAnim
         for (int d = 0; d < 8; d++) fr.AppendFormat(inv, "{4}_{5}_{0},{1},{2},0,{3},0,16,16,{5},{0},0,1,0,static\n", dirs[d], file, d, d * 16, mon, name);
     }
 
+    // ---------- Boss: Cyclops (96x96, sole 89, 2x size at hero pixel density) ----------
+    // Rows: IdleCalm, WalkCalm (before it is hit), IdleAngry, WalkAngry, Attack, Hurt, Death - each Down/Up/Side.
+    public static readonly string[] BossAnims = { "IdleCalm", "WalkCalm", "IdleAngry", "WalkAngry", "Attack", "Hurt", "Death" };
+    public static readonly int[] BossFrames = { 4, 4, 4, 4, 4, 2, 4 };
+    public static readonly int[] BossFps = { 5, 6, 6, 7, 8, 10, 6 };
+
+    public static Bitmap BossFrame(string anim, string v, int f)
+    {
+        bool side = v == "Side"; var fw = Fwd(v); int S = BossGen.BigSole;
+        bool angry = anim != "IdleCalm" && anim != "WalkCalm";
+        switch (anim)
+        {
+            case "IdleCalm": case "IdleAngry":
+                return BossGen.CyclopsBig(v, 0, side, f == 1 || f == 2 ? 2 : 0, angry);
+            case "WalkCalm": case "WalkAngry":
+                return BossGen.CyclopsBig(v, 0, side, f % 2 == 1 ? 2 : 0, angry, f == 0 ? 0 : f == 2 ? 1 : -1);
+            case "Attack":
+                // windup, rise (club high), SLAM (hit frame 2, squat + 2 px lunge), recover
+                if (f == 0) return BossGen.CyclopsBig(v, 1, side, 0, true);
+                if (f == 1) return BossGen.CyclopsBig(v, 1, side, -2, true);
+                if (f == 2) return Shift(BossGen.CyclopsBig(v, 2, side, 2, true), fw.X * 2, fw.Y * 2);
+                return BossGen.CyclopsBig(v, 0, side, 0, true);
+            case "Hurt":
+                {
+                    var b = Shift(BossGen.CyclopsBig(v, 0, side, 0, true), -fw.X * 2, -fw.Y * 2);
+                    return f == 0 ? Tint(b, Flash, 0.6) : Tint(b, HurtRed, 0.2);
+                }
+            default:
+                {
+                    var b = Shift(BossGen.CyclopsBig(v, 0, side, 0, true), -fw.X * 2, -fw.Y * 2);
+                    if (f == 0) return Tint(b, Flash, 0.6);
+                    if (f == 1) return Tint(ShiftAbove(b, S - 1, 4), Dusk, 0.15);
+                    var lie = Tint(LieDown(b, S), Dusk, 0.25);
+                    return f == 2 ? lie : Fade(lie, 128);
+                }
+        }
+    }
+
+    static void ExportBoss(string root, StringBuilder man, StringBuilder fr)
+    {
+        var inv = System.Globalization.CultureInfo.InvariantCulture;
+        const string mon = "Cyclops"; int C = BossGen.BigCell, rowsN = BossAnims.Length * 3;
+        Directory.CreateDirectory(Path.Combine(root, mon));
+        var file = mon + "/" + mon + "_Sheet.png";
+        using (var sh = new Bitmap(C * 4, C * rowsN, PixelFormat.Format32bppArgb))
+        {
+            using (var g = Graphics.FromImage(sh))
+                for (int a = 0; a < BossAnims.Length; a++) for (int vi = 0; vi < 3; vi++) for (int f = 0; f < BossFrames[a]; f++)
+                            g.DrawImageUnscaled(BossFrame(BossAnims[a], Views[vi], f), f * C, (a * 3 + vi) * C);
+            sh.Save(Path.Combine(root, file), ImageFormat.Png);
+        }
+        double py = (C - (BossGen.BigSole + 1)) / (double)C;
+        man.AppendFormat(inv, "{0},{1},{1},4,{2},{3},{4},0.5,{5},BOSS rows IdleCalm D/U/S - WalkCalm - IdleAngry - WalkAngry - Attack - Hurt - Death; Side faces left; club baked\n",
+            file, C, rowsN, C / 2, BossGen.BigSole + 1, py.ToString("0.####", inv));
+        for (int a = 0; a < BossAnims.Length; a++) for (int vi = 0; vi < 3; vi++) for (int f = 0; f < BossFrames[a]; f++)
+                {
+                    int row = a * 3 + vi; string mode = a < 4 ? "loop" : a == 6 ? "hold_last" : "once";
+                    fr.AppendFormat(inv, "{0}_{1}_{2}_{3},{4},{3},{5},{6},{7},{8},{8},{1},{2},{3},{9},{10},{11}\n",
+                        mon, BossAnims[a], Views[vi], f, file, row, f * C, row * C, C, BossFrames[a], BossFps[a], mode);
+                }
+        // AoE telegraph: 6 frames 128x128 (ground layer), pivot centre
+        var tfile = mon + "/" + mon + "_Telegraph.png";
+        using (var t = new Bitmap(128 * 6, 128, PixelFormat.Format32bppArgb))
+        {
+            using (var g = Graphics.FromImage(t)) for (int f = 0; f < 6; f++) g.DrawImageUnscaled(BossGen.Telegraph(f), f * 128, 0);
+            t.Save(Path.Combine(root, tfile), ImageFormat.Png);
+        }
+        man.Append(tfile + ",128,128,6,1,64,64,0.5,0.5,AoE warning ring (radius 62 px); frames 0-3 fill grows during windup; 4 impact flash; 5 fade; ground layer under units\n");
+        for (int f = 0; f < 6; f++) fr.AppendFormat(inv, "{0}_Telegraph_{1},{2},{1},0,{3},0,128,128,Telegraph,Ground,{1},6,8,once\n", mon, f, tfile, f * 128);
+        var cfile = mon + "/" + mon + "_Crack.png";
+        using (var ck = BossGen.Crack()) ck.Save(Path.Combine(root, cfile), ImageFormat.Png);
+        man.Append(cfile + ",96,48,1,1,48,24,0.5,0.5,ground crack decal left by the slam; ground layer; fade out in code\n");
+        fr.AppendFormat(inv, "{0}_Crack,{1},0,0,0,0,96,48,Crack,Ground,0,1,0,static\n", mon, cfile);
+    }
+
     public static void Export(string root)
     {
         var inv = System.Globalization.CultureInfo.InvariantCulture;
@@ -218,6 +293,7 @@ public static class MonsterAnim
         // projectiles: 8 drawn directions, 16x16, pivot = cell centre (no runtime rotation)
         Projectile(root, man, fr, "GoblinArcher", "Arrow", "arrow projectile", ArcherGen.Arrow);
         Projectile(root, man, fr, "Dryad", "LeafBolt", "leaf bolt projectile", CreatureGen.LeafBolt);
+        ExportBoss(root, man, fr);
         File.WriteAllText(Path.Combine(root, "MONSTERS_MANIFEST.csv"), man.ToString());
         File.WriteAllText(Path.Combine(root, "MONSTERS_FRAMES.csv"), fr.ToString());
     }

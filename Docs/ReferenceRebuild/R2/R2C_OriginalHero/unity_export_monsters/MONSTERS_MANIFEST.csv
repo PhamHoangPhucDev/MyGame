@@ -9,3 +9,6 @@ GobriderElite/GobriderElite_Sheet.png,48,48,4,15,24,42,0.5,0.125,rows Idle D/U/S
 GobriderWarlord/GobriderWarlord_Sheet.png,64,64,4,15,32,58,0.5,0.0938,rows Idle D/U/S - Walk D/U/S - Attack D/U/S - Hurt D/U/S - Death D/U/S; Side faces left; weapon baked
 GoblinArcher/GoblinArcher_Arrow.png,16,16,8,1,8,8,0.5,0.5,arrow projectile; cols R UR U UL L DL D DR (tip points that way); pick the col from the flight direction
 Dryad/Dryad_LeafBolt.png,16,16,8,1,8,8,0.5,0.5,leaf bolt projectile; cols R UR U UL L DL D DR (tip points that way); pick the col from the flight direction
+Cyclops/Cyclops_Sheet.png,96,96,4,21,48,90,0.5,0.0625,BOSS rows IdleCalm D/U/S - WalkCalm - IdleAngry - WalkAngry - Attack - Hurt - Death; Side faces left; club baked
+Cyclops/Cyclops_Telegraph.png,128,128,6,1,64,64,0.5,0.5,AoE warning ring (radius 62 px); frames 0-3 fill grows during windup; 4 impact flash; 5 fade; ground layer under units
+Cyclops/Cyclops_Crack.png,96,48,1,1,48,24,0.5,0.5,ground crack decal left by the slam; ground layer; fade out in code

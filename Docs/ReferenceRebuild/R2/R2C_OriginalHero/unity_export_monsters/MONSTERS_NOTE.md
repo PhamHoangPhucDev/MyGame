@@ -1,4 +1,4 @@
-# Quái R2C: Goblin, Goblin Archer, Satyr, Dryad, Dryad cưỡi nai, Gobrider, Gobrider tinh nhuệ, Gobrider thủ lĩnh (bàn giao cho Cursor)
+# Quái R2C: Goblin, Goblin Archer, Satyr, Dryad, Dryad cưỡi nai, Gobrider, Gobrider tinh nhuệ, Gobrider thủ lĩnh, boss Cyclops (bàn giao cho Cursor)
 
 **Ngày:** 2026-10-21 · **Người viết:** Claude (chỉ art, không sửa code hay scene) · **Trạng thái:** chờ duyệt art, **chưa import vào `Assets/`**
 
@@ -14,11 +14,12 @@
 | Gobrider | `Gobrider/Gobrider_Sheet.png` | 48×48 | 41 | (0.5, 0.125) |
 | Gobrider tinh nhuệ | `GobriderElite/GobriderElite_Sheet.png` | 48×48 | 41 | (0.5, 0.125) |
 | Gobrider thủ lĩnh (boss) | `GobriderWarlord/GobriderWarlord_Sheet.png` | 64×64 | 57 | (0.5, 0.0938) |
+| **Cyclops (boss chính)** | `Cyclops/Cyclops_Sheet.png` + vòng cảnh báo `Cyclops/Cyclops_Telegraph.png` (128×128, 6 ô) + vết nứt `Cyclops/Cyclops_Crack.png` (96×48) | **96×96, 21 hàng** (xem mục 7) | 89 | (0.5, 0.0625); vòng và vết nứt (0.5, 0.5) |
 
 - `MONSTERS_MANIFEST.csv`: một dòng cho mỗi sheet (kích thước ô, số cột/hàng, pivot).
 - `MONSTERS_FRAMES.csv`: một dòng cho mỗi frame. Cột: `sprite,file,col,row,x,y,w,h,anim,view,frame,frames,fps,mode`. Tên sprite là `{Quái}_{Anim}_{View}_{f}`, ví dụ `Gobrider_Attack_Side_1`.
 - Import: PPU 16, Filter Point, Compression None, không mipmap, Sprite Mode Multiple, cắt theo lưới ô.
-- **Cùng tỉ lệ PPU 16 với hero.** Hero 21 px; goblin 12 px; goblin archer, satyr, dryad 16 px; gobrider khoảng 25 px; thủ lĩnh khoảng 30 px.
+- **Cùng tỉ lệ PPU 16 với hero.** Hero 21 px; goblin 12 px; goblin archer, satyr, dryad 16 px; gobrider khoảng 25 px; thủ lĩnh khoảng 30 px; **Cyclops khoảng 65 px** (to gấp 3 hero, cùng mật độ pixel).
 
 ## 2. Bố cục sheet (giống hero)
 
@@ -112,10 +113,37 @@
 | Gobrider | quái lao húc (charge) | ≈ 16×8 px |
 | Gobrider tinh nhuệ | phiên bản trâu hơn, có chuỳ, heo đeo mặt nạ sắt | ≈ 16×8 px |
 | Gobrider thủ lĩnh | boss | ≈ 20×10 px |
+| Cyclops | boss chính, chậm, nện đất diện rộng | ≈ 36×14 px quanh chân |
 
 ## 6. Nguồn và cách xuất lại
 
-- Code sinh art: `tools/MonsterGen.cs` (Goblin), `tools/ArcherGen.cs` (Goblin Archer + mũi tên), `tools/CreatureGen.cs` (Satyr, Dryad, Dryad cưỡi nai + đạn lá), `tools/RiderGen.cs` (người cưỡi và heo rừng đen), `tools/MonsterAnim.cs` (anim và xuất file).
-- Chạy `tools/RenderMonsterExport.ps1` để xuất lại, rồi `tools/RenderMonsterReview.ps1` để tạo bảng duyệt ở `monsters/review/`.
-- Mẫu đã duyệt: `monsters/GOBLIN_CANDIDATE_v3.png`, `monsters/ARCHER_CANDIDATE_v2.png`, `monsters/FOREST_CANDIDATE_v1.png`, `monsters/DRYAD_RIDER_CANDIDATE_v1.png`, `monsters/RIDERS_CANDIDATE_v7.png`.
+- Code sinh art: `tools/MonsterGen.cs` (Goblin), `tools/ArcherGen.cs` (Goblin Archer + mũi tên), `tools/CreatureGen.cs` (Satyr, Dryad, Dryad cưỡi nai + đạn lá), `tools/RiderGen.cs` (người cưỡi và heo rừng đen), `tools/BossGen.cs` (Cyclops, vòng cảnh báo, vết nứt), `tools/MonsterAnim.cs` (anim và xuất file).
+- Chạy `tools/RenderMonsterExport.ps1` để xuất lại, rồi `tools/RenderMonsterReview.ps1` và `tools/RenderBossReview.ps1` để tạo bảng duyệt ở `monsters/review/`.
+- Mẫu đã duyệt: `monsters/GOBLIN_CANDIDATE_v3.png`, `monsters/ARCHER_CANDIDATE_v2.png`, `monsters/FOREST_CANDIDATE_v1.png`, `monsters/DRYAD_RIDER_CANDIDATE_v1.png`, `monsters/RIDERS_CANDIDATE_v7.png`, `monsters/BOSS_CANDIDATE_v4.png` (Cyclops; bản xuất được phóng 2× như mục 7).
+
+## 7. Boss Cyclops
+
+**Kích thước.** Mẫu v4 phóng 2× bằng thuật toán làm mượt pixel rồi tỉa viền ngoài về 1 px, nên cùng mật độ pixel với hero (PPU 16, scale 1). Thân cao khoảng 65 px (≈ 4 unit), ô 96×96, chân hàng 89. **Không scale transform trong Unity.**
+
+**Sheet `Cyclops/Cyclops_Sheet.png`.** 4 cột × 21 hàng, mỗi anim 3 hàng Down/Up/Side (Side vẽ quay trái):
+
+| Hàng | Anim | Frame | FPS | Chế độ | Ghi chú |
+|---|---|---|---|---|---|
+| 0–2 | IdleCalm | 4 | 5 | lặp | **mặt hiền**: mí mắt sụp, miệng khép |
+| 3–5 | WalkCalm | 4 | 6 | lặp | mặt hiền |
+| 6–8 | IdleAngry | 4 | 6 | lặp | **mặt hung dữ**: mày chau, đồng tử đỏ, há miệng nhe răng |
+| 9–11 | WalkAngry | 4 | 7 | lặp | mặt hung dữ |
+| 12–14 | Attack | 4 | 8 | một lần | f0 giơ chuỳ, f1 giơ cao (giữ lâu tuỳ code), **f2 nện đất = lúc gây sát thương**, f3 hạ chuỳ |
+| 15–17 | Hurt | 2 | 10 | một lần | mặt hung dữ |
+| 18–20 | Death | 4 | 6 | giữ frame cuối | loé trắng, khuỵu, ngã, mờ 50% |
+
+**Hai trạng thái mặt.** Boss dùng bộ *Calm* khi chưa bị đánh. Từ lần đầu nhận sát thương (hoặc khi vào trận), chuyển hẳn sang bộ *Angry* và không quay lại. Hướng Up nhìn từ sau lưng nên hai bộ giống nhau.
+
+**Vòng cảnh báo `Cyclops/Cyclops_Telegraph.png`.**
+- 6 ô 128×128, bán kính 62 px (≈ 3.9 unit). Vẽ ở lớp mặt đất, dưới mọi nhân vật.
+- Ô 0–3: vòng đỏ, phần tô lan dần từ tâm. Trải đều 4 ô này suốt thời gian lấy đà (Attack f0–f1, nên kéo dài khoảng 1–1.5 s để người chơi kịp né).
+- Ô 4: loé đúng lúc Attack f2. Ô 5: mờ dần rồi tắt.
+- Tâm vòng gợi ý đặt ở pivot boss + hướng mặt × 1.5 unit (chỗ đầu chuỳ đập xuống). Muốn vòng lớn hơn thì xin art xuất thêm cỡ khác, **không scale lẻ**.
+
+**Vết nứt `Cyclops/Cyclops_Crack.png`.** 96×48, lớp mặt đất. Sinh ở tâm vòng lúc Attack f2, giữ khoảng 2 s rồi mờ dần bằng code.
 - Pixel vẽ mới hoàn toàn, chỉ bám dáng và tỉ lệ theo video tham khảo, không đồ lại.

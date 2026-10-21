@@ -31,6 +31,7 @@ Chủ dự án giao Claude chốt các điểm sau. Muốn đổi thì chủ d�
 | 6 | Chỉ số quái | Lấy goblin hiện có làm gốc. Goblin Archer, Satyr, Dryad ×1; Dryad cưỡi nai ×1.3; Gobrider ×1.5; Elite ×2; Warlord trùm phụ; Cyclops boss. Số cụ thể Cursor đề xuất trong báo cáo |
 | 7 | Boss Cyclops | Chuyển mặt hung dữ ngay lần đầu bị trúng đòn. Lấy đà 1.2 s rồi nện. Vòng đỏ đặt trước mặt 1.5 ô, bán kính khoảng 3.9 ô (đúng cỡ art) |
 | 8 | Dryad | Giữ cả 2. Dryad đi bộ là bản yếu, xuất hiện sớm hơn Dryad cưỡi nai |
+| 10 | Chết theo hướng (chốt sau Giai đoạn 1) | Hero chết theo hướng đang nhìn ở **cả Sandbox lẫn campaign** từ bây giờ, không khóa về hướng xuống |
 | 9 | Quái theo màn | Màn 1: Goblin, Goblin Archer · Màn 2: thêm Gobrider · Màn 3: Satyr, 2 loại Dryad · Màn 4: Elite, Warlord (trùm phụ), cuối màn là boss Cyclops |
 
 ## Giai đoạn 1: cập nhật Aren và Vex đang có trong game

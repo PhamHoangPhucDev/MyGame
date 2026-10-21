@@ -90,6 +90,7 @@ namespace GameplayPrototype
                 bool dim = Mathf.Repeat(Time.time * 12f, 1f) > 0.5f;
                 for (int i = 0; i < _renderers.Length; i++)
                 {
+                    if (_renderers[i] == null) continue;
                     var c = _baseColors[i];
                     c.a = dim ? 0.35f : 1f;
                     _renderers[i].color = c;
@@ -102,7 +103,10 @@ namespace GameplayPrototype
                 _flashTimer -= Time.deltaTime;
                 float t = Mathf.PingPong(_flashTimer * 20f, 1f);
                 for (int i = 0; i < _renderers.Length; i++)
+                {
+                    if (_renderers[i] == null) continue;
                     _renderers[i].color = Color.Lerp(_baseColors[i], Color.white, t);
+                }
                 if (_flashTimer <= 0f)
                     RestoreColors();
             }
@@ -113,7 +117,10 @@ namespace GameplayPrototype
         void RestoreColors()
         {
             for (int i = 0; i < _renderers.Length; i++)
+            {
+                if (_renderers[i] == null) continue;
                 _renderers[i].color = _baseColors[i];
+            }
         }
 
         public bool TakeDamage(int amount, Vector2 hitPoint, Vector2 knockback)

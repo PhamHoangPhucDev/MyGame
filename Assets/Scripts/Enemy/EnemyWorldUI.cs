@@ -4,7 +4,8 @@ using UnityEngine.UI;
 namespace GameplayPrototype
 {
     /// <summary>
-    /// Always-on enemy name + HP bar on the shared WorldLabelsCanvas.
+    /// Always-on enemy name and level on the shared WorldLabelsCanvas.
+    /// The HP bar appears only after this mob actually loses HP, then hides again.
     /// Labels stay visible while the mob is alive and on-camera; nearby labels
     /// nudge apart instead of being culled.
     /// </summary>
@@ -15,6 +16,7 @@ namespace GameplayPrototype
         [SerializeField] float barWidth = 56f;
         [SerializeField] float barHeight = 6f;
         [SerializeField] float maxNudge = 52f;
+        [SerializeField] float showHpAfterHitSeconds = 3f;
 
         Health _health;
         EnemyController _enemy;
@@ -23,9 +25,11 @@ namespace GameplayPrototype
         Text _label;
         Image _barBg;
         Image _barFill;
+        Image[] _statusIcons;
         Vector2 _layoutNudge;
         Vector2 _nudgeTarget;
         float _desiredY;
+        float _hpVisibleUntil = -1f;
         static Sprite _white;
         static Transform _hero;
         static readonly System.Collections.Generic.List<EnemyWorldUI> Active = new();
@@ -89,9 +93,11 @@ namespace GameplayPrototype
             WorldLabelsCanvas.Ensure();
             Build();
             _health.Changed += OnChanged;
+            _health.Damaged += OnDamaged;
             _health.Died += OnDied;
             Refresh();
             SetLabelText(LabelText);
+            ResetHpReveal();
         }
 
         void OnDestroy()
@@ -99,6 +105,7 @@ namespace GameplayPrototype
             if (_health != null)
             {
                 _health.Changed -= OnChanged;
+                _health.Damaged -= OnDamaged;
                 _health.Died -= OnDied;
             }
             DestroyRoot();
@@ -108,6 +115,9 @@ namespace GameplayPrototype
         {
             if (!Active.Contains(this))
                 Active.Add(this);
+            // Pool reuse must not keep the previous mob's reveal timer.
+            if (_barBg != null)
+                ResetHpReveal();
         }
 
         void OnDisable()
@@ -132,6 +142,8 @@ namespace GameplayPrototype
             if (_label != null && _label.text != LabelText)
                 SetLabelText(LabelText);
 
+            TickHpBar();
+
             if (!IsOnScreen)
             {
                 if (_root.gameObject.activeSelf)
@@ -149,6 +161,7 @@ namespace GameplayPrototype
             screen = NudgeOffHero(screen);
             _root.position = ClampLabel(screen);
             ApplyAlpha(1f);
+            RefreshStatus();
         }
 
         static void ResolveHero()
@@ -272,14 +285,42 @@ namespace GameplayPrototype
 
         Vector2 ClampLabel(Vector2 screen)
         {
-            float half = barWidth * 0.5f + 10f;
-            float margin = 6f;
-            float top = Screen.height - 72f;
-            float bottom = 150f;
-            screen.x = Mathf.Clamp(screen.x, half + margin, Screen.width - half - margin);
-            screen.y = Mathf.Clamp(screen.y, bottom, top);
+            Rect safe = Screen.safeArea;
+            float scale = 1f;
+            var canvas = WorldLabelsCanvas.Instance != null ? WorldLabelsCanvas.Instance.Canvas : null;
+            if (canvas != null)
+                scale = Mathf.Max(0.01f, canvas.scaleFactor);
+
+            float textW = _label != null ? Mathf.Max(barWidth, _label.preferredWidth) : barWidth;
+            float halfW = (textW * 0.5f + 2f) * scale;
+            float nameH = _label != null ? Mathf.Max(16f, _label.preferredHeight) : 16f;
+            bool icon = false;
+            if (_statusIcons != null)
+            {
+                for (int i = 0; i < _statusIcons.Length; i++)
+                    icon |= _statusIcons[i] != null && _statusIcons[i].enabled;
+            }
+            float above = (17f + nameH) * scale;
+            if (icon)
+                above = Mathf.Max(above, (17f + 48f) * scale);
+            float below = 19f * scale;
+            float margin = 4f;
+
+            float minX = safe.xMin + halfW + margin;
+            float maxX = safe.xMax - halfW - margin;
+            float minY = safe.yMin + below + margin;
+            float maxY = safe.yMax - above - margin;
+            if (minX > maxX)
+                minX = maxX = (safe.xMin + safe.xMax) * 0.5f;
+            if (minY > maxY)
+                minY = maxY = (safe.yMin + safe.yMax) * 0.5f;
+
+            screen.x = Mathf.Clamp(screen.x, minX, maxX);
+            screen.y = Mathf.Clamp(screen.y, minY, maxY);
             screen.x = Mathf.Round(screen.x / 4f) * 4f;
             screen.y = Mathf.Round(screen.y / 4f) * 4f;
+            screen.x = Mathf.Clamp(screen.x, minX, maxX);
+            screen.y = Mathf.Clamp(screen.y, minY, maxY);
             return screen;
         }
 
@@ -330,6 +371,9 @@ namespace GameplayPrototype
             _label.verticalOverflow = VerticalWrapMode.Overflow;
             _label.raycastTarget = false;
             WorldLabelsCanvas.ApplyPixelOutline(_label, Color.black);
+            _statusIcons = new Image[4];
+            for (int i = 0; i < _statusIcons.Length; i++)
+                _statusIcons[i] = MakeStatusIcon("Status_" + i, 0f);
 
             var bgGo = new GameObject("HpBg");
             bgGo.transform.SetParent(_root, false);
@@ -357,16 +401,105 @@ namespace GameplayPrototype
             _barFill.raycastTarget = false;
         }
 
+        Image MakeStatusIcon(string iconName, float x)
+        {
+            var go = new GameObject(iconName);
+            go.transform.SetParent(_root, false);
+            var rt = go.AddComponent<RectTransform>();
+            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 1f);
+            rt.pivot = new Vector2(0.5f, 0f);
+            rt.anchoredPosition = new Vector2(x, 2f);
+            rt.sizeDelta = new Vector2(48f, 48f);
+            var img = go.AddComponent<Image>();
+            img.raycastTarget = false;
+            img.preserveAspect = true;
+            img.enabled = false;
+            return img;
+        }
+
+        void RefreshStatus()
+        {
+            if (_statusIcons == null) return;
+            var icons = ClassUiIcons.Active;
+            var shown = new Sprite[4];
+            int n = 0;
+            if (icons != null)
+            {
+                // Control effects first, then bleed. Slow and taunt have no runtime yet.
+                if (StatusStun.IsStunned(this) && icons.stun != null) shown[n++] = icons.stun;
+                if (StatusBleed.IsBleeding(this) && icons.bleed != null && n < shown.Length) shown[n++] = icons.bleed;
+            }
+            const float size = 48f;
+            const float gap = 2f;
+            float total = n > 0 ? n * size + (n - 1) * gap : 0f;
+            float start = -total * 0.5f + size * 0.5f;
+            for (int i = 0; i < _statusIcons.Length; i++)
+            {
+                var img = _statusIcons[i];
+                if (img == null) continue;
+                bool on = i < n;
+                img.sprite = on ? shown[i] : null;
+                img.enabled = on;
+                img.rectTransform.anchoredPosition = new Vector2(start + i * (size + gap), 2f);
+                img.rectTransform.sizeDelta = new Vector2(size, size);
+            }
+        }
+
         void SetLabelText(string text)
         {
             if (_label != null)
                 _label.text = text ?? "";
         }
 
-        void OnChanged(Health _) => Refresh();
+        void OnChanged(Health h)
+        {
+            Refresh();
+            // Configure / ReviveFull refill HP without a damage event. Do not treat that as a hit.
+            if (_boss != null || h == null || h.CurrentHp < h.MaxHp)
+                return;
+            _hpVisibleUntil = -1f;
+            SetHpBarVisible(false);
+        }
+
+        void OnDamaged(Health _, int applied, Vector2 __)
+        {
+            if (applied <= 0)
+                return;
+            Refresh();
+            if (_boss != null)
+                return;
+            _hpVisibleUntil = Time.time + Mathf.Max(0f, showHpAfterHitSeconds);
+            SetHpBarVisible(true);
+        }
+
+        void ResetHpReveal()
+        {
+            _hpVisibleUntil = -1f;
+            SetHpBarVisible(_boss != null);
+        }
+
+        void TickHpBar()
+        {
+            if (_boss != null)
+            {
+                SetHpBarVisible(true);
+                return;
+            }
+            SetHpBarVisible(_hpVisibleUntil > Time.time);
+        }
+
+        void SetHpBarVisible(bool visible)
+        {
+            if (_boss != null)
+                visible = true;
+            if (_barBg == null || _barBg.gameObject.activeSelf == visible)
+                return;
+            _barBg.gameObject.SetActive(visible);
+        }
 
         void OnDied(Health _)
         {
+            _hpVisibleUntil = -1f;
             DestroyRoot();
         }
 

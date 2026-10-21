@@ -6,7 +6,8 @@ namespace GameplayPrototype
     /// <summary>
     /// R2C Sandbox: owns the class kits (F1..F5 = Aren, Brom, Lyra, Selene, Vex) and hands the active one to
     /// PlayerCombat, which keeps the single combat path (input, cooldowns, hotbar events, PlayerVisual facing).
-    /// Applies the kit's base stats on top of the scene values. Not present in Level 1-4.
+    /// Applies the kit's base stats on top of the scene values.
+    /// Campaign Level 1-4 has one instance on the scene Player. The Player_Aren prefab does not.
     /// </summary>
     [DefaultExecutionOrder(-10)]
     public class ClassCombat : MonoBehaviour
@@ -16,6 +17,7 @@ namespace GameplayPrototype
         [SerializeField] string[] slotNames = { "Aren", "Brom", "Lyra", "Selene", "Vex" };
         [SerializeField] int startSlot;
         [SerializeField] bool showLabel = true;
+        [SerializeField] ClassUiIcons uiIcons;
 
         PlayerCombat _combat;
         PlayerMovement _movement;
@@ -27,6 +29,9 @@ namespace GameplayPrototype
 
         public ClassKit Active => _active >= 0 ? kits[_active] : null;
         public int ActiveSlot => _active;
+        /// <summary>Class whose hotbar icons are showing. Updates on F1–F5 even when that kit is not built yet.</summary>
+        public string IconClassId { get; private set; } = "Aren";
+        public event System.Action IconClassChanged;
 
         void Awake()
         {
@@ -34,6 +39,17 @@ namespace GameplayPrototype
             _movement = GetComponent<PlayerMovement>();
             _health = GetComponent<Health>();
             _baseMaxHp = _health != null ? _health.MaxHp : 0;
+            if (uiIcons != null) ClassUiIcons.SetActive(uiIcons);
+        }
+
+        void OnDestroy()
+        {
+            if (uiIcons != null && ClassUiIcons.Active == uiIcons)
+                ClassUiIcons.SetActive(null);
+            if (_active >= 0 && _active < kits.Length && kits[_active] != null
+                && kits[_active].slot2 != null
+                && kits[_active].slot2.behaviour == SkillBehaviour.ShieldBash)
+                ArenKitVfx.PreferDesignedSkills = false;
         }
 
         void Start() => Select(startSlot);
@@ -55,22 +71,19 @@ namespace GameplayPrototype
             if (slot < 0 || slot >= kits.Length) return false;
             var kit = kits[slot];
             string name = slot < slotNames.Length ? slotNames[slot] : ("Slot " + (slot + 1));
+            IconClassId = name;
+            IconClassChanged?.Invoke();
             if (kit == null)
             {
                 Toast(name + ": chua co bo ky nang");
                 return false;
             }
             _active = slot;
-            // R3D.1: Aren sandbox uses designed kit (Shield Bash + VFX). Other classes unchanged.
-            bool aren = string.Equals(kit.classId, "aren", System.StringComparison.OrdinalIgnoreCase)
-                        || string.Equals(kit.displayName, "Aren", System.StringComparison.OrdinalIgnoreCase);
-            if (aren)
-            {
-                kit.FillDesignedAren();
-                ArenKitVfx.PreferDesignedSkills = true;
-            }
-            else
-                ArenKitVfx.PreferDesignedSkills = false;
+            // Designed numbers live on ClassKit_Aren_Designed. Do not rewrite ClassKit_Aren in memory.
+            bool designedAren = (string.Equals(kit.classId, "aren", System.StringComparison.OrdinalIgnoreCase)
+                        || string.Equals(kit.displayName, "Aren", System.StringComparison.OrdinalIgnoreCase))
+                        && kit.slot2 != null && kit.slot2.behaviour == SkillBehaviour.ShieldBash;
+            ArenKitVfx.PreferDesignedSkills = designedAren;
             if (_combat != null) _combat.SetKit(kit);
             if (kit.bodyController != null) GetComponent<PlayerVisual>()?.RebindBodyController(kit.bodyController);
             if (kit.equipment != null) GetComponent<EquipmentVisual>()?.Configure(kit.equipment);

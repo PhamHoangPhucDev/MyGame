@@ -26,6 +26,8 @@ namespace GameplayPrototype
             public Color iconColor;
             public bool isPrimary;
             public RectTransform root;
+            public Sprite fallbackIcon;
+            public Vector2 fallbackSize;
         }
 
         Slot[] _slots;
@@ -38,6 +40,8 @@ namespace GameplayPrototype
         Image _hpTrail;
         RectTransform _hpTrailRt;
         RectTransform _hpRoot;
+        Image[] _buffs;
+        ClassCombat _classes;
         float _hpWidth = 280f;
         const float HpBarHeight = 12f;
         float _hpShown = 1f;      // red fill, snaps to current HP
@@ -75,8 +79,14 @@ namespace GameplayPrototype
             {
                 combat.SelectedChanged += OnSelected;
                 combat.CooldownsChanged += RefreshCooldowns;
+                combat.KitChanged += OnKitChanged;
                 OnSelected(combat.SelectedSkill);
             }
+            _classes = FindFirstObjectByType<ClassCombat>();
+            if (_classes != null)
+                _classes.IconClassChanged += ApplyClassIcons;
+            ApplyClassIcons();
+            RefreshBuffs();
             if (combo != null)
                 combo.ComboChanged += OnCombo;
             if (_playerHealth != null)
@@ -92,9 +102,12 @@ namespace GameplayPrototype
             {
                 combat.SelectedChanged -= OnSelected;
                 combat.CooldownsChanged -= RefreshCooldowns;
+                combat.KitChanged -= OnKitChanged;
             }
             if (combo != null)
                 combo.ComboChanged -= OnCombo;
+            if (_classes != null)
+                _classes.IconClassChanged -= ApplyClassIcons;
         }
 
         void Update()
@@ -104,6 +117,7 @@ namespace GameplayPrototype
             TickSlotGlows();
             TickHpBar();
             TickComboFade();
+            RefreshBuffs();
             ApplySafeArea();
             if (_attackPunch > 0f && _attackPunchRt != null)
             {
@@ -137,7 +151,9 @@ namespace GameplayPrototype
                 if (t != null) _combatCanvasGo = t.gameObject;
             }
             if (_combatCanvasGo == null) return;
-            bool show = LevelFlow.Instance == null ||
+            // Sandbox disables LevelFlow but leaves it on MainMenu, which hid the hotbar.
+            bool show = ReferenceSandboxController.IsActive ||
+                        LevelFlow.Instance == null ||
                         (LevelFlow.Instance.State != LevelState.MainMenu &&
                          LevelFlow.Instance.State != LevelState.Loading);
             if (_combatCanvasGo.activeSelf != show)
@@ -206,6 +222,18 @@ namespace GameplayPrototype
             var hpShine = CreateImage(_hpFill.transform, "Shine", new Vector2(0f, 1f), new Vector2(1f, 1f),
                 new Vector2(0f, -1f), new Vector2(0f, 2f), new Color(1f, 0.55f, 0.5f, 0.85f));
             hpShine.rectTransform.pivot = new Vector2(0.5f, 1f);
+
+            _buffs = new Image[3];
+            for (int i = 0; i < _buffs.Length; i++)
+            {
+                var b = CreateImage(_safeRoot, "Buff_" + i, new Vector2(0f, 1f), new Vector2(0f, 1f),
+                    new Vector2(24f + i * 50f, -18f - (HpBarHeight + 16f)), new Vector2(48f, 48f), Color.white);
+                b.rectTransform.pivot = new Vector2(0f, 1f);
+                b.preserveAspect = true;
+                b.raycastTarget = false;
+                b.enabled = false;
+                _buffs[i] = b;
+            }
 
             // TOP-CENTER — combo (high enough not to cover hero).
             var comboGo = new GameObject("ComboText");
@@ -365,7 +393,9 @@ namespace GameplayPrototype
                 keyText = keyText,
                 iconColor = Color.white,
                 isPrimary = primary,
-                root = frame.rectTransform
+                root = frame.rectTransform,
+                fallbackIcon = iconSprite,
+                fallbackSize = icon.rectTransform.sizeDelta
             };
         }
 
@@ -463,6 +493,64 @@ namespace GameplayPrototype
             else
                 c.a = _comboFade / ComboFadeTime;
             _comboText.color = c;
+        }
+
+        void OnKitChanged(ClassKit _)
+        {
+            ApplyClassIcons();
+            RefreshCooldowns();
+            RefreshBuffs();
+        }
+
+        void ApplyClassIcons()
+        {
+            if (_slots == null) return;
+            var icons = ClassUiIcons.Active;
+            if (_classes == null)
+                _classes = FindFirstObjectByType<ClassCombat>();
+            string classId = _classes != null ? _classes.IconClassId : null;
+            if (string.IsNullOrEmpty(classId) && _classes != null && _classes.Active != null)
+                classId = _classes.Active.classId;
+            for (int i = 0; i < _slots.Length; i++)
+            {
+                Sprite sprite = icons != null && classId != null ? icons.Skill(classId, _slots[i].id) : null;
+                if (sprite != null)
+                {
+                    float px = _slots[i].isPrimary ? 96f : 64f;
+                    _slots[i].icon.sprite = sprite;
+                    _slots[i].icon.rectTransform.sizeDelta = new Vector2(px, px);
+                    // Leave the painted icon frame outside the cooldown disc.
+                    float cd = px * 0.62f;
+                    _slots[i].cooldownOverlay.rectTransform.sizeDelta = new Vector2(cd, cd);
+                }
+                else if (_slots[i].fallbackIcon != null)
+                {
+                    _slots[i].icon.sprite = _slots[i].fallbackIcon;
+                    _slots[i].icon.rectTransform.sizeDelta = _slots[i].fallbackSize;
+                    float slot = _slots[i].root.sizeDelta.x;
+                    _slots[i].cooldownOverlay.rectTransform.sizeDelta = new Vector2(slot - 10f, slot - 10f);
+                }
+            }
+        }
+
+        void RefreshBuffs()
+        {
+            if (_buffs == null) return;
+            var icons = ClassUiIcons.Active;
+            bool show = icons != null && combat != null;
+            Sprite guard = show && combat.IsGuarding ? icons.damageReduction : null;
+            Sprite hide = show && combat.IsStealthed ? icons.stealth : null;
+            Sprite power = show && combat.NextHitMultiplier > 1.01f ? icons.empowered : null;
+            SetBuff(0, guard);
+            SetBuff(1, hide);
+            SetBuff(2, power);
+        }
+
+        void SetBuff(int i, Sprite sprite)
+        {
+            var img = _buffs[i];
+            img.sprite = sprite;
+            img.enabled = sprite != null;
         }
 
         void RefreshCooldowns()

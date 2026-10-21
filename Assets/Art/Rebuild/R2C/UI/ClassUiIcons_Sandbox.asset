@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33746d55c1ecd0e43b076e14771ab979, type: 3}
+  m_Name: ClassUiIcons_Sandbox
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.ClassUiIcons
+  arenR: {fileID: 21300000, guid: 44f84e3df35043f44a223e3a0b347299, type: 3}
+  aren2: {fileID: 21300000, guid: 29fc3ea59a988d64cb734dd8674957c7, type: 3}
+  aren3: {fileID: 21300000, guid: ab2c2d409e84ab842aebe427eab0b1e7, type: 3}
+  aren4: {fileID: 21300000, guid: 918645765ff49994dba030861174094b, type: 3}
+  arenV: {fileID: 21300000, guid: db38ffecc19467644a478f97e5c73514, type: 3}
+  arenC: {fileID: 21300000, guid: 4e82fc192da50154ea29c5de66660d4e, type: 3}
+  bromR: {fileID: 21300000, guid: 662519b36e87d5a49838e809db3a48b0, type: 3}
+  brom2: {fileID: 21300000, guid: 4be49a389dc51724e97d59d8d0fbba25, type: 3}
+  brom3: {fileID: 21300000, guid: f6bc2ddd64288bd4993cfa44cb4294a9, type: 3}
+  brom4: {fileID: 21300000, guid: 597000e3990174c48a6ccbc4b1ba6895, type: 3}
+  bromV: {fileID: 21300000, guid: a2c905778edb7a74daca243f50f8f116, type: 3}
+  bromC: {fileID: 21300000, guid: b12b7b04af9878144bb6cdee6baebaec, type: 3}
+  lyraR: {fileID: 21300000, guid: 2096e4c7e542aad4aa68c31db1f18807, type: 3}
+  lyra2: {fileID: 21300000, guid: bb85f12695c982e4e9ed81a13eea6102, type: 3}
+  lyra3: {fileID: 21300000, guid: 020de61d85479094dad4e6b412fc49b8, type: 3}
+  lyra4: {fileID: 21300000, guid: 13774aedb00a54d4aa64b167ac2e2207, type: 3}
+  lyraV: {fileID: 21300000, guid: 1da61f5015fa017488f14c49cb2ff7aa, type: 3}
+  lyraC: {fileID: 21300000, guid: 03a54778e059ede478ce55f09ed46247, type: 3}
+  seleneR: {fileID: 21300000, guid: 2ba024cd4247daa41a49b05e63f1f6a2, type: 3}
+  selene2: {fileID: 21300000, guid: 81dffe520fe064e4f9635e1fba3d7f94, type: 3}
+  selene3: {fileID: 21300000, guid: af04b30fecd45b548b7b886c38f86205, type: 3}
+  selene4: {fileID: 21300000, guid: f76c395d5a8bec54ca7568018f026f3d, type: 3}
+  seleneV: {fileID: 21300000, guid: a0249768cd0327c47a60dbaa4029ebd1, type: 3}
+  seleneC: {fileID: 21300000, guid: 996434e0e7d1cf24ea9ccdcd1424507a, type: 3}
+  vexR: {fileID: 21300000, guid: 1d4be4c12cddc2c49abdd3effad29206, type: 3}
+  vex2: {fileID: 21300000, guid: f0a166ea595b59f42ac5695fb4e7c792, type: 3}
+  vex3: {fileID: 21300000, guid: 9ccb8b58406cb6e42adbee7648f1b711, type: 3}
+  vex4: {fileID: 21300000, guid: f8be42463bfa683409cd0b0b9d89fbc5, type: 3}
+  vexV: {fileID: 21300000, guid: 9835a9148431b0b4cbf7072825576dda, type: 3}
+  vexC: {fileID: 21300000, guid: e606cd0f010fea647ac34f1b036923ae, type: 3}
+  stun: {fileID: 21300000, guid: 4f0af73d60f95cf44ab59f3ae8235089, type: 3}
+  bleed: {fileID: 21300000, guid: c86ee7bfead93af47aefd2c49f69b3cd, type: 3}
+  slow: {fileID: 21300000, guid: cc3f0c63be4eff54d8eb55b5837e6db0, type: 3}
+  taunt: {fileID: 21300000, guid: cd704e602fad37744aeda70fd3f00d4c, type: 3}
+  absorb: {fileID: 21300000, guid: 715eccbd87d6d6e468c82df234d5881a, type: 3}
+  damageReduction: {fileID: 21300000, guid: 901a421f7f88b1741bd2d3a370b200b3, type: 3}
+  haste: {fileID: 21300000, guid: 78b94f214ef39254ea75ba5a8d3ed9bf, type: 3}
+  stealth: {fileID: 21300000, guid: c1a363452574546479850ff9af7fb8c3, type: 3}
+  dodgeReady: {fileID: 21300000, guid: 7cff17c49bf60e742b05bc6581ab47b8, type: 3}
+  empowered: {fileID: 21300000, guid: b3fc002fbc9e39a4a828f6c8fd14153b, type: 3}
+  reflect: {fileID: 21300000, guid: c5233c58670718149946b0ea77c33ecc, type: 3}

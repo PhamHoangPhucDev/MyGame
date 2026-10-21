@@ -12,6 +12,9 @@ namespace GameplayPrototype
         float _next;
         Color _color = new Color(1f, 0.25f, 0.3f);
 
+        public static bool IsBleeding(Component c) =>
+            c != null && c.TryGetComponent<StatusBleed>(out var b) && b.enabled && b._remaining > 0f;
+
         public static void Apply(Health target, int damagePerTick, float tick, float duration)
         {
             if (target == null || target.IsDead || damagePerTick <= 0 || duration <= 0f) return;

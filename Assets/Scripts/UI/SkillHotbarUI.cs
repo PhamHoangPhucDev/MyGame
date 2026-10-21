@@ -223,7 +223,7 @@ namespace GameplayPrototype
                 new Vector2(0f, -1f), new Vector2(0f, 2f), new Color(1f, 0.55f, 0.5f, 0.85f));
             hpShine.rectTransform.pivot = new Vector2(0.5f, 1f);
 
-            _buffs = new Image[3];
+            _buffs = new Image[8];
             for (int i = 0; i < _buffs.Length; i++)
             {
                 var b = CreateImage(_safeRoot, "Buff_" + i, new Vector2(0f, 1f), new Vector2(0f, 1f),
@@ -538,12 +538,22 @@ namespace GameplayPrototype
             if (_buffs == null) return;
             var icons = ClassUiIcons.Active;
             bool show = icons != null && combat != null;
-            Sprite guard = show && combat.IsGuarding ? icons.damageReduction : null;
+            var health = combat.GetComponent<Health>();
+            var move = combat.GetComponent<PlayerMovement>();
+            Sprite guard = show && health != null && (combat.IsGuarding || health.BuffReducesDamage || health.BaseDamageTaken < 0.99f) ? icons.damageReduction : null;
             Sprite hide = show && combat.IsStealthed ? icons.stealth : null;
             Sprite power = show && combat.NextHitMultiplier > 1.01f ? icons.empowered : null;
+            Sprite haste = show && move != null && move.HasteMultiplier > 1.01f ? icons.haste : null;
+            Sprite dodge = show && health != null && health.DodgeArmed ? icons.dodgeReady : null;
+            Sprite absorb = show && health != null && health.ShieldPoints > 0 ? icons.absorb : null;
+            Sprite reflect = show && health != null && health.Reflecting ? icons.reflect : null;
             SetBuff(0, guard);
             SetBuff(1, hide);
             SetBuff(2, power);
+            SetBuff(3, haste);
+            SetBuff(4, dodge);
+            SetBuff(5, absorb);
+            SetBuff(6, reflect);
         }
 
         void SetBuff(int i, Sprite sprite)

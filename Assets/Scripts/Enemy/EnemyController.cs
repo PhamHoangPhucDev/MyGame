@@ -327,7 +327,8 @@ namespace GameplayPrototype
             }
 
             SurfaceGap = MeasureSurfaceGap();
-            Vector2 toPlayer = (Vector2)_player.position - _rb.position;
+            Transform aimTarget = StatusTaunt.ForcedTarget(this) ?? _player;
+            Vector2 toPlayer = (Vector2)aimTarget.position - _rb.position;
             float centerDist = toPlayer.magnitude;
             if (toPlayer.sqrMagnitude > 0.0001f)
                 GetComponent<EnemyVisual>()?.SetAim(toPlayer);
@@ -379,7 +380,7 @@ namespace GameplayPrototype
                 Enter(EnemyAiState.Patrol);
                 return;
             }
-            if (HoldRanged(toPlayer, centerDist)) return;
+            if (StatusTaunt.ForcedTarget(this) == null && HoldRanged(toPlayer, centerDist)) return;
 
             // Prefer charge window before collapsing into melee approach.
             if (kind == EnemyKind.Gobrider && _chargeCd <= 0f && centerDist < 4.2f && centerDist > 1.4f && HasLos())
@@ -407,7 +408,7 @@ namespace GameplayPrototype
         void TickApproach(Vector2 toPlayer, float centerDist)
         {
             if (centerDist > loseAggroRadius) { Enter(EnemyAiState.Patrol); return; }
-            if (HoldRanged(toPlayer, centerDist)) return;
+            if (StatusTaunt.ForcedTarget(this) == null && HoldRanged(toPlayer, centerDist)) return;
 
             if (SurfaceGap <= AttackSurfaceGap)
             {
@@ -625,8 +626,8 @@ namespace GameplayPrototype
             if (playerHealth == null || playerHealth.IsDead) return;
             Vector2 hitPoint = _player.position;
             Vector2 dir = toPlayer.sqrMagnitude > 0.001f ? toPlayer.normalized : Vector2.up;
-            if (playerHealth.TakeDamage(damage, hitPoint, dir * knock))
-                DamagePopup.Spawn(hitPoint + Vector2.up * 0.2f, damage, new Color(1f, 0.45f, 0.45f));
+            if (playerHealth.TakeDamage(damage, hitPoint, dir * knock) && playerHealth.LastDamageApplied > 0)
+                DamagePopup.Spawn(hitPoint + Vector2.up * 0.2f, playerHealth.LastDamageApplied, new Color(1f, 0.45f, 0.45f));
         }
 
         void ApplyMove(Vector2 desired, Vector2 focus)
@@ -640,7 +641,7 @@ namespace GameplayPrototype
                 if (side.sqrMagnitude < 0.0001f) side = Vector2.right;
                 desired = side.normalized * _strafeSign * chaseSpeed + focus.normalized * (chaseSpeed * 0.4f);
             }
-            _rb.linearVelocity = desired;
+            _rb.linearVelocity = desired * StatusSlow.Multiplier(this);
         }
 
         void HoldNearHero(Vector2 toPlayer)

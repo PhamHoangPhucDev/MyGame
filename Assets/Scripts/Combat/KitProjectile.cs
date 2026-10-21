@@ -20,9 +20,16 @@ namespace GameplayPrototype
         readonly List<Health> _buffer = new();
 
         Sprite[] _hitFrames;
+        int _pierce = 1;
+        int _hits;
+        float _explode;
+        int _explodeDamage;
+        Sprite[] _explodeFrames;
+        readonly System.Collections.Generic.List<Health> _already = new();
 
         public static KitProjectile Fire(Vector2 from, Vector2 dir, Sprite[] poses8, float speed, float range, int damage, float knockback,
-                                         int bleedDamage, float bleedTick, float bleedDuration, LayerMask mask, Color popup, Sprite[] hitFrames = null)
+                                         int bleedDamage, float bleedTick, float bleedDuration, LayerMask mask, Color popup, Sprite[] hitFrames = null,
+                                         int pierce = 1, float explodeRadius = 0f, Sprite[] explodeFrames = null, int poseRow = 0, int explodeDamage = 0)
         {
             var go = new GameObject("KitProjectile");
             go.transform.position = from;
@@ -31,13 +38,15 @@ namespace GameplayPrototype
             p._speed = speed; p._range = range; p._damage = damage; p._knockback = knockback;
             p._bleedDamage = bleedDamage; p._bleedTick = bleedTick; p._bleedDuration = bleedDuration;
             p._mask = mask; p._popup = popup; p._hitFrames = hitFrames;
+            p._pierce = Mathf.Max(1, pierce); p._explode = explodeRadius; p._explodeFrames = explodeFrames; p._explodeDamage = explodeDamage;
             var sr = go.AddComponent<SpriteRenderer>();
             if (poses8 != null && poses8.Length >= 8)
             {
-                // 8-way index: 0 R, 1 UR, 2 U, 3 UL, 4 L, 5 DL, 6 D, 7 DR (screen up = +y)
                 float a = Mathf.Atan2(p._dir.y, p._dir.x) * Mathf.Rad2Deg;
                 int i = ((Mathf.RoundToInt(a / 45f) % 8) + 8) % 8;
-                sr.sprite = poses8[i];
+                int index = poseRow * 8 + i;
+                if (index < 0 || index >= poses8.Length) index = i;
+                sr.sprite = poses8[index];
             }
             sr.sortingOrder = 4000 + Mathf.RoundToInt(-from.y * 100f) + 40;
             return p;
@@ -49,24 +58,52 @@ namespace GameplayPrototype
             transform.position += (Vector3)(_dir * step);
             _travelled += step;
             CombatTargeting.OverlapEnemies(transform.position, 0.3f, _buffer, _mask);
+            if (_explodeDamage > 0 && (_buffer.Count > 0 || _travelled >= _range))
+            {
+                Explode();
+                Destroy(gameObject);
+                return;
+            }
             foreach (var h in _buffer)
             {
-                if (h == null || h.IsDead) continue;
+                if (h == null || h.IsDead || _already.Contains(h)) continue;
                 Vector2 hp = h.transform.position;
                 if (h.TakeDamage(_damage, hp, _dir * _knockback))
                 {
-                    DamagePopup.Spawn(hp + Vector2.up * 0.25f, _damage, _popup);
+                    _already.Add(h);
+                    _hits++;
+                    if (h.LastDamageApplied > 0)
+                        DamagePopup.Spawn(hp + Vector2.up * 0.25f, h.LastDamageApplied, _popup);
                     if (_hitFrames != null && _hitFrames.Length > 0 && _hitFrames[0] != null)
                         KitVfx.Play(_hitFrames, hp + Vector2.up * 0.5f, 20f, false, 80);
                     else
                         CombatVfx.SpawnImpact(hp);
                     HitComboCounter.Instance?.RegisterHit();
                     if (_bleedDamage > 0) StatusBleed.Apply(h, _bleedDamage, _bleedTick, _bleedDuration);
+                    if (_hits >= _pierce) { Destroy(gameObject); return; }
                 }
-                Destroy(gameObject);
-                return;
             }
-            if (_travelled >= _range) Destroy(gameObject);
+            if (_travelled >= _range)
+            {
+                if (_explode > 0.01f) Explode();
+                Destroy(gameObject);
+            }
+        }
+
+        void Explode()
+        {
+            if (_explode <= 0.01f) return;
+            int dmg = _explodeDamage > 0 ? _explodeDamage : _damage;
+            if (_explodeFrames != null && _explodeFrames.Length > 0)
+                KitVfx.Play(_explodeFrames, transform.position, 14f, false, -20);
+            var list = new System.Collections.Generic.List<Health>();
+            CombatTargeting.OverlapEnemies(transform.position, _explode, list, _mask);
+            foreach (var h in list)
+            {
+                if (h == null || !h.TakeDamage(dmg, h.transform.position, _dir * _knockback)) continue;
+                if (h.LastDamageApplied > 0)
+                    DamagePopup.Spawn(h.transform.position + Vector3.up * 0.3f, h.LastDamageApplied, _popup);
+            }
         }
     }
 }

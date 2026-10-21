@@ -18,6 +18,27 @@ namespace GameplayPrototype
         Execute = 9,         // blink to target and strike; x multiplier under HP threshold (Vex C)
         ShieldBash = 10,     // R3D.1 Aren 2 — short dash + frontal cone + stun
         Charge = 11,         // R3D.1 Aren 3 — longer dash path hits (VFX ChargeDust; no new art pack skill)
+        GroundSlam = 12,
+        ShieldCharge = 13,
+        Taunt = 14,
+        IronWall = 15,
+        Quake = 16,
+        LeapBack = 17,
+        ArrowRain = 18,
+        WindStep = 19,
+        PierceBeam = 20,
+        SlowOrb = 21,
+        Blink = 22,
+        RuneZone = 23,
+        ManaShield = 24,
+        MeteorShower = 25,
+    }
+
+    public enum ComboHitShape
+    {
+        Arc = 0,
+        Circle = 1,
+        Projectile = 2
     }
 
     /// <summary>One hit of the R combo.</summary>
@@ -40,6 +61,16 @@ namespace GameplayPrototype
         public float hitstop = 0.048f;
         public float shakeAmp = 0.0625f;
         public float shakeDur = 0.07f;
+        public ComboHitShape shape;
+        [Tooltip("0 uses the combo's impactDelay.")]
+        public float impactDelay;
+        public float projectileSpeed;
+        public float projectileRange;
+        public int pierce = 1;
+        [Tooltip("Which row of an 8-direction projectile sheet to fire.")]
+        public int arrowRow;
+        [Tooltip("Body attack lock. 0 keeps the shared 0.26 s lock.")]
+        public float bodyLock;
     }
 
     [Serializable]
@@ -54,6 +85,8 @@ namespace GameplayPrototype
         [Tooltip("Press → damage. Must match the Impact key of the body attack clip.")]
         public float impactDelay = 0.12f;
         public ComboStep[] steps = new ComboStep[0];
+        public Sprite[] projectilePoses = new Sprite[0];
+        public Sprite[] projectileHit = new Sprite[0];
     }
 
     /// <summary>
@@ -122,6 +155,8 @@ namespace GameplayPrototype
         [Header("Base stats (multipliers on the hero's scene values)")]
         public float maxHpMultiplier = 1f;
         public float moveSpeedMultiplier = 1f;
+        [Tooltip("Always-on damage taken multiplier. Brom is 0.85. Separate from Guard.")]
+        public float damageTakenMultiplier = 1f;
 
         [Header("Visual (optional; applied by ClassCombat)")]
         public RuntimeAnimatorController bodyController;
@@ -238,6 +273,32 @@ namespace GameplayPrototype
             slotV.displayName = "Bulwark";
             slotC.displayName = "Dawn";
             slotC.popupColor = pale;
+        }
+
+        /// <summary>Brom per BROM_KIT_SPEC. Damage reduction is the class stat, not Guard.</summary>
+        public void FillBrom(Sprite[] slam, Sprite[] dust, Sprite[] roar, Sprite[] tauntMark, Sprite[] wall, Sprite[] quake)
+        {
+            classId = "brom"; displayName = "Brom";
+            role = "Do don. Mau x1.5, toc chay x0.85, giam 15% sat thuong.";
+            maxHpMultiplier = 1.5f; moveSpeedMultiplier = 0.85f; damageTakenMultiplier = 0.85f;
+            Color iron = new Color(0.95f, 0.63f, 0.31f);
+            combo = new ComboDef
+            {
+                displayName = "Bua Ren", cooldown = 0.5f, radius = 1.5f, damage = 22, knockback = 3f,
+                autoTargetRadius = 1.8f, impactDelay = 0.16f,
+                steps = new[]
+                {
+                    new ComboStep { swingOffset = 0.85f, hitstop = 0.07f, shakeAmp = 0.10f, shakeDur = 0.10f, bodyLock = 0.42f },
+                    new ComboStep { swingOffset = -0.85f, hitstop = 0.07f, shakeAmp = 0.10f, shakeDur = 0.10f, bodyLock = 0.42f },
+                    new ComboStep { shape = ComboHitShape.Circle, damageMul = 30f / 22f, radiusMul = 1.6f / 1.5f, knockbackMul = 4f / 3f,
+                                    hitstop = 0.08f, shakeAmp = 0.12f, shakeDur = 0.12f, bodyLock = 0.42f, finisher = true },
+                },
+            };
+            slot2 = new SkillDef { displayName = "Nen Dat", behaviour = SkillBehaviour.GroundSlam, cooldown = 6f, damage = 28, radius = 2.2f, knockback = 3f, anticipation = 0.15f, stunDuration = 0.8f, vfxFrames = slam, vfxFps = 1f / 0.07f, hitstop = 0.08f, shakeAmp = 0.14f, shakeDur = 0.14f, popupColor = iron };
+            slot3 = new SkillDef { displayName = "Huc Khien", behaviour = SkillBehaviour.ShieldCharge, cooldown = 6f, damage = 20, radius = 0.9f, dashDistance = 2.5f, duration = 0.28f, knockback = 4f, vfxFrames = dust, vfxFps = 1f / 0.08f, hitstop = 0.06f, shakeAmp = 0.08f, shakeDur = 0.08f, popupColor = iron };
+            slot4 = new SkillDef { displayName = "Gam Thach", behaviour = SkillBehaviour.Taunt, cooldown = 10f, radius = 4f, duration = 3f, multiplier = 0.8f, vfxFrames = roar, projectilePoses = tauntMark, vfxFps = 1f / 0.08f, hitstop = 0f, shakeAmp = 0.06f, shakeDur = 0.06f, popupColor = iron };
+            slotV = new SkillDef { displayName = "Tuong Sat", behaviour = SkillBehaviour.IronWall, cooldown = 10f, duration = 2f, multiplier = 0.2f, vfxFrames = wall, vfxFps = 1f / 0.06f, popupColor = iron };
+            slotC = new SkillDef { displayName = "Dong Dat", behaviour = SkillBehaviour.Quake, cooldown = 14f, damage = 25, count = 3, interval = 0.35f, radius = 1.5f, knockback = 3f, vfxFrames = quake, vfxFps = 8f, hitstop = 0.07f, shakeAmp = 0.12f, shakeDur = 0.12f, popupColor = iron };
         }
     }
 }

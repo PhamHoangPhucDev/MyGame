@@ -26,6 +26,7 @@ namespace GameplayPrototype
         public float MoveSpeed => moveSpeed;
         /// <summary>Class stat (R2C ClassCombat, Sandbox). 1 = scene value, unchanged everywhere else.</summary>
         public float SpeedMultiplier { get; set; } = 1f;
+        public float HasteMultiplier { get; set; } = 1f;
 
         public void SetExternalInput(Vector2 input, bool enabled = true)
         {
@@ -89,7 +90,7 @@ namespace GameplayPrototype
                 return;
             }
 
-            _rb.linearVelocity = _input * moveSpeed * SpeedMultiplier;
+            _rb.linearVelocity = _input * moveSpeed * SpeedMultiplier * HasteMultiplier;
         }
 
         static Vector2 ReadMoveInput()

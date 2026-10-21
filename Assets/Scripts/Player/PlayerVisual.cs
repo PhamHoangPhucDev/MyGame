@@ -506,15 +506,16 @@ namespace GameplayPrototype
         }
 
         /// <param name="skipWindup">True for instant skills (whirlwind waves) that strike on the same frame.</param>
-        public void PlaySlashSwing(Vector2 facing, bool skipWindup = false)
+        public void PlaySlashSwing(Vector2 facing, bool skipWindup = false, float lockSeconds = 0f)
         {
             _swingFacing = facing.sqrMagnitude > 0.01f ? facing.normalized : Vector2.right;
             _swinging = true;
             _swingElapsed = 0f;
             _bodyState = null;
             _hurtTimer = 0f;
-            _attackStartNorm = skipWindup ? WindupLength / AttackLock : 0f;
-            _bodyAttackTimer = skipWindup ? AttackLock - WindupLength : AttackLock;
+            float lockTime = lockSeconds > 0.05f ? lockSeconds : AttackLock;
+            _attackStartNorm = skipWindup ? WindupLength / lockTime : 0f;
+            _bodyAttackTimer = skipWindup ? lockTime - WindupLength : lockTime;
             Vector2 aim = _swingFacing;
             bool side = Mathf.Abs(aim.x) > Mathf.Abs(aim.y) && Mathf.Abs(aim.x) > 0.05f;
             _attackDir = side ? "Side" : (aim.y > 0.2f ? "Up" : "Down");

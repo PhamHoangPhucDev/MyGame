@@ -59,7 +59,7 @@ namespace GameplayPrototype
         {
             if (_blocked || seconds <= 0f) return;
             if (!_active && Time.timeScale <= 0f) return;
-            seconds = Mathf.Clamp(seconds, 0.04f, 0.06f);
+            seconds = Mathf.Clamp(seconds, 0.035f, 0.08f);
             LastRequested = seconds;
             if (_active)
             {

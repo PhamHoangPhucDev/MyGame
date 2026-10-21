@@ -17,7 +17,7 @@ namespace GameplayPrototype
 
     [RequireComponent(typeof(PlayerMovement))]
     [RequireComponent(typeof(Health))]
-    public class PlayerCombat : MonoBehaviour
+    public partial class PlayerCombat : MonoBehaviour
     {
         [Header("Shared")]
         [SerializeField] LayerMask enemyMask = ~0;
@@ -377,6 +377,20 @@ namespace GameplayPrototype
                 case SkillBehaviour.CrescentStrike: BeginCrescentStrike(def); GameAudio.Play(Sfx.SkillCrescent); break;
                 case SkillBehaviour.ShieldBash: PerformShieldBash(def); GameAudio.Play(Sfx.SkillFlame); break;
                 case SkillBehaviour.Charge: PerformCharge(def); GameAudio.Play(Sfx.SkillDash); break;
+                case SkillBehaviour.GroundSlam: BeginGroundSlam(def); break;
+                case SkillBehaviour.ShieldCharge: BeginShieldCharge(def); break;
+                case SkillBehaviour.Taunt: BeginTaunt(def); break;
+                case SkillBehaviour.IronWall: BeginIronWall(def); break;
+                case SkillBehaviour.Quake: BeginQuake(def); break;
+                case SkillBehaviour.LeapBack: BeginLeapBack(def); break;
+                case SkillBehaviour.ArrowRain: BeginArrowRain(def); break;
+                case SkillBehaviour.WindStep: BeginWindStep(def); break;
+                case SkillBehaviour.PierceBeam: BeginPierceBeam(def); break;
+                case SkillBehaviour.SlowOrb: BeginSlowOrb(def); break;
+                case SkillBehaviour.Blink: BeginBlink(def); break;
+                case SkillBehaviour.RuneZone: BeginRuneZone(def); break;
+                case SkillBehaviour.ManaShield: BeginManaShield(def); break;
+                case SkillBehaviour.MeteorShower: BeginMeteor(def); break;
             }
             return true;
         }
@@ -457,9 +471,9 @@ namespace GameplayPrototype
 
             _slashChain = (_slashChain + 1) % n;
             _lastSlashUnscaled = Time.unscaledTime;
-            _visual?.PlaySlashSwing(_slashSwing);
+            _visual?.PlaySlashSwing(_slashSwing, false, s != null ? s.bodyLock : 0f);
             _slashPending = true;
-            _slashDelay = c.impactDelay;
+            _slashDelay = s != null && s.impactDelay > 0.001f ? s.impactDelay : c.impactDelay;
         }
 
         void AimSlash()
@@ -513,6 +527,17 @@ namespace GameplayPrototype
                 strikeDamage = Mathf.RoundToInt(strikeDamage * _nextHitMul);
                 _nextHitMul = 1f;
             }
+            ComboStep step = null;
+            if (_kit != null && _kit.combo != null && _kit.combo.steps != null && _pendingStep >= 0 && _pendingStep < _kit.combo.steps.Length)
+                step = _kit.combo.steps[_pendingStep];
+            if (step != null && step.shape == ComboHitShape.Projectile)
+            {
+                FireKitArrow(step, strikeDamage);
+                if (_kit != null) ApplyStepBleed();
+                return;
+            }
+            if (step != null && step.shape == ComboHitShape.Circle)
+                hitOrigin = transform.position;
             ApplyAreaDamage(hitOrigin, _pendingRadius, strikeDamage, _pendingKnockback, new Color(0.7f, 0.95f, 1f));
             if (_kit != null) ApplyStepBleed();
         }
@@ -939,7 +964,9 @@ namespace GameplayPrototype
                 // Popup rises above mob labels; spark is at the hit body (not a second R slash).
                 bool finisher = _activeSkill == SkillId.Sword && (_pendingStep == 2 || _pendingVfxScale > 1.2f);
                 Vector3 popupAt = (Vector3)hitPoint + Vector3.up * 0.55f + (Vector3)(dir * 0.12f);
-                DamagePopup.Spawn(popupAt, damage, popupColor);
+                int shown = health.LastDamageApplied > 0 ? health.LastDamageApplied : damage;
+                if (health.LastDamageApplied <= 0) shown = 0;
+                if (shown > 0) DamagePopup.Spawn(popupAt, shown, popupColor);
                 CombatVfx.SpawnHitSpark((Vector3)hitPoint + (Vector3)(dir * 0.05f), finisher);
                 HitComboCounter.Instance?.RegisterHit();
             }

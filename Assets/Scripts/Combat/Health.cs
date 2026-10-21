@@ -13,7 +13,15 @@ namespace GameplayPrototype
 
         int _hp;
         float _invulnTimer;
+        float _baseTaken = 1f;
+        float _buffTaken = 1f;
+        float _extraTaken = 1f;
         float _damageTakenMultiplier = 1f;
+        int _shield;
+        float _shieldTimer;
+        bool _dodgeNext;
+        float _reflectFraction;
+        float _reflectTimer;
         SpriteRenderer[] _renderers;
         Color[] _baseColors;
         float _flashTimer;
@@ -26,6 +34,17 @@ namespace GameplayPrototype
         public event Action<Health, int, Vector2> Damaged;
         public event Action<Health> Died;
         public event Action<Health> Changed;
+        public event Action<Health> Dodged;
+        public event Action<Health, int> ShieldHit;
+        public event Action<Health> ShieldBroke;
+
+        public int LastDamageApplied { get; private set; }
+        public bool DodgeArmed => _dodgeNext;
+        public int ShieldPoints => _shield;
+        public bool Reflecting => _reflectTimer > 0f && _reflectFraction > 0f;
+        public float BaseDamageTaken => _baseTaken;
+        public bool BuffReducesDamage => _buffTaken < 0.99f;
+        public float ReflectFraction => Reflecting ? _reflectFraction : 0f;
 
         public void Configure(int newMaxHp, bool refill = true)
         {
@@ -41,7 +60,11 @@ namespace GameplayPrototype
             _hp = maxHp;
             _invulnTimer = 0f;
             _flashTimer = 0f;
-            _damageTakenMultiplier = 1f;
+            _buffTaken = _extraTaken = 1f;
+            _shield = 0;
+            _dodgeNext = false;
+            _reflectTimer = 0f;
+            RecomputeTaken();
             var col = GetComponent<Collider2D>();
             if (col != null) col.enabled = true;
             var enemy = GetComponent<EnemyController>();
@@ -61,8 +84,44 @@ namespace GameplayPrototype
 
         public void SetDamageTakenMultiplier(float multiplier)
         {
-            _damageTakenMultiplier = Mathf.Clamp(multiplier, 0f, 2f);
+            _buffTaken = Mathf.Clamp(multiplier, 0f, 2f);
+            RecomputeTaken();
         }
+
+        /// <summary>Class stat such as Brom's 15% reduction. Guard and Iron Wall do not replace this.</summary>
+        public void SetBaseDamageTaken(float multiplier)
+        {
+            _baseTaken = Mathf.Clamp(multiplier, 0f, 2f);
+            RecomputeTaken();
+        }
+
+        public void SetExtraDamageTaken(float multiplier)
+        {
+            _extraTaken = Mathf.Clamp(multiplier, 0f, 2f);
+            RecomputeTaken();
+        }
+
+        public void ArmDodge() => _dodgeNext = true;
+
+        public void GrantInvulnerability(float seconds)
+        {
+            _invulnTimer = Mathf.Max(_invulnTimer, seconds);
+        }
+
+        public void SetShield(int points, float seconds)
+        {
+            _shield = Mathf.Max(0, points);
+            _shieldTimer = seconds;
+            Changed?.Invoke(this);
+        }
+
+        public void SetReflect(float fraction, float seconds)
+        {
+            _reflectFraction = Mathf.Clamp01(fraction);
+            _reflectTimer = seconds;
+        }
+
+        void RecomputeTaken() => _damageTakenMultiplier = _baseTaken * _buffTaken * _extraTaken;
 
         public bool IsInvulnerable => _invulnTimer > 0f;
 
@@ -84,6 +143,18 @@ namespace GameplayPrototype
         {
             if (_invulnTimer > 0f)
                 _invulnTimer -= Time.deltaTime;
+            if (_shieldTimer > 0f)
+            {
+                _shieldTimer -= Time.deltaTime;
+                if (_shieldTimer <= 0f && _shield > 0)
+                {
+                    _shield = 0;
+                    ShieldBroke?.Invoke(this);
+                    Changed?.Invoke(this);
+                }
+            }
+            if (_reflectTimer > 0f)
+                _reflectTimer -= Time.deltaTime;
 
             if (blinkWhileInvulnerable && _invulnTimer > 0f)
             {
@@ -127,6 +198,13 @@ namespace GameplayPrototype
         {
             if (IsDead || amount <= 0 || _invulnTimer > 0f)
                 return false;
+            if (_dodgeNext)
+            {
+                _dodgeNext = false;
+                LastDamageApplied = 0;
+                Dodged?.Invoke(this);
+                return false;
+            }
 
             int applied = Mathf.Max(1, Mathf.RoundToInt(amount * _damageTakenMultiplier));
             if (_damageTakenMultiplier <= 0.001f)
@@ -134,7 +212,24 @@ namespace GameplayPrototype
             if (applied <= 0)
             {
                 _flashTimer = 0.08f;
+                LastDamageApplied = 0;
                 return false;
+            }
+
+            if (_shield > 0)
+            {
+                int used = Mathf.Min(_shield, applied);
+                _shield -= used;
+                applied -= used;
+                ShieldHit?.Invoke(this, used);
+                if (_shield <= 0) ShieldBroke?.Invoke(this);
+            }
+            LastDamageApplied = applied;
+            if (applied <= 0)
+            {
+                _flashTimer = 0.08f;
+                Changed?.Invoke(this);
+                return true;
             }
 
             _hp = Mathf.Max(0, _hp - applied);

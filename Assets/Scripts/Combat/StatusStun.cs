@@ -23,6 +23,8 @@ namespace GameplayPrototype
             // Only humanoid camp mobs for this pass.
             if (!IsEligible(target)) return;
 
+            if (target.GetComponent<R2CBossMark>() != null || target.GetComponent<BossWarlordController>() != null)
+                duration *= 0.5f;
             var s = target.GetComponent<StatusStun>();
             if (s == null) s = target.gameObject.AddComponent<StatusStun>();
             s._health = target;
@@ -35,10 +37,7 @@ namespace GameplayPrototype
 
         static bool IsEligible(Health h)
         {
-            string n = h.gameObject.name;
-            return n.IndexOf("Goblin", System.StringComparison.OrdinalIgnoreCase) >= 0
-                || n.IndexOf("Gobrider", System.StringComparison.OrdinalIgnoreCase) >= 0
-                || n.IndexOf("GobRider", System.StringComparison.OrdinalIgnoreCase) >= 0;
+            return h.GetComponent<EnemyController>() != null;
         }
 
         /// <summary>Suggested durations from R3D.1 brief.</summary>

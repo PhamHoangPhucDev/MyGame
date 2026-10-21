@@ -1,0 +1,293 @@
+fileFormatVersion: 2
+guid: c9eb6e650881c4c4aa7b6964e293ac08
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4356595070317505132
+    second: Brom_Roar_0
+  - first:
+      213: 1172787727896317842
+    second: Brom_Roar_1
+  - first:
+      213: -811196303130071822
+    second: Brom_Roar_2
+  - first:
+      213: 2517706814065494984
+    second: Brom_Roar_3
+  - first:
+      213: -6933102458608729721
+    second: Brom_Roar_4
+  - first:
+      213: -443235887728853619
+    second: Brom_Roar_5
+  - first:
+      213: 203592739035075072
+    second: Brom_Roar_6
+  - first:
+      213: -6178386071799414767
+    second: Brom_Roar_7
+  - first:
+      213: 8291154264635566504
+    second: Brom_Roar_8
+  - first:
+      213: -3359379503213446737
+    second: Brom_Roar_9
+  - first:
+      213: 6618657215231667091
+    second: Brom_Roar_10
+  - first:
+      213: -3373560858120016705
+    second: Brom_Roar_11
+  - first:
+      213: 6790503001510537170
+    second: Brom_Roar_12
+  - first:
+      213: -3755190327629728745
+    second: Brom_Roar_13
+  - first:
+      213: -2623470599570879814
+    second: Brom_Roar_14
+  - first:
+      213: -2463254317038852677
+    second: Brom_Roar_15
+  - first:
+      213: 7045257632487681397
+    second: Brom_Roar_16
+  - first:
+      213: 2492753891383651782
+    second: Brom_Roar_17
+  - first:
+      213: -5518128781276773874
+    second: Brom_Roar_18
+  - first:
+      213: -3990527561675056795
+    second: Brom_Roar_19
+  - first:
+      213: 654700344202322743
+    second: Brom_Roar_20
+  - first:
+      213: 573280298074566676
+    second: Brom_Roar_21
+  - first:
+      213: -2336812943746857414
+    second: Brom_Roar_22
+  - first:
+      213: -509664905390123927
+    second: Brom_Roar_23
+  - first:
+      213: 1933931831427564726
+    second: Brom_Roar_24
+  - first:
+      213: 6982556256835818000
+    second: Brom_Roar_25
+  - first:
+      213: -6249791366100558362
+    second: Brom_Roar_26
+  - first:
+      213: 3657447589566884113
+    second: Brom_Roar_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.25}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Brom_Roar_0_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3702c91be7b6d554da1649f0c8f40eb4
+      internalID: 8427604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brom_Roar_1_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bdd57f0af7385f4a98bda9be2c3c04e
+      internalID: -807512648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brom_Roar_2_0
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc626582598fa345b3f355d3e4ae225
+      internalID: 1211897772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brom_Roar_3_0
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6801b41db1e240840bad86cc60093163
+      internalID: 1702544875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 744ddfe74f272df41938678ea5c5d7f1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Brom_Roar_0_0: 8427604
+      Brom_Roar_1_0: -807512648
+      Brom_Roar_2_0: 1211897772
+      Brom_Roar_3_0: 1702544875
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

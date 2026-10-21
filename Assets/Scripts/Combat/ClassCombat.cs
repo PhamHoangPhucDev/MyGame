@@ -52,7 +52,23 @@ namespace GameplayPrototype
                 ArenKitVfx.PreferDesignedSkills = false;
         }
 
-        void Start() => Select(startSlot);
+        void Start()
+        {
+            if (ReferenceSandboxController.IsActive)
+            {
+                LoadIfEmpty(1, "R2C/ClassKit_Brom");
+                LoadIfEmpty(2, "R2C/ClassKit_Lyra");
+                LoadIfEmpty(3, "R2C/ClassKit_Selene");
+            }
+            Select(startSlot);
+        }
+
+        void LoadIfEmpty(int slot, string resourcePath)
+        {
+            if (kits == null || slot < 0 || slot >= kits.Length || kits[slot] != null) return;
+            var kit = Resources.Load<ClassKit>(resourcePath);
+            if (kit != null) kits[slot] = kit;
+        }
 
         void Update()
         {
@@ -88,6 +104,7 @@ namespace GameplayPrototype
             if (kit.bodyController != null) GetComponent<PlayerVisual>()?.RebindBodyController(kit.bodyController);
             if (kit.equipment != null) GetComponent<EquipmentVisual>()?.Configure(kit.equipment);
             if (_movement != null) _movement.SpeedMultiplier = kit.moveSpeedMultiplier;
+            if (_health != null) _health.SetBaseDamageTaken(kit.damageTakenMultiplier);
             if (_health != null && _baseMaxHp > 0)
             {
                 // keep the current HP ratio when the max changes

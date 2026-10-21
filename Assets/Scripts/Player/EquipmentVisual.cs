@@ -175,11 +175,22 @@ namespace GameplayPrototype
             // R3C: one Attack body clip — differentiate A1/A2/A3 via 8-dir pose tilt + Z rotation + slash offset.
             int mainDir = a.MainDir;
             float weaponZ = 0f;
-            if (step == 0) { mainDir = Wrap8(mainDir + 1); weaponZ = flip ? 18f : -18f; }      // L→R arc
-            else if (step == 1) { mainDir = Wrap8(mainDir - 1); weaponZ = flip ? -22f : 22f; } // R→L arc
-            else if (step == 2) { mainDir = Wrap8(mainDir + 2); weaponZ = flip ? 28f : -28f; } // finisher wider
+            bool authored = step >= 0 && _table.ContainsKey(_lastKey + "@" + step);
+            bool wideSheet = weaponPoses != null && weaponPoses.Length > 8;
+            if (!authored && !wideSheet)
+            {
+                if (step == 0) { mainDir = Wrap8(mainDir + 1); weaponZ = flip ? 18f : -18f; }
+                else if (step == 1) { mainDir = Wrap8(mainDir - 1); weaponZ = flip ? -22f : 22f; }
+                else if (step == 2) { mainDir = Wrap8(mainDir + 2); weaponZ = flip ? 28f : -28f; }
+            }
+            else if (wideSheet && flip && mainDir != 24)
+            {
+                int dir = mainDir % 8;
+                int mirrored = new[] { 4, 3, 2, 1, 0, 7, 6, 5 }[dir];
+                mainDir = (mainDir / 8) * 8 + mirrored;
+            }
 
-            Place(_main, a.MainX > -99 && a.MainOrder != 0 ? Pick(weaponPoses, mainDir) : null, a.MainX, a.MainY, a.MainOrder, flip, order, tint, weaponZ);
+            Place(_main, a.MainX > -99 && a.MainOrder != 0 ? Pick(weaponPoses, mainDir) : null, a.MainX, a.MainY, a.MainOrder, flip, order, tint, weaponZ, !wideSheet);
             Place(_hand, a.HandX > -99 && a.MainOrder != 0 ? hand : null, a.HandX, a.HandY, a.MainOrder + 1, flip, order, tint, weaponZ * 0.35f);
             Sprite offSprite = null;
             if (a.OffX > -99 && a.OffOrder != 0)
@@ -250,7 +261,7 @@ namespace GameplayPrototype
 
         // Anchor pixel (x, y) from the top-left of the 32x32 cell; body pivot = (16, 30). The layer sprite's pivot
         // sits on the anchor pixel's top-left corner, so mirroring is just negating x and flipping the sprite.
-        void Place(SpriteRenderer r, Sprite s, int x, int y, int relOrder, bool flip, int bodyOrder, Color tint, float localZ = 0f)
+        void Place(SpriteRenderer r, Sprite s, int x, int y, int relOrder, bool flip, int bodyOrder, Color tint, float localZ = 0f, bool flipSprite = true)
         {
             r.enabled = s != null;
             if (s == null) return;
@@ -258,7 +269,7 @@ namespace GameplayPrototype
             float lx = (x - 16) / pixelsPerUnit, ly = (30 - y) / pixelsPerUnit;
             r.transform.localPosition = new Vector3(flip ? -lx : lx, ly, 0f);
             r.transform.localRotation = Quaternion.Euler(0f, 0f, localZ);
-            r.flipX = flip;
+            r.flipX = flip && flipSprite;
             r.sortingLayerID = body.sortingLayerID;
             r.sortingOrder = bodyOrder + relOrder;
             r.color = tint;

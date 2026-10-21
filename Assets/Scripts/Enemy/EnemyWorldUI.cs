@@ -428,8 +428,10 @@ namespace GameplayPrototype
             int n = 0;
             if (icons != null)
             {
-                // Control effects first, then bleed. Slow and taunt have no runtime yet.
+                // Control effects first, then bleed.
                 if (StatusStun.IsStunned(this) && icons.stun != null) shown[n++] = icons.stun;
+                if (StatusTaunt.ForcedTarget(this) != null && icons.taunt != null && n < shown.Length) shown[n++] = icons.taunt;
+                if (StatusSlow.Multiplier(this) < 0.99f && icons.slow != null && n < shown.Length) shown[n++] = icons.slow;
                 if (StatusBleed.IsBleeding(this) && icons.bleed != null && n < shown.Length) shown[n++] = icons.bleed;
             }
             const float size = 48f;

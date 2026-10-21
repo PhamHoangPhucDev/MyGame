@@ -1,0 +1,284 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b74814bc4f95924d9feeda7006ef7a0, type: 3}
+  m_Name: ClassKit_Brom
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.ClassKit
+  classId: brom
+  displayName: Brom
+  role: Do don. Mau x1.5, toc chay x0.85, giam 15% sat thuong.
+  maxHpMultiplier: 1.5
+  moveSpeedMultiplier: 0.85
+  damageTakenMultiplier: 0.85
+  bodyController: {fileID: 9100000, guid: 3ecfd519956358b4eb512cc144a0b29c, type: 2}
+  equipment: {fileID: 11400000, guid: dcc09a46d1b403146b94e4de50cb8f1c, type: 2}
+  combo:
+    displayName: Bua Ren
+    cooldown: 0.5
+    radius: 1.5
+    damage: 22
+    knockback: 3
+    autoTargetRadius: 1.8
+    impactDelay: 0.16
+    steps:
+    - swingOffset: 0.85
+      damageMul: 1
+      radiusMul: 1
+      knockbackMul: 1
+      vfxVariant: 0
+      vfxScale: 1
+      finisher: 0
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.07
+      shakeAmp: 0.1
+      shakeDur: 0.1
+      shape: 0
+      impactDelay: 0
+      projectileSpeed: 0
+      projectileRange: 0
+      pierce: 1
+      arrowRow: 0
+      bodyLock: 0.42
+    - swingOffset: -0.85
+      damageMul: 1
+      radiusMul: 1
+      knockbackMul: 1
+      vfxVariant: 0
+      vfxScale: 1
+      finisher: 0
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.07
+      shakeAmp: 0.1
+      shakeDur: 0.1
+      shape: 0
+      impactDelay: 0
+      projectileSpeed: 0
+      projectileRange: 0
+      pierce: 1
+      arrowRow: 0
+      bodyLock: 0.42
+    - swingOffset: 0
+      damageMul: 1.3636364
+      radiusMul: 1.0666667
+      knockbackMul: 1.3333334
+      vfxVariant: 0
+      vfxScale: 1
+      finisher: 1
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.08
+      shakeAmp: 0.12
+      shakeDur: 0.12
+      shape: 1
+      impactDelay: 0
+      projectileSpeed: 0
+      projectileRange: 0
+      pierce: 1
+      arrowRow: 0
+      bodyLock: 0.42
+    projectilePoses: []
+    projectileHit: []
+  slot2:
+    displayName: Nen Dat
+    behaviour: 12
+    cooldown: 6
+    damage: 28
+    radius: 2.2
+    range: 0
+    knockback: 3
+    speed: 0
+    duration: 0
+    interval: 0
+    count: 0
+    multiplier: 1
+    anticipation: 0.15
+    hitstop: 0.08
+    shakeAmp: 0.14
+    shakeDur: 0.14
+    popupColor: {r: 0.95, g: 0.63, b: 0.31, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: -1861121109, guid: 22fb3e1903dd96742bed03d980a6ccd6, type: 3}
+    - {fileID: 859903288, guid: 22fb3e1903dd96742bed03d980a6ccd6, type: 3}
+    - {fileID: -438178864, guid: 22fb3e1903dd96742bed03d980a6ccd6, type: 3}
+    - {fileID: -105857785, guid: 22fb3e1903dd96742bed03d980a6ccd6, type: 3}
+    vfxFps: 14.285714
+    projectilePoses: []
+    stunDuration: 0.8
+    dashDistance: 2
+    coneDeg: 70
+  slot3:
+    displayName: Huc Khien
+    behaviour: 13
+    cooldown: 6
+    damage: 20
+    radius: 0.9
+    range: 0
+    knockback: 4
+    speed: 0
+    duration: 0.28
+    interval: 0
+    count: 0
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.06
+    shakeAmp: 0.08
+    shakeDur: 0.08
+    popupColor: {r: 0.95, g: 0.63, b: 0.31, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: 1372744919, guid: 838873bb60b970b479a42da4c9545127, type: 3}
+    - {fileID: -1086882489, guid: 838873bb60b970b479a42da4c9545127, type: 3}
+    - {fileID: -1611750659, guid: 838873bb60b970b479a42da4c9545127, type: 3}
+    vfxFps: 12.5
+    projectilePoses: []
+    stunDuration: 0
+    dashDistance: 2.5
+    coneDeg: 70
+  slot4:
+    displayName: Gam Thach
+    behaviour: 14
+    cooldown: 10
+    damage: 0
+    radius: 4
+    range: 0
+    knockback: 0
+    speed: 0
+    duration: 3
+    interval: 0
+    count: 0
+    multiplier: 0.8
+    anticipation: 0
+    hitstop: 0
+    shakeAmp: 0.06
+    shakeDur: 0.06
+    popupColor: {r: 0.95, g: 0.63, b: 0.31, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: 8427604, guid: c9eb6e650881c4c4aa7b6964e293ac08, type: 3}
+    - {fileID: -807512648, guid: c9eb6e650881c4c4aa7b6964e293ac08, type: 3}
+    - {fileID: 1211897772, guid: c9eb6e650881c4c4aa7b6964e293ac08, type: 3}
+    - {fileID: 1702544875, guid: c9eb6e650881c4c4aa7b6964e293ac08, type: 3}
+    vfxFps: 12.5
+    projectilePoses:
+    - {fileID: -33828592, guid: 7b16caacbbdea5849b5b068873642e65, type: 3}
+    - {fileID: -550414295, guid: 7b16caacbbdea5849b5b068873642e65, type: 3}
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
+  slotV:
+    displayName: Tuong Sat
+    behaviour: 15
+    cooldown: 10
+    damage: 0
+    radius: 0
+    range: 0
+    knockback: 0
+    speed: 0
+    duration: 2
+    interval: 0
+    count: 0
+    multiplier: 0.2
+    anticipation: 0
+    hitstop: 0.05
+    shakeAmp: 0.08
+    shakeDur: 0.09
+    popupColor: {r: 0.95, g: 0.63, b: 0.31, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: -927290525, guid: 578f03fb3e6c1964597530299fbd745c, type: 3}
+    - {fileID: 760327529, guid: 578f03fb3e6c1964597530299fbd745c, type: 3}
+    - {fileID: 796914740, guid: 578f03fb3e6c1964597530299fbd745c, type: 3}
+    - {fileID: 1549369393, guid: 578f03fb3e6c1964597530299fbd745c, type: 3}
+    - {fileID: -1075040410, guid: 578f03fb3e6c1964597530299fbd745c, type: 3}
+    - {fileID: 1140055641, guid: 578f03fb3e6c1964597530299fbd745c, type: 3}
+    - {fileID: -40747923, guid: 1012bd733991d924f85ac8f9658939e6, type: 3}
+    - {fileID: 2112200758, guid: 1012bd733991d924f85ac8f9658939e6, type: 3}
+    - {fileID: -1608632997, guid: 1012bd733991d924f85ac8f9658939e6, type: 3}
+    - {fileID: 318944602, guid: 1012bd733991d924f85ac8f9658939e6, type: 3}
+    - {fileID: -891540595, guid: 1012bd733991d924f85ac8f9658939e6, type: 3}
+    - {fileID: 667388287, guid: 1012bd733991d924f85ac8f9658939e6, type: 3}
+    vfxFps: 16.666668
+    projectilePoses: []
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
+  slotC:
+    displayName: Dong Dat
+    behaviour: 16
+    cooldown: 14
+    damage: 25
+    radius: 1.5
+    range: 0
+    knockback: 3
+    speed: 0
+    duration: 0
+    interval: 0.35
+    count: 3
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.07
+    shakeAmp: 0.12
+    shakeDur: 0.12
+    popupColor: {r: 0.95, g: 0.63, b: 0.31, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: -1297240162, guid: d2f181cc8547e9d429aea4ba3b7bf969, type: 3}
+    - {fileID: -956484188, guid: d2f181cc8547e9d429aea4ba3b7bf969, type: 3}
+    - {fileID: 906787812, guid: d2f181cc8547e9d429aea4ba3b7bf969, type: 3}
+    - {fileID: 1849606401, guid: d2f181cc8547e9d429aea4ba3b7bf969, type: 3}
+    - {fileID: 74149711, guid: d2f181cc8547e9d429aea4ba3b7bf969, type: 3}
+    - {fileID: -1699877781, guid: d2f181cc8547e9d429aea4ba3b7bf969, type: 3}
+    vfxFps: 8
+    projectilePoses: []
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70

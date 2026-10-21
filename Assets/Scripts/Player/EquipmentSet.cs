@@ -20,6 +20,8 @@ namespace GameplayPrototype
         public Sprite hand;
         [Tooltip("Blocks of 6 (Down0, Down1, Up0, Up1, Side0, Side1), one block per combo step.")]
         public Sprite[] slashFrames = new Sprite[0];
+        [Tooltip("Selene gem glow: 2 columns x 2 rows (normal, finisher). Pivot is the gem.")]
+        public Sprite[] chargeFrames = new Sprite[0];
         public bool replaceLegacyRSlash = true;
     }
 }

@@ -68,4 +68,5 @@ MonoBehaviour:
   - {fileID: 235431693, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
   - {fileID: -380915392, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
   - {fileID: 1288594698, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  chargeFrames: []
   replaceLegacyRSlash: 1

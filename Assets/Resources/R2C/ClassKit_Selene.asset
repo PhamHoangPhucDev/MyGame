@@ -50,6 +50,8 @@ MonoBehaviour:
       explodeRadius: 0
       arrowRow: 0
       bodyLock: 0.32
+      drawHoldAt: 0
+      drawHoldFor: 0
     - swingOffset: 0
       damageMul: 1
       radiusMul: 1
@@ -71,6 +73,8 @@ MonoBehaviour:
       explodeRadius: 0
       arrowRow: 0
       bodyLock: 0.32
+      drawHoldAt: 0
+      drawHoldFor: 0
     - swingOffset: 0
       damageMul: 1.7333333
       radiusMul: 1
@@ -92,6 +96,8 @@ MonoBehaviour:
       explodeRadius: 1.2
       arrowRow: 0
       bodyLock: 0.42
+      drawHoldAt: 0
+      drawHoldFor: 0
     projectilePoses:
     - {fileID: -1118395623, guid: 1658f56df61f5a64b8168e6ec5a6c8c9, type: 3}
     - {fileID: -1275113818, guid: 1658f56df61f5a64b8168e6ec5a6c8c9, type: 3}
@@ -110,6 +116,7 @@ MonoBehaviour:
     - {fileID: -775032828, guid: 866c47f77e903de4a89a75d118754a96, type: 3}
     - {fileID: -1255219887, guid: 866c47f77e903de4a89a75d118754a96, type: 3}
     - {fileID: 669727627, guid: 866c47f77e903de4a89a75d118754a96, type: 3}
+    projectileTrail: []
   slot2:
     displayName: Cau Tinh Tu
     behaviour: 21

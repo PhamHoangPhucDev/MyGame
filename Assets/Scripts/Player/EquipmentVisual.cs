@@ -28,6 +28,7 @@ namespace GameplayPrototype
         [SerializeField] Sprite hand;
         [Tooltip("Blocks of 6 (Down0, Down1, Up0, Up1, Side0, Side1), one block per combo step. Pivot = body pivot.")]
         [SerializeField] Sprite[] slashFrames = new Sprite[6];
+        [SerializeField] Sprite[] chargeFrames = new Sprite[0];
         [SerializeField] bool showSlash = true;
         [Tooltip("This hero draws its own slash at the blade tip, so PlayerCombat skips the legacy R slash sprite. " +
                  "Only heroes carrying this component are affected (Sandbox); skills keep their own VFX.")]
@@ -42,7 +43,7 @@ namespace GameplayPrototype
         }
 
         readonly Dictionary<string, Anchor> _table = new Dictionary<string, Anchor>();
-        SpriteRenderer _main, _hand, _off, _slash;
+        SpriteRenderer _main, _hand, _off, _slash, _charge;
         SpriteRenderer _legacySword;
         PlayerCombat _combat;
         Sprite _lastSprite;
@@ -83,6 +84,7 @@ namespace GameplayPrototype
             shieldViews = s.shieldViews ?? new Sprite[0];
             hand = s.hand;
             slashFrames = s.slashFrames ?? new Sprite[0];
+            chargeFrames = s.chargeFrames ?? new Sprite[0];
             replaceLegacyRSlash = s.replaceLegacyRSlash;
         }
 
@@ -94,6 +96,7 @@ namespace GameplayPrototype
             _hand = MakeLayer("Equip_Hand", parent);
             _off = MakeLayer("Equip_Off", parent);
             _slash = MakeLayer("Equip_Slash", parent);
+            _charge = MakeLayer("Equip_Charge", parent);
             var legacy = transform.Find("Sword");
             if (legacy != null) _legacySword = legacy.GetComponent<SpriteRenderer>();
         }
@@ -160,6 +163,7 @@ namespace GameplayPrototype
             if (_lastKey == null || !_table.TryGetValue(_lastKey, out var a) || !body.enabled)
             {
                 _main.enabled = _hand.enabled = _off.enabled = _slash.enabled = false;
+                if (_charge != null) _charge.enabled = false;
                 return;
             }
 
@@ -256,6 +260,36 @@ namespace GameplayPrototype
 
             if (step < 0 && _main != null)
                 _main.transform.localRotation = Quaternion.identity;
+            PlaceCharge(flip, order);
+        }
+
+        /// <summary>Selene gem glow on Attack F0. Coordinates are the spec table (gem center), not the anchor CSV.</summary>
+        void PlaceCharge(bool flip, int order)
+        {
+            if (_charge == null) return;
+            bool f0 = _lastKey != null && _lastKey.StartsWith("Attack_") && _lastKey.EndsWith("_0")
+                && chargeFrames != null && chargeFrames.Length >= 2;
+            if (!f0)
+            {
+                _charge.enabled = false;
+                return;
+            }
+            int step = _combat != null ? _combat.CurrentComboStep : 0;
+            int row = step >= 2 ? 1 : 0;
+            int index = row * 2 + (((int)(Time.unscaledTime / 0.08f)) & 1);
+            if (index >= chargeFrames.Length || chargeFrames[index] == null) index = row * 2;
+            _charge.sprite = chargeFrames[index];
+            bool up = _lastKey.Contains("_Up_");
+            Vector2 local = up ? new Vector2(0.3125f, 1.25f) : new Vector2(-0.375f, 1.25f);
+            if (flip) local.x = -local.x;
+            _charge.transform.localPosition = local;
+            _charge.transform.localRotation = Quaternion.identity;
+            _charge.transform.localScale = Vector3.one;
+            _charge.flipX = false;
+            _charge.sortingLayerID = body.sortingLayerID;
+            _charge.sortingOrder = order + (up ? -3 : 3);
+            _charge.color = Color.white;
+            _charge.enabled = true;
         }
 
         static int Wrap8(int d)

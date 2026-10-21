@@ -273,6 +273,7 @@ public static class R2CPhase4ClassSetup
         }
         set.hand = sprites["Gear/" + className + "_Hand.png"][0];
         set.slashFrames = sprites["Gear/" + className + "_ComboVfx.png"];
+        set.chargeFrames = className == "Selene" ? sprites["Gear/Selene_Charge.png"] : new Sprite[0];
         set.replaceLegacyRSlash = true;
         EditorUtility.SetDirty(set);
         return set;

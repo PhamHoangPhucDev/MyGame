@@ -52,4 +52,9 @@ MonoBehaviour:
   - {fileID: 1678435697, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
   - {fileID: -948294677, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
   - {fileID: -620020052, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  chargeFrames:
+  - {fileID: -1453218179, guid: 62d5dafceda584442935ed31b6bf1d0a, type: 3}
+  - {fileID: 1246707217, guid: 62d5dafceda584442935ed31b6bf1d0a, type: 3}
+  - {fileID: 628929423, guid: 62d5dafceda584442935ed31b6bf1d0a, type: 3}
+  - {fileID: 1825651886, guid: 62d5dafceda584442935ed31b6bf1d0a, type: 3}
   replaceLegacyRSlash: 1

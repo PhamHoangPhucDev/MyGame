@@ -30,3 +30,7 @@ ExportedObj/
 *.unitypackage
 sysinfo.txt
 crashlytics-build.properties
+.claude/
+.cursor/
+IncomingAssets/backup_*/
+Assets/_Recovery/

@@ -128,7 +128,9 @@ namespace GameplayPrototype
             {
                 _follow.SetFollowOffset(p.cameraFollowOffset);
                 _follow.SetKeepOnScreenMargins(p.keepOnScreenMargins.x, p.keepOnScreenMargins.y, p.keepOnScreenMargins.z);
-                _follow.SetBounds(p.defaultBoundsMin, p.defaultBoundsMax);
+                // R3D.1 sandbox owns Ground-derived bounds so Portrait void clear-color never returns.
+                if (!ReferenceSandboxController.IsActive)
+                    _follow.SetBounds(p.defaultBoundsMin, p.defaultBoundsMax);
             }
         }
 

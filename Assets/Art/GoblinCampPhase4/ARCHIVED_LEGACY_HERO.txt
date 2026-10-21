@@ -1,0 +1,4 @@
+ARCHIVED LEGACY HERO (Phase 4)
+Do NOT use Hero_Sheet.png / Hero.controller / HeroExtra as runtime fallback.
+Authoritative knight: Assets/Art/Rebuild/R2C/Aren (Aren.controller + Player_Aren.prefab).
+Kept on disk for comparison only. Do not delete without approval.

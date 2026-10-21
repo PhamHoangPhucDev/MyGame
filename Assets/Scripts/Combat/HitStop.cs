@@ -15,7 +15,10 @@ namespace GameplayPrototype
         float _restoreScale = 1f;
 
         public bool IsActive => _active;
+        /// <summary>Measured unscaled seconds of the last completed freeze (set when it ends).</summary>
         public float LastDuration { get; private set; }
+        /// <summary>Requested duration of the active or last Trigger (clamped 0.04–0.06).</summary>
+        public float LastRequested { get; private set; }
         float _startedUnscaled;
 
         void Awake()
@@ -57,8 +60,10 @@ namespace GameplayPrototype
             if (_blocked || seconds <= 0f) return;
             if (!_active && Time.timeScale <= 0f) return;
             seconds = Mathf.Clamp(seconds, 0.04f, 0.06f);
+            LastRequested = seconds;
             if (_active)
             {
+                // AoE multi-hit: extend remaining, never stack additive freezes.
                 _remaining = Mathf.Max(_remaining, seconds);
                 return;
             }

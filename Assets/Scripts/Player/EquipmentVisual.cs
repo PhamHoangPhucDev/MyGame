@@ -163,7 +163,7 @@ namespace GameplayPrototype
                 return;
             }
 
-            // class kits: per-combo-step row and slash block while an attack frame is showing
+            // Per-combo-step row ("Attack_Down_1@2") when authored; else R3B pose/VFX offsets below.
             int step = _combat != null && _lastKey.StartsWith("Attack_") ? _combat.CurrentComboStep : -1;
             if (step >= 0 && _table.TryGetValue(_lastKey + "@" + step, out var stepRow)) a = stepRow;
 
@@ -172,39 +172,92 @@ namespace GameplayPrototype
             Color tint = body.color;
             if (_lastKey.StartsWith("Hurt_") && _lastKey.EndsWith("_1")) tint *= hurtTint;
 
-            Place(_main, a.MainX > -99 && a.MainOrder != 0 ? Pick(weaponPoses, a.MainDir) : null, a.MainX, a.MainY, a.MainOrder, flip, order, tint);
-            Place(_hand, a.HandX > -99 && a.MainOrder != 0 ? hand : null, a.HandX, a.HandY, a.MainOrder + 1, flip, order, tint);
+            // R3C: one Attack body clip — differentiate A1/A2/A3 via 8-dir pose tilt + Z rotation + slash offset.
+            int mainDir = a.MainDir;
+            float weaponZ = 0f;
+            if (step == 0) { mainDir = Wrap8(mainDir + 1); weaponZ = flip ? 18f : -18f; }      // L→R arc
+            else if (step == 1) { mainDir = Wrap8(mainDir - 1); weaponZ = flip ? -22f : 22f; } // R→L arc
+            else if (step == 2) { mainDir = Wrap8(mainDir + 2); weaponZ = flip ? 28f : -28f; } // finisher wider
+
+            Place(_main, a.MainX > -99 && a.MainOrder != 0 ? Pick(weaponPoses, mainDir) : null, a.MainX, a.MainY, a.MainOrder, flip, order, tint, weaponZ);
+            Place(_hand, a.HandX > -99 && a.MainOrder != 0 ? hand : null, a.HandX, a.HandY, a.MainOrder + 1, flip, order, tint, weaponZ * 0.35f);
             Sprite offSprite = null;
             if (a.OffX > -99 && a.OffOrder != 0)
                 offSprite = a.OffDir >= 0 ? Pick(offPoses, a.OffDir) : Pick(shieldViews, a.OffView);
-            Place(_off, offSprite, a.OffX, a.OffY, a.OffOrder, flip, order, tint);
+            Place(_off, offSprite, a.OffX, a.OffY, a.OffOrder, flip, order, tint, 0f);
 
             int slashIndex = a.Slash;
-            if (slashIndex >= 0 && step > 0 && slashFrames != null && slashFrames.Length >= 6 * (step + 1)) slashIndex += 6 * step;
-            bool slashOn = showSlash && slashIndex >= 0 && slashFrames != null && slashIndex < slashFrames.Length && slashFrames[slashIndex] != null;
+            // Prefer dedicated per-step slash blocks (6 frames × step) when the set has them.
+            if (slashIndex >= 0 && step > 0 && slashFrames != null && slashFrames.Length >= 6 * (step + 1))
+                slashIndex += 6 * step;
+            // R3D.1: finisher uses Aren_Thrust from combat — hide equip slash so arcs don't double.
+            bool hideForThrust = ArenKitVfx.Active && step == 2;
+            bool slashOn = showSlash && !hideForThrust && slashIndex >= 0 && slashFrames != null && slashIndex < slashFrames.Length && slashFrames[slashIndex] != null;
             _slash.enabled = slashOn;
             if (slashOn)
             {
                 _slash.sprite = slashFrames[slashIndex];
-                _slash.transform.localPosition = Vector3.zero;
-                _slash.flipX = flip;
+                // Tip offset along swing so arc sits near the blade, not floating on body pivot.
+                float tipX = 0f, tipY = 0.05f;
+                bool slashFlip = flip;
+                float slashScale = 1f;
+                float slashZ = 0f;
+                if (step == 0)
+                {
+                    tipX = flip ? -0.18f : 0.18f;
+                    slashZ = flip ? 12f : -12f;
+                }
+                else if (step == 1)
+                {
+                    tipX = flip ? 0.18f : -0.18f;
+                    slashFlip = !flip;
+                    slashZ = flip ? -14f : 14f;
+                }
+                else if (step == 2)
+                {
+                    tipX = flip ? -0.08f : 0.08f;
+                    tipY = 0.10f;
+                    // Finisher arc larger (reference cyan crescents are wide) but capped so Aren stays readable.
+                    slashScale = 1.55f;
+                    slashZ = flip ? 10f : -10f;
+                }
+                _slash.transform.localPosition = new Vector3(tipX, tipY, 0f);
+                _slash.transform.localRotation = Quaternion.Euler(0f, 0f, slashZ);
+                _slash.flipX = slashFlip;
+                _slash.transform.localScale = new Vector3(slashScale, slashScale, 1f);
                 _slash.sortingLayerID = body.sortingLayerID;
                 _slash.sortingOrder = order + a.SlashOrder;
                 _slash.color = new Color(1f, 1f, 1f, tint.a);
             }
+            else if (_slash != null)
+            {
+                _slash.transform.localScale = Vector3.one;
+                _slash.transform.localRotation = Quaternion.identity;
+                _slash.transform.localPosition = Vector3.zero;
+            }
+
+            if (step < 0 && _main != null)
+                _main.transform.localRotation = Quaternion.identity;
+        }
+
+        static int Wrap8(int d)
+        {
+            d %= 8;
+            return d < 0 ? d + 8 : d;
         }
 
         static Sprite Pick(Sprite[] arr, int i) => arr != null && i >= 0 && i < arr.Length ? arr[i] : null;
 
         // Anchor pixel (x, y) from the top-left of the 32x32 cell; body pivot = (16, 30). The layer sprite's pivot
         // sits on the anchor pixel's top-left corner, so mirroring is just negating x and flipping the sprite.
-        void Place(SpriteRenderer r, Sprite s, int x, int y, int relOrder, bool flip, int bodyOrder, Color tint)
+        void Place(SpriteRenderer r, Sprite s, int x, int y, int relOrder, bool flip, int bodyOrder, Color tint, float localZ = 0f)
         {
             r.enabled = s != null;
             if (s == null) return;
             r.sprite = s;
             float lx = (x - 16) / pixelsPerUnit, ly = (30 - y) / pixelsPerUnit;
             r.transform.localPosition = new Vector3(flip ? -lx : lx, ly, 0f);
+            r.transform.localRotation = Quaternion.Euler(0f, 0f, localZ);
             r.flipX = flip;
             r.sortingLayerID = body.sortingLayerID;
             r.sortingOrder = bodyOrder + relOrder;

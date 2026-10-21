@@ -141,6 +141,21 @@ namespace GameplayPrototype
                 0.8f, 1.05f);
         }
 
+        /// <summary>R3C: compact hit spark at the enemy (not a second slash system). Finisher uses a slightly larger flash.</summary>
+        public static CombatVfx SpawnHitSpark(Vector3 pos, bool finisher = false)
+        {
+            float scale = finisher ? 0.85f : 0.55f;
+            float life = finisher ? 0.11f : 0.08f;
+            Spawn(Style.Flash, pos, 0f, scale, life,
+                new Color(1f, 1f, 1f, 1f),
+                new Color(0.85f, 0.95f, 1f, 0f),
+                0.7f, finisher ? 1.12f : 1.02f);
+            return Spawn(Style.Impact, pos, Random.Range(0f, 360f), scale * 0.9f, life,
+                new Color(0.9f, 0.97f, 1f, 1f),
+                new Color(1f, 1f, 1f, 0f),
+                0.75f, finisher ? 1.1f : 1.02f);
+        }
+
         // Pool: every hit spawns 3-5 of these, so they are recycled instead of created/destroyed.
         static readonly System.Collections.Generic.Stack<CombatVfx> Pool = new();
         static Transform _poolRoot;

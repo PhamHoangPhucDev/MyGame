@@ -75,10 +75,25 @@ namespace GameplayPrototype
                 var follow = cam.GetComponent<CameraFollow>();
                 if (follow != null && player != null)
                     follow.SetTarget(player);
+                ClampCameraToGround(follow);
             }
 
             SpawnMobs();
             Debug.Log("[Sandbox] ReferenceCombatSandbox ready — progress writes suppressed.");
+        }
+
+        /// <summary>R3D.1: keep Portrait framing inside Ground tiles so Camera clear-color void never shows.</summary>
+        static void ClampCameraToGround(CameraFollow follow)
+        {
+            if (follow == null) return;
+            var ground = GameObject.Find("Ground")?.GetComponent<UnityEngine.Tilemaps.Tilemap>();
+            if (ground == null) return;
+            var b = ground.localBounds;
+            var t = ground.transform;
+            Vector3 min = t.TransformPoint(b.min);
+            Vector3 max = t.TransformPoint(b.max);
+            // Inset slightly so edge tiles stay in frame.
+            follow.SetBounds(new Vector2(min.x + 0.5f, min.y + 0.5f), new Vector2(max.x - 0.5f, max.y - 0.5f));
         }
 
         void ResolveRefs()

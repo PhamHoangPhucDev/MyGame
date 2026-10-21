@@ -16,6 +16,8 @@ namespace GameplayPrototype
         ProjectileFan = 7,   // count projectiles in a spread, optional bleed (Vex 3)
         Stealth = 8,         // untargetable-ish: invulnerable + translucent for duration (Vex V)
         Execute = 9,         // blink to target and strike; x multiplier under HP threshold (Vex C)
+        ShieldBash = 10,     // R3D.1 Aren 2 — short dash + frontal cone + stun
+        Charge = 11,         // R3D.1 Aren 3 — longer dash path hits (VFX ChargeDust; no new art pack skill)
     }
 
     /// <summary>One hit of the R combo.</summary>
@@ -97,6 +99,13 @@ namespace GameplayPrototype
         public float vfxFps = 12f;
         [Tooltip("ProjectileFan: 8 projectile poses (R, UR, U, UL, L, DL, D, DR).")]
         public Sprite[] projectilePoses = new Sprite[0];
+        [Header("R3D.1 Aren kit")]
+        [Tooltip("ShieldBash: stun seconds applied to Goblin/Gobrider on hit.")]
+        public float stunDuration;
+        [Tooltip("ShieldBash / Charge: dash travel distance in world units.")]
+        public float dashDistance = 2f;
+        [Tooltip("ShieldBash cone half-angle in degrees.")]
+        public float coneDeg = 70f;
     }
 
     /// <summary>
@@ -200,6 +209,35 @@ namespace GameplayPrototype
             slot4 = new SkillDef { displayName = "Whirlwind", behaviour = SkillBehaviour.Whirlwind, cooldown = 7f, damage = 20, radius = 2.2f, count = 3, interval = 0.11f, knockback = 3.0f, hitstop = 0.05f, shakeAmp = 0.08f, shakeDur = 0.09f, popupColor = ice };
             slotV = new SkillDef { displayName = "Guard", behaviour = SkillBehaviour.Guard, cooldown = 8f, duration = 1.4f, multiplier = 0.35f, hitstop = 0.05f, shakeAmp = 0.08f, shakeDur = 0.09f, popupColor = Color.white };
             slotC = new SkillDef { displayName = "Crescent Strike", behaviour = SkillBehaviour.CrescentStrike, cooldown = 10f, damage = 42, radius = 2.1f, knockback = 5.2f, anticipation = 0.12f, hitstop = 0.06f, shakeAmp = 0.12f, shakeDur = 0.12f, popupColor = pale };
+        }
+
+        /// <summary>
+        /// R3D.1 designed Aren kit: same damage/CD as legacy where possible; skill 2 = Shield Bash + stun;
+        /// skill 3 keeps DashStrike numbers with ChargeDust VFX; 4/V/C get layered Aren sheets.
+        /// </summary>
+        public void FillDesignedAren()
+        {
+            FillLegacyAren();
+            role = "Aren kit VFX R3D.1 — Shield Bash stun + layered Whirl/Bulwark/Dawn/Thrust.";
+            Color gold = new Color(1f, 0.9f, 0.45f), ice = new Color(0.8f, 0.95f, 1f), pale = new Color(0.7f, 0.95f, 1f);
+            // Keep cooldown 5s / damage near legacy 30 — stun is the new readable beat.
+            slot2 = new SkillDef
+            {
+                displayName = "Shield Bash", behaviour = SkillBehaviour.ShieldBash,
+                cooldown = 5f, damage = 30, radius = 1.4f, range = 0.5f, knockback = 4f,
+                speed = 11f, duration = 0.18f, dashDistance = 2f, coneDeg = 70f, stunDuration = 0.32f,
+                hitstop = 0.05f, shakeAmp = 0.08f, shakeDur = 0.09f, popupColor = gold
+            };
+            slot3 = new SkillDef
+            {
+                displayName = "Charge", behaviour = SkillBehaviour.Charge,
+                cooldown = 4f, damage = 26, radius = 0.8f, speed = 14f, duration = 0.3f, dashDistance = 4f,
+                knockback = 3f, hitstop = 0.05f, shakeAmp = 0.06f, shakeDur = 0.08f, popupColor = ice
+            };
+            slot4.displayName = "Whirl Ring";
+            slotV.displayName = "Bulwark";
+            slotC.displayName = "Dawn";
+            slotC.popupColor = pale;
         }
     }
 }

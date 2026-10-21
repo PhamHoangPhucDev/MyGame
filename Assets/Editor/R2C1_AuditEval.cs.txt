@@ -1,0 +1,45 @@
+using UnityEngine;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using GameplayPrototype;
+
+var sand = EditorSceneManager.OpenScene("Assets/Scenes/ReferenceCombatSandbox.unity");
+var p = GameObject.Find("Player");
+var status = PrefabUtility.GetPrefabInstanceStatus(p);
+var ctrl = p.GetComponent<PlayerVisual>();
+var so = new SerializedObject(ctrl);
+var body = so.FindProperty("bodyController").objectReferenceValue as RuntimeAnimatorController;
+var eq = p.GetComponent<EquipmentVisual>();
+var eso = new SerializedObject(eq);
+var set = eso.FindProperty("set").objectReferenceValue;
+var anchors = eso.FindProperty("anchorTable").objectReferenceValue;
+var cc = p.GetComponent<ClassCombat>();
+var aspect = Object.FindFirstObjectByType<AspectProfileService>();
+var pcs = Object.FindObjectsByType<PlayerCombat>(FindObjectsSortMode.None).Length;
+Debug.Log($"[AUDIT Sandbox] prefab={status} ctrl={(body!=null?AssetDatabase.GetAssetPath(body):"null")} equipSet={(set!=null)} anchors={(anchors!=null)} classCombat={(cc!=null)} aspect={(aspect!=null)} players={pcs}");
+
+var camp = EditorSceneManager.OpenScene("Assets/Scenes/GameplayPrototype_Phase4Test.unity");
+p = GameObject.Find("Player");
+status = PrefabUtility.GetPrefabInstanceStatus(p);
+ctrl = p.GetComponent<PlayerVisual>();
+so = new SerializedObject(ctrl);
+body = so.FindProperty("bodyController").objectReferenceValue as RuntimeAnimatorController;
+eq = p.GetComponent<EquipmentVisual>();
+cc = p.GetComponent<ClassCombat>();
+aspect = Object.FindFirstObjectByType<AspectProfileService>();
+pcs = Object.FindObjectsByType<PlayerCombat>(FindObjectsSortMode.None).Length;
+var aso = aspect != null ? new SerializedObject(aspect) : null;
+var activeId = aso != null ? aso.FindProperty("activeId").enumValueIndex : -1;
+var auto = aso != null && aso.FindProperty("autoDetectFromScreen").boolValue;
+var land = aso != null ? aso.FindProperty("landscape").objectReferenceValue : null;
+var port = aso != null ? aso.FindProperty("portrait").objectReferenceValue : null;
+var cam = Camera.main;
+var follow = cam != null ? cam.GetComponent<CameraFollow>() : null;
+Transform target = null;
+if (follow != null)
+{
+    var fso = new SerializedObject(follow);
+    target = fso.FindProperty("target").objectReferenceValue as Transform;
+}
+Debug.Log($"[AUDIT Campaign] prefab={status} ctrl={(body!=null?AssetDatabase.GetAssetPath(body):"null")} equip={(eq!=null)} classCombat={(cc!=null)} aspect={(aspect!=null)} activeId={activeId} autoDetect={auto} land={(land!=null)} port={(port!=null)} players={pcs} camTarget={(target!=null?target.name:"null")}");
+return "ok";

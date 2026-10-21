@@ -61,6 +61,16 @@ namespace GameplayPrototype
                 return false;
             }
             _active = slot;
+            // R3D.1: Aren sandbox uses designed kit (Shield Bash + VFX). Other classes unchanged.
+            bool aren = string.Equals(kit.classId, "aren", System.StringComparison.OrdinalIgnoreCase)
+                        || string.Equals(kit.displayName, "Aren", System.StringComparison.OrdinalIgnoreCase);
+            if (aren)
+            {
+                kit.FillDesignedAren();
+                ArenKitVfx.PreferDesignedSkills = true;
+            }
+            else
+                ArenKitVfx.PreferDesignedSkills = false;
             if (_combat != null) _combat.SetKit(kit);
             if (kit.bodyController != null) GetComponent<PlayerVisual>()?.RebindBodyController(kit.bodyController);
             if (kit.equipment != null) GetComponent<EquipmentVisual>()?.Configure(kit.equipment);

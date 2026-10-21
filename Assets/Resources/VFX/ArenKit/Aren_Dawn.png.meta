@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: 0fd4bcfb61bd5ce4f9b4d154eccdd128
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2442994125399123768
+    second: Aren_Dawn_0
+  - first:
+      213: -3802539590950997059
+    second: Aren_Dawn_1
+  - first:
+      213: 399975804551764805
+    second: Aren_Dawn_2
+  - first:
+      213: 5888595364705260179
+    second: Aren_Dawn_3
+  - first:
+      213: -2329702716448551497
+    second: Aren_Dawn_4
+  - first:
+      213: -7287983594113449941
+    second: Aren_Dawn_5
+  - first:
+      213: -8107967928322662835
+    second: Aren_Dawn_6
+  - first:
+      213: -3272753054646464137
+    second: Aren_Dawn_7
+  - first:
+      213: 8098394627909211199
+    second: Aren_Dawn_8
+  - first:
+      213: -6160396520316691045
+    second: Aren_Dawn_9
+  - first:
+      213: 3871262791521782992
+    second: Aren_Dawn_10
+  - first:
+      213: -4420540813161292221
+    second: Aren_Dawn_11
+  - first:
+      213: -713625555844810054
+    second: Aren_Dawn_12
+  - first:
+      213: -842284558082149721
+    second: Aren_Dawn_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Aren_Dawn_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 205
+        width: 43
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 837e7c8a63247e120800000000000000
+      internalID: 2442994125399123768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_1
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 193
+        width: 52
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db3b105836aaa3bc0800000000000000
+      internalID: -3802539590950997059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_2
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 210
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54b1f0500effc8500800000000000000
+      internalID: 399975804551764805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_3
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 202
+        width: 48
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 392d44bf84e78b150800000000000000
+      internalID: 5888595364705260179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_4
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 196
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bd42d109bb3bafd0800000000000000
+      internalID: -2329702716448551497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_5
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 198
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b204ef7d881ebda90800000000000000
+      internalID: -7287983594113449941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 148
+        width: 38
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4e51168026ba7f80800000000000000
+      internalID: -8107967928322662835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_7
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 141
+        width: 49
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7711934cf68d492d0800000000000000
+      internalID: -3272753054646464137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_8
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 163
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f34d577c107436070800000000000000
+      internalID: 8098394627909211199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_9
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 140
+        width: 41
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9d98f20100e18aa0800000000000000
+      internalID: -6160396520316691045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_10
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 154
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dcc7d08ffc79b530800000000000000
+      internalID: 3871262791521782992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_11
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 31
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34e976c2d8517a2c0800000000000000
+      internalID: -4420540813161292221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_12
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 20
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ababa318651b816f0800000000000000
+      internalID: -713625555844810054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aren_Dawn_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 17
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a277b338aa9f44f0800000000000000
+      internalID: -842284558082149721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Aren_Dawn_0: 2442994125399123768
+      Aren_Dawn_1: -3802539590950997059
+      Aren_Dawn_10: 3871262791521782992
+      Aren_Dawn_11: -4420540813161292221
+      Aren_Dawn_12: -713625555844810054
+      Aren_Dawn_13: -842284558082149721
+      Aren_Dawn_2: 399975804551764805
+      Aren_Dawn_3: 5888595364705260179
+      Aren_Dawn_4: -2329702716448551497
+      Aren_Dawn_5: -7287983594113449941
+      Aren_Dawn_6: -8107967928322662835
+      Aren_Dawn_7: -3272753054646464137
+      Aren_Dawn_8: 8098394627909211199
+      Aren_Dawn_9: -6160396520316691045
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

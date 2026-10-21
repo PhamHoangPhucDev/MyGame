@@ -8,8 +8,8 @@ using UnityEngine;
 
 /// <summary>
 /// R2C: imports the approved Aren set (Docs/.../R2C_OriginalHero/unity_export) under Assets/Art/Rebuild/R2C/Aren,
-/// builds Aren clips + Aren.controller (copy of Hero_R2 state machine), and switches ONLY the ReferenceCombatSandbox
-/// Player to it, adding EquipmentVisual. Phase 4 / Level 1-4 assets and scenes are not touched.
+/// builds Aren clips + Aren.controller, and wires Sandbox / campaign Players to that shared visual.
+/// Does not resurrect Phase 4 Hero_Sheet as a runtime fallback.
 /// </summary>
 public static class R2CArenSandboxSetup
 {
@@ -17,7 +17,10 @@ public static class R2CArenSandboxSetup
     const string Dst = "Assets/Art/Rebuild/R2C/Aren";
     const string CtrlSrc = "Assets/Art/Rebuild/R2/Hero/Animators/Hero_R2.controller";
     const string CtrlDst = Dst + "/Animators/Aren.controller";
+    const string EquipSet = "Assets/Art/Rebuild/R2C/ClassKits/EquipmentSet_Aren.asset";
+    const string PrefabPath = Dst + "/Prefabs/Player_Aren.prefab";
     const string Sandbox = "Assets/Scenes/ReferenceCombatSandbox.unity";
+    const string Campaign = "Assets/Scenes/GameplayPrototype_Phase4Test.unity";
     static readonly string[] Views = { "Down", "Up", "Side" };
     static readonly string[] Dir8 = { "R", "UR", "U", "UL", "L", "DL", "D", "DR" };
 
@@ -236,11 +239,36 @@ public static class R2CArenSandboxSetup
         return a;
     }
 
-    static void AssignSandbox()
+    [MenuItem("Tools/Gameplay Prototype/R2C/Apply Aren Shared Hero (Sandbox + L1-4 scene)")]
+    public static void ApplySharedHero()
     {
-        var scene = EditorSceneManager.OpenScene(Sandbox);
+        if (AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(CtrlDst) == null)
+            throw new System.Exception("Missing " + CtrlDst + ". Run Setup Sandbox Aren first.");
+        AssignPlayerInScene(Sandbox, savePrefab: true);
+        AssignPlayerInScene(Campaign, savePrefab: false);
+        AssetDatabase.SaveAssets();
+        Debug.Log("[R2C] Aren shared visual applied to Sandbox + Phase4Test. Prefab: " + PrefabPath);
+    }
+
+    static void AssignSandbox() => AssignPlayerInScene(Sandbox, savePrefab: false);
+
+    static void AssignPlayerInScene(string scenePath, bool savePrefab)
+    {
+        var scene = EditorSceneManager.OpenScene(scenePath);
         var player = GameObject.Find("Player");
-        if (player == null) throw new System.Exception("Sandbox has no Player");
+        if (player == null) throw new System.Exception(scenePath + " has no Player");
+        WireArenVisual(player);
+        if (savePrefab)
+        {
+            Directory.CreateDirectory(Dst + "/Prefabs");
+            PrefabUtility.SaveAsPrefabAsset(player, PrefabPath);
+        }
+        EditorSceneManager.MarkSceneDirty(scene);
+        EditorSceneManager.SaveScene(scene);
+    }
+
+    static void WireArenVisual(GameObject player)
+    {
         var visual = player.GetComponent<GameplayPrototype.PlayerVisual>();
         var so = new SerializedObject(visual);
         so.FindProperty("bodyController").objectReferenceValue = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(CtrlDst);
@@ -249,6 +277,9 @@ public static class R2CArenSandboxSetup
         var eq = player.GetComponent<GameplayPrototype.EquipmentVisual>();
         if (eq == null) eq = player.AddComponent<GameplayPrototype.EquipmentVisual>();
         var eso = new SerializedObject(eq);
+        var set = AssetDatabase.LoadAssetAtPath<GameplayPrototype.EquipmentSet>(EquipSet);
+        if (set != null)
+            eso.FindProperty("set").objectReferenceValue = set;
         eso.FindProperty("anchorTable").objectReferenceValue = AssetDatabase.LoadAssetAtPath<TextAsset>(Dst + "/Aren_Anchors.csv");
         var sword = Sprites(Dst + "/Gear/Aren_Sword.png");
         var shield = Sprites(Dst + "/Gear/Aren_Shield.png");
@@ -260,9 +291,7 @@ public static class R2CArenSandboxSetup
         var sf = eso.FindProperty("slashFrames"); sf.arraySize = 6;
         for (int v = 0; v < 3; v++) for (int fr = 0; fr < 2; fr++) sf.GetArrayElementAtIndex(v * 2 + fr).objectReferenceValue = slash["Aren_Slash_" + Views[v] + "_" + fr];
         eso.FindProperty("hand").objectReferenceValue = AssetDatabase.LoadAssetAtPath<Sprite>(Dst + "/Gear/Aren_Hand.png");
+        eso.FindProperty("replaceLegacyRSlash").boolValue = true;
         eso.ApplyModifiedPropertiesWithoutUndo();
-
-        EditorSceneManager.MarkSceneDirty(scene);
-        EditorSceneManager.SaveScene(scene);
     }
 }

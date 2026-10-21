@@ -115,7 +115,7 @@ namespace GameplayPrototype
 
         float AutoTargetRadius => _kit != null ? _kit.combo.autoTargetRadius : slashAutoTargetRadius;
 
-        /// <summary>Combo step of the swing in flight (kit path only; -1 otherwise). EquipmentVisual picks per-step poses/VFX.</summary>
+        /// <summary>Combo step of the swing in flight (0..n-1). EquipmentVisual picks per-step poses/VFX. -1 when idle/skills.</summary>
         public int CurrentComboStep => _pendingStep;
         public bool IsStealthed => _stealthTimer > 0f;
         public float NextHitMultiplier => _nextHitMul;
@@ -364,6 +364,8 @@ namespace GameplayPrototype
                 case SkillBehaviour.Whirlwind: BeginWhirlwind(def); break;
                 case SkillBehaviour.Guard: BeginGuard(def); GameAudio.Play(Sfx.SkillGuard); break;
                 case SkillBehaviour.CrescentStrike: BeginCrescentStrike(def); GameAudio.Play(Sfx.SkillCrescent); break;
+                case SkillBehaviour.ShieldBash: PerformShieldBash(def); GameAudio.Play(Sfx.SkillFlame); break;
+                case SkillBehaviour.Charge: PerformCharge(def); GameAudio.Play(Sfx.SkillDash); break;
             }
             return true;
         }
@@ -399,13 +401,15 @@ namespace GameplayPrototype
             _pendingDamage = slashDamage;
             _pendingKnockback = slashKnockback;
             _pendingVfxScale = 1f;
+            // R3B: three readable patterns with one body Attack clip — swing / VFX / hitbox only.
+            // ATTACK1 L→R, ATTACK2 R→L, ATTACK3 finisher (wider + stronger feedback).
+            _pendingStep = _slashChain;
             if (_slashChain == 0)
                 _slashSwing = (_slashFacing + perp * 0.85f).normalized;
             else if (_slashChain == 1)
                 _slashSwing = (_slashFacing - perp * 0.85f).normalized;
             else
             {
-                // Finisher: wider arc, stronger push, larger cyan slash.
                 _slashSwing = _slashFacing;
                 _pendingRadius = slashRadius * 1.35f;
                 _pendingKnockback = slashKnockback * 1.25f;
@@ -485,7 +489,11 @@ namespace GameplayPrototype
             Vector3 slashPos = transform.position + (Vector3)(swing * 0.32f) + Vector3.up * 0.42f;
             // R1 authored slash frames; falls back to the procedural arc if the sheets are missing.
             // Skipped only when this hero's EquipmentVisual draws its own blade-tip slash (Sandbox R2C).
-            if (!EquipmentVisual.ReplacesLegacySlash(this) &&
+            // R3D.1: finisher uses Aren_Thrust sheet when available; else legacy slash frames/procedural.
+            bool thrust = ArenKitVfx.Active && _pendingStep == 2;
+            if (thrust)
+                ArenKitVfx.PlayThrust(transform.position + Vector3.up * 0.42f, swing);
+            else if (!EquipmentVisual.ReplacesLegacySlash(this) &&
                 !CombatVfx.SpawnSwordSlashFrames(transform.position + Vector3.up * 0.42f, swing, _pendingSlashVariant))
                 CombatVfx.SpawnSwordSlash(slashPos, swing, _pendingVfxScale);
             int strikeDamage = _pendingDamage;
@@ -610,6 +618,12 @@ namespace GameplayPrototype
         // Each routine takes an optional kit SkillDef; null = the serialized fields and constants (Level 1-4, unchanged).
         void PerformFlameBurst(SkillDef d = null)
         {
+            // Sandbox designed Aren: route key 2 through Shield Bash when PreferDesignedSkills.
+            if (ArenKitVfx.Active && d == null)
+            {
+                PerformShieldBash(null);
+                return;
+            }
             float range = d != null ? d.range : flameRange;
             Vector2 origin = (Vector2)transform.position + _facing * range;
             CombatVfx.SpawnBurst(origin, new Color(1f, 0.45f, 0.15f), 1.55f);
@@ -618,12 +632,116 @@ namespace GameplayPrototype
                 d != null ? d.knockback : 2.8f, d != null ? d.popupColor : new Color(1f, 0.55f, 0.25f));
         }
 
+        /// <summary>R3D.1 Aren skill 2 — short dash then frontal cone + stun (Goblin/Gobrider).</summary>
+        void PerformShieldBash(SkillDef d)
+        {
+            Vector2 dir = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.right;
+            float dashTime = d != null ? Mathf.Max(0.08f, d.duration) : 0.18f;
+            float speed = d != null ? d.speed : 11f;
+            if (_movement != null)
+                _movement.OverrideVelocity(dir * speed, dashTime);
+            ArenKitVfx.PlayChargeDust(transform.position + Vector3.down * 0.15f);
+            // Play bash VFX at cast; damage lands after the dash settles.
+            ArenKitVfx.PlayShieldBash(transform.position + Vector3.up * 0.35f, dir);
+            if (!isActiveAndEnabled)
+            {
+                FinishShieldBash(dir, d);
+                return;
+            }
+            StartCoroutine(ShieldBashImpact(dir, d, dashTime));
+        }
+
+        System.Collections.IEnumerator ShieldBashImpact(Vector2 dir, SkillDef d, float delay)
+        {
+            float t = 0f;
+            while (t < delay)
+            {
+                // Unscaled: editor/agent Play Mode often runs with deltaTime≈0 when unfocused.
+                t += Time.unscaledDeltaTime;
+                yield return null;
+            }
+            FinishShieldBash(dir, d);
+        }
+
+        void FinishShieldBash(Vector2 dir, SkillDef d)
+        {
+            float radius = d != null ? d.radius : 1.4f;
+            int damage = d != null ? d.damage : flameDamage;
+            float knock = d != null ? d.knockback : 4f;
+            Color pop = d != null ? d.popupColor : new Color(1f, 0.9f, 0.45f);
+            float cone = d != null && d.coneDeg > 1f ? d.coneDeg : 70f;
+            ApplyConeDamage((Vector2)transform.position + dir * 0.35f, dir, radius, cone, damage, knock, pop);
+        }
+
+        void ApplyConeDamage(Vector2 origin, Vector2 facing, float radius, float coneDeg, int damage, float knockback, Color popupColor)
+        {
+            CombatTargeting.OverlapEnemies(origin, radius, _hitBuffer, enemyMask);
+            int landed = 0;
+            float half = coneDeg * 0.5f;
+            foreach (var health in _hitBuffer)
+            {
+                if (health == null || health.IsDead) continue;
+                Vector2 hitPoint = health.transform.position;
+                Vector2 to = hitPoint - origin;
+                if (to.sqrMagnitude > 0.0001f && Vector2.Angle(facing, to) > half)
+                    continue;
+                Vector2 dir = to.sqrMagnitude > 0.001f ? to.normalized : facing;
+                if (!health.TakeDamage(damage, hitPoint, dir * knockback)) continue;
+                landed++;
+                DamagePopup.Spawn((Vector3)hitPoint + Vector3.up * 1.05f, damage, popupColor);
+                CombatVfx.SpawnHitSpark(hitPoint);
+                StatusStun.Apply(health, StatusStun.DurationFor(health));
+                HitComboCounter.Instance?.RegisterHit();
+            }
+            if (landed > 0)
+            {
+                if (_kit != null) ApplyKitHitFeedback();
+                else ApplyHitFeedback(_activeSkill, false);
+            }
+        }
+
+        /// <summary>R3D.1 Aren skill 3 — Charge path (same CD/dmg band as Dash Slash) + ChargeDust; no new sheet pack skill.</summary>
+        void PerformCharge(SkillDef d)
+        {
+            Vector2 dir = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.right;
+            float dur = d != null ? d.duration : 0.3f;
+            float speed = d != null ? d.speed : dashSpeed;
+            if (_movement != null)
+                _movement.OverrideVelocity(dir * speed, dur);
+            if (isActiveAndEnabled)
+                StartCoroutine(ChargeDustTrail(dur));
+            else
+                ArenKitVfx.PlayChargeDust(transform.position + Vector3.down * 0.2f);
+            ApplyAreaDamage((Vector2)transform.position + dir * 0.4f,
+                d != null ? d.radius : 0.8f,
+                d != null ? d.damage : dashDamage,
+                d != null ? d.knockback : 3f,
+                d != null ? d.popupColor : new Color(0.55f, 0.9f, 1f));
+        }
+
+        System.Collections.IEnumerator ChargeDustTrail(float dur)
+        {
+            float t = 0f;
+            while (t < dur)
+            {
+                ArenKitVfx.PlayChargeDust(transform.position + Vector3.down * 0.2f);
+                float w = 0f;
+                while (w < 0.08f) { w += Time.unscaledDeltaTime; yield return null; }
+                t += 0.08f;
+            }
+        }
+
         void PerformDashSlash(SkillDef d = null)
         {
             Vector2 dir = _facing.sqrMagnitude > 0.01f ? _facing : Vector2.right;
             _movement.OverrideVelocity(dir * (d != null ? d.speed : dashSpeed), d != null ? d.duration : dashDuration);
-            CombatVfx.SpawnCrescent(transform.position + (Vector3)(dir * 0.35f), dir, 1.5f);
-            CombatVfx.SpawnShockwave(transform.position, 1.25f);
+            if (ArenKitVfx.Active)
+                ArenKitVfx.PlayChargeDust(transform.position + Vector3.down * 0.2f);
+            else
+            {
+                CombatVfx.SpawnCrescent(transform.position + (Vector3)(dir * 0.35f), dir, 1.5f);
+                CombatVfx.SpawnShockwave(transform.position, 1.25f);
+            }
             ApplyAreaDamage((Vector2)transform.position + dir * 0.4f, d != null ? d.radius : dashRadius, d != null ? d.damage : dashDamage,
                 d != null ? d.knockback : 4.2f, d != null ? d.popupColor : new Color(0.55f, 0.9f, 1f));
         }
@@ -665,6 +783,8 @@ namespace GameplayPrototype
                 CombatVfx.SpawnCrescentTinted(transform.position + Vector3.up * 0.35f, dir, 1.5f, d.tintColor);
                 CombatVfx.SpawnCrescentTinted(transform.position + Vector3.up * 0.35f, -dir, 1.2f, d.tintColor * 0.8f);
             }
+            else if (ArenKitVfx.Active)
+                ArenKitVfx.PlayWhirlRing(transform);
             else
             {
                 CombatVfx.SpawnCrescent(transform.position, _facing, 2.0f);
@@ -675,13 +795,34 @@ namespace GameplayPrototype
                 d != null ? d.knockback : 3.0f, d != null ? d.popupColor : new Color(0.8f, 0.95f, 1f));
         }
 
+        ArenKitVfx.BulwarkHandle _bulwark;
+        bool _bulwarkLooping;
+
         void BeginGuard(SkillDef d = null)
         {
             _guardTimer = d != null ? d.duration : guardDuration;
             var health = GetComponent<Health>();
             health?.SetDamageTakenMultiplier(d != null ? d.multiplier : guardDamageMultiplier);
-            CombatVfx.SpawnShockwave(transform.position, 1.1f);
-            CombatVfx.SpawnBurst(transform.position, new Color(0.65f, 0.85f, 1f), 0.9f);
+            if (ArenKitVfx.Active)
+            {
+                _bulwark = ArenKitVfx.BeginBulwark(transform);
+                _bulwarkLooping = false;
+                StartCoroutine(BulwarkAppearThenLoop());
+            }
+            else
+            {
+                CombatVfx.SpawnShockwave(transform.position, 1.1f);
+                CombatVfx.SpawnBurst(transform.position, new Color(0.65f, 0.85f, 1f), 0.9f);
+            }
+        }
+
+        System.Collections.IEnumerator BulwarkAppearThenLoop()
+        {
+            float w = 0f;
+            while (w < 0.12f) { w += Time.unscaledDeltaTime; yield return null; }
+            if (_guardTimer <= 0f) yield break;
+            ArenKitVfx.LoopBulwark(ref _bulwark, transform);
+            _bulwarkLooping = true;
         }
 
         void TickGuard()
@@ -696,6 +837,9 @@ namespace GameplayPrototype
         {
             _guardTimer = 0f;
             GetComponent<Health>()?.SetDamageTakenMultiplier(1f);
+            if (_bulwarkLooping || _bulwark.back != null || _bulwark.front != null)
+                ArenKitVfx.EndBulwark(ref _bulwark, transform);
+            _bulwarkLooping = false;
         }
 
         void BeginCrescentStrike(SkillDef d = null)
@@ -714,9 +858,14 @@ namespace GameplayPrototype
             _crescentPending = false;
             var d = _crescentDef;
             Vector2 origin = (Vector2)transform.position + _facing * 0.55f;
-            CombatVfx.SpawnCrescent(origin, _facing, 2.35f);
-            if (!CombatVfx.SpawnSwordSlashFrames(transform.position + Vector3.up * 0.45f, _facing, 2))
-                CombatVfx.SpawnSwordSlash(transform.position + (Vector3)(_facing * 0.4f) + Vector3.up * 0.45f, _facing, 1.7f);
+            if (ArenKitVfx.Active)
+                ArenKitVfx.PlayDawn(transform.position + Vector3.up * 0.4f, _facing);
+            else
+            {
+                CombatVfx.SpawnCrescent(origin, _facing, 2.35f);
+                if (!CombatVfx.SpawnSwordSlashFrames(transform.position + Vector3.up * 0.45f, _facing, 2))
+                    CombatVfx.SpawnSwordSlash(transform.position + (Vector3)(_facing * 0.4f) + Vector3.up * 0.45f, _facing, 1.7f);
+            }
             ApplyAreaDamage(origin, d != null ? d.radius : crescentRadius, d != null ? d.damage : crescentDamage,
                 d != null ? d.knockback : crescentKnockback, d != null ? d.popupColor : new Color(0.7f, 0.95f, 1f));
         }
@@ -736,8 +885,11 @@ namespace GameplayPrototype
                     continue;
 
                 landed++;
-                DamagePopup.Spawn(hitPoint + Vector2.up * 0.25f, damage, popupColor);
-                CombatVfx.SpawnImpact(hitPoint);
+                // Popup rises above mob labels; spark is at the hit body (not a second R slash).
+                bool finisher = _activeSkill == SkillId.Sword && (_pendingStep == 2 || _pendingVfxScale > 1.2f);
+                Vector3 popupAt = (Vector3)hitPoint + Vector3.up * 0.55f + (Vector3)(dir * 0.12f);
+                DamagePopup.Spawn(popupAt, damage, popupColor);
+                CombatVfx.SpawnHitSpark((Vector3)hitPoint + (Vector3)(dir * 0.05f), finisher);
                 HitComboCounter.Instance?.RegisterHit();
             }
 

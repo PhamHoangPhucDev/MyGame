@@ -24,12 +24,14 @@ namespace GameplayPrototype
         Image _barBg;
         Image _barFill;
         Vector2 _layoutNudge;
+        Vector2 _nudgeTarget;
         float _desiredY;
         static Sprite _white;
         static Transform _hero;
         static readonly System.Collections.Generic.List<EnemyWorldUI> Active = new();
         static int _layoutFrame = -1;
         static Camera _cam;
+        const float NudgeSmooth = 14f;
 
         public string LabelText
         {
@@ -45,6 +47,39 @@ namespace GameplayPrototype
         public Vector2 ScreenAnchor { get; private set; }
         public bool IsOnScreen { get; private set; }
         public RectTransform Root => _root;
+        public Vector2 LayoutNudge => _layoutNudge;
+
+        /// <summary>R3D: count on-screen label pairs still overlapping after layout (Name+HP box ≈ 86×34).</summary>
+        public static int CountOverlappingPairs(float minX = 104f, float minY = 36f)
+        {
+            int overlaps = 0;
+            for (int i = 0; i < Active.Count; i++)
+            {
+                var a = Active[i];
+                if (a == null || !a.IsOnScreen || a._root == null) continue;
+                Vector2 pa = a.ScreenAnchor + a._layoutNudge;
+                for (int j = i + 1; j < Active.Count; j++)
+                {
+                    var b = Active[j];
+                    if (b == null || !b.IsOnScreen || b._root == null) continue;
+                    Vector2 pb = b.ScreenAnchor + b._layoutNudge;
+                    if (Mathf.Abs(pb.x - pa.x) < minX && Mathf.Abs(pb.y - pa.y) < minY)
+                        overlaps++;
+                }
+            }
+            return overlaps;
+        }
+
+        public static int ActiveOnScreenCount
+        {
+            get
+            {
+                int n = 0;
+                for (int i = 0; i < Active.Count; i++)
+                    if (Active[i] != null && Active[i].IsOnScreen) n++;
+                return n;
+            }
+        }
 
         void Awake()
         {
@@ -107,6 +142,9 @@ namespace GameplayPrototype
             if (!_root.gameObject.activeSelf)
                 _root.gameObject.SetActive(true);
 
+            // Smooth toward layout target so labels don't jitter when mobs pack/unpack.
+            float t = 1f - Mathf.Exp(-NudgeSmooth * Time.unscaledDeltaTime);
+            _layoutNudge = Vector2.Lerp(_layoutNudge, _nudgeTarget, t);
             Vector2 screen = ScreenAnchor + _layoutNudge;
             screen = NudgeOffHero(screen);
             _root.position = ClampLabel(screen);
@@ -130,47 +168,55 @@ namespace GameplayPrototype
             {
                 var ui = Active[i];
                 if (ui == null) continue;
-                ui._layoutNudge = Vector2.zero;
+                ui._nudgeTarget = Vector2.zero;
                 ui.RefreshAnchor();
             }
 
-            // Resolve overlaps: push labels apart while keeping them near their mob.
-            for (int pass = 0; pass < 3; pass++)
+            // Stable order: stack by world Y so labels don't swap lanes every frame.
+            Active.Sort(static (a, b) =>
+            {
+                if (a == null && b == null) return 0;
+                if (a == null) return 1;
+                if (b == null) return -1;
+                int byY = a.transform.position.y.CompareTo(b.transform.position.y);
+                return byY != 0 ? byY : a.GetInstanceID().CompareTo(b.GetInstanceID());
+            });
+
+            bool sandbox = ReferenceSandboxController.IsActive;
+            // R3D: keep-out sized to "Goblin Lv.3" + HP bar footprint (~110×40 screen px at 576×1024).
+            float minX = sandbox ? 118f : 104f;
+            float minY = sandbox ? 42f : 36f;
+            float limit = sandbox ? 96f : 72f;
+
+            // Resolve overlaps into _nudgeTarget (then smooth toward it in LateUpdate).
+            for (int pass = 0; pass < 5; pass++)
             {
                 for (int i = 0; i < Active.Count; i++)
                 {
                     var a = Active[i];
                     if (a == null || !a.IsOnScreen) continue;
-                    Vector2 pa = a.ScreenAnchor + a._layoutNudge;
+                    Vector2 pa = a.ScreenAnchor + a._nudgeTarget;
                     for (int j = i + 1; j < Active.Count; j++)
                     {
                         var b = Active[j];
                         if (b == null || !b.IsOnScreen) continue;
-                        Vector2 pb = b.ScreenAnchor + b._layoutNudge;
+                        Vector2 pb = b.ScreenAnchor + b._nudgeTarget;
                         float dx = pb.x - pa.x;
                         float dy = pb.y - pa.y;
-                        // Sandbox QA uses a slightly wider keep-out. Campaign spacing is unchanged.
-                        bool sandbox = ReferenceSandboxController.IsActive;
-                        float minX = sandbox ? 92f : 78f;
-                        float minY = sandbox ? 30f : 22f;
                         if (Mathf.Abs(dx) >= minX || Mathf.Abs(dy) >= minY)
                             continue;
 
-                        float pushY = (minY - Mathf.Abs(dy)) * 0.5f + 2f;
-                        float dirY = dy >= 0f ? 1f : -1f;
-                        if (Mathf.Abs(dy) < 0.5f)
-                            dirY = a.transform.position.x <= b.transform.position.x ? 1f : -1f;
-                        a._layoutNudge.y -= pushY * dirY * 0.5f;
-                        b._layoutNudge.y += pushY * dirY * 0.5f;
+                        // Prefer vertical separation by world-Y order (i above j on screen → push apart).
+                        float pushY = (minY - Mathf.Abs(dy)) * 0.55f + 3f;
+                        a._nudgeTarget.y -= pushY * 0.5f;
+                        b._nudgeTarget.y += pushY * 0.5f;
 
-                        if (Mathf.Abs(dx) < minX * 0.55f)
+                        if (Mathf.Abs(dx) < minX * 0.6f)
                         {
-                            float pushX = (minX * 0.55f - Mathf.Abs(dx)) * 0.5f;
-                            float dirX = dx >= 0f ? 1f : -1f;
-                            if (Mathf.Abs(dx) < 0.5f)
-                                dirX = 1f;
-                            a._layoutNudge.x -= pushX * dirX * 0.5f;
-                            b._layoutNudge.x += pushX * dirX * 0.5f;
+                            float pushX = (minX * 0.6f - Mathf.Abs(dx)) * 0.5f;
+                            float dirX = a.transform.position.x <= b.transform.position.x ? -1f : 1f;
+                            a._nudgeTarget.x += pushX * dirX * 0.5f;
+                            b._nudgeTarget.x -= pushX * dirX * 0.5f;
                         }
                     }
                 }
@@ -180,9 +226,8 @@ namespace GameplayPrototype
             {
                 var ui = Active[i];
                 if (ui == null) continue;
-                float limit = ReferenceSandboxController.IsActive ? 72f : ui.maxNudge;
-                ui._layoutNudge.x = Mathf.Clamp(ui._layoutNudge.x, -limit, limit);
-                ui._layoutNudge.y = Mathf.Clamp(ui._layoutNudge.y, -limit, limit);
+                ui._nudgeTarget.x = Mathf.Clamp(ui._nudgeTarget.x, -limit, limit);
+                ui._nudgeTarget.y = Mathf.Clamp(ui._nudgeTarget.y, -limit, limit);
             }
         }
 

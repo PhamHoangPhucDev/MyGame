@@ -75,8 +75,11 @@ namespace GameplayPrototype
         void Activate(Vector3 worldPos, int damage, Color color)
         {
             if (_text == null) Build();
-            float side = (_stagger++ & 1) == 0 ? 0.32f : -0.32f;
-            _worldPos = worldPos + new Vector3(side, 0.62f, 0f);
+            // R3D: popup lanes sit above Name/HP (labels ~0.75–1.1 above feet). Rise clear of hero.
+            int lane = _stagger++ % 4;
+            float side = lane == 0 ? 0.42f : (lane == 1 ? -0.42f : (lane == 2 ? 0.18f : -0.18f));
+            float lift = 1.05f + (lane % 2) * 0.18f;
+            _worldPos = worldPos + new Vector3(side, lift, 0f);
             _age = 0f;
             _color = color;
             _color.a = 1f;

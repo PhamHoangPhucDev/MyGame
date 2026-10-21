@@ -42,6 +42,8 @@ public static class R2CVexSandboxSetup
         // gear
         var dag = new List<SpriteRect>();
         for (int d = 0; d < 8; d++) dag.Add(R("Vex_Dagger_" + Dir8[d], d * 48, 0, 48, 48, 48, new Vector2(0.5f, 0.5f)));
+        dag.Add(R("Vex_Dagger_PeekL", 8 * 48, 0, 48, 48, 48, new Vector2(0.5f, 0.5f)));
+        dag.Add(R("Vex_Dagger_PeekR", 9 * 48, 0, 48, 48, 48, new Vector2(0.5f, 0.5f)));
         Slice(Dst + "/Gear/Vex_Dagger.png", dag);
         var sl = new List<SpriteRect>();
         for (int s = 0; s < 4; s++) for (int v = 0; v < 3; v++) for (int fr = 0; fr < 2; fr++)
@@ -174,7 +176,10 @@ public static class R2CVexSandboxSetup
         var dag = Sprites(Dst + "/Gear/Vex_Dagger.png");
         var sl = Sprites(Dst + "/Gear/Vex_Slash.png");
         set.anchorTable = AssetDatabase.LoadAssetAtPath<TextAsset>(Dst + "/Vex_Anchors.csv");
-        set.weaponPoses = Ordered(dag, System.Array.ConvertAll(Dir8, x => "Vex_Dagger_" + x));
+        var poseNames = new List<string>(System.Array.ConvertAll(Dir8, x => "Vex_Dagger_" + x));
+        poseNames.Add("Vex_Dagger_PeekL");
+        poseNames.Add("Vex_Dagger_PeekR");
+        set.weaponPoses = Ordered(dag, poseNames);
         set.offPoses = set.weaponPoses;
         set.shieldViews = new Sprite[0];
         set.hand = null;
@@ -224,7 +229,8 @@ public static class R2CVexSandboxSetup
         {
             // visuals only: Aren's combat numbers stay exactly as built from the scene values
             aren.bodyController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(AreDst + "/Animators/Aren.controller");
-            aren.equipment = arenSet;
+            var back = AssetDatabase.LoadAssetAtPath<GameplayPrototype.EquipmentSet>(KitDir + "/EquipmentSet_Aren_BackGear.asset");
+            aren.equipment = back != null ? back : arenSet;
             EditorUtility.SetDirty(aren);
         }
         AssetDatabase.SaveAssets();

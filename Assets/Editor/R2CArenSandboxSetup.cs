@@ -112,6 +112,7 @@ public static class R2CArenSandboxSetup
     {
         var sword = new List<SpriteRect>();
         for (int d = 0; d < 8; d++) sword.Add(R("Aren_Sword_" + Dir8[d], d * 48, 0, 48, 48, 48, new Vector2(0.5f, 0.5f)));
+        sword.Add(R("Aren_Sword_BackHilt", 8 * 48, 0, 48, 48, 48, new Vector2(0.5f, 0.5f)));
         Slice(Dst + "/Gear/Aren_Sword.png", sword);
         var shield = new List<SpriteRect>();
         for (int v = 0; v < 3; v++) shield.Add(R("Aren_Shield_" + Views[v], v * 16, 0, 16, 16, 16, new Vector2(0.5f, 0.5f)));

@@ -19,7 +19,7 @@ MonoBehaviour:
   maxHpMultiplier: 1
   moveSpeedMultiplier: 1
   bodyController: {fileID: 9100000, guid: e3a01f8320c605f49b9038f23a37e8a1, type: 2}
-  equipment: {fileID: 11400000, guid: 0826bf225108b214386c65a711f7c7f6, type: 2}
+  equipment: {fileID: 11400000, guid: 0582f77d4b4097f4e87c750e692ab297, type: 2}
   combo:
     displayName: Kiem Hiep Si
     cooldown: 0.35

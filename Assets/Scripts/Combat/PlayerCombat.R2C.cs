@@ -13,9 +13,34 @@ namespace GameplayPrototype
             Vector2 dir = _slashFacing.sqrMagnitude > 0.01f ? _slashFacing : _facing;
             int explodeDamage = step.shape == ComboHitShape.Projectile && step.radiusMul > 1.01f ? damage : 0;
             float explode = explodeDamage > 0 ? _pendingRadius : 0f;
-            KitProjectile.Fire((Vector2)transform.position + Vector2.up * 0.4f + dir * 0.2f, dir, poses,
+            var impact = HitRow(hits, step.arrowRow > 0 ? 1 : 0);
+            KitProjectile.Fire(ArrowSpawn(dir), dir, poses,
                 step.projectileSpeed, step.projectileRange, explodeDamage > 0 ? 0 : damage, _pendingKnockback,
-                0, 0.5f, 0f, enemyMask, new Color(0.85f, 1f, 0.7f), hits, step.pierce, explode, hits, step.arrowRow, explodeDamage);
+                0, 0.5f, 0f, enemyMask, new Color(0.55f, 0.9f, 0.35f), impact, step.pierce, explode, impact, step.arrowRow, explodeDamage,
+                () => ApplyKitHitFeedback());
+        }
+
+        /// <summary>Lyra releases from the bow tip. Other classes keep the old offset.</summary>
+        Vector2 ArrowSpawn(Vector2 dir)
+        {
+            Vector2 d = dir.sqrMagnitude > 0.01f ? dir.normalized : Vector2.down;
+            if (_kit == null || _kit.classId != "lyra")
+                return (Vector2)transform.position + Vector2.up * 0.4f + d * 0.2f;
+            if (Mathf.Abs(d.x) > Mathf.Abs(d.y))
+                return (Vector2)transform.position + new Vector2(d.x > 0f ? 0.875f : -0.875f, 0.5625f);
+            if (d.y > 0f)
+                return (Vector2)transform.position + new Vector2(0f, 1.75f);
+            return (Vector2)transform.position + new Vector2(0.125f, -0.0625f);
+        }
+
+        static Sprite[] HitRow(Sprite[] sheet, int row)
+        {
+            if (sheet == null || sheet.Length < 8) return sheet;
+            var a = new Sprite[4];
+            int start = row * 4;
+            for (int i = 0; i < 4; i++)
+                a[i] = start + i < sheet.Length ? sheet[start + i] : sheet[0];
+            return a;
         }
 
         void BeginGroundSlam(SkillDef d)
@@ -153,6 +178,15 @@ namespace GameplayPrototype
             for (int i = 0; i < waves; i++)
             {
                 ApplyAreaDamage(center, d.radius, d.damage, d.knockback, d.popupColor);
+                if (d.projectilePoses != null && d.projectilePoses.Length > 0)
+                {
+                    int drops = 3;
+                    for (int k = 0; k < drops; k++)
+                    {
+                        Vector2 at = center + Random.insideUnitCircle * d.radius;
+                        KitVfx.Play(d.projectilePoses, at, 10f, false, 30);
+                    }
+                }
                 if (i < waves - 1) yield return new WaitForSeconds(d.interval > 0.01f ? d.interval : 0.2f);
             }
         }
@@ -187,7 +221,7 @@ namespace GameplayPrototype
             var list = new List<Health>();
             for (float dist = 0.4f; dist <= 9f; dist += 0.45f)
             {
-                CombatTargeting.OverlapEnemies((Vector2)transform.position + dir * dist, 0.5f, list, enemyMask);
+                CombatTargeting.OverlapEnemies((Vector2)transform.position + dir * dist, 0.25f, list, enemyMask);
                 foreach (var h in list)
                 {
                     if (!hit.Add(h)) continue;
@@ -196,7 +230,9 @@ namespace GameplayPrototype
                         DamagePopup.Spawn(h.transform.position + Vector3.up * 0.4f, h.LastDamageApplied, d.popupColor);
                 }
             }
-            if (d.vfxFrames != null && d.vfxFrames.Length > 0)
+            if (d.vfxFrames != null && d.vfxFrames.Length >= 18)
+                TileBeam(d.vfxFrames, dir);
+            else if (d.vfxFrames != null && d.vfxFrames.Length > 0)
                 KitVfx.Play(d.vfxFrames, (Vector2)transform.position + dir * 4.5f + Vector2.up * 0.4f, 20f, dir.x < 0f, 35);
             if (hit.Count > 0) ApplyKitHitFeedback();
             else if (d.shakeAmp > 0f) _cameraFollow?.Shake(d.shakeAmp, d.shakeDur);
@@ -283,6 +319,31 @@ namespace GameplayPrototype
                 if (i == 0) KitVfx.ScreenTint(new Color(0.45f, 0.2f, 0.7f, 0.08f), 0.1f);
                 if (i < stars - 1) yield return new WaitForSeconds(d.interval > 0.01f ? d.interval : 0.3f);
             }
+        }
+
+        void TileBeam(Sprite[] frames, Vector2 dir)
+        {
+            bool vertical = Mathf.Abs(dir.y) > Mathf.Abs(dir.x);
+            int row = vertical ? 9 : 0;
+            bool flipX = !vertical && dir.x < 0f;
+            bool flipY = vertical && dir.y > 0f;
+            Vector2 origin = ArrowSpawn(dir);
+            PlaceBeam(frames, row, origin, flipX, flipY);
+            for (float d = 2f; d < 9f; d += 2f)
+                PlaceBeam(frames, row + 3, origin + dir * d, flipX, flipY);
+            PlaceBeam(frames, row + 6, origin + dir * 9f, flipX, flipY);
+        }
+
+        void PlaceBeam(Sprite[] frames, int start, Vector2 at, bool flipX, bool flipY)
+        {
+            if (start + 2 >= frames.Length) return;
+            var host = new GameObject("BeamBit");
+            host.transform.position = at;
+            Object.Destroy(host, 0.35f);
+            var v = KitVfx.PlayAttached(new[] { frames[start], frames[start + 1], frames[start + 2] }, host.transform, Vector3.zero, 20f, flipX, 45, true);
+            if (v == null || !flipY) return;
+            var sr = v.GetComponent<SpriteRenderer>();
+            if (sr != null) sr.flipY = true;
         }
 
         void StunInRadius(Vector2 center, float radius, float seconds)

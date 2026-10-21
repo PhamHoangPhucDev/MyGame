@@ -594,12 +594,22 @@ namespace GameplayPrototype
             bool knifePose = _visual != null && _visual.PlaySkillPose("KnifeThrow", baseDir, 0.22f, true);
             if (!knifePose)
                 _visual?.PlaySlashSwing(baseDir, skipWindup: true);
+            bool lyra = _kit != null && _kit.classId == "lyra";
+            if (lyra && d.vfxFrames != null && d.vfxFrames.Length >= 3)
+            {
+                int row = Mathf.Abs(baseDir.x) > Mathf.Abs(baseDir.y) ? 2 : (baseDir.y > 0f ? 1 : 0);
+                int startCell = Mathf.Min(row * 3, d.vfxFrames.Length - 3);
+                KitVfx.Play(new[] { d.vfxFrames[startCell], d.vfxFrames[startCell + 1], d.vfxFrames[startCell + 2] },
+                    transform.position, d.vfxFps > 1f ? d.vfxFps : 16f, baseDir.x > 0f && row == 2, 40);
+            }
+            var fanHit = lyra ? HitRow(_kit.combo != null ? _kit.combo.projectileHit : null, 0) : d.vfxFrames;
             float start = n > 1 ? -d.spreadDeg * 0.5f : 0f, step = n > 1 ? d.spreadDeg / (n - 1) : 0f;
             for (int i = 0; i < n; i++)
             {
                 Vector2 dir = Quaternion.Euler(0f, 0f, start + step * i) * baseDir;
-                KitProjectile.Fire((Vector2)transform.position + Vector2.up * 0.45f + dir * 0.3f, dir, d.projectilePoses, d.speed, d.range,
-                    d.damage, d.knockback, d.bleedDamage, d.bleedTick, d.bleedDuration, enemyMask, d.popupColor, d.vfxFrames);
+                Vector2 from = lyra ? ArrowSpawn(dir) : (Vector2)transform.position + Vector2.up * 0.45f + dir * 0.3f;
+                KitProjectile.Fire(from, dir, d.projectilePoses, d.speed, d.range,
+                    d.damage, d.knockback, d.bleedDamage, d.bleedTick, d.bleedDuration, enemyMask, d.popupColor, fanHit);
             }
         }
 

@@ -1,0 +1,356 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b74814bc4f95924d9feeda7006ef7a0, type: 3}
+  m_Name: ClassKit_Lyra
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.ClassKit
+  classId: lyra
+  displayName: Lyra
+  role: Xa. Mau x0.85, toc chay x1.1.
+  maxHpMultiplier: 0.85
+  moveSpeedMultiplier: 1.1
+  damageTakenMultiplier: 1
+  bodyController: {fileID: 9100000, guid: 5cda7dbb56a0aa147985dc0aeecf5423, type: 2}
+  equipment: {fileID: 11400000, guid: 6adf4da6c3057e443a689c1ef0cebd17, type: 2}
+  combo:
+    displayName: Mui Ten Rung
+    cooldown: 0.38
+    radius: 0.3
+    damage: 14
+    knockback: 1.2
+    autoTargetRadius: 6
+    impactDelay: 0.14
+    steps:
+    - swingOffset: 0
+      damageMul: 1
+      radiusMul: 1
+      knockbackMul: 1
+      vfxVariant: 0
+      vfxScale: 1
+      finisher: 0
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.035
+      shakeAmp: 0
+      shakeDur: 0
+      shape: 2
+      impactDelay: 0.14
+      projectileSpeed: 14
+      projectileRange: 6
+      pierce: 1
+      arrowRow: 0
+      bodyLock: 0.26
+    - swingOffset: 0
+      damageMul: 1
+      radiusMul: 1
+      knockbackMul: 1
+      vfxVariant: 0
+      vfxScale: 1
+      finisher: 0
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.035
+      shakeAmp: 0
+      shakeDur: 0
+      shape: 2
+      impactDelay: 0.14
+      projectileSpeed: 14
+      projectileRange: 6
+      pierce: 1
+      arrowRow: 0
+      bodyLock: 0.26
+    - swingOffset: 0
+      damageMul: 1.7142857
+      radiusMul: 1
+      knockbackMul: 1
+      vfxVariant: 0
+      vfxScale: 1
+      finisher: 1
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.045
+      shakeAmp: 0
+      shakeDur: 0
+      shape: 2
+      impactDelay: 0.28
+      projectileSpeed: 18
+      projectileRange: 7
+      pierce: 3
+      arrowRow: 1
+      bodyLock: 0.42
+    projectilePoses:
+    - {fileID: -480797559, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -519608141, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1058476053, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -2124617094, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1579140885, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -1072735269, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1141185748, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -1866824439, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1820664957, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 817053361, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -384915927, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 48543314, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1070821065, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 313407292, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -1398341962, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -1133548, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 136246936, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -492996972, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -163825784, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -88957777, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1365215123, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -583018107, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -601922798, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1235868855, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    projectileHit:
+    - {fileID: 2095658250, guid: 6ca39741f3782024bb39170144d64d9c, type: 3}
+    - {fileID: 374471097, guid: 6ca39741f3782024bb39170144d64d9c, type: 3}
+    - {fileID: -1952257597, guid: 6ca39741f3782024bb39170144d64d9c, type: 3}
+    - {fileID: 1286636054, guid: 6ca39741f3782024bb39170144d64d9c, type: 3}
+    - {fileID: 510106250, guid: 6ca39741f3782024bb39170144d64d9c, type: 3}
+    - {fileID: 2095940137, guid: 6ca39741f3782024bb39170144d64d9c, type: 3}
+    - {fileID: 1973285818, guid: 6ca39741f3782024bb39170144d64d9c, type: 3}
+    - {fileID: -996808857, guid: 6ca39741f3782024bb39170144d64d9c, type: 3}
+  slot2:
+    displayName: Ten Quat
+    behaviour: 7
+    cooldown: 5
+    damage: 16
+    radius: 0
+    range: 6
+    knockback: 1.2
+    speed: 14
+    duration: 0
+    interval: 0
+    count: 5
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.035
+    shakeAmp: 0
+    shakeDur: 0.09
+    popupColor: {r: 0.55, g: 0.9, b: 0.35, a: 1}
+    spreadDeg: 60
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: 746768233, guid: 23ec145170cc8b14fa1368e7c1c8cf2f, type: 3}
+    - {fileID: 1587960009, guid: 23ec145170cc8b14fa1368e7c1c8cf2f, type: 3}
+    - {fileID: -979519983, guid: 23ec145170cc8b14fa1368e7c1c8cf2f, type: 3}
+    - {fileID: 1283974675, guid: 23ec145170cc8b14fa1368e7c1c8cf2f, type: 3}
+    - {fileID: 2002850816, guid: 23ec145170cc8b14fa1368e7c1c8cf2f, type: 3}
+    - {fileID: -969274288, guid: 23ec145170cc8b14fa1368e7c1c8cf2f, type: 3}
+    - {fileID: -1092293937, guid: 23ec145170cc8b14fa1368e7c1c8cf2f, type: 3}
+    - {fileID: -527254209, guid: 23ec145170cc8b14fa1368e7c1c8cf2f, type: 3}
+    - {fileID: 1126556958, guid: 23ec145170cc8b14fa1368e7c1c8cf2f, type: 3}
+    vfxFps: 16.666668
+    projectilePoses:
+    - {fileID: -480797559, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -519608141, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1058476053, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -2124617094, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1579140885, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -1072735269, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1141185748, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -1866824439, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1820664957, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 817053361, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -384915927, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 48543314, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1070821065, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 313407292, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -1398341962, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -1133548, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 136246936, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -492996972, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -163825784, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -88957777, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1365215123, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -583018107, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: -601922798, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    - {fileID: 1235868855, guid: a050ac22905136f43ab127e2da39946b, type: 3}
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
+  slot3:
+    displayName: Nhay Lui
+    behaviour: 17
+    cooldown: 6
+    damage: 0
+    radius: 1.5
+    range: 0
+    knockback: 0
+    speed: 0
+    duration: 2
+    interval: 0
+    count: 0
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.05
+    shakeAmp: 0.08
+    shakeDur: 0.09
+    popupColor: {r: 0.55, g: 0.9, b: 0.35, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: -584947061, guid: f4d766c90fe35624fa55def319cb61e6, type: 3}
+    - {fileID: 537466188, guid: f4d766c90fe35624fa55def319cb61e6, type: 3}
+    - {fileID: -70792523, guid: f4d766c90fe35624fa55def319cb61e6, type: 3}
+    vfxFps: 16.666668
+    projectilePoses:
+    - {fileID: -1343106026, guid: d33797517e2afc1449d89fd023ec1e7f, type: 3}
+    - {fileID: 348269059, guid: d33797517e2afc1449d89fd023ec1e7f, type: 3}
+    - {fileID: -168662582, guid: d33797517e2afc1449d89fd023ec1e7f, type: 3}
+    - {fileID: -965797401, guid: d33797517e2afc1449d89fd023ec1e7f, type: 3}
+    - {fileID: 1448497676, guid: d33797517e2afc1449d89fd023ec1e7f, type: 3}
+    stunDuration: 0
+    dashDistance: 3
+    coneDeg: 70
+  slot4:
+    displayName: Mua Ten
+    behaviour: 18
+    cooldown: 8
+    damage: 10
+    radius: 2
+    range: 0
+    knockback: 0
+    speed: 0
+    duration: 0
+    interval: 0.2
+    count: 6
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.05
+    shakeAmp: 0.08
+    shakeDur: 0.09
+    popupColor: {r: 0.55, g: 0.9, b: 0.35, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: -1849812267, guid: 312f38acb75cf5440992e1c6c4c013df, type: 3}
+    - {fileID: 460648380, guid: 312f38acb75cf5440992e1c6c4c013df, type: 3}
+    vfxFps: 6.6666665
+    projectilePoses:
+    - {fileID: -2080358007, guid: 8ae60d28c5cf5e9448b4f0bd7e94d0d1, type: 3}
+    - {fileID: 1910502208, guid: 8ae60d28c5cf5e9448b4f0bd7e94d0d1, type: 3}
+    - {fileID: 964673986, guid: 8ae60d28c5cf5e9448b4f0bd7e94d0d1, type: 3}
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
+  slotV:
+    displayName: Buoc Gio
+    behaviour: 19
+    cooldown: 9
+    damage: 0
+    radius: 0
+    range: 0
+    knockback: 0
+    speed: 0
+    duration: 3
+    interval: 0
+    count: 0
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.05
+    shakeAmp: 0.08
+    shakeDur: 0.09
+    popupColor: {r: 0.55, g: 0.9, b: 0.35, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: 1966583723, guid: e9cfd4a0f220a8c43a23b8585c062021, type: 3}
+    - {fileID: 401524353, guid: e9cfd4a0f220a8c43a23b8585c062021, type: 3}
+    - {fileID: -1018996863, guid: e9cfd4a0f220a8c43a23b8585c062021, type: 3}
+    - {fileID: -1971705499, guid: e9cfd4a0f220a8c43a23b8585c062021, type: 3}
+    vfxFps: 12.5
+    projectilePoses:
+    - {fileID: -705266281, guid: 7058e15494690b941ab17cd08fed60cd, type: 3}
+    - {fileID: -1423917554, guid: 7058e15494690b941ab17cd08fed60cd, type: 3}
+    - {fileID: 501563759, guid: 7058e15494690b941ab17cd08fed60cd, type: 3}
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
+  slotC:
+    displayName: Ten Xuyen Rung
+    behaviour: 20
+    cooldown: 11
+    damage: 45
+    radius: 0.5
+    range: 9
+    knockback: 2
+    speed: 0
+    duration: 0
+    interval: 0
+    count: 0
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.05
+    shakeAmp: 0.1
+    shakeDur: 0.1
+    popupColor: {r: 0.55, g: 0.9, b: 0.35, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: -1873838622, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: -929566336, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: 930120993, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: 1091758178, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: -2096046090, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: -286925088, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: 309676837, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: 367190226, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: 1761822898, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: 2049985033, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: -991130743, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: -647399496, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: -1169114244, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: 689582266, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: -55104173, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: 812135048, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: 1844031574, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    - {fileID: -293118060, guid: 2d1c84c274e32f542bec41a52f842dd4, type: 3}
+    vfxFps: 12
+    projectilePoses: []
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4132bc713e737704f8b72303856a4793, type: 3}
+  m_Name: EquipmentSet_Lyra
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.EquipmentSet
+  anchorTable: {fileID: 4900000, guid: 9f5be9e134188eb479091f40314df137, type: 3}
+  weaponPoses:
+  - {fileID: 2106983274, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 753495973, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -546160075, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -1096830211, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 179834928, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -1031234980, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 1042154063, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 2121028100, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -417927198, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 990148209, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 1479073812, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -1338846163, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 221900776, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -1362502554, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 845139956, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 597218149, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 858220696, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -463120449, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -2124694006, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -1545576398, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -1443328085, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -146547568, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -1883592968, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -2104288788, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -181658175, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -1684181988, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 700270588, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 1904829688, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -1037902749, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -801261522, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: -1412630976, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  - {fileID: 725154078, guid: 66d8bc74c5e8a584d8753ca36bf7fe19, type: 3}
+  offPoses: []
+  shieldViews: []
+  hand: {fileID: 21300000, guid: c0b1886e3042b7d4495863ba6b8bfb1f, type: 3}
+  slashFrames:
+  - {fileID: 985314089, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: 344326375, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: -3596507, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: 1250451191, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: -90996953, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: 1003383741, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: -1057910134, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: -2003012211, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: -832109487, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: -312231005, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: 1839245969, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: 698763775, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: 1046591401, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: -2013076723, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: -1100195325, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: 235431693, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: -380915392, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  - {fileID: 1288594698, guid: 250f9329297af7b4aa606ff34ad18760, type: 3}
+  replaceLegacyRSlash: 1

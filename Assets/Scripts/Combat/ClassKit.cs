@@ -300,5 +300,32 @@ namespace GameplayPrototype
             slotV = new SkillDef { displayName = "Tuong Sat", behaviour = SkillBehaviour.IronWall, cooldown = 10f, duration = 2f, multiplier = 0.2f, vfxFrames = wall, vfxFps = 1f / 0.06f, popupColor = iron };
             slotC = new SkillDef { displayName = "Dong Dat", behaviour = SkillBehaviour.Quake, cooldown = 14f, damage = 25, count = 3, interval = 0.35f, radius = 1.5f, knockback = 3f, vfxFrames = quake, vfxFps = 8f, hitstop = 0.07f, shakeAmp = 0.12f, shakeDur = 0.12f, popupColor = iron };
         }
+
+        /// <summary>Lyra per LYRA_KIT_SPEC. Shots are projectiles; the finisher pierces three enemies.</summary>
+        public void FillLyra(Sprite[] arrows, Sprite[] arrowHit, Sprite[] fan, Sprite[] leaf, Sprite[] vine,
+            Sprite[] rainZone, Sprite[] rainArrow, Sprite[] aura, Sprite[] puff, Sprite[] beam)
+        {
+            classId = "lyra"; displayName = "Lyra";
+            role = "Xa. Mau x0.85, toc chay x1.1.";
+            maxHpMultiplier = 0.85f; moveSpeedMultiplier = 1.1f; damageTakenMultiplier = 1f;
+            Color leafGreen = new Color(0.55f, 0.9f, 0.35f);
+            combo = new ComboDef
+            {
+                displayName = "Mui Ten Rung", cooldown = 0.38f, radius = 0.3f, damage = 14, knockback = 1.2f,
+                autoTargetRadius = 6f, impactDelay = 0.14f,
+                projectilePoses = arrows, projectileHit = arrowHit,
+                steps = new[]
+                {
+                    new ComboStep { shape = ComboHitShape.Projectile, impactDelay = 0.14f, projectileSpeed = 14f, projectileRange = 6f, pierce = 1, arrowRow = 0, hitstop = 0.035f, shakeAmp = 0f, shakeDur = 0f, bodyLock = 0.26f },
+                    new ComboStep { shape = ComboHitShape.Projectile, impactDelay = 0.14f, projectileSpeed = 14f, projectileRange = 6f, pierce = 1, arrowRow = 0, hitstop = 0.035f, shakeAmp = 0f, shakeDur = 0f, bodyLock = 0.26f },
+                    new ComboStep { shape = ComboHitShape.Projectile, damageMul = 24f / 14f, impactDelay = 0.28f, projectileSpeed = 18f, projectileRange = 7f, pierce = 3, arrowRow = 1, hitstop = 0.045f, shakeAmp = 0f, shakeDur = 0f, bodyLock = 0.42f, finisher = true },
+                },
+            };
+            slot2 = new SkillDef { displayName = "Ten Quat", behaviour = SkillBehaviour.ProjectileFan, cooldown = 5f, count = 5, spreadDeg = 60f, damage = 16, speed = 14f, range = 6f, knockback = 1.2f, projectilePoses = arrows, vfxFrames = fan, vfxFps = 1f / 0.06f, hitstop = 0.035f, shakeAmp = 0f, popupColor = leafGreen };
+            slot3 = new SkillDef { displayName = "Nhay Lui", behaviour = SkillBehaviour.LeapBack, cooldown = 6f, radius = 1.5f, duration = 2f, dashDistance = 3f, vfxFrames = leaf, projectilePoses = vine, vfxFps = 1f / 0.06f, popupColor = leafGreen };
+            slot4 = new SkillDef { displayName = "Mua Ten", behaviour = SkillBehaviour.ArrowRain, cooldown = 8f, radius = 2f, count = 6, interval = 0.2f, damage = 10, vfxFrames = rainZone, projectilePoses = rainArrow, vfxFps = 1f / 0.15f, popupColor = leafGreen };
+            slotV = new SkillDef { displayName = "Buoc Gio", behaviour = SkillBehaviour.WindStep, cooldown = 9f, duration = 3f, vfxFrames = aura, projectilePoses = puff, vfxFps = 1f / 0.08f, popupColor = leafGreen };
+            slotC = new SkillDef { displayName = "Ten Xuyen Rung", behaviour = SkillBehaviour.PierceBeam, cooldown = 11f, damage = 45, knockback = 2f, range = 9f, radius = 0.5f, vfxFrames = beam, hitstop = 0.05f, shakeAmp = 0.10f, shakeDur = 0.10f, popupColor = leafGreen };
+        }
     }
 }

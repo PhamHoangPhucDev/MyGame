@@ -12,6 +12,9 @@ public static class R2CPhase4ClassSetup
     [MenuItem("Game01/R2C/Phase 4 Import Brom")]
     public static void ImportBrom() => Import("Brom", "BROM_MANIFEST.csv");
 
+    [MenuItem("Game01/R2C/Phase 4 Import Lyra")]
+    public static void ImportLyra() => Import("Lyra", "LYRA_MANIFEST.csv");
+
     static void Import(string className, string manifestName)
     {
         string src = "Docs/ReferenceRebuild/R2/R2C_OriginalHero/unity_export_" + className.ToLowerInvariant();
@@ -222,11 +225,14 @@ public static class R2CPhase4ClassSetup
             keys[frames.Count] = new ObjectReferenceKeyframe { time = frames.Count / (float)fps, value = frames[frames.Count - 1] };
         if (anim == "Attack")
         {
+            float t1 = className == "Lyra" ? 0.06f : 0.16f;
+            float t2 = className == "Lyra" ? 0.14f : 0.32f;
+            float t3 = className == "Lyra" ? 0.26f : 0.42f;
             keys = new ObjectReferenceKeyframe[4];
             keys[0] = new ObjectReferenceKeyframe { time = 0f, value = frames[0] };
-            keys[1] = new ObjectReferenceKeyframe { time = 0.16f, value = frames[1] };
-            keys[2] = new ObjectReferenceKeyframe { time = 0.32f, value = frames[Mathf.Min(2, frames.Count - 1)] };
-            keys[3] = new ObjectReferenceKeyframe { time = 0.42f, value = frames[Mathf.Min(2, frames.Count - 1)] };
+            keys[1] = new ObjectReferenceKeyframe { time = t1, value = frames[1] };
+            keys[2] = new ObjectReferenceKeyframe { time = t2, value = frames[Mathf.Min(2, frames.Count - 1)] };
+            keys[3] = new ObjectReferenceKeyframe { time = t3, value = frames[Mathf.Min(2, frames.Count - 1)] };
         }
         AnimationUtility.SetObjectReferenceCurve(clip, EditorCurveBinding.PPtrCurve("", typeof(SpriteRenderer), "m_Sprite"), keys);
         var st = AnimationUtility.GetAnimationClipSettings(clip);
@@ -247,8 +253,16 @@ public static class R2CPhase4ClassSetup
             AssetDatabase.CreateAsset(set, path);
         }
         set.anchorTable = AssetDatabase.LoadAssetAtPath<TextAsset>(dst + "/" + anchors);
-        set.weaponPoses = sprites["Gear/" + className + "_Hammer.png"];
-        set.shieldViews = sprites["Gear/" + className + "_Shield.png"];
+        if (className == "Lyra")
+        {
+            set.weaponPoses = sprites["Gear/Lyra_Bow.png"];
+            set.shieldViews = new Sprite[0];
+        }
+        else
+        {
+            set.weaponPoses = sprites["Gear/" + className + "_Hammer.png"];
+            set.shieldViews = sprites["Gear/" + className + "_Shield.png"];
+        }
         set.hand = sprites["Gear/" + className + "_Hand.png"][0];
         set.slashFrames = sprites["Gear/" + className + "_ComboVfx.png"];
         set.replaceLegacyRSlash = true;
@@ -266,13 +280,26 @@ public static class R2CPhase4ClassSetup
             kit = ScriptableObject.CreateInstance<ClassKit>();
             AssetDatabase.CreateAsset(kit, path);
         }
-        kit.FillBrom(
-            sprites["Skills/Brom_GroundSlam.png"],
-            sprites["Skills/Brom_ChargeDust.png"],
-            sprites["Skills/Brom_Roar.png"],
-            sprites["Skills/Brom_TauntMark.png"],
-            Join(sprites["Skills/Brom_IronWall_Back.png"], sprites["Skills/Brom_IronWall_Front.png"]),
-            sprites["Skills/Brom_Quake.png"]);
+        if (className == "Lyra")
+            kit.FillLyra(
+                sprites["Gear/Lyra_Arrow.png"],
+                sprites["Gear/Lyra_ArrowHit.png"],
+                sprites["Skills/Lyra_FanBurst.png"],
+                sprites["Skills/Lyra_LeafBurst.png"],
+                sprites["Skills/Lyra_VineSnare.png"],
+                sprites["Skills/Lyra_RainZone.png"],
+                sprites["Skills/Lyra_RainArrow.png"],
+                sprites["Skills/Lyra_WindAura.png"],
+                sprites["Skills/Lyra_DodgePuff.png"],
+                sprites["Skills/Lyra_Beam.png"]);
+        else
+            kit.FillBrom(
+                sprites["Skills/Brom_GroundSlam.png"],
+                sprites["Skills/Brom_ChargeDust.png"],
+                sprites["Skills/Brom_Roar.png"],
+                sprites["Skills/Brom_TauntMark.png"],
+                Join(sprites["Skills/Brom_IronWall_Back.png"], sprites["Skills/Brom_IronWall_Front.png"]),
+                sprites["Skills/Brom_Quake.png"]);
         kit.bodyController = ctrl;
         kit.equipment = equip;
         EditorUtility.SetDirty(kit);

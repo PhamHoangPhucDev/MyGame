@@ -132,7 +132,7 @@ namespace GameplayPrototype
                 _table[c[0]] = new Anchor
                 {
                     MainX = I(1), MainY = I(2), MainDir = I(3), MainOrder = I(4), HandX = I(5), HandY = I(6),
-                    OffX = I(7), OffY = I(8), OffView = c[9] == "Up" ? 1 : (c[9] == "Side" ? 2 : 0), OffOrder = I(10),
+                    OffX = I(7), OffY = I(8), OffView = c[9] == "Hand" ? 3 : c[9] == "Up" ? 1 : (c[9] == "Side" ? 2 : 0), OffOrder = I(10),
                     Slash = I(11), SlashOrder = I(12), OffDir = c.Length > 13 ? I(13) : -1,
                 };
             }
@@ -194,7 +194,7 @@ namespace GameplayPrototype
             Place(_hand, a.HandX > -99 && a.MainOrder != 0 ? hand : null, a.HandX, a.HandY, a.MainOrder + 1, flip, order, tint, weaponZ * 0.35f);
             Sprite offSprite = null;
             if (a.OffX > -99 && a.OffOrder != 0)
-                offSprite = a.OffDir >= 0 ? Pick(offPoses, a.OffDir) : Pick(shieldViews, a.OffView);
+                offSprite = a.OffView == 3 ? hand : (a.OffDir >= 0 ? Pick(offPoses, a.OffDir) : Pick(shieldViews, a.OffView));
             Place(_off, offSprite, a.OffX, a.OffY, a.OffOrder, flip, order, tint, 0f);
 
             int slashIndex = a.Slash;
@@ -231,6 +231,13 @@ namespace GameplayPrototype
                     // Finisher arc larger (reference cyan crescents are wide) but capped so Aren stays readable.
                     slashScale = 1.55f;
                     slashZ = flip ? 10f : -10f;
+                }
+                if (wideSheet)
+                {
+                    tipX = 0f;
+                    tipY = 0f;
+                    slashZ = 0f;
+                    slashScale = 1f;
                 }
                 _slash.transform.localPosition = new Vector3(tipX, tipY, 0f);
                 _slash.transform.localRotation = Quaternion.Euler(0f, 0f, slashZ);

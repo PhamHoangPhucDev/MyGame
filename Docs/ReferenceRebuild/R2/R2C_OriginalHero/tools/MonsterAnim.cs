@@ -15,6 +15,7 @@ public static class MonsterAnim
     public static readonly Mon[] All =
     {
         new Mon { Name = "Goblin", Kind = "Goblin", S = 48, Sole = 37 },
+        new Mon { Name = "GoblinArcher", Kind = "Archer", S = 48, Sole = 37 },
         new Mon { Name = "Gobrider", Kind = "Gobrider", S = 48, Sole = 41 },
         new Mon { Name = "GobriderElite", Kind = "Elite", S = 48, Sole = 41 },
         new Mon { Name = "GobriderWarlord", Kind = "Warlord", S = 64, Sole = 57 },
@@ -95,6 +96,13 @@ public static class MonsterAnim
             bool moving = anim == "Walk" || anim == "Attack";
             return MonsterGen.Goblin(moving ? anim : "Idle", v, moving ? f : 0, side);
         }
+        if (m.Kind == "Archer")
+        {
+            // walk: contact frames 0/2 drop 1 px with alternate feet; attack: aim, loose (arrow spawns), lower the bow
+            if (anim == "Walk") return ArcherGen.Compose(v, 0, side, 0, f == 0 ? 1 : f == 2 ? 2 : 0);
+            if (anim == "Attack") return ArcherGen.Compose(v, f == 0 ? 1 : f == 1 ? 2 : 0, side);
+            return ArcherGen.Compose(v, 0, side);
+        }
         if (anim == "Walk") return RiderGen.Compose(m.Kind, v, side, f % 2, f == 0 ? 0 : f == 2 ? 1 : -1, 0);
         if (anim == "Attack") return RiderGen.Compose(m.Kind, v, side, f == 0 ? -1 : 0, -1, f == 0 ? 1 : f == 1 ? 2 : 0);
         return RiderGen.Compose(m.Kind, v, side, 0, -1, 0);
@@ -104,7 +112,8 @@ public static class MonsterAnim
 
     public static Bitmap Frame(Mon m, string anim, string v, int f)
     {
-        var fw = Fwd(v); bool gob = m.Kind == "Goblin";
+        var fw = Fwd(v); bool gob = m.Kind == "Goblin" || m.Kind == "Archer";   // on foot (not mounted)
+        bool archer = m.Kind == "Archer";
         switch (anim)
         {
             case "Idle":
@@ -118,6 +127,7 @@ public static class MonsterAnim
                 {
                     // goblin: windup, stab (+1 px lunge), recover. riders: rear back 1 px, charge 2 px + club strike, recover
                     var b = Pose(m, "Attack", v, f);
+                    if (archer) return f == 1 ? Shift(b, -fw.X, -fw.Y) : b;   // recoil 1 px on release
                     if (gob) return f == 1 ? Shift(b, fw.X, fw.Y) : b;
                     return f == 0 ? Shift(b, -fw.X, -fw.Y) : f == 1 ? Shift(b, fw.X * 2, fw.Y * 2) : b;
                 }
@@ -170,6 +180,16 @@ public static class MonsterAnim
                             m.Name, Anims[a], Views[vi], f, file, row, f * m.S, row * m.S, m.S, Frames[a], Fps[a], a < 2 ? "loop" : a == 4 ? "hold_last" : "once");
                     }
         }
+        // archer arrow projectile: 8 drawn directions, 16x16, pivot = cell centre (no runtime rotation)
+        var arrowFile = "GoblinArcher/GoblinArcher_Arrow.png";
+        using (var ar = new Bitmap(16 * 8, 16, PixelFormat.Format32bppArgb))
+        {
+            using (var g = Graphics.FromImage(ar)) for (int d = 0; d < 8; d++) g.DrawImageUnscaled(ArcherGen.Arrow(d), d * 16, 0);
+            ar.Save(Path.Combine(root, arrowFile), ImageFormat.Png);
+        }
+        man.Append(arrowFile + ",16,16,8,1,8,8,0.5,0.5,arrow projectile; cols R UR U UL L DL D DR (head points that way); pick the col from the flight direction\n");
+        var dirs = new[] { "R", "UR", "U", "UL", "L", "DL", "D", "DR" };
+        for (int d = 0; d < 8; d++) fr.AppendFormat(inv, "GoblinArcher_Arrow_{0},{1},{2},0,{3},0,16,16,Arrow,{0},0,1,0,static\n", dirs[d], arrowFile, d, d * 16);
         File.WriteAllText(Path.Combine(root, "MONSTERS_MANIFEST.csv"), man.ToString());
         File.WriteAllText(Path.Combine(root, "MONSTERS_FRAMES.csv"), fr.ToString());
     }

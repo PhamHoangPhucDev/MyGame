@@ -6,7 +6,7 @@ $grass = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(
 $shadow = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(70, 0, 0, 0))
 $font = New-Object System.Drawing.Font "Consolas", 12, ([System.Drawing.FontStyle]::Bold)
 $anims = @("Idle", "Walk", "Attack", "Hurt", "Death"); $frames = @(4, 4, 3, 2, 4); $views = @("Down", "Up", "Side (trai)")
-$mons = @(@("Goblin", 48, 37), @("Gobrider", 48, 41), @("GobriderElite", 48, 41), @("GobriderWarlord", 64, 57))
+$mons = @(@("Goblin", 48, 37), @("GoblinArcher", 48, 37), @("Gobrider", 48, 41), @("GobriderElite", 48, 41), @("GobriderWarlord", 64, 57))
 $K = 3
 foreach ($m in $mons) {
     $name = $m[0]; $S = $m[1]; $sole = $m[2]; $c = $S * $K

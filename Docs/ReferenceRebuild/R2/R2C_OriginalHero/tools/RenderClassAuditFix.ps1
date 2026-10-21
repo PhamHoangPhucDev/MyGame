@@ -1,10 +1,11 @@
 # Class art audit fixes (run AFTER the class exports and RenderBackGearExport.ps1):
-#  1. Vex skill VFX: Gear/Vex_ShadowStep.png, Gear/Vex_BladeDance_Back.png, Gear/Vex_BladeDance_Front.png
+#  1. Vex skill VFX: Gear/Vex_ShadowStep.png, Gear/Vex_BladeDance_Back.png, Gear/Vex_BladeDance_Front.png;
+#     projectile hits: unity_export_lyra/Gear/Lyra_ArrowHit.png, unity_export_vex/Gear/Vex_KnifeHit.png
 #  2. Death Up/Side frames + anchor rows for Aren, Vex, Brom, Lyra, Selene
 #  3. AREN_MANIFEST.csv and VEX_MANIFEST.csv; Death rows added to the Brom/Lyra/Selene manifests
 #  4. review board ..\roster\DEATH_VIEWS_REVIEW.png
 $D = Split-Path $PSScriptRoot -Parent
-Add-Type -Path @("$D\tools\HeroConceptGen.cs", "$D\tools\ArenIdleGen.cs", "$D\tools\ArenWalkGen.cs", "$D\tools\EquipGen.cs", "$D\tools\FxGen.cs", "$D\tools\VfxConceptGen.cs", "$D\tools\VexGen.cs", "$D\tools\VexEquip.cs", "$D\tools\VexVfxGen.cs", "$D\tools\DeathViewsGen.cs") -ReferencedAssemblies System.Drawing, System.Core
+Add-Type -Path @("$D\tools\HeroConceptGen.cs", "$D\tools\ArenIdleGen.cs", "$D\tools\ArenWalkGen.cs", "$D\tools\EquipGen.cs", "$D\tools\FxGen.cs", "$D\tools\VfxConceptGen.cs", "$D\tools\VexGen.cs", "$D\tools\VexEquip.cs", "$D\tools\VexVfxGen.cs", "$D\tools\HitVfxGen.cs", "$D\tools\DeathViewsGen.cs") -ReferencedAssemblies System.Drawing, System.Core
 Add-Type -AssemblyName System.Drawing
 
 # 1. Vex VFX
@@ -12,6 +13,8 @@ $vg = Join-Path $D "unity_export_vex\Gear"
 ([VexVfxGen]::ShadowStep()).Save((Join-Path $vg "Vex_ShadowStep.png"))
 ([VexVfxGen]::BladeDance(0)).Save((Join-Path $vg "Vex_BladeDance_Back.png"))
 ([VexVfxGen]::BladeDance(1)).Save((Join-Path $vg "Vex_BladeDance_Front.png"))
+([HitVfxGen]::KnifeHit()).Save((Join-Path $vg "Vex_KnifeHit.png"))
+([HitVfxGen]::ArrowHit()).Save((Join-Path $D "unity_export_lyra\Gear\Lyra_ArrowHit.png"))
 
 # 2. Death views
 $classes = @(@("Aren", "unity_export"), @("Vex", "unity_export_vex"), @("Brom", "unity_export_brom"), @("Lyra", "unity_export_lyra"), @("Selene", "unity_export_selene"))
@@ -44,12 +47,14 @@ $vex = @($H,
     "Gear/Vex_ShadowStep.png,32,32,4,1,16,30,0.5,0.0625,""2 Buoc Bong: ink flame column, play at the departure point AND at the arrival point; 0 burst+eyes, 1 peak, 2 break, 3 wisps; pivot = feet""",
     "Gear/Vex_BladeDance_Back.png,64,48,6,1,32,28,0.5,0.4167,""4 Vu Dieu Luoi Dao: frame = hit 1-6 (0.1 s each); BEHIND the body; pivot = body centre (feet + 0.125 unit up)""",
     "Gear/Vex_BladeDance_Front.png,64,48,6,1,32,28,0.5,0.4167,""4 Vu Dieu Luoi Dao: same frames; IN FRONT of the body""",
+    "Gear/Vex_KnifeHit.png,24,24,4,1,12,12,0.5,0.5,""3 Phi Dao: knife impact on an enemy (silver X spark, crimson slash, blood drops); pivot = hit point; 0.05 s/frame, in front of the enemy""",
     "Skills/Vex_SkillSheet.png,32,32,4,13,16,30,0.5,0.0625,""skill body frames; rows in Skills/VEX_SKILL_LAYOUT.csv; anchors Skills/Vex_SkillAnchors.csv""")
 [System.IO.File]::WriteAllLines((Join-Path $D "unity_export_vex\VEX_MANIFEST.csv"), [string[]]$vex, (New-Object System.Text.UTF8Encoding $false))
 foreach ($c in @(@("Brom", "unity_export_brom\BROM_MANIFEST.csv"), @("Lyra", "unity_export_lyra\LYRA_MANIFEST.csv"), @("Selene", "unity_export_selene\SELENE_MANIFEST.csv"))) {
     $p = Join-Path $D $c[1]
-    $lines = @(Get-Content $p | Where-Object { $_ -notmatch "_Death_(Up|Side)_" })
+    $lines = @(Get-Content $p | Where-Object { $_ -notmatch "_Death_(Up|Side)_" -and $_ -notmatch "Lyra_ArrowHit" })
     $new = @(); foreach ($v in "Up", "Side") { foreach ($f in 0, 1, 2) { $new += "Extra/$($c[0])_Death_${v}_$f.png,32,32,1,1,16,30,0.5,0.0625,""death: 0 kneel, 1 fall, 2 lying (hold); Side faces left""" } }
+    if ($c[0] -eq "Lyra") { $new += "Gear/Lyra_ArrowHit.png,24,24,4,2,12,12,0.5,0.5,""arrow impact on an enemy: row 0 normal, row 1 charged (pierce shot, play at each enemy hit); pivot = hit point; 0.05 s/frame, in front of the enemy""" }
     [System.IO.File]::WriteAllLines($p, [string[]]($lines + $new), (New-Object System.Text.UTF8Encoding $false))
 }
 

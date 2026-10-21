@@ -1,8 +1,8 @@
 # Bổ sung sau khi kiểm tra art 5 class (bàn giao cho Cursor)
 
-**Ngày:** 2026-10-21 · **Người viết:** Claude (chỉ art, không sửa code hay scene) · **Trạng thái:** chờ duyệt, **chưa import vào `Assets/`**
+**Ngày:** 2026-10-21 · **Người viết:** Claude (chỉ art, không sửa code hay scene) · **Trạng thái:** đã duyệt, **chưa import vào `Assets/`**
 
-Kiểm tra art của 5 class tìm ra 3 chỗ thiếu. Cả 3 đã bổ sung trong Docs.
+Kiểm tra art của 5 class tìm ra 3 chỗ thiếu; sau đó thêm VFX trúng đích cho đạn (mục 4). Tất cả đã có trong Docs.
 
 ## 1. Vex: VFX cho Bước Bóng (phím 2) và Vũ Điệu Lưỡi Dao (phím 4)
 
@@ -39,6 +39,18 @@ Trước đây chỉ có `Death_Down_0..2`. Nay mỗi class có thêm 6 file tro
 - Thêm `unity_export/AREN_MANIFEST.csv` và `unity_export_vex/VEX_MANIFEST.csv`, cùng định dạng với Brom/Lyra/Selene. Liệt kê sheet, Extra (Hurt + Death 3 hướng), Gear, Skills.
 - Pivot trang bị của Aren/Vex ghi theo bản đã import (giữa ô), trừ hai VFX mới của Vex.
 - `BROM_MANIFEST.csv`, `LYRA_MANIFEST.csv`, `SELENE_MANIFEST.csv` được thêm các dòng Death Up/Side.
+
+## 4. VFX trúng đích cho đạn (Lyra, Vex)
+
+| File | Ô | Frame | Pivot | Cách dùng |
+|---|---|---|---|---|
+| `unity_export_lyra/Gear/Lyra_ArrowHit.png` | 24×24 | 4 cột × 2 hàng | giữa ô = điểm trúng | Hàng 0: mũi tên thường (sao xanh, vòng, 2 lá). Hàng 1: phát nạp (to hơn, tia vàng, 4 lá); phát nạp xuyên thì sinh ở **mỗi** quái bị trúng |
+| `unity_export_vex/Gear/Vex_KnifeHit.png` | 24×24 | 4 | giữa ô = điểm trúng | Phi Dao: tia X bạc, vệt chém đỏ, giọt máu rơi. Sinh ở từng quái trúng dao |
+
+- Khoảng 0.05 s/frame, vẽ trước quái (sorting cao hơn thân quái). Không xoay.
+- Sinh tại vị trí đạn chạm, hoặc tâm thân quái (pivot chân + khoảng 0.5 unit).
+- Ảnh duyệt: `roster/HIT_VFX_CANDIDATE_v1.png`. Code sinh: `tools/HitVfxGen.cs`.
+- Đã ghi vào `LYRA_MANIFEST.csv` và `VEX_MANIFEST.csv`.
 
 ## Xuất lại
 

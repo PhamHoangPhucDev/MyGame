@@ -23,4 +23,5 @@ Gear/Vex_ExecuteX.png,48,48,2,1,24,24,0.5,0.5,"C Doat Menh: big crimson X, 0 str
 Gear/Vex_ShadowStep.png,32,32,4,1,16,30,0.5,0.0625,"2 Buoc Bong: ink flame column, play at the departure point AND at the arrival point; 0 burst+eyes, 1 peak, 2 break, 3 wisps; pivot = feet"
 Gear/Vex_BladeDance_Back.png,64,48,6,1,32,28,0.5,0.4167,"4 Vu Dieu Luoi Dao: frame = hit 1-6 (0.1 s each); BEHIND the body; pivot = body centre (feet + 0.125 unit up)"
 Gear/Vex_BladeDance_Front.png,64,48,6,1,32,28,0.5,0.4167,"4 Vu Dieu Luoi Dao: same frames; IN FRONT of the body"
+Gear/Vex_KnifeHit.png,24,24,4,1,12,12,0.5,0.5,"3 Phi Dao: knife impact on an enemy (silver X spark, crimson slash, blood drops); pivot = hit point; 0.05 s/frame, in front of the enemy"
 Skills/Vex_SkillSheet.png,32,32,4,13,16,30,0.5,0.0625,"skill body frames; rows in Skills/VEX_SKILL_LAYOUT.csv; anchors Skills/Vex_SkillAnchors.csv"

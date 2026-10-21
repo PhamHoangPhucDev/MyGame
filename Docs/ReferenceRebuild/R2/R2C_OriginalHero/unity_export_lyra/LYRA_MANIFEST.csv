@@ -28,3 +28,4 @@ Extra/Lyra_Death_Up_2.png,32,32,1,1,16,30,0.5,0.0625,"death: 0 kneel, 1 fall, 2 
 Extra/Lyra_Death_Side_0.png,32,32,1,1,16,30,0.5,0.0625,"death: 0 kneel, 1 fall, 2 lying (hold); Side faces left"
 Extra/Lyra_Death_Side_1.png,32,32,1,1,16,30,0.5,0.0625,"death: 0 kneel, 1 fall, 2 lying (hold); Side faces left"
 Extra/Lyra_Death_Side_2.png,32,32,1,1,16,30,0.5,0.0625,"death: 0 kneel, 1 fall, 2 lying (hold); Side faces left"
+Gear/Lyra_ArrowHit.png,24,24,4,2,12,12,0.5,0.5,"arrow impact on an enemy: row 0 normal, row 1 charged (pierce shot, play at each enemy hit); pivot = hit point; 0.05 s/frame, in front of the enemy"

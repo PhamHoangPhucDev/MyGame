@@ -88189,11 +88189,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.ClassCombat
   kits:
-  - {fileID: 11400000, guid: f88319ac9daad124e86ad5eedf280cd0, type: 2}
+  - {fileID: 11400000, guid: 3b1a7d70ccfde54429c02fb038234eba, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: e0996327aa1a91f41abb03fdf3e15c8c, type: 2}
   slotNames:
   - Aren
   - Brom
@@ -88202,6 +88202,7 @@ MonoBehaviour:
   - Vex
   startSlot: 0
   showLabel: 1
+  uiIcons: {fileID: 11400000, guid: 2f19053892bd7fd4a89ab998d474447b, type: 2}
 --- !u!1001 &1746392177
 PrefabInstance:
   m_ObjectHideFlags: 0

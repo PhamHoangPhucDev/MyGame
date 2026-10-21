@@ -67,6 +67,8 @@ namespace GameplayPrototype
         public float projectileSpeed;
         public float projectileRange;
         public int pierce = 1;
+        [Tooltip("Finisher bolt explodes for this radius. 0 keeps a normal hit.")]
+        public float explodeRadius;
         [Tooltip("Which row of an 8-direction projectile sheet to fire.")]
         public int arrowRow;
         [Tooltip("Body attack lock. 0 keeps the shared 0.26 s lock.")]
@@ -87,6 +89,8 @@ namespace GameplayPrototype
         public ComboStep[] steps = new ComboStep[0];
         public Sprite[] projectilePoses = new Sprite[0];
         public Sprite[] projectileHit = new Sprite[0];
+        public Sprite[] finisherVfx = new Sprite[0];
+        public Sprite[] sparkle = new Sprite[0];
     }
 
     /// <summary>
@@ -326,6 +330,33 @@ namespace GameplayPrototype
             slot4 = new SkillDef { displayName = "Mua Ten", behaviour = SkillBehaviour.ArrowRain, cooldown = 8f, radius = 2f, count = 6, interval = 0.2f, damage = 10, vfxFrames = rainZone, projectilePoses = rainArrow, vfxFps = 1f / 0.15f, popupColor = leafGreen };
             slotV = new SkillDef { displayName = "Buoc Gio", behaviour = SkillBehaviour.WindStep, cooldown = 9f, duration = 3f, vfxFrames = aura, projectilePoses = puff, vfxFps = 1f / 0.08f, popupColor = leafGreen };
             slotC = new SkillDef { displayName = "Ten Xuyen Rung", behaviour = SkillBehaviour.PierceBeam, cooldown = 11f, damage = 45, knockback = 2f, range = 9f, radius = 0.5f, vfxFrames = beam, hitstop = 0.05f, shakeAmp = 0.10f, shakeDur = 0.10f, popupColor = leafGreen };
+        }
+
+        /// <summary>Selene per SELENE_KIT_SPEC. The third shot explodes even when it hits nothing.</summary>
+        public void FillSelene(Sprite[] orb, Sprite[] sparkle, Sprite[] orbHit, Sprite[] starBurst, Sprite[] nova,
+            Sprite[] blink, Sprite[] rune, Sprite[] bubble, Sprite[] meteor, Sprite[] meteorZone)
+        {
+            classId = "selene"; displayName = "Selene";
+            role = "Phep. Mau x0.8, toc chay x1.";
+            maxHpMultiplier = 0.8f; moveSpeedMultiplier = 1f; damageTakenMultiplier = 1f;
+            Color violet = new Color(0.78f, 0.45f, 0.95f);
+            combo = new ComboDef
+            {
+                displayName = "Tia Phep", cooldown = 0.4f, radius = 0.3f, damage = 15, knockback = 0.8f,
+                autoTargetRadius = 5.5f, impactDelay = 0.2f,
+                projectilePoses = orb, projectileHit = orbHit, finisherVfx = starBurst, sparkle = sparkle,
+                steps = new[]
+                {
+                    new ComboStep { shape = ComboHitShape.Projectile, impactDelay = 0.2f, projectileSpeed = 10f, projectileRange = 5.5f, pierce = 1, arrowRow = 0, hitstop = 0.04f, shakeAmp = 0f, shakeDur = 0f, bodyLock = 0.32f },
+                    new ComboStep { shape = ComboHitShape.Projectile, impactDelay = 0.2f, projectileSpeed = 10f, projectileRange = 5.5f, pierce = 1, arrowRow = 0, hitstop = 0.04f, shakeAmp = 0f, shakeDur = 0f, bodyLock = 0.32f },
+                    new ComboStep { shape = ComboHitShape.Projectile, damageMul = 26f / 15f, explodeRadius = 1.2f, impactDelay = 0.28f, projectileSpeed = 10f, projectileRange = 5.5f, pierce = 1, arrowRow = 0, hitstop = 0.05f, shakeAmp = 0.05f, shakeDur = 0.05f, bodyLock = 0.42f, finisher = true },
+                },
+            };
+            slot2 = new SkillDef { displayName = "Cau Tinh Tu", behaviour = SkillBehaviour.SlowOrb, cooldown = 5f, damage = 32, speed = 5f, range = 5.5f, radius = 1.8f, knockback = 2f, projectilePoses = orb, vfxFrames = nova, hitstop = 0.06f, shakeAmp = 0.08f, shakeDur = 0.08f, popupColor = violet };
+            slot3 = new SkillDef { displayName = "Dich Chuyen", behaviour = SkillBehaviour.Blink, cooldown = 5f, dashDistance = 3.5f, vfxFrames = blink, popupColor = violet };
+            slot4 = new SkillDef { displayName = "Vong Phu Chu", behaviour = SkillBehaviour.RuneZone, cooldown = 9f, radius = 2.2f, range = 5.5f, duration = 3f, damage = 8, count = 6, interval = 0.5f, vfxFrames = rune, popupColor = violet };
+            slotV = new SkillDef { displayName = "Khien Ma Luc", behaviour = SkillBehaviour.ManaShield, cooldown = 10f, damage = 40, duration = 4f, vfxFrames = bubble, popupColor = violet };
+            slotC = new SkillDef { displayName = "Mua Sao Bang", behaviour = SkillBehaviour.MeteorShower, cooldown = 13f, damage = 28, radius = 3f, count = 5, interval = 0.3f, knockback = 1.5f, vfxFrames = meteorZone, projectilePoses = meteor, hitstop = 0.04f, shakeAmp = 0.06f, shakeDur = 0.06f, popupColor = violet };
         }
     }
 }

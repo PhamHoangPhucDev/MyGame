@@ -26,6 +26,9 @@ namespace GameplayPrototype
         int _hits;
         int _dirIndex;
         int _poseRow;
+        int _pairStart = -1;
+        float _sparkleTimer;
+        Sprite[] _sparkle;
         float _explode;
         int _explodeDamage;
         Sprite[] _explodeFrames;
@@ -35,7 +38,7 @@ namespace GameplayPrototype
         public static KitProjectile Fire(Vector2 from, Vector2 dir, Sprite[] poses8, float speed, float range, int damage, float knockback,
                                          int bleedDamage, float bleedTick, float bleedDuration, LayerMask mask, Color popup, Sprite[] hitFrames = null,
                                          int pierce = 1, float explodeRadius = 0f, Sprite[] explodeFrames = null, int poseRow = 0, int explodeDamage = 0,
-                                         System.Action onHit = null)
+                                         System.Action onHit = null, Sprite[] sparkle = null)
         {
             var go = new GameObject("KitProjectile");
             go.transform.position = from;
@@ -45,10 +48,15 @@ namespace GameplayPrototype
             p._bleedDamage = bleedDamage; p._bleedTick = bleedTick; p._bleedDuration = bleedDuration;
             p._mask = mask; p._popup = popup; p._hitFrames = hitFrames; p._onHit = onHit;
             p._pierce = Mathf.Max(1, pierce); p._explode = explodeRadius; p._explodeFrames = explodeFrames; p._explodeDamage = explodeDamage;
-            p._poses = poses8; p._poseRow = poseRow;
+            p._poses = poses8; p._poseRow = poseRow; p._sparkle = sparkle;
             var sr = go.AddComponent<SpriteRenderer>();
             p._sr = sr;
-            if (poses8 != null && poses8.Length >= 8)
+            if (poses8 != null && poses8.Length >= 2 && poses8.Length < 8)
+            {
+                p._pairStart = Mathf.Clamp(poseRow, 0, poses8.Length - 2);
+                sr.sprite = poses8[p._pairStart];
+            }
+            else if (poses8 != null && poses8.Length >= 8)
             {
                 float a = Mathf.Atan2(p._dir.y, p._dir.x) * Mathf.Rad2Deg;
                 int i = ((Mathf.RoundToInt(a / 45f) % 8) + 8) % 8;
@@ -66,6 +74,20 @@ namespace GameplayPrototype
             float step = _speed * Time.deltaTime;
             transform.position += (Vector3)(_dir * step);
             _travelled += step;
+            if (_pairStart >= 0 && _poses != null && _sr != null)
+            {
+                int flip = ((int)(Time.time / 0.08f) & 1);
+                _sr.sprite = _poses[Mathf.Min(_pairStart + flip, _poses.Length - 1)];
+            }
+            if (_sparkle != null && _sparkle.Length > 0)
+            {
+                _sparkleTimer += Time.deltaTime;
+                if (_sparkleTimer >= 0.04f)
+                {
+                    _sparkleTimer = 0f;
+                    KitVfx.Play(_sparkle, transform.position, 1f / 0.06f, false, 20);
+                }
+            }
             if (_poseRow == 1 && _poses != null && _poses.Length >= 24 && _sr != null)
             {
                 int row = ((int)(Time.time / 0.06f) & 1) == 0 ? 1 : 2;

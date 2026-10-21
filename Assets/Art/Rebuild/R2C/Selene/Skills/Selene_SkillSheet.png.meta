@@ -1,0 +1,819 @@
+fileFormatVersion: 2
+guid: e205fa1a4036e6e43b7fc9dc924d3caa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3679702825250980308
+    second: Selene_SkillSheet_0
+  - first:
+      213: 7429784475072128681
+    second: Selene_SkillSheet_1
+  - first:
+      213: 6330509911247760245
+    second: Selene_SkillSheet_2
+  - first:
+      213: 5867479075661010853
+    second: Selene_SkillSheet_3
+  - first:
+      213: -2253802507920401762
+    second: Selene_SkillSheet_4
+  - first:
+      213: -6929955228275149858
+    second: Selene_SkillSheet_5
+  - first:
+      213: 7253250012070270953
+    second: Selene_SkillSheet_6
+  - first:
+      213: 341215321047284874
+    second: Selene_SkillSheet_7
+  - first:
+      213: -1632539867304001654
+    second: Selene_SkillSheet_8
+  - first:
+      213: 2672696144793375855
+    second: Selene_SkillSheet_9
+  - first:
+      213: -1824232440011263485
+    second: Selene_SkillSheet_10
+  - first:
+      213: -366068943423351728
+    second: Selene_SkillSheet_11
+  - first:
+      213: 2945684313486508468
+    second: Selene_SkillSheet_12
+  - first:
+      213: -6741404662376433849
+    second: Selene_SkillSheet_13
+  - first:
+      213: 2634919037908344497
+    second: Selene_SkillSheet_14
+  - first:
+      213: 7180638768592741504
+    second: Selene_SkillSheet_15
+  - first:
+      213: -7422982412781894186
+    second: Selene_SkillSheet_16
+  - first:
+      213: 643561521838280662
+    second: Selene_SkillSheet_17
+  - first:
+      213: 6857803562286280915
+    second: Selene_SkillSheet_18
+  - first:
+      213: 8915171191675158964
+    second: Selene_SkillSheet_19
+  - first:
+      213: 3758090777925867539
+    second: Selene_SkillSheet_20
+  - first:
+      213: 1853039878127251495
+    second: Selene_SkillSheet_21
+  - first:
+      213: 7532983973861640272
+    second: Selene_SkillSheet_22
+  - first:
+      213: -7899941815081609859
+    second: Selene_SkillSheet_23
+  - first:
+      213: 4569912761118467856
+    second: Selene_SkillSheet_24
+  - first:
+      213: 3822150612591790384
+    second: Selene_SkillSheet_25
+  - first:
+      213: -8066805459916732035
+    second: Selene_SkillSheet_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.0625}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Selene_SkillSheet_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 449
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2ef9edb6c11fecc0800000000000000
+      internalID: -3679702825250980308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 449
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a6e26a8d95eb1760800000000000000
+      internalID: 7429784475072128681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_2
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 417
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57b230b493d7ad750800000000000000
+      internalID: 6330509911247760245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_3
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 417
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a7dfcfc1297d6150800000000000000
+      internalID: 5867479075661010853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 385
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9a15896f82e8b0e0800000000000000
+      internalID: -2253802507920401762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_5
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 385
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed37c45bf6ad3df90800000000000000
+      internalID: -6929955228275149858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_6
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 353
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e7db84e478b8a460800000000000000
+      internalID: 7253250012070270953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_7
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 353
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8cb1f2d68d3cb400800000000000000
+      internalID: 341215321047284874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 321
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8f7ea7e3ad0859e0800000000000000
+      internalID: -1632539867304001654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_9
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 321
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6417feabf2571520800000000000000
+      internalID: 2672696144793375855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_10
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 289
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3027261d2460fa6e0800000000000000
+      internalID: -1824232440011263485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_11
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 289
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 054d2f74c367beaf0800000000000000
+      internalID: -366068943423351728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_12
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 257
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b1cdc5b64c21e820800000000000000
+      internalID: 2945684313486508468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_13
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 257
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 747f3e35d28b172a0800000000000000
+      internalID: -6741404662376433849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_14
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 225
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bed07297ec119420800000000000000
+      internalID: 2634919037908344497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_15
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 225
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0846e565ae0c6a360800000000000000
+      internalID: 7180638768592741504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_16
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 193
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d5c92003d44cf890800000000000000
+      internalID: -7422982412781894186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_17
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 193
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dfc74c5bc36ee800800000000000000
+      internalID: 643561521838280662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_18
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 161
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d07b757100db2f50800000000000000
+      internalID: 6857803562286280915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_19
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 129
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b10897d6fc09bb70800000000000000
+      internalID: 8915171191675158964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_20
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 97
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31851fbb6ab672430800000000000000
+      internalID: 3758090777925867539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_21
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 65
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 720786a83f157b910800000000000000
+      internalID: 1853039878127251495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_22
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 65
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 058cbb443098a8860800000000000000
+      internalID: 7532983973861640272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_23
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 33
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d755ecd56c4cd5290800000000000000
+      internalID: -7899941815081609859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_24
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 33
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 017adfc91779b6f30800000000000000
+      internalID: 4569912761118467856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_25
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03943954bb10b0530800000000000000
+      internalID: 3822150612591790384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selene_SkillSheet_26
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 1
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d794b798c23fc0090800000000000000
+      internalID: -8066805459916732035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Selene_SkillSheet_0: -3679702825250980308
+      Selene_SkillSheet_1: 7429784475072128681
+      Selene_SkillSheet_10: -1824232440011263485
+      Selene_SkillSheet_11: -366068943423351728
+      Selene_SkillSheet_12: 2945684313486508468
+      Selene_SkillSheet_13: -6741404662376433849
+      Selene_SkillSheet_14: 2634919037908344497
+      Selene_SkillSheet_15: 7180638768592741504
+      Selene_SkillSheet_16: -7422982412781894186
+      Selene_SkillSheet_17: 643561521838280662
+      Selene_SkillSheet_18: 6857803562286280915
+      Selene_SkillSheet_19: 8915171191675158964
+      Selene_SkillSheet_2: 6330509911247760245
+      Selene_SkillSheet_20: 3758090777925867539
+      Selene_SkillSheet_21: 1853039878127251495
+      Selene_SkillSheet_22: 7532983973861640272
+      Selene_SkillSheet_23: -7899941815081609859
+      Selene_SkillSheet_24: 4569912761118467856
+      Selene_SkillSheet_25: 3822150612591790384
+      Selene_SkillSheet_26: -8066805459916732035
+      Selene_SkillSheet_3: 5867479075661010853
+      Selene_SkillSheet_4: -2253802507920401762
+      Selene_SkillSheet_5: -6929955228275149858
+      Selene_SkillSheet_6: 7253250012070270953
+      Selene_SkillSheet_7: 341215321047284874
+      Selene_SkillSheet_8: -1632539867304001654
+      Selene_SkillSheet_9: 2672696144793375855
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,301 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b74814bc4f95924d9feeda7006ef7a0, type: 3}
+  m_Name: ClassKit_Selene
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.ClassKit
+  classId: selene
+  displayName: Selene
+  role: Phep. Mau x0.8, toc chay x1.
+  maxHpMultiplier: 0.8
+  moveSpeedMultiplier: 1
+  damageTakenMultiplier: 1
+  bodyController: {fileID: 9100000, guid: 453d6338a2191df40a95bc9a179cba55, type: 2}
+  equipment: {fileID: 11400000, guid: 965e50b0f63746b4a96597067374c009, type: 2}
+  combo:
+    displayName: Tia Phep
+    cooldown: 0.4
+    radius: 0.3
+    damage: 15
+    knockback: 0.8
+    autoTargetRadius: 5.5
+    impactDelay: 0.2
+    steps:
+    - swingOffset: 0
+      damageMul: 1
+      radiusMul: 1
+      knockbackMul: 1
+      vfxVariant: 0
+      vfxScale: 1
+      finisher: 0
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.04
+      shakeAmp: 0
+      shakeDur: 0
+      shape: 2
+      impactDelay: 0.2
+      projectileSpeed: 10
+      projectileRange: 5.5
+      pierce: 1
+      explodeRadius: 0
+      arrowRow: 0
+      bodyLock: 0.32
+    - swingOffset: 0
+      damageMul: 1
+      radiusMul: 1
+      knockbackMul: 1
+      vfxVariant: 0
+      vfxScale: 1
+      finisher: 0
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.04
+      shakeAmp: 0
+      shakeDur: 0
+      shape: 2
+      impactDelay: 0.2
+      projectileSpeed: 10
+      projectileRange: 5.5
+      pierce: 1
+      explodeRadius: 0
+      arrowRow: 0
+      bodyLock: 0.32
+    - swingOffset: 0
+      damageMul: 1.7333333
+      radiusMul: 1
+      knockbackMul: 1
+      vfxVariant: 0
+      vfxScale: 1
+      finisher: 1
+      bleedDamage: 0
+      bleedTick: 0.5
+      bleedDuration: 0
+      hitstop: 0.05
+      shakeAmp: 0.05
+      shakeDur: 0.05
+      shape: 2
+      impactDelay: 0.28
+      projectileSpeed: 10
+      projectileRange: 5.5
+      pierce: 1
+      explodeRadius: 1.2
+      arrowRow: 0
+      bodyLock: 0.42
+    projectilePoses:
+    - {fileID: -1118395623, guid: 1658f56df61f5a64b8168e6ec5a6c8c9, type: 3}
+    - {fileID: -1275113818, guid: 1658f56df61f5a64b8168e6ec5a6c8c9, type: 3}
+    - {fileID: 336613749, guid: 1658f56df61f5a64b8168e6ec5a6c8c9, type: 3}
+    - {fileID: 2131477794, guid: 1658f56df61f5a64b8168e6ec5a6c8c9, type: 3}
+    projectileHit:
+    - {fileID: -1752672941, guid: eaed1a3734272dc4eb8544509d5a201a, type: 3}
+    - {fileID: -1965194580, guid: eaed1a3734272dc4eb8544509d5a201a, type: 3}
+    - {fileID: -140870239, guid: eaed1a3734272dc4eb8544509d5a201a, type: 3}
+    finisherVfx:
+    - {fileID: 1871457714, guid: 49380522d2d67824aa1f0e8376aabdf3, type: 3}
+    - {fileID: -782491092, guid: 49380522d2d67824aa1f0e8376aabdf3, type: 3}
+    - {fileID: 356419373, guid: 49380522d2d67824aa1f0e8376aabdf3, type: 3}
+    - {fileID: 428930432, guid: 49380522d2d67824aa1f0e8376aabdf3, type: 3}
+    sparkle:
+    - {fileID: -775032828, guid: 866c47f77e903de4a89a75d118754a96, type: 3}
+    - {fileID: -1255219887, guid: 866c47f77e903de4a89a75d118754a96, type: 3}
+    - {fileID: 669727627, guid: 866c47f77e903de4a89a75d118754a96, type: 3}
+  slot2:
+    displayName: Cau Tinh Tu
+    behaviour: 21
+    cooldown: 5
+    damage: 32
+    radius: 1.8
+    range: 5.5
+    knockback: 2
+    speed: 5
+    duration: 0
+    interval: 0
+    count: 0
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.06
+    shakeAmp: 0.08
+    shakeDur: 0.08
+    popupColor: {r: 0.78, g: 0.45, b: 0.95, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: 2138360320, guid: 765dccaf20478214489fc921fbde6a16, type: 3}
+    - {fileID: -1738845963, guid: 765dccaf20478214489fc921fbde6a16, type: 3}
+    - {fileID: 540914962, guid: 765dccaf20478214489fc921fbde6a16, type: 3}
+    - {fileID: -1094020044, guid: 765dccaf20478214489fc921fbde6a16, type: 3}
+    vfxFps: 12
+    projectilePoses:
+    - {fileID: -1118395623, guid: 1658f56df61f5a64b8168e6ec5a6c8c9, type: 3}
+    - {fileID: -1275113818, guid: 1658f56df61f5a64b8168e6ec5a6c8c9, type: 3}
+    - {fileID: 336613749, guid: 1658f56df61f5a64b8168e6ec5a6c8c9, type: 3}
+    - {fileID: 2131477794, guid: 1658f56df61f5a64b8168e6ec5a6c8c9, type: 3}
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
+  slot3:
+    displayName: Dich Chuyen
+    behaviour: 22
+    cooldown: 5
+    damage: 0
+    radius: 0
+    range: 0
+    knockback: 0
+    speed: 0
+    duration: 0
+    interval: 0
+    count: 0
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.05
+    shakeAmp: 0.08
+    shakeDur: 0.09
+    popupColor: {r: 0.78, g: 0.45, b: 0.95, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: 1076096959, guid: dc628a98ef53dde409698c1d773b423b, type: 3}
+    - {fileID: 85244051, guid: dc628a98ef53dde409698c1d773b423b, type: 3}
+    - {fileID: 1105920018, guid: dc628a98ef53dde409698c1d773b423b, type: 3}
+    - {fileID: -1853396656, guid: dc628a98ef53dde409698c1d773b423b, type: 3}
+    vfxFps: 12
+    projectilePoses: []
+    stunDuration: 0
+    dashDistance: 3.5
+    coneDeg: 70
+  slot4:
+    displayName: Vong Phu Chu
+    behaviour: 23
+    cooldown: 9
+    damage: 8
+    radius: 2.2
+    range: 5.5
+    knockback: 0
+    speed: 0
+    duration: 3
+    interval: 0.5
+    count: 6
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.05
+    shakeAmp: 0.08
+    shakeDur: 0.09
+    popupColor: {r: 0.78, g: 0.45, b: 0.95, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: 843576085, guid: bbdc74b56e80797489864d73367d6efb, type: 3}
+    - {fileID: 1592785749, guid: bbdc74b56e80797489864d73367d6efb, type: 3}
+    - {fileID: 1239609624, guid: bbdc74b56e80797489864d73367d6efb, type: 3}
+    - {fileID: 281595357, guid: bbdc74b56e80797489864d73367d6efb, type: 3}
+    - {fileID: -37629020, guid: bbdc74b56e80797489864d73367d6efb, type: 3}
+    vfxFps: 12
+    projectilePoses: []
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
+  slotV:
+    displayName: Khien Ma Luc
+    behaviour: 24
+    cooldown: 10
+    damage: 40
+    radius: 0
+    range: 0
+    knockback: 0
+    speed: 0
+    duration: 4
+    interval: 0
+    count: 0
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.05
+    shakeAmp: 0.08
+    shakeDur: 0.09
+    popupColor: {r: 0.78, g: 0.45, b: 0.95, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: 2049674031, guid: ba84e100877f9a8408ec1b1e01e65ed0, type: 3}
+    - {fileID: 96933088, guid: ba84e100877f9a8408ec1b1e01e65ed0, type: 3}
+    - {fileID: -344804892, guid: ba84e100877f9a8408ec1b1e01e65ed0, type: 3}
+    - {fileID: 1673446676, guid: ba84e100877f9a8408ec1b1e01e65ed0, type: 3}
+    - {fileID: 1417187313, guid: ba84e100877f9a8408ec1b1e01e65ed0, type: 3}
+    - {fileID: -52298338, guid: ba84e100877f9a8408ec1b1e01e65ed0, type: 3}
+    vfxFps: 12
+    projectilePoses: []
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
+  slotC:
+    displayName: Mua Sao Bang
+    behaviour: 25
+    cooldown: 13
+    damage: 28
+    radius: 3
+    range: 0
+    knockback: 1.5
+    speed: 0
+    duration: 0
+    interval: 0.3
+    count: 5
+    multiplier: 1
+    anticipation: 0
+    hitstop: 0.04
+    shakeAmp: 0.06
+    shakeDur: 0.06
+    popupColor: {r: 0.78, g: 0.45, b: 0.95, a: 1}
+    spreadDeg: 0
+    threshold: 0
+    alpha: 1
+    bleedDamage: 0
+    bleedTick: 0.5
+    bleedDuration: 0
+    useTint: 0
+    tintColor: {r: 1, g: 1, b: 1, a: 1}
+    vfxFrames:
+    - {fileID: -305666881, guid: 82651f7d8cd9b3d48be3aa3014b45836, type: 3}
+    - {fileID: -1297823332, guid: 82651f7d8cd9b3d48be3aa3014b45836, type: 3}
+    vfxFps: 12
+    projectilePoses:
+    - {fileID: -1767994256, guid: 127240ff6ad67cc4cb2c78316d58a058, type: 3}
+    - {fileID: 1553986069, guid: 127240ff6ad67cc4cb2c78316d58a058, type: 3}
+    - {fileID: 309058595, guid: 127240ff6ad67cc4cb2c78316d58a058, type: 3}
+    - {fileID: 1243145910, guid: 127240ff6ad67cc4cb2c78316d58a058, type: 3}
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70

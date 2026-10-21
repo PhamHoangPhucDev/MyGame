@@ -15,6 +15,9 @@ public static class R2CPhase4ClassSetup
     [MenuItem("Game01/R2C/Phase 4 Import Lyra")]
     public static void ImportLyra() => Import("Lyra", "LYRA_MANIFEST.csv");
 
+    [MenuItem("Game01/R2C/Phase 4 Import Selene")]
+    public static void ImportSelene() => Import("Selene", "SELENE_MANIFEST.csv");
+
     static void Import(string className, string manifestName)
     {
         string src = "Docs/ReferenceRebuild/R2/R2C_OriginalHero/unity_export_" + className.ToLowerInvariant();
@@ -225,9 +228,9 @@ public static class R2CPhase4ClassSetup
             keys[frames.Count] = new ObjectReferenceKeyframe { time = frames.Count / (float)fps, value = frames[frames.Count - 1] };
         if (anim == "Attack")
         {
-            float t1 = className == "Lyra" ? 0.06f : 0.16f;
-            float t2 = className == "Lyra" ? 0.14f : 0.32f;
-            float t3 = className == "Lyra" ? 0.26f : 0.42f;
+            float t1 = className == "Lyra" ? 0.06f : className == "Selene" ? 0.10f : 0.16f;
+            float t2 = className == "Lyra" ? 0.14f : className == "Selene" ? 0.20f : 0.32f;
+            float t3 = className == "Lyra" ? 0.26f : className == "Selene" ? 0.32f : 0.42f;
             keys = new ObjectReferenceKeyframe[4];
             keys[0] = new ObjectReferenceKeyframe { time = 0f, value = frames[0] };
             keys[1] = new ObjectReferenceKeyframe { time = t1, value = frames[1] };
@@ -258,6 +261,11 @@ public static class R2CPhase4ClassSetup
             set.weaponPoses = sprites["Gear/Lyra_Bow.png"];
             set.shieldViews = new Sprite[0];
         }
+        else if (className == "Selene")
+        {
+            set.weaponPoses = sprites["Gear/Selene_Staff.png"];
+            set.shieldViews = new Sprite[0];
+        }
         else
         {
             set.weaponPoses = sprites["Gear/" + className + "_Hammer.png"];
@@ -280,7 +288,19 @@ public static class R2CPhase4ClassSetup
             kit = ScriptableObject.CreateInstance<ClassKit>();
             AssetDatabase.CreateAsset(kit, path);
         }
-        if (className == "Lyra")
+        if (className == "Selene")
+            kit.FillSelene(
+                sprites["Gear/Selene_Orb.png"],
+                sprites["Gear/Selene_Sparkle.png"],
+                sprites["Gear/Selene_OrbHit.png"],
+                sprites["Gear/Selene_StarBurst.png"],
+                sprites["Skills/Selene_Nova.png"],
+                sprites["Skills/Selene_Blink.png"],
+                sprites["Skills/Selene_Rune.png"],
+                sprites["Skills/Selene_Bubble.png"],
+                sprites["Skills/Selene_Meteor.png"],
+                sprites["Skills/Selene_MeteorZone.png"]);
+        else if (className == "Lyra")
             kit.FillLyra(
                 sprites["Gear/Lyra_Arrow.png"],
                 sprites["Gear/Lyra_ArrowHit.png"],

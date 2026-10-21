@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4132bc713e737704f8b72303856a4793, type: 3}
+  m_Name: EquipmentSet_Selene
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.EquipmentSet
+  anchorTable: {fileID: 4900000, guid: 870df0d49c7c2434393154939ecc7a81, type: 3}
+  weaponPoses:
+  - {fileID: 1832394319, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: 805850016, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: 327044951, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: -1314009599, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: 1495929756, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: -416256158, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: 1959306571, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: 974042275, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: 1173605167, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: 204820566, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: 1454101537, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: 1481417402, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: -407848107, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: -1207675994, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: -1672518035, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  - {fileID: 1108386289, guid: 5739ab17df283c646bde9a553d0d0e50, type: 3}
+  offPoses: []
+  shieldViews: []
+  hand: {fileID: 21300000, guid: 6a1fc7b4224134f499e68ac63b206351, type: 3}
+  slashFrames:
+  - {fileID: 245816830, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: 1842254361, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: 270405979, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: 98010502, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: 1058384487, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: -707366504, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: -378462829, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: -430523501, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: 1580068023, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: -1324580996, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: 320456112, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: -1709474486, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: -2049013644, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: 449330897, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: -1985104758, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: 1678435697, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: -948294677, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  - {fileID: -620020052, guid: 76c2e724b0932ae4ea1a818322701f83, type: 3}
+  replaceLegacyRSlash: 1

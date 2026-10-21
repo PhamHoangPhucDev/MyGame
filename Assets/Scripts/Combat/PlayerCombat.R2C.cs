@@ -11,19 +11,29 @@ namespace GameplayPrototype
             var poses = _kit != null && _kit.combo != null ? _kit.combo.projectilePoses : null;
             var hits = _kit != null && _kit.combo != null ? _kit.combo.projectileHit : null;
             Vector2 dir = _slashFacing.sqrMagnitude > 0.01f ? _slashFacing : _facing;
-            int explodeDamage = step.shape == ComboHitShape.Projectile && step.radiusMul > 1.01f ? damage : 0;
-            float explode = explodeDamage > 0 ? _pendingRadius : 0f;
-            var impact = HitRow(hits, step.arrowRow > 0 ? 1 : 0);
+            bool burst = step.explodeRadius > 0.05f;
+            int explodeDamage = burst ? damage : 0;
+            var impact = burst ? null : HitRow(hits, step.arrowRow > 0 ? 1 : 0);
+            var boom = burst && _kit.combo != null ? _kit.combo.finisherVfx : null;
+            var sparkle = _kit.combo != null ? _kit.combo.sparkle : null;
             KitProjectile.Fire(ArrowSpawn(dir), dir, poses,
                 step.projectileSpeed, step.projectileRange, explodeDamage > 0 ? 0 : damage, _pendingKnockback,
-                0, 0.5f, 0f, enemyMask, new Color(0.55f, 0.9f, 0.35f), impact, step.pierce, explode, impact, step.arrowRow, explodeDamage,
-                () => ApplyKitHitFeedback());
+                0, 0.5f, 0f, enemyMask, new Color(0.78f, 0.45f, 0.95f), impact, step.pierce, step.explodeRadius, boom, step.arrowRow, explodeDamage,
+                () => ApplyKitHitFeedback(), sparkle);
         }
 
         /// <summary>Lyra releases from the bow tip. Other classes keep the old offset.</summary>
         Vector2 ArrowSpawn(Vector2 dir)
         {
             Vector2 d = dir.sqrMagnitude > 0.01f ? dir.normalized : Vector2.down;
+            if (_kit != null && _kit.classId == "selene")
+            {
+                if (Mathf.Abs(d.x) > Mathf.Abs(d.y))
+                    return (Vector2)transform.position + new Vector2(d.x > 0f ? 0.8125f : -0.8125f, 1f);
+                if (d.y > 0f)
+                    return (Vector2)transform.position + new Vector2(0.6875f, 1.1875f);
+                return (Vector2)transform.position + new Vector2(0.6875f, -0.0625f);
+            }
             if (_kit == null || _kit.classId != "lyra")
                 return (Vector2)transform.position + Vector2.up * 0.4f + d * 0.2f;
             if (Mathf.Abs(d.x) > Mathf.Abs(d.y))
@@ -241,8 +251,10 @@ namespace GameplayPrototype
         void BeginSlowOrb(SkillDef d)
         {
             Vector2 dir = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.right;
-            KitProjectile.Fire((Vector2)transform.position + Vector2.up * 0.5f + dir * 0.3f, dir, d.projectilePoses,
-                d.speed, d.range, 0, d.knockback, 0, 0.5f, 0f, enemyMask, d.popupColor, null, 1, d.radius, d.vfxFrames, 0, d.damage);
+            var sparkle = _kit != null && _kit.combo != null ? _kit.combo.sparkle : null;
+            KitProjectile.Fire(ArrowSpawn(dir), dir, d.projectilePoses,
+                d.speed, d.range, 0, d.knockback, 0, 0.5f, 0f, enemyMask, d.popupColor, null, 1, d.radius, d.vfxFrames, 2, d.damage,
+                () => ApplyKitHitFeedback(), sparkle);
             _visual?.PlaySlashSwing(dir, false, 0.35f);
         }
 
@@ -256,14 +268,22 @@ namespace GameplayPrototype
             if (hit.collider != null && hit.collider.GetComponentInParent<PlayerCombat>() == null && hit.collider.GetComponentInParent<EnemyController>() == null)
                 travel = Mathf.Max(0.2f, hit.distance - 0.25f);
             Vector2 to = from + dir * travel;
-            if (d.vfxFrames != null && d.vfxFrames.Length > 0)
+            if (d.vfxFrames != null && d.vfxFrames.Length >= 4)
+            {
+                KitVfx.Play(d.vfxFrames, from, 20f, false, 30);
+                KitVfx.Play(new[] { d.vfxFrames[1], d.vfxFrames[2], d.vfxFrames[3] }, to, 20f, false, 30);
+            }
+            else if (d.vfxFrames != null && d.vfxFrames.Length > 0)
                 KitVfx.Play(d.vfxFrames, from, 20f, false, 30);
             transform.position = to;
             GetComponent<Rigidbody2D>().position = to;
-            if (d.projectilePoses != null && d.projectilePoses.Length > 0)
-                KitVfx.Play(d.projectilePoses, to, 20f, false, 30);
-            else if (d.vfxFrames != null)
-                KitVfx.Play(d.vfxFrames, to, 20f, false, 30);
+            if (d.vfxFrames == null || d.vfxFrames.Length < 4)
+            {
+                if (d.projectilePoses != null && d.projectilePoses.Length > 0)
+                    KitVfx.Play(d.projectilePoses, to, 20f, false, 30);
+                else if (d.vfxFrames != null)
+                    KitVfx.Play(d.vfxFrames, to, 20f, false, 30);
+            }
             GetComponent<Health>()?.GrantInvulnerability(0.1f);
         }
 
@@ -292,9 +312,36 @@ namespace GameplayPrototype
 
         void BeginManaShield(SkillDef d)
         {
-            GetComponent<Health>()?.SetShield(d.damage > 0 ? d.damage : 40, d.duration > 0.1f ? d.duration : 4f);
-            if (d.vfxFrames != null && d.vfxFrames.Length > 0)
-                KitVfx.PlayAttached(d.vfxFrames, transform, Vector3.up * 0.4f, 8f, false, 25, true);
+            var health = GetComponent<Health>();
+            if (health == null) return;
+            health.SetShield(d.damage > 0 ? d.damage : 40, d.duration > 0.1f ? d.duration : 4f);
+            var frames = d.vfxFrames;
+            if (frames == null || frames.Length < 6) return;
+            KitVfx.Play(new[] { frames[0] }, transform.position + Vector3.up * 0.4f, 12f, false, 25);
+            var bubble = KitVfx.PlayAttached(new[] { frames[1], frames[2] }, transform, Vector3.up * 0.4f, 1f / 0.15f, false, 25, true);
+            void Stop()
+            {
+                health.ShieldHit -= Flash;
+                health.ShieldBroke -= Break;
+            }
+            void Flash(Health h, int used)
+            {
+                KitVfx.Play(new[] { frames[3] }, transform.position + Vector3.up * 0.4f, 1f / 0.06f, false, 30);
+            }
+            void Break(Health h)
+            {
+                Stop();
+                if (bubble != null) Destroy(bubble.gameObject);
+                KitVfx.Play(new[] { frames[4], frames[5] }, transform.position + Vector3.up * 0.4f, 1f / 0.06f, false, 30);
+            }
+            health.ShieldHit += Flash;
+            health.ShieldBroke += Break;
+            StartCoroutine(After(d.duration > 0.1f ? d.duration : 4f, () =>
+            {
+                if (health.ShieldPoints <= 0) return;
+                Stop();
+                if (bubble != null) Destroy(bubble.gameObject);
+            }));
         }
 
         void BeginMeteor(SkillDef d)
@@ -316,6 +363,8 @@ namespace GameplayPrototype
                 if (d.projectilePoses != null && d.projectilePoses.Length > 0)
                     KitVfx.Play(d.projectilePoses, at, 12f, false, 40);
                 ApplyAreaDamage(at, 0.8f, d.damage, d.knockback, d.popupColor);
+                if (d.hitstop > 0f && HitStop.Instance != null) HitStop.Instance.Trigger(d.hitstop);
+                if (d.shakeAmp > 0f) _cameraFollow?.Shake(d.shakeAmp, d.shakeDur);
                 if (i == 0) KitVfx.ScreenTint(new Color(0.45f, 0.2f, 0.7f, 0.08f), 0.1f);
                 if (i < stars - 1) yield return new WaitForSeconds(d.interval > 0.01f ? d.interval : 0.3f);
             }

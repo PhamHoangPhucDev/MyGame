@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4132bc713e737704f8b72303856a4793, type: 3}
+  m_Name: EquipmentSet_Aren_BackGear
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.EquipmentSet
+  anchorTable: {fileID: 4900000, guid: c75b22debcaf9b74089bfc1be34dad6c, type: 3}
+  weaponPoses:
+  - {fileID: -2030891055, guid: c911a4aec95da4c45ba18a50ad78f54e, type: 3}
+  - {fileID: -1919801630, guid: c911a4aec95da4c45ba18a50ad78f54e, type: 3}
+  - {fileID: 751970789, guid: c911a4aec95da4c45ba18a50ad78f54e, type: 3}
+  - {fileID: 737709026, guid: c911a4aec95da4c45ba18a50ad78f54e, type: 3}
+  - {fileID: -445290855, guid: c911a4aec95da4c45ba18a50ad78f54e, type: 3}
+  - {fileID: -800849787, guid: c911a4aec95da4c45ba18a50ad78f54e, type: 3}
+  - {fileID: -159580430, guid: c911a4aec95da4c45ba18a50ad78f54e, type: 3}
+  - {fileID: 403958029, guid: c911a4aec95da4c45ba18a50ad78f54e, type: 3}
+  - {fileID: 1729381552, guid: c911a4aec95da4c45ba18a50ad78f54e, type: 3}
+  offPoses: []
+  shieldViews:
+  - {fileID: -2066137430, guid: 1dee7b517152c37429d7f654447ec220, type: 3}
+  - {fileID: 264015269, guid: 1dee7b517152c37429d7f654447ec220, type: 3}
+  - {fileID: -726073387, guid: 1dee7b517152c37429d7f654447ec220, type: 3}
+  hand: {fileID: 21300000, guid: 216791abbca5c6b4084b7ccd6efd3cc1, type: 3}
+  slashFrames:
+  - {fileID: 1199257407, guid: 953d3b0069976a945bfcd4d9fa010734, type: 3}
+  - {fileID: 330742020, guid: 953d3b0069976a945bfcd4d9fa010734, type: 3}
+  - {fileID: 1472728978, guid: 953d3b0069976a945bfcd4d9fa010734, type: 3}
+  - {fileID: 1492649161, guid: 953d3b0069976a945bfcd4d9fa010734, type: 3}
+  - {fileID: 319437768, guid: 953d3b0069976a945bfcd4d9fa010734, type: 3}
+  - {fileID: -1320183394, guid: 953d3b0069976a945bfcd4d9fa010734, type: 3}
+  replaceLegacyRSlash: 1

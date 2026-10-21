@@ -108,12 +108,15 @@ MonoBehaviour:
     useTint: 0
     tintColor: {r: 1, g: 1, b: 1, a: 1}
     vfxFrames:
-    - {fileID: -73400378642911122, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
-    - {fileID: 5154045692758359372, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
-    - {fileID: -1419699749374244652, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
-    - {fileID: -1279410459661439991, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
-    vfxFps: 14
+    - {fileID: 6742373106126379211, guid: ea002723d932d3f419f679611c2d0c2b, type: 3}
+    - {fileID: -5476635136769118898, guid: ea002723d932d3f419f679611c2d0c2b, type: 3}
+    - {fileID: -7475976780716355269, guid: ea002723d932d3f419f679611c2d0c2b, type: 3}
+    - {fileID: 3418404301808156510, guid: ea002723d932d3f419f679611c2d0c2b, type: 3}
+    vfxFps: 16.666668
     projectilePoses: []
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
   slot3:
     displayName: Phi Dao
     behaviour: 7
@@ -140,7 +143,11 @@ MonoBehaviour:
     bleedDuration: 2
     useTint: 0
     tintColor: {r: 1, g: 1, b: 1, a: 1}
-    vfxFrames: []
+    vfxFrames:
+    - {fileID: -4625064253892111346, guid: 531ee0edbdfd45844aacdae39879b84e, type: 3}
+    - {fileID: -7481531592230883053, guid: 531ee0edbdfd45844aacdae39879b84e, type: 3}
+    - {fileID: -93374867024764824, guid: 531ee0edbdfd45844aacdae39879b84e, type: 3}
+    - {fileID: -306710145, guid: 531ee0edbdfd45844aacdae39879b84e, type: 3}
     vfxFps: 12
     projectilePoses:
     - {fileID: -799795402, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
@@ -151,6 +158,9 @@ MonoBehaviour:
     - {fileID: -2072828094, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
     - {fileID: 8574341, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
     - {fileID: 727049316, guid: 0f89b44d6f28a9d4897e60e3da1f3378, type: 3}
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
   slot4:
     displayName: Vu Dieu Luoi Dao
     behaviour: 3
@@ -177,9 +187,24 @@ MonoBehaviour:
     bleedDuration: 0
     useTint: 1
     tintColor: {r: 0.86, g: 0.16, b: 0.22, a: 1}
-    vfxFrames: []
+    vfxFrames:
+    - {fileID: -3110605435467906003, guid: d7d143b56b9392643b1f022ec896e4a7, type: 3}
+    - {fileID: -8910838413379896878, guid: d7d143b56b9392643b1f022ec896e4a7, type: 3}
+    - {fileID: -1371451711239943520, guid: d7d143b56b9392643b1f022ec896e4a7, type: 3}
+    - {fileID: -2725558282340645021, guid: d7d143b56b9392643b1f022ec896e4a7, type: 3}
+    - {fileID: -7388570204085250107, guid: d7d143b56b9392643b1f022ec896e4a7, type: 3}
+    - {fileID: -1566875127, guid: d7d143b56b9392643b1f022ec896e4a7, type: 3}
+    - {fileID: -1553353380750271474, guid: 4c73bb046f7ae8e4ab5186e62509b951, type: 3}
+    - {fileID: -6852762161286133809, guid: 4c73bb046f7ae8e4ab5186e62509b951, type: 3}
+    - {fileID: 662405921624693593, guid: 4c73bb046f7ae8e4ab5186e62509b951, type: 3}
+    - {fileID: 4337620241904090277, guid: 4c73bb046f7ae8e4ab5186e62509b951, type: 3}
+    - {fileID: 6764131848323287711, guid: 4c73bb046f7ae8e4ab5186e62509b951, type: 3}
+    - {fileID: -1523632681, guid: 4c73bb046f7ae8e4ab5186e62509b951, type: 3}
     vfxFps: 12
     projectilePoses: []
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
   slotV:
     displayName: Bom Khoi
     behaviour: 8
@@ -213,6 +238,9 @@ MonoBehaviour:
     - {fileID: -1279410459661439991, guid: fd0276e01c74d05479ac8bad7115e1ef, type: 3}
     vfxFps: 10
     projectilePoses: []
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70
   slotC:
     displayName: Doat Menh
     behaviour: 9
@@ -244,3 +272,6 @@ MonoBehaviour:
     - {fileID: -3577618153968017305, guid: c1a1a5317c483ff45ab3fde644eaefab, type: 3}
     vfxFps: 10
     projectilePoses: []
+    stunDuration: 0
+    dashDistance: 2
+    coneDeg: 70

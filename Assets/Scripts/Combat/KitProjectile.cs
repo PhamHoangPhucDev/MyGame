@@ -19,8 +19,10 @@ namespace GameplayPrototype
         Color _popup;
         readonly List<Health> _buffer = new();
 
+        Sprite[] _hitFrames;
+
         public static KitProjectile Fire(Vector2 from, Vector2 dir, Sprite[] poses8, float speed, float range, int damage, float knockback,
-                                         int bleedDamage, float bleedTick, float bleedDuration, LayerMask mask, Color popup)
+                                         int bleedDamage, float bleedTick, float bleedDuration, LayerMask mask, Color popup, Sprite[] hitFrames = null)
         {
             var go = new GameObject("KitProjectile");
             go.transform.position = from;
@@ -28,7 +30,7 @@ namespace GameplayPrototype
             p._dir = dir.sqrMagnitude > 0.0001f ? dir.normalized : Vector2.right;
             p._speed = speed; p._range = range; p._damage = damage; p._knockback = knockback;
             p._bleedDamage = bleedDamage; p._bleedTick = bleedTick; p._bleedDuration = bleedDuration;
-            p._mask = mask; p._popup = popup;
+            p._mask = mask; p._popup = popup; p._hitFrames = hitFrames;
             var sr = go.AddComponent<SpriteRenderer>();
             if (poses8 != null && poses8.Length >= 8)
             {
@@ -54,7 +56,10 @@ namespace GameplayPrototype
                 if (h.TakeDamage(_damage, hp, _dir * _knockback))
                 {
                     DamagePopup.Spawn(hp + Vector2.up * 0.25f, _damage, _popup);
-                    CombatVfx.SpawnImpact(hp);
+                    if (_hitFrames != null && _hitFrames.Length > 0 && _hitFrames[0] != null)
+                        KitVfx.Play(_hitFrames, hp + Vector2.up * 0.5f, 20f, false, 80);
+                    else
+                        CombatVfx.SpawnImpact(hp);
                     HitComboCounter.Instance?.RegisterHit();
                     if (_bleedDamage > 0) StatusBleed.Apply(h, _bleedDamage, _bleedTick, _bleedDuration);
                 }

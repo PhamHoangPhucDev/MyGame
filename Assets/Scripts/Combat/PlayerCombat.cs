@@ -147,6 +147,8 @@ namespace GameplayPrototype
 
         public void ResetCombatState()
         {
+            StopAllCoroutines();
+            _movement?.OverrideVelocity(Vector2.zero, 0f);
             for (int i = 0; i < _cooldownRemaining.Length; i++)
                 _cooldownRemaining[i] = 0f;
             _whirlTimer = 0f;
@@ -164,9 +166,19 @@ namespace GameplayPrototype
             _stickyTarget = null;
             _nextHitMul = 1f;
             if (_stealthTimer > 0f) EndStealth();
-            GetComponent<Health>()?.SetDamageTakenMultiplier(1f);
+            EndGuard();
             enabled = true;
             CooldownsChanged?.Invoke();
+        }
+
+        void CancelPendingSkill()
+        {
+            _whirlLeft = 0;
+            _slashPending = false;
+            _crescentPending = false;
+            EndGuard();
+            _movement?.OverrideVelocity(Vector2.zero, 0f);
+            StopAllCoroutines();
         }
 
         void Awake()
@@ -207,8 +219,7 @@ namespace GameplayPrototype
             var health = GetComponent<Health>();
             if (health != null && health.IsDead)
             {
-                _whirlLeft = 0;
-                EndGuard();
+                CancelPendingSkill();
                 return;
             }
 
@@ -534,12 +545,14 @@ namespace GameplayPrototype
             if (target == null) return false;
             Vector2 from = transform.position, tp = target.transform.position;
             Vector2 dir = (tp - from).sqrMagnitude > 0.0001f ? (tp - from).normalized : _facing;
-            KitVfx.Play(d.vfxFrames, from + Vector2.up * 0.5f, d.vfxFps);
+            KitVfx.Play(d.vfxFrames, from, d.vfxFps);
             Blink(tp + dir * d.radius);
             _facing = -dir;
             _stickyTarget = target;
             _nextHitMul = d.multiplier > 0f ? d.multiplier : 1f;
-            KitVfx.Play(d.vfxFrames, (Vector2)transform.position + Vector2.up * 0.5f, d.vfxFps);
+            // Arrival pose only. The blink itself stays immediate.
+            _visual?.PlaySkillPose("ShadowStep", _facing, 0.23f, true);
+            KitVfx.Play(d.vfxFrames, transform.position, d.vfxFps);
             GameAudio.Play(Sfx.SkillDash);
             return true;
         }
@@ -553,13 +566,15 @@ namespace GameplayPrototype
             if (aim != null) baseDir = ((Vector2)aim.transform.position - (Vector2)transform.position).normalized;
             if (!_slashPending) _pendingStep = -1; // skill swing: no combo-step pose/VFX
             _facing = baseDir;
-            _visual?.PlaySlashSwing(baseDir, skipWindup: true);
+            bool knifePose = _visual != null && _visual.PlaySkillPose("KnifeThrow", baseDir, 0.22f, true);
+            if (!knifePose)
+                _visual?.PlaySlashSwing(baseDir, skipWindup: true);
             float start = n > 1 ? -d.spreadDeg * 0.5f : 0f, step = n > 1 ? d.spreadDeg / (n - 1) : 0f;
             for (int i = 0; i < n; i++)
             {
                 Vector2 dir = Quaternion.Euler(0f, 0f, start + step * i) * baseDir;
                 KitProjectile.Fire((Vector2)transform.position + Vector2.up * 0.45f + dir * 0.3f, dir, d.projectilePoses, d.speed, d.range,
-                    d.damage, d.knockback, d.bleedDamage, d.bleedTick, d.bleedDuration, enemyMask, d.popupColor);
+                    d.damage, d.knockback, d.bleedDamage, d.bleedTick, d.bleedDuration, enemyMask, d.popupColor, d.vfxFrames);
             }
         }
 
@@ -567,6 +582,7 @@ namespace GameplayPrototype
         void BeginStealth(SkillDef d)
         {
             KitVfx.Play(d.vfxFrames, (Vector2)transform.position + Vector2.up * 0.5f, d.vfxFps);
+            _visual?.PlaySkillPose("SmokeBomb", _facing, 0.15f, true);
             _stealthTimer = Mathf.Max(0.1f, d.duration);
             _stealthAlpha = Mathf.Clamp01(d.alpha);
             GetComponent<Health>()?.SetDamageTakenMultiplier(0f);
@@ -605,7 +621,9 @@ namespace GameplayPrototype
             Blink(tp - dir * 0.6f);
             if (!_slashPending) _pendingStep = -1;
             _facing = dir;
-            _visual?.PlaySlashSwing(dir, skipWindup: true);
+            bool executePose = _visual != null && _visual.PlaySkillPose("Execute", dir, 0.20f, true);
+            if (!executePose)
+                _visual?.PlaySlashSwing(dir, skipWindup: true);
             bool low = target.Normalized < d.threshold;
             int dmg = Mathf.RoundToInt(d.damage * (low ? d.multiplier : 1f));
             KitVfx.Play(d.vfxFrames, tp + Vector2.up * 0.4f, d.vfxFps, false, 80);
@@ -641,8 +659,7 @@ namespace GameplayPrototype
             if (_movement != null)
                 _movement.OverrideVelocity(dir * speed, dashTime);
             ArenKitVfx.PlayChargeDust(transform.position + Vector3.down * 0.15f);
-            // Play bash VFX at cast; damage lands after the dash settles.
-            ArenKitVfx.PlayShieldBash(transform.position + Vector3.up * 0.35f, dir);
+            _visual?.PlaySkillPose("ShieldBash", dir, 0.26f, true);
             if (!isActiveAndEnabled)
             {
                 FinishShieldBash(dir, d);
@@ -665,16 +682,20 @@ namespace GameplayPrototype
 
         void FinishShieldBash(Vector2 dir, SkillDef d)
         {
+            var health = GetComponent<Health>();
+            if (health != null && health.IsDead) return;
             float radius = d != null ? d.radius : 1.4f;
             int damage = d != null ? d.damage : flameDamage;
             float knock = d != null ? d.knockback : 4f;
             Color pop = d != null ? d.popupColor : new Color(1f, 0.9f, 0.45f);
             float cone = d != null && d.coneDeg > 1f ? d.coneDeg : 70f;
+            ArenKitVfx.PlayShieldBash(transform.position + Vector3.up * 0.35f, dir);
             ApplyConeDamage((Vector2)transform.position + dir * 0.35f, dir, radius, cone, damage, knock, pop);
         }
 
         void ApplyConeDamage(Vector2 origin, Vector2 facing, float radius, float coneDeg, int damage, float knockback, Color popupColor)
         {
+            if (GetComponent<Health>() is Health self && self.IsDead) return;
             CombatTargeting.OverlapEnemies(origin, radius, _hitBuffer, enemyMask);
             int landed = 0;
             float half = coneDeg * 0.5f;
@@ -708,6 +729,7 @@ namespace GameplayPrototype
             float speed = d != null ? d.speed : dashSpeed;
             if (_movement != null)
                 _movement.OverrideVelocity(dir * speed, dur);
+            _visual?.PlaySkillPose("Charge", dir, dur, true);
             if (isActiveAndEnabled)
                 StartCoroutine(ChargeDustTrail(dur));
             else
@@ -748,12 +770,32 @@ namespace GameplayPrototype
 
         SkillId _whirlSlot = SkillId.MawBite;
 
+        bool _whirlBody;
+
         void BeginWhirlwind(SkillDef d = null)
         {
             _whirlDef = d;
             _whirlSlot = d != null ? _activeSkill : SkillId.MawBite;
             _whirlLeft = d != null ? d.count : whirlWaves;
             _whirlTimer = 0f;
+            _whirlBody = false;
+            if (_visual != null)
+            {
+                if (ArenKitVfx.Active)
+                    _whirlBody = _visual.PlaySkillPose("Whirl", _facing, 0.60f, false);
+                else
+                    _whirlBody = _visual.PlaySkillPose("BladeDance", _facing, 0.60f, false);
+            }
+            if (!ArenKitVfx.Active && _whirlDef != null && _whirlDef.vfxFrames != null && _whirlDef.vfxFrames.Length >= 12)
+            {
+                var back = new Sprite[6];
+                var front = new Sprite[6];
+                System.Array.Copy(_whirlDef.vfxFrames, 0, back, 0, 6);
+                System.Array.Copy(_whirlDef.vfxFrames, 6, front, 0, 6);
+                var host = _visual != null ? _visual.transform : transform;
+                KitVfx.PlayAttached(back, host, new Vector3(0f, 0.125f, 0f), 10f, false, -2, false);
+                KitVfx.PlayAttached(front, host, new Vector3(0f, 0.125f, 0f), 10f, false, 2, false);
+            }
             WhirlWave();
             _whirlLeft--;
         }
@@ -773,9 +815,15 @@ namespace GameplayPrototype
             var d = _whirlDef;
             _activeSkill = _whirlSlot;
             if (d != null && d.useTint && !_slashPending) _pendingStep = -1; // class flurry: no combo-step VFX
-            _visual?.PlaySlashSwing(_facing, skipWindup: true);
+            if (!_whirlBody)
+                _visual?.PlaySlashSwing(_facing, skipWindup: true);
             GameAudio.Play(Sfx.SkillWhirl);
-            if (d != null && d.useTint)
+            bool bladeSheet = d != null && d.vfxFrames != null && d.vfxFrames.Length >= 12;
+            if (bladeSheet)
+            {
+                // Vex Blade Dance sheet already started. Do not add the temporary crescents.
+            }
+            else if (d != null && d.useTint)
             {
                 // class-coloured flurry: crescents rotating around the hero wave by wave
                 float a = (_whirlLeft * 60f) * Mathf.Deg2Rad;
@@ -845,7 +893,9 @@ namespace GameplayPrototype
         void BeginCrescentStrike(SkillDef d = null)
         {
             _crescentDef = d;
-            _visual?.PlaySlashSwing(_facing);
+            bool posed = ArenKitVfx.Active && _visual != null && _visual.PlaySkillPose("Dawnbreaker", _facing, 0.35f, true);
+            if (!posed)
+                _visual?.PlaySlashSwing(_facing);
             _crescentPending = true;
             _crescentDelay = d != null ? d.anticipation : crescentAnticipation;
         }
@@ -872,6 +922,7 @@ namespace GameplayPrototype
 
         void ApplyAreaDamage(Vector2 center, float radius, int damage, float knockback, Color popupColor)
         {
+            if (GetComponent<Health>() is Health self && self.IsDead) return;
             CombatTargeting.OverlapEnemies(center, radius, _hitBuffer, enemyMask);
             int landed = 0;
             foreach (var health in _hitBuffer)

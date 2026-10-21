@@ -32,6 +32,11 @@ namespace GameplayPrototype
         bool _hurtFaceRight;
         string _attackDir = "Down";
         bool _attackFaceRight;
+        string _skillState;
+        float _skillTimer;
+        bool _skillNoFlip;
+        bool _skillFaceRight;
+        bool _skillLockHurt;
 
         const float Pixel = 1f / 16f;
         float _bobTimer;
@@ -130,12 +135,14 @@ namespace GameplayPrototype
             {
                 _health.Died -= OnDied;
                 _health.Damaged -= OnDamaged;
+                _health.Changed -= OnHealthChanged;
             }
             _health = health;
             if (_health != null)
             {
                 _health.Died += OnDied;
                 _health.Damaged += OnDamaged;
+                _health.Changed += OnHealthChanged;
             }
             RestSword();
         }
@@ -146,13 +153,27 @@ namespace GameplayPrototype
             {
                 _health.Died -= OnDied;
                 _health.Damaged -= OnDamaged;
+                _health.Changed -= OnHealthChanged;
             }
+        }
+
+        void OnHealthChanged(Health h)
+        {
+            if (!_dead || h == null || h.IsDead) return;
+            _dead = false;
+            _swinging = false;
+            _bodyAttackTimer = 0f;
+            _skillTimer = 0f;
+            _skillLockHurt = false;
+            _hurtTimer = 0f;
+            _bodyState = null;
+            RestSword();
         }
 
         void OnDamaged(Health _, int amount, Vector2 hitPoint)
         {
             if (_dead || _bodyAnim == null || !HasBodyState("Hero_Hurt_Down")) return;
-            if (_bodyAttackTimer > 0f && !hurtInterruptsAttack) return;
+            if ((_bodyAttackTimer > 0f || _skillLockHurt) && !hurtInterruptsAttack) return;
 
             // Face the attacker so the knockback lean reads correctly. Enemy hits pass the
             // hero's own position as hitPoint, so fall back to the nearest enemy.
@@ -168,6 +189,8 @@ namespace GameplayPrototype
             _hurtDir = side ? "Side" : (toHit.y > 0.2f ? "Up" : "Down");
             _hurtFaceRight = side && toHit.x > 0f;
             _bodyAttackTimer = 0f;
+            _skillTimer = 0f;
+            _skillLockHurt = false;
             _hurtTimer = hurtDuration;
             _bodyState = null;
         }
@@ -177,20 +200,35 @@ namespace GameplayPrototype
             _dead = true;
             _swinging = false;
             _bodyAttackTimer = 0f;
+            _skillTimer = 0f;
+            _skillLockHurt = false;
             _hurtTimer = 0f;
             if (_bodyAnim != null)
             {
-                if (HasBodyState("Hero_Death"))
+                string state = DeathState();
+                if (state != null)
                 {
                     _bodyAnim.speed = 1f;
-                    _bodyAnim.Play("Hero_Death", 0, 0f);
-                    _bodyState = "Hero_Death";
+                    _bodyAnim.Play(state, 0, 0f);
+                    _bodyState = state;
                 }
                 else
                     _bodyAnim.speed = 0f;
             }
             if (swordRenderer != null)
                 swordRenderer.enabled = false;
+        }
+
+        string DeathState()
+        {
+            Vector2 facing = combat != null ? combat.Facing : Vector2.down;
+            bool side = Mathf.Abs(facing.x) > Mathf.Abs(facing.y) && Mathf.Abs(facing.x) > 0.05f;
+            string view = side ? "Side" : (facing.y > 0.2f ? "Up" : "Down");
+            if (visualRenderer != null)
+                visualRenderer.flipX = side && facing.x > 0f;
+            string directional = "Hero_Death_" + view;
+            if (HasBodyState(directional)) return directional;
+            return HasBodyState("Hero_Death") ? "Hero_Death" : null;
         }
 
         bool HasBodyState(string state) =>
@@ -275,6 +313,42 @@ namespace GameplayPrototype
                 return;
             }
 
+            if (_skillTimer > 0f)
+            {
+                if (!HasBodyState(_skillState))
+                {
+                    _skillTimer = 0f;
+                    _skillLockHurt = false;
+                }
+                else
+                {
+                    _bodyAnim.speed = frozen ? 0f : 1f;
+                    if (!frozen)
+                        _skillTimer -= Time.deltaTime;
+                    if (_bodyState != _skillState)
+                    {
+                        _bodyState = _skillState;
+                        _bodyAnim.Play(_skillState, 0, 0f);
+                    }
+                    return;
+                }
+            }
+
+            if (ArenKitVfx.Active && combat != null && combat.IsGuarding)
+            {
+                string bulwark = "Aren_Bulwark_" + ViewOf(combat.Facing);
+                if (HasBodyState(bulwark))
+                {
+                    _bodyAnim.speed = frozen ? 0f : 1f;
+                    if (_bodyState != bulwark)
+                    {
+                        _bodyState = bulwark;
+                        _bodyAnim.Play(bulwark, 0, 0f);
+                    }
+                    return;
+                }
+            }
+
             Vector2 facing = combat != null ? combat.Facing : Vector2.down;
             bool side = Mathf.Abs(facing.x) > Mathf.Abs(facing.y) && Mathf.Abs(facing.x) > 0.05f;
             bool attacking = _bodyAttackTimer > 0f;
@@ -321,6 +395,11 @@ namespace GameplayPrototype
                     visualRenderer.flipX = _hurtFaceRight;
                     return;
                 }
+                if (_skillTimer > 0f)
+                {
+                    visualRenderer.flipX = _skillNoFlip ? false : _skillFaceRight;
+                    return;
+                }
                 if (_bodyAttackTimer > 0f)
                 {
                     visualRenderer.flipX = _attackFaceRight;
@@ -338,7 +417,7 @@ namespace GameplayPrototype
         void UpdateSword()
         {
             if (sword == null || swordRenderer == null) return;
-            if (_bodyAnim != null && _bodyAttackTimer > 0f)
+            if (_bodyAnim != null && (_bodyAttackTimer > 0f || _skillTimer > 0f || (ArenKitVfx.Active && combat != null && combat.IsGuarding)))
             {
                 swordRenderer.enabled = false;
                 if (_swinging)
@@ -393,6 +472,37 @@ namespace GameplayPrototype
             if (_bodyAnim == null) return;
             _bodyAnim.runtimeAnimatorController = controller;
             _bodyState = null;
+            _skillTimer = 0f;
+            _skillLockHurt = false;
+        }
+
+        /// <summary>
+        /// Body pose named {Controller}_{skill}_{view}. Returns false when this controller has no such state,
+        /// so a class without the clip keeps its Attack/Walk pose.
+        /// </summary>
+        public bool PlaySkillPose(string skill, Vector2 facing, float duration, bool directional)
+        {
+            if (_dead || _bodyAnim == null || duration <= 0f) return false;
+            Vector2 aim = facing.sqrMagnitude > 0.01f ? facing.normalized : Vector2.down;
+            string prefix = _bodyAnim.runtimeAnimatorController != null ? _bodyAnim.runtimeAnimatorController.name : "Aren";
+            string state = directional ? prefix + "_" + skill + "_" + ViewOf(aim) : prefix + "_" + skill;
+            if (!HasBodyState(state)) return false;
+            _skillState = state;
+            _skillTimer = duration;
+            _skillNoFlip = !directional;
+            _skillFaceRight = directional && Mathf.Abs(aim.x) > Mathf.Abs(aim.y) && aim.x > 0f;
+            _skillLockHurt = true;
+            _bodyAttackTimer = 0f;
+            _hurtTimer = 0f;
+            _swinging = false;
+            _bodyState = null;
+            return true;
+        }
+
+        static string ViewOf(Vector2 facing)
+        {
+            bool side = Mathf.Abs(facing.x) > Mathf.Abs(facing.y) && Mathf.Abs(facing.x) > 0.05f;
+            return side ? "Side" : (facing.y > 0.2f ? "Up" : "Down");
         }
 
         /// <param name="skipWindup">True for instant skills (whirlwind waves) that strike on the same frame.</param>

@@ -296,6 +296,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Vex_Dagger_PeekL
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78278fa2509da34ca0df65c60affba7
+      internalID: 760333678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vex_Dagger_PeekR
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a243aed12c73d34aa3f101ef233ce43
+      internalID: -1755862119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -314,6 +358,8 @@ TextureImporter:
       Vex_Dagger_DL: -1234375399
       Vex_Dagger_DR: -1125108516
       Vex_Dagger_L: -1033885076
+      Vex_Dagger_PeekL: 760333678
+      Vex_Dagger_PeekR: -1755862119
       Vex_Dagger_R: -943163998
       Vex_Dagger_U: -1793707476
       Vex_Dagger_UL: -282499606

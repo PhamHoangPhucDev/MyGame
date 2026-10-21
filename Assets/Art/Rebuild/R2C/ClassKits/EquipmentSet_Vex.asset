@@ -22,6 +22,8 @@ MonoBehaviour:
   - {fileID: -1234375399, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
   - {fileID: 690733079, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
   - {fileID: -1125108516, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
+  - {fileID: 760333678, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
+  - {fileID: -1755862119, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
   offPoses:
   - {fileID: -943163998, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
   - {fileID: 2046280573, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
@@ -31,6 +33,8 @@ MonoBehaviour:
   - {fileID: -1234375399, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
   - {fileID: 690733079, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
   - {fileID: -1125108516, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
+  - {fileID: 760333678, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
+  - {fileID: -1755862119, guid: 3ee989c3b224c5244bb320fa912dfcdb, type: 3}
   shieldViews: []
   hand: {fileID: 0}
   slashFrames:

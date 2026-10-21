@@ -36,9 +36,17 @@ namespace GameplayPrototype
 
         public static WorldLabelsCanvas Ensure()
         {
+            // A destroyed canvas compares as null. A scene canvas found before its Awake
+            // still exists, but Instance is not set yet — that was the popup NRE.
             if (Instance != null) return Instance;
-            var existing = FindFirstObjectByType<WorldLabelsCanvas>();
-            if (existing != null) return existing;
+            var existing = FindFirstObjectByType<WorldLabelsCanvas>(FindObjectsInactive.Include);
+            if (existing != null)
+            {
+                if (!existing.gameObject.activeSelf) existing.gameObject.SetActive(true);
+                existing.Build();
+                Instance = existing;
+                return existing;
+            }
             var go = new GameObject("WorldLabelsCanvas");
             return go.AddComponent<WorldLabelsCanvas>();
         }

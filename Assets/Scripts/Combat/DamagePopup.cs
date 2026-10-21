@@ -25,13 +25,15 @@ namespace GameplayPrototype
 
         public static DamagePopup Spawn(Vector3 worldPos, int damage, Color color)
         {
-            WorldLabelsCanvas.Ensure();
-            var popup = GetFromPool();
-            popup.Activate(worldPos, damage, color);
+            var canvas = WorldLabelsCanvas.Ensure();
+            if (canvas == null || canvas.Root == null)
+                throw new System.InvalidOperationException("WorldLabelsCanvas has no root for DamagePopup.");
+            var popup = GetFromPool(canvas);
+            popup.Activate(canvas, worldPos, damage, color);
             return popup;
         }
 
-        static DamagePopup GetFromPool()
+        static DamagePopup GetFromPool(WorldLabelsCanvas canvas)
         {
             while (Pool.Count > 0)
             {
@@ -41,9 +43,9 @@ namespace GameplayPrototype
 
             EnsurePoolRoot();
             var go = new GameObject("DamagePopup");
-            go.transform.SetParent(WorldLabelsCanvas.Instance.Root, false);
+            go.transform.SetParent(canvas.Root, false);
             var popup = go.AddComponent<DamagePopup>();
-            popup.Build();
+            popup.Build(canvas);
             return popup;
         }
 
@@ -55,7 +57,7 @@ namespace GameplayPrototype
             _poolRoot = go.transform;
         }
 
-        void Build()
+        void Build(WorldLabelsCanvas canvas)
         {
             _rt = gameObject.GetComponent<RectTransform>();
             if (_rt == null) _rt = gameObject.AddComponent<RectTransform>();
@@ -63,7 +65,7 @@ namespace GameplayPrototype
 
             _text = gameObject.GetComponent<Text>();
             if (_text == null) _text = gameObject.AddComponent<Text>();
-            _text.font = WorldLabelsCanvas.Instance.PixelFont;
+            _text.font = canvas != null ? canvas.PixelFont : null;
             _text.fontSize = 24;
             _text.alignment = TextAnchor.MiddleCenter;
             _text.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -72,9 +74,9 @@ namespace GameplayPrototype
             WorldLabelsCanvas.ApplyPixelOutline(_text, Color.black);
         }
 
-        void Activate(Vector3 worldPos, int damage, Color color)
+        void Activate(WorldLabelsCanvas canvas, Vector3 worldPos, int damage, Color color)
         {
-            if (_text == null) Build();
+            if (_text == null) Build(canvas);
             // R3D: popup lanes sit above Name/HP (labels ~0.75–1.1 above feet). Rise clear of hero.
             int lane = _stagger++ % 4;
             float side = lane == 0 ? 0.42f : (lane == 1 ? -0.42f : (lane == 2 ? 0.18f : -0.18f));
@@ -88,7 +90,7 @@ namespace GameplayPrototype
             _text.fontSize = damage >= 30 ? 32 : 24;
             _active = true;
             gameObject.SetActive(true);
-            transform.SetParent(WorldLabelsCanvas.Instance.Root, false);
+            transform.SetParent(canvas.Root, false);
             UpdateScreenPos();
         }
 

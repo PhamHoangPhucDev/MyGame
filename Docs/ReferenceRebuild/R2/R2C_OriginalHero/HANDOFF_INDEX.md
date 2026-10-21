@@ -3,6 +3,8 @@
 **Ngày:** 2026-10-21 · **Người viết:** Claude (chỉ art + tài liệu; không sửa code, scene hay prefab)
 **Nhánh:** `reference_rebuild_r2c` · **Gốc:** `Docs/ReferenceRebuild/R2/R2C_OriginalHero/`
 
+> **Cursor bắt đầu từ `CURSOR_WORK_ORDER.md`**: các quyết định đã chốt, 6 giai đoạn đưa art vào game, mẫu báo cáo sau mỗi giai đoạn.
+
 Đây là điểm bắt đầu duy nhất. Mỗi mục trỏ tới spec hoặc ghi chú chi tiết, và tài liệu đó là nguồn chính thức. Mọi PNG đều nằm trong Docs; **chưa có gì được import vào `Assets/`**, trừ những phần Aren và Vex đã import từ trước.
 
 ## 1. Quy ước chung (áp dụng cho mọi file)

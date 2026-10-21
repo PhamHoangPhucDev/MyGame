@@ -1,0 +1,13 @@
+row,skill,view,frames,keys
+0,FanShot,Down,2,Skill_FanShot_Down_0 Skill_FanShot_Down_1
+1,FanShot,Up,2,Skill_FanShot_Up_0 Skill_FanShot_Up_1
+2,FanShot,Side,2,Skill_FanShot_Side_0 Skill_FanShot_Side_1
+3,LeapBack,Down,2,Skill_LeapBack_Down_0 Skill_LeapBack_Down_1
+4,LeapBack,Up,2,Skill_LeapBack_Up_0 Skill_LeapBack_Up_1
+5,LeapBack,Side,2,Skill_LeapBack_Side_0 Skill_LeapBack_Side_1
+6,ArrowRain,Down,2,Skill_ArrowRain_Down_0 Skill_ArrowRain_Down_1
+7,ArrowRain,Up,2,Skill_ArrowRain_Up_0 Skill_ArrowRain_Up_1
+8,ArrowRain,Side,2,Skill_ArrowRain_Side_0 Skill_ArrowRain_Side_1
+9,ForestPierce,Down,2,Skill_ForestPierce_Down_0 Skill_ForestPierce_Down_1
+10,ForestPierce,Up,2,Skill_ForestPierce_Up_0 Skill_ForestPierce_Up_1
+11,ForestPierce,Side,2,Skill_ForestPierce_Side_0 Skill_ForestPierce_Side_1

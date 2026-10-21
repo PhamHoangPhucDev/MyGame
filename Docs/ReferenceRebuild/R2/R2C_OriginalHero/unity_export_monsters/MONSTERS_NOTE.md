@@ -1,4 +1,4 @@
-# Quái R2C: Goblin, Goblin Archer, Satyr, Dryad, Gobrider, Gobrider tinh nhuệ, Gobrider thủ lĩnh (bàn giao cho Cursor)
+# Quái R2C: Goblin, Goblin Archer, Satyr, Dryad, Dryad cưỡi nai, Gobrider, Gobrider tinh nhuệ, Gobrider thủ lĩnh (bàn giao cho Cursor)
 
 **Ngày:** 2026-10-21 · **Người viết:** Claude (chỉ art, không sửa code hay scene) · **Trạng thái:** chờ duyệt art, **chưa import vào `Assets/`**
 
@@ -10,6 +10,7 @@
 | Goblin Archer | `GoblinArcher/GoblinArcher_Sheet.png` + mũi tên `GoblinArcher/GoblinArcher_Arrow.png` (16×16, 8 ô) | 48×48 | 37 | (0.5, 0.2083); mũi tên (0.5, 0.5) |
 | Satyr | `Satyr/Satyr_Sheet.png` | 48×48 | 37 | (0.5, 0.2083) |
 | Dryad | `Dryad/Dryad_Sheet.png` + đạn lá `Dryad/Dryad_LeafBolt.png` (16×16, 8 ô) | 48×48 | 37 | (0.5, 0.2083); đạn (0.5, 0.5) |
+| Dryad cưỡi nai | `DryadRider/DryadRider_Sheet.png` (dùng chung đạn `Dryad/Dryad_LeafBolt.png`) | 48×48 | 41 | (0.5, 0.125) |
 | Gobrider | `Gobrider/Gobrider_Sheet.png` | 48×48 | 41 | (0.5, 0.125) |
 | Gobrider tinh nhuệ | `GobriderElite/GobriderElite_Sheet.png` | 48×48 | 41 | (0.5, 0.125) |
 | Gobrider thủ lĩnh (boss) | `GobriderWarlord/GobriderWarlord_Sheet.png` | 64×64 | 57 | (0.5, 0.0938) |
@@ -70,6 +71,14 @@
 | Up | (0, 1.125) | giơ cao trên mũ lá |
 | Side (sheet quay trái) | (−0.4375, 0.375) | trước tay; khi `flipX` quay phải thì đổi thành (+0.4375, 0.375) |
 
+**Dryad cưỡi nai** bắn cùng loại đạn lá, cũng ở Attack frame 1. Điểm sinh tính từ pivot chân của sheet DryadRider:
+
+| View | Điểm sinh (x, y) |
+|---|---|
+| Down | (0, 0.5625) |
+| Up | (0, 1.5) |
+| Side (sheet quay trái) | (−0.625, 0.6875); khi `flipX` thì (+0.625, 0.6875) |
+
 ## 4. Nội dung từng anim
 
 - **Idle:** frame 1–2 hạ 1 px (goblin thở; người cưỡi nhún trên lưng heo).
@@ -77,17 +86,18 @@
   - Goblin bước chân.
   - Goblin Archer, Satyr, Dryad: frame 0 và 2 hạ 1 px, đổi chân bước.
   - Heo nhấc lần lượt chân sau/trái (frame 0) rồi chân trước/phải (frame 2); người cưỡi nhún ở frame 1 và 3.
+  - Dryad cưỡi nai: nhấc xen kẽ từng cặp chân (frame 0 và 2), thân trên nhún ở frame 1 và 3.
 - **Attack:**
   - Goblin: lấy đà, đâm (lao 1 px), thu dao.
   - Goblin Archer: kéo dây ngắm, buông (giật lùi 1 px, sinh mũi tên), hạ cung.
   - Satyr: thụp xuống lùi 1 px, húc sừng lao tới 2 px, về chỗ.
-  - Dryad: gom quả cầu lá, quả cầu to nhất (sinh đạn lá), hạ tay. Đứng yên tại chỗ.
+  - Dryad và Dryad cưỡi nai: gom quả cầu lá, quả cầu to nhất (sinh đạn lá), hạ tay. Đứng yên tại chỗ.
   - Gobrider: heo lùi 1 px, húc tới 2 px, về chỗ cũ.
   - Elite và thủ lĩnh: đồng thời giơ chuỳ, nện xuống phía trước, rồi hạ chuỳ.
 - **Hurt:** bật lùi 1 px. Frame 0 loé trắng 60%, frame 1 ửng đỏ nhẹ. Nếu code đã có hiệu ứng flash bằng shader thì có thể chỉ dùng frame 1.
 - **Death:**
   - Frame 0: loé trắng. Frame 1: khuỵu xuống 2 px.
-  - Frame 2: quái đi bộ (Goblin, Goblin Archer, Satyr, Dryad) ngã nghiêng 90°; heo đổ bụng xuống đất, người cưỡi gục trên lưng.
+  - Frame 2: quái đi bộ (Goblin, Goblin Archer, Satyr, Dryad) ngã nghiêng 90°; heo đổ bụng xuống đất, người cưỡi gục trên lưng; Dryad cưỡi nai khuỵu 4 chân xuống đất.
   - Frame 3: như frame 2 nhưng mờ 50% (giữ frame này rồi huỷ object hoặc cho mờ dần thêm bằng code).
 
 ## 5. Gợi ý gameplay (art không quyết, chỉ để Cursor tham khảo)
@@ -98,13 +108,14 @@
 | Goblin Archer | bắn xa, đứng yên ngắm (có tia telegraph), giữ khoảng cách | ≈ 10×6 px |
 | Satyr | quái rừng cận chiến, húc lao ngắn | ≈ 10×6 px |
 | Dryad | quái rừng bắn phép tầm trung (đạn lá chậm, bay thẳng) | ≈ 10×6 px |
+| Dryad cưỡi nai | bản chính trong video: bắn đạn lá, di chuyển nhanh hơn, hay đi theo nhóm | ≈ 16×8 px |
 | Gobrider | quái lao húc (charge) | ≈ 16×8 px |
 | Gobrider tinh nhuệ | phiên bản trâu hơn, có chuỳ, heo đeo mặt nạ sắt | ≈ 16×8 px |
 | Gobrider thủ lĩnh | boss | ≈ 20×10 px |
 
 ## 6. Nguồn và cách xuất lại
 
-- Code sinh art: `tools/MonsterGen.cs` (Goblin), `tools/ArcherGen.cs` (Goblin Archer + mũi tên), `tools/CreatureGen.cs` (Satyr, Dryad + đạn lá), `tools/RiderGen.cs` (người cưỡi và heo rừng đen), `tools/MonsterAnim.cs` (anim và xuất file).
+- Code sinh art: `tools/MonsterGen.cs` (Goblin), `tools/ArcherGen.cs` (Goblin Archer + mũi tên), `tools/CreatureGen.cs` (Satyr, Dryad, Dryad cưỡi nai + đạn lá), `tools/RiderGen.cs` (người cưỡi và heo rừng đen), `tools/MonsterAnim.cs` (anim và xuất file).
 - Chạy `tools/RenderMonsterExport.ps1` để xuất lại, rồi `tools/RenderMonsterReview.ps1` để tạo bảng duyệt ở `monsters/review/`.
-- Mẫu đã duyệt: `monsters/GOBLIN_CANDIDATE_v3.png`, `monsters/ARCHER_CANDIDATE_v2.png`, `monsters/FOREST_CANDIDATE_v1.png`, `monsters/RIDERS_CANDIDATE_v7.png`.
+- Mẫu đã duyệt: `monsters/GOBLIN_CANDIDATE_v3.png`, `monsters/ARCHER_CANDIDATE_v2.png`, `monsters/FOREST_CANDIDATE_v1.png`, `monsters/DRYAD_RIDER_CANDIDATE_v1.png`, `monsters/RIDERS_CANDIDATE_v7.png`.
 - Pixel vẽ mới hoàn toàn, chỉ bám dáng và tỉ lệ theo video tham khảo, không đồ lại.

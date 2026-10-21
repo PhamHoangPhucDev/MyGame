@@ -19,6 +19,35 @@ public static class CreatureGen
         { 'V', "D8D0E8" }, { 'v', "A8A0C8" }, { 'R', "A8483C" }, { 'r', "7A2E28" },
         // magic orb
         { 'o', "F0FFD0" }, { 'g', "A8E07A" },
+        // dryad rider: deer body (salmon red), highlight, belly shade, eye lower tone
+        { 'D', "C8604C" }, { 'h', "E08A70" }, { 'x', "8A3A30" }, { 'y', "C87020" },
+    };
+
+    // ---------- Dryad rider (video: Dryad torso grown into a red deer body, centaur style, 4 thin legs, ring tail) ----------
+    // 20x22 grid placed so the sole row (21) sits on cell row 41 of a 48x48 cell, like the Gobrider.
+    static readonly string[] StagDown =
+    {
+        ".......kkkkkk.......", ".....kklLLLLlkk.....", "....klLLLLLLLLlk....", "...kdLLLLLLLLLLdk...", "...kdLLkkkkkkLLdk...",
+        "...kdLkWWWWWWkLdk...", "...kddkWEWWEWkddk...", "...kddkWyWWyWkddk...", "...kdkwWWWWWWwkdk...", "...kdkwwWWWWwwkdk...",
+        "....kdkkWWWWkkdk....", "...kWkWWWvvWWWkWk...", "..kdkWWWWvvWWWWkdk..", "...kkwWWWvvWWWwkk...", "...kDkwwWWWWwwkDk...",
+        "...kDDkkkkkkkkDDk...", "...kDhDDDDDDDDhDk...", "...kxDDDDDDDDDDxk...", "....kxDkkkkkkDxk....", "....kDk......kDk....",
+        "....kxk......kxk....", "....kBk......kBk....",
+    };
+    static readonly string[] StagUp =
+    {
+        ".......kkkkkk.......", ".....kklLLLLlkk.....", "....klLLLLLLLLlk....", "...kdLLLLLLLLLLdk...", "...kdLLLLLLLLLLdk...",
+        "...kdLLLLLLLLLLdk...", "...kddLLLLLLLLddk...", "....kddLLLLLLddk....", "....kddddLLddddk....", "...kWkdddddddkWk....",
+        "...kWWkddddddkWWk...", "...kwWWkkddkkWWwk...", "....kwWWWWWWWWwk....", "....kDDDDDDDDDDk....", "...kDhDDDDDDDDhDk...",
+        "...kDDDDkkkkDDDDk...", "...kDDDkxhhxkDDDk...", "...kDDDkxxxxkDDDk...", "...kxDDDkkkkDDDxk...", "....kDk......kDk....",
+        "....kxk......kxk....", "....kBk......kBk....",
+    };
+    static readonly string[] StagSide =
+    {
+        "..........kkkkk.....", "........kklLlLLkk...", ".......klLLLLLLLLk..", "......kdLLLLLLLLLLk.", "......kdLLLkWWWWWWk.",
+        "......kddLkWWWWWEWk.", "......kddLkWWWWWyWk.", ".......kdLkwWWWWWWk.", ".......kddkwwWWWWk..", "........kdkWvWWWk...",
+        "........kdkWvWWWkk..", "........kkWWvWWWdk..", ".kk.....kwWWvWWkdk..", "kDDkkkkkkDDDDDDkk...", "kDhDDDDDDDDDDDDDk...",
+        ".kDhhDDDDDDDDDDDk...", ".kDDDDDDDDDDDDDxk...", "..kxDDxxxxxxxDDxk...", "..kDkkkDkkkkDkkkDk..", "..kDk.kDk..kDk.kDk..",
+        "..kxk.kxk..kxk.kxk..", "..kBk.kBk..kBk.kBk..",
     };
 
     // ---------- Satyr ----------
@@ -67,7 +96,7 @@ public static class CreatureGen
 
     public static IEnumerable<string[]> AllGrids()
     {
-        return new[] { SatyrDown, SatyrUp, SatyrSide, DryadDown, DryadUp, DryadSide, Orb, OrbBig };
+        return new[] { SatyrDown, SatyrUp, SatyrSide, DryadDown, DryadUp, DryadSide, Orb, OrbBig, StagDown, StagUp, StagSide };
     }
 
     const int X0 = 16, Y0 = 22;
@@ -118,6 +147,49 @@ public static class CreatureGen
             if (v == "Up") Paint(bmp, pose == 1 ? Orb : OrbBig, ox + 6, oy - 4);   // raised above the leaf cap
             if (v == "Down") Paint(bmp, pose == 1 ? Orb : OrbBig, ox + 6, oy + 10);
             else if (v == "Side") Paint(bmp, pose == 1 ? Orb : OrbBig, ox + 12, oy + 8);
+        }
+        if (!mirror) return bmp;
+        var o = new Bitmap(48, 48, PixelFormat.Format32bppArgb);
+        for (int y = 0; y < 48; y++) for (int x = 0; x < 48; x++) o.SetPixel(47 - x, y, bmp.GetPixel(x, y));
+        return o;
+    }
+
+    // lift every other leg run of the bottom rows by 1 px (walk). parity 0: runs 0,2  parity 1: runs 1,3; -1 none
+    static string[] LiftLegs(string[] g, int parity)
+    {
+        if (parity < 0) return g;
+        var rows = g.Select(s => s.ToCharArray()).ToArray(); int h = rows.Length, n = -1; var last = g[h - 1];
+        for (int x = 0; x < last.Length; x++)
+        {
+            if (last[x] == '.') continue;
+            if (x == 0 || last[x - 1] == '.') n++;
+            if (n % 2 != parity) continue;
+            for (int r = h - 4; r < h - 1; r++) rows[r][x] = rows[r + 1][x];
+            rows[h - 1][x] = '.';
+        }
+        return rows.Select(r => new string(r)).ToArray();
+    }
+
+    // Dryad rider (centaur). pose 0 rest / 1 gather orb / 2 big orb (cast). legs: walk parity (-1 none). dy: torso bob.
+    // 48x48 cell, sole row 41. Side faces right (mirror for left).
+    public static Bitmap Stag(string v, int pose, bool mirror, int legs = -1, int dy = 0)
+    {
+        var bmp = new Bitmap(48, 48, PixelFormat.Format32bppArgb);
+        var g = LiftLegs(v == "Down" ? StagDown : v == "Up" ? StagUp : StagSide, legs);
+        int ox = 14, oy = 20;
+        // torso bob: rows above the deer back (row 13) move down dy, painted over the back
+        if (dy != 0)
+        {
+            var low = g.Skip(13).ToArray(); var high = g.Take(13).ToArray();
+            Paint(bmp, low, ox, oy + 13); Paint(bmp, high, ox, oy + dy);
+        }
+        else Paint(bmp, g, ox, oy);
+        if (pose > 0)
+        {
+            var orb = pose == 1 ? Orb : OrbBig;
+            if (v == "Down") Paint(bmp, orb, ox + 8, oy + 11 + dy);
+            else if (v == "Up") Paint(bmp, orb, ox + 8, oy - 4 + dy);
+            else Paint(bmp, orb, ox + 17, oy + 9 + dy);
         }
         if (!mirror) return bmp;
         var o = new Bitmap(48, 48, PixelFormat.Format32bppArgb);

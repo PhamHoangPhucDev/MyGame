@@ -18,6 +18,7 @@ public static class MonsterAnim
         new Mon { Name = "GoblinArcher", Kind = "Archer", S = 48, Sole = 37 },
         new Mon { Name = "Satyr", Kind = "Satyr", S = 48, Sole = 37 },
         new Mon { Name = "Dryad", Kind = "Dryad", S = 48, Sole = 37 },
+        new Mon { Name = "DryadRider", Kind = "Stag", S = 48, Sole = 41 },
         new Mon { Name = "Gobrider", Kind = "Gobrider", S = 48, Sole = 41 },
         new Mon { Name = "GobriderElite", Kind = "Elite", S = 48, Sole = 41 },
         new Mon { Name = "GobriderWarlord", Kind = "Warlord", S = 64, Sole = 57 },
@@ -112,6 +113,13 @@ public static class MonsterAnim
             if (anim == "Attack" && m.Kind == "Dryad") return CreatureGen.Compose(m.Kind, v, f == 0 ? 1 : f == 1 ? 2 : 0, side);
             return CreatureGen.Compose(m.Kind, v, 0, side);
         }
+        if (m.Kind == "Stag")
+        {
+            // walk: alternate leg pairs with a torso bob on frames 1/3; attack: gather orb, cast (bolt spawns), lower
+            if (anim == "Walk") return CreatureGen.Stag(v, 0, side, f == 0 ? 0 : f == 2 ? 1 : -1, f % 2);
+            if (anim == "Attack") return CreatureGen.Stag(v, f == 0 ? 1 : f == 1 ? 2 : 0, side);
+            return CreatureGen.Stag(v, 0, side);
+        }
         if (anim == "Walk") return RiderGen.Compose(m.Kind, v, side, f % 2, f == 0 ? 0 : f == 2 ? 1 : -1, 0);
         if (anim == "Attack") return RiderGen.Compose(m.Kind, v, side, f == 0 ? -1 : 0, -1, f == 0 ? 1 : f == 1 ? 2 : 0);
         return RiderGen.Compose(m.Kind, v, side, 0, -1, 0);
@@ -121,7 +129,7 @@ public static class MonsterAnim
 
     public static Bitmap Frame(Mon m, string anim, string v, int f)
     {
-        var fw = Fwd(v); bool gob = m.Kind != "Gobrider" && m.Kind != "Elite" && m.Kind != "Warlord";   // on foot (not mounted)
+        var fw = Fwd(v); bool gob = m.Kind != "Gobrider" && m.Kind != "Elite" && m.Kind != "Warlord" && m.Kind != "Stag";   // on foot (not mounted / four-legged)
         bool archer = m.Kind == "Archer";
         switch (anim)
         {
@@ -129,6 +137,7 @@ public static class MonsterAnim
                 {
                     // breathe: frames 1-2 sink 1 px (goblin squashes above the feet, rider bobs on the boar)
                     if (f == 0 || f == 3) return Pose(m, "Idle", v, 0);
+                    if (m.Kind == "Stag") return CreatureGen.Stag(v, 0, v == "Side", -1, 1);
                     return gob ? ShiftAbove(Pose(m, "Idle", v, 0), m.Sole - 1, 1) : RiderGen.Compose(m.Kind, v, v == "Side", 1, -1, 0);
                 }
             case "Walk": return Pose(m, "Walk", v, f);
@@ -137,7 +146,7 @@ public static class MonsterAnim
                     // goblin: windup, stab (+1 px lunge), recover. riders: rear back 1 px, charge 2 px + club strike, recover
                     var b = Pose(m, "Attack", v, f);
                     if (archer) return f == 1 ? Shift(b, -fw.X, -fw.Y) : b;   // recoil 1 px on release
-                    if (m.Kind == "Dryad") return b;                           // casts in place
+                    if (m.Kind == "Dryad" || m.Kind == "Stag") return b;       // casts in place
                     if (m.Kind == "Satyr")                                     // crouch back, head-butt lunge 2 px, recover
                         return f == 0 ? Shift(ShiftAbove(b, m.Sole - 1, 1), -fw.X, -fw.Y) : f == 1 ? Shift(b, fw.X * 2, fw.Y * 2) : b;
                     if (gob) return f == 1 ? Shift(b, fw.X, fw.Y) : b;

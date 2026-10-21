@@ -1,0 +1,12 @@
+file,id,name_vi,type,source,atlas_col,size
+Status_Stun.png,Stun,Choang,debuff,"Aren Khien Dap, Brom Nen Dat",0,24
+Status_Bleed.png,Bleed,Chay mau,debuff,"Vex combo ket, Phi Dao",1,24
+Status_Slow.png,Slow,Lam cham,debuff,"Lyra day leo, Selene Vong Phu Chu",2,24
+Status_Taunt.png,Taunt,Khieu khich,debuff,"Brom Gam Thach",3,24
+Status_Absorb.png,Absorb,Khien hap thu,buff,"Selene Khien Ma Luc",4,24
+Status_DamageReduction.png,DamageReduction,Giam sat thuong,buff,"Aren Thanh Luy, Brom Tuong Sat / Gam Thach / giam goc",5,24
+Status_Haste.png,Haste,Tang toc,buff,"Lyra Buoc Gio",6,24
+Status_Stealth.png,Stealth,Tang hinh,buff,"Vex Bom Khoi",7,24
+Status_DodgeReady.png,DodgeReady,San sang ne,buff,"Lyra Buoc Gio",8,24
+Status_Empowered.png,Empowered,Don ke x2,buff,"Vex Buoc Bong",9,24
+Status_Reflect.png,Reflect,Phan don,buff,"Aren Thanh Luy",10,24

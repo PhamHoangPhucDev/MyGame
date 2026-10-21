@@ -36,7 +36,7 @@ Chi tiết hệ trang bị: `attack/EQUIPMENT_SYSTEM.md`. Thiết kế bộ skil
 |---|---|---|
 | Icon hotbar: 25 skill + 5 nút R (32×32, khung theo class) | `icons/export/` (PNG, atlas 192×160, manifest) | `icons/ICONS_NOTE.md`: hiện ở 64 px; nút R 96 px |
 | Icon trạng thái: 11 buff/debuff (24×24, viền đỏ là debuff, viền xanh là buff) | `icons/status/` (PNG, atlas 264×24, manifest) | `icons/STATUS_NOTE.md`: hiện ở 48 px trên đầu quái và cạnh thanh máu |
-| Quái: Goblin, Goblin Archer (+ mũi tên 8 hướng), Gobrider, Gobrider tinh nhuệ, Gobrider thủ lĩnh (Idle/Walk/Attack/Hurt/Death × 3 hướng, vũ khí vẽ sẵn) | `unity_export_monsters/` (sheet, `MONSTERS_MANIFEST.csv`, `MONSTERS_FRAMES.csv`) | `unity_export_monsters/MONSTERS_NOTE.md`: ô 48 (boss 64), chân theo từng quái; 4 quái goblin đã duyệt, **Goblin Archer chờ duyệt** |
+| Quái: Goblin, Goblin Archer (+ mũi tên 8 hướng), Satyr, Dryad (+ đạn lá 8 hướng), Gobrider, Gobrider tinh nhuệ, Gobrider thủ lĩnh (Idle/Walk/Attack/Hurt/Death × 3 hướng, vũ khí vẽ sẵn) | `unity_export_monsters/` (sheet, `MONSTERS_MANIFEST.csv`, `MONSTERS_FRAMES.csv`) | `unity_export_monsters/MONSTERS_NOTE.md`: ô 48 (boss 64), chân theo từng quái; goblin + Goblin Archer đã duyệt, **Satyr + Dryad chờ duyệt** |
 
 ## 4. Thứ tự import đề xuất
 

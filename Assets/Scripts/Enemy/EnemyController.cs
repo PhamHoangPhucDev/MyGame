@@ -37,6 +37,7 @@ namespace GameplayPrototype
         static readonly EnemyController[] SlotOwners = new EnemyController[SurroundSlots];
         static readonly Collider2D[] SeparationHits = new Collider2D[16];
         static readonly RaycastHit2D[] LosHits = new RaycastHit2D[8];
+        static readonly RaycastHit2D[] ChargeHits = new RaycastHit2D[8];
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStatics() => ClearAttackSlots();
@@ -493,22 +494,24 @@ namespace GameplayPrototype
         {
             _stateTimer -= Time.fixedDeltaTime;
             Vector2 next = _rb.position + _chargeDir * (chargeSpeed * Time.fixedDeltaTime);
-            var hit = Physics2D.CircleCast(_rb.position, 0.28f, _chargeDir, chargeSpeed * Time.fixedDeltaTime);
-            if (hit.collider != null)
+            float step = chargeSpeed * Time.fixedDeltaTime;
+            int n = Physics2D.CircleCast(_rb.position, 0.28f, _chargeDir, new ContactFilter2D { useTriggers = false }, ChargeHits, step);
+            for (int i = 0; i < n; i++)
             {
-                if (hit.collider == _heroCollider || hit.collider.transform == _player)
+                var col = ChargeHits[i].collider;
+                if (col == null || col == _selfCollider) continue;
+                if (col.attachedRigidbody != null && col.attachedRigidbody.GetComponent<EnemyController>() != null) continue;
+                if (col == _heroCollider || col.transform == _player)
                 {
                     if (!_chargeHit)
                     {
                         _chargeHit = true;
                         DealDamage((Vector2)_player.position - _rb.position, chargeDamage, 2.8f);
                     }
+                    continue;
                 }
-                else if (hit.rigidbody == null || hit.rigidbody.GetComponent<EnemyController>() == null)
-                {
-                    Enter(EnemyAiState.ChargeRecovery);
-                    return;
-                }
+                Enter(EnemyAiState.ChargeRecovery);
+                return;
             }
             _rb.MovePosition(next);
             if (_stateTimer <= 0f)

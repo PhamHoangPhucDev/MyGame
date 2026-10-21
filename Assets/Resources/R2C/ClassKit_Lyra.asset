@@ -47,8 +47,11 @@ MonoBehaviour:
       projectileSpeed: 14
       projectileRange: 6
       pierce: 1
+      explodeRadius: 0
       arrowRow: 0
       bodyLock: 0.26
+      drawHoldAt: 0
+      drawHoldFor: 0
     - swingOffset: 0
       damageMul: 1
       radiusMul: 1
@@ -67,8 +70,11 @@ MonoBehaviour:
       projectileSpeed: 14
       projectileRange: 6
       pierce: 1
+      explodeRadius: 0
       arrowRow: 0
       bodyLock: 0.26
+      drawHoldAt: 0
+      drawHoldFor: 0
     - swingOffset: 0
       damageMul: 1.7142857
       radiusMul: 1
@@ -87,8 +93,11 @@ MonoBehaviour:
       projectileSpeed: 18
       projectileRange: 7
       pierce: 3
+      explodeRadius: 0
       arrowRow: 1
       bodyLock: 0.42
+      drawHoldAt: 0.06
+      drawHoldFor: 0.22
     projectilePoses:
     - {fileID: -480797559, guid: a050ac22905136f43ab127e2da39946b, type: 3}
     - {fileID: -519608141, guid: a050ac22905136f43ab127e2da39946b, type: 3}
@@ -123,6 +132,41 @@ MonoBehaviour:
     - {fileID: 2095940137, guid: 6ca39741f3782024bb39170144d64d9c, type: 3}
     - {fileID: 1973285818, guid: 6ca39741f3782024bb39170144d64d9c, type: 3}
     - {fileID: -996808857, guid: 6ca39741f3782024bb39170144d64d9c, type: 3}
+    finisherVfx: []
+    sparkle: []
+    projectileTrail:
+    - {fileID: -1109547730, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -80637270, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 1703513190, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -988480907, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -412088564, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 1805454597, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 770422466, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 324368680, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 1792613435, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 1251511258, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 1324107274, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -1555669071, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -1704189838, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -1956109642, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 847876352, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -789796688, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 457374036, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 1345487459, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -1456750433, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -1125239429, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 2048442101, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -972135260, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 328595331, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 424499315, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 1003647133, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 1969289745, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -2064537286, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 660480059, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 595990577, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -20518886, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: 1697822984, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
+    - {fileID: -1850594260, guid: 21ce2f672aaf50c41b9a43c0eb389343, type: 3}
   slot2:
     displayName: Ten Quat
     behaviour: 7

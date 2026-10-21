@@ -471,7 +471,7 @@ namespace GameplayPrototype
 
             _slashChain = (_slashChain + 1) % n;
             _lastSlashUnscaled = Time.unscaledTime;
-            _visual?.PlaySlashSwing(_slashSwing, false, s != null ? s.bodyLock : 0f);
+            _visual?.PlaySlashSwing(_slashSwing, false, s != null ? s.bodyLock : 0f, s != null ? s.drawHoldAt : 0f, s != null ? s.drawHoldFor : 0f);
             _slashPending = true;
             _slashDelay = s != null && s.impactDelay > 0.001f ? s.impactDelay : c.impactDelay;
         }
@@ -609,7 +609,8 @@ namespace GameplayPrototype
                 Vector2 dir = Quaternion.Euler(0f, 0f, start + step * i) * baseDir;
                 Vector2 from = lyra ? ArrowSpawn(dir) : (Vector2)transform.position + Vector2.up * 0.45f + dir * 0.3f;
                 KitProjectile.Fire(from, dir, d.projectilePoses, d.speed, d.range,
-                    d.damage, d.knockback, d.bleedDamage, d.bleedTick, d.bleedDuration, enemyMask, d.popupColor, fanHit);
+                    d.damage, d.knockback, d.bleedDamage, d.bleedTick, d.bleedDuration, enemyMask, d.popupColor, fanHit,
+                    1, 0f, null, 0, 0, null, null, lyra && _kit.combo != null ? _kit.combo.projectileTrail : null);
             }
         }
 

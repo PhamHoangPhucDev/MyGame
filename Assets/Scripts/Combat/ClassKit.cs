@@ -73,6 +73,9 @@ namespace GameplayPrototype
         public int arrowRow;
         [Tooltip("Body attack lock. 0 keeps the shared 0.26 s lock.")]
         public float bodyLock;
+        [Tooltip("Freeze the attack clip at this time (seconds) for drawHoldFor seconds. Lyra's charged shot holds the draw.")]
+        public float drawHoldAt;
+        public float drawHoldFor;
     }
 
     [Serializable]
@@ -91,6 +94,7 @@ namespace GameplayPrototype
         public Sprite[] projectileHit = new Sprite[0];
         public Sprite[] finisherVfx = new Sprite[0];
         public Sprite[] sparkle = new Sprite[0];
+        public Sprite[] projectileTrail = new Sprite[0];
     }
 
     /// <summary>
@@ -306,7 +310,7 @@ namespace GameplayPrototype
         }
 
         /// <summary>Lyra per LYRA_KIT_SPEC. Shots are projectiles; the finisher pierces three enemies.</summary>
-        public void FillLyra(Sprite[] arrows, Sprite[] arrowHit, Sprite[] fan, Sprite[] leaf, Sprite[] vine,
+        public void FillLyra(Sprite[] arrows, Sprite[] arrowTrail, Sprite[] arrowHit, Sprite[] fan, Sprite[] leaf, Sprite[] vine,
             Sprite[] rainZone, Sprite[] rainArrow, Sprite[] aura, Sprite[] puff, Sprite[] beam)
         {
             classId = "lyra"; displayName = "Lyra";
@@ -317,12 +321,12 @@ namespace GameplayPrototype
             {
                 displayName = "Mui Ten Rung", cooldown = 0.38f, radius = 0.3f, damage = 14, knockback = 1.2f,
                 autoTargetRadius = 6f, impactDelay = 0.14f,
-                projectilePoses = arrows, projectileHit = arrowHit,
+                projectilePoses = arrows, projectileTrail = arrowTrail, projectileHit = arrowHit,
                 steps = new[]
                 {
                     new ComboStep { shape = ComboHitShape.Projectile, impactDelay = 0.14f, projectileSpeed = 14f, projectileRange = 6f, pierce = 1, arrowRow = 0, hitstop = 0.035f, shakeAmp = 0f, shakeDur = 0f, bodyLock = 0.26f },
                     new ComboStep { shape = ComboHitShape.Projectile, impactDelay = 0.14f, projectileSpeed = 14f, projectileRange = 6f, pierce = 1, arrowRow = 0, hitstop = 0.035f, shakeAmp = 0f, shakeDur = 0f, bodyLock = 0.26f },
-                    new ComboStep { shape = ComboHitShape.Projectile, damageMul = 24f / 14f, impactDelay = 0.28f, projectileSpeed = 18f, projectileRange = 7f, pierce = 3, arrowRow = 1, hitstop = 0.045f, shakeAmp = 0f, shakeDur = 0f, bodyLock = 0.42f, finisher = true },
+                    new ComboStep { shape = ComboHitShape.Projectile, damageMul = 24f / 14f, impactDelay = 0.28f, projectileSpeed = 18f, projectileRange = 7f, pierce = 3, arrowRow = 1, hitstop = 0.045f, shakeAmp = 0f, shakeDur = 0f, bodyLock = 0.42f, drawHoldAt = 0.06f, drawHoldFor = 0.22f, finisher = true },
                 },
             };
             slot2 = new SkillDef { displayName = "Ten Quat", behaviour = SkillBehaviour.ProjectileFan, cooldown = 5f, count = 5, spreadDeg = 60f, damage = 16, speed = 14f, range = 6f, knockback = 1.2f, projectilePoses = arrows, vfxFrames = fan, vfxFps = 1f / 0.06f, hitstop = 0.035f, shakeAmp = 0f, popupColor = leafGreen };

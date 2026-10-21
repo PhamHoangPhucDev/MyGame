@@ -375,6 +375,25 @@ namespace GameplayPrototype
                     _bodyAnim.Play(state, 0, _attackStartNorm);
                 else if (!frozen && info.normalizedTime >= 1f)
                     _bodyAnim.Play(state, 0, 0.99f);
+                if (_drawHoldFor > 0.01f && !frozen)
+                {
+                    _drawElapsed += Time.deltaTime;
+                    float len = 0.26f;
+                    var clips = _bodyAnim.GetCurrentAnimatorClipInfo(0);
+                    if (clips.Length > 0 && clips[0].clip != null)
+                        len = Mathf.Max(0.05f, clips[0].clip.length);
+                    if (_drawElapsed >= _drawHoldAt && _drawElapsed < _drawHoldAt + _drawHoldFor)
+                    {
+                        _bodyAnim.speed = 0f;
+                        _bodyAnim.Play(state, 0, Mathf.Clamp01((_drawHoldAt + 0.02f) / len));
+                    }
+                    else if (_drawElapsed >= _drawHoldAt + _drawHoldFor && !_drawReleased)
+                    {
+                        _drawReleased = true;
+                        _bodyAnim.speed = 1f;
+                        _bodyAnim.Play(state, 0, Mathf.Clamp01((_drawHoldAt + 0.08f) / len));
+                    }
+                }
                 _bodyState = state;
                 return;
             }
@@ -506,11 +525,18 @@ namespace GameplayPrototype
         }
 
         /// <param name="skipWindup">True for instant skills (whirlwind waves) that strike on the same frame.</param>
-        public void PlaySlashSwing(Vector2 facing, bool skipWindup = false, float lockSeconds = 0f)
+        float _drawHoldAt, _drawHoldFor, _drawElapsed;
+        bool _drawReleased;
+
+        public void PlaySlashSwing(Vector2 facing, bool skipWindup = false, float lockSeconds = 0f, float drawHoldAt = 0f, float drawHoldFor = 0f)
         {
             _swingFacing = facing.sqrMagnitude > 0.01f ? facing.normalized : Vector2.right;
             _swinging = true;
             _swingElapsed = 0f;
+            _drawHoldAt = drawHoldAt;
+            _drawHoldFor = drawHoldFor;
+            _drawElapsed = 0f;
+            _drawReleased = false;
             _bodyState = null;
             _hurtTimer = 0f;
             float lockTime = lockSeconds > 0.05f ? lockSeconds : AttackLock;

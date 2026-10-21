@@ -34,11 +34,14 @@ namespace GameplayPrototype
         Sprite[] _explodeFrames;
         System.Action _onHit;
         readonly System.Collections.Generic.List<Health> _already = new();
+        Sprite[] _trail;
+        SpriteRenderer _trailSr;
+        int _trailRow;
 
         public static KitProjectile Fire(Vector2 from, Vector2 dir, Sprite[] poses8, float speed, float range, int damage, float knockback,
                                          int bleedDamage, float bleedTick, float bleedDuration, LayerMask mask, Color popup, Sprite[] hitFrames = null,
                                          int pierce = 1, float explodeRadius = 0f, Sprite[] explodeFrames = null, int poseRow = 0, int explodeDamage = 0,
-                                         System.Action onHit = null, Sprite[] sparkle = null)
+                                         System.Action onHit = null, Sprite[] sparkle = null, Sprite[] trail = null)
         {
             var go = new GameObject("KitProjectile");
             go.transform.position = from;
@@ -66,7 +69,27 @@ namespace GameplayPrototype
                 sr.sprite = poses8[index];
             }
             sr.sortingOrder = 4000 + Mathf.RoundToInt(-from.y * 100f) + 40;
+            if (trail != null && trail.Length >= 8)
+            {
+                p._trail = trail;
+                p._trailRow = poseRow > 0 ? 2 : 0;
+                var trailGo = new GameObject("ArrowTrail");
+                trailGo.transform.SetParent(go.transform, false);
+                p._trailSr = trailGo.AddComponent<SpriteRenderer>();
+                p._trailSr.sortingOrder = sr.sortingOrder - 1;
+                p.ApplyTrail();
+            }
             return p;
+        }
+
+        void ApplyTrail()
+        {
+            if (_trailSr == null || _trail == null) return;
+            float remain = (_range - _travelled) / Mathf.Max(0.01f, _speed);
+            int row = _trailRow + (remain <= 0.1f ? 1 : 0);
+            int index = row * 8 + _dirIndex;
+            if (index >= 0 && index < _trail.Length && _trail[index] != null)
+                _trailSr.sprite = _trail[index];
         }
 
         void Update()
@@ -74,6 +97,7 @@ namespace GameplayPrototype
             float step = _speed * Time.deltaTime;
             transform.position += (Vector3)(_dir * step);
             _travelled += step;
+            ApplyTrail();
             if (_pairStart >= 0 && _poses != null && _sr != null)
             {
                 int flip = ((int)(Time.time / 0.08f) & 1);

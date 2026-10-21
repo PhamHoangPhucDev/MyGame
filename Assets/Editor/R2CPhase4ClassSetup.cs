@@ -303,6 +303,7 @@ public static class R2CPhase4ClassSetup
         else if (className == "Lyra")
             kit.FillLyra(
                 sprites["Gear/Lyra_Arrow.png"],
+                sprites["Gear/Lyra_ArrowTrail.png"],
                 sprites["Gear/Lyra_ArrowHit.png"],
                 sprites["Skills/Lyra_FanBurst.png"],
                 sprites["Skills/Lyra_LeafBurst.png"],

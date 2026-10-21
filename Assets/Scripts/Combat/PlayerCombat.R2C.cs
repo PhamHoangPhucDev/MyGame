@@ -16,10 +16,11 @@ namespace GameplayPrototype
             var impact = burst ? null : HitRow(hits, step.arrowRow > 0 ? 1 : 0);
             var boom = burst && _kit.combo != null ? _kit.combo.finisherVfx : null;
             var sparkle = _kit.combo != null ? _kit.combo.sparkle : null;
+            var trail = _kit.combo != null ? _kit.combo.projectileTrail : null;
             KitProjectile.Fire(ArrowSpawn(dir), dir, poses,
                 step.projectileSpeed, step.projectileRange, explodeDamage > 0 ? 0 : damage, _pendingKnockback,
                 0, 0.5f, 0f, enemyMask, new Color(0.78f, 0.45f, 0.95f), impact, step.pierce, step.explodeRadius, boom, step.arrowRow, explodeDamage,
-                () => ApplyKitHitFeedback(), sparkle);
+                () => ApplyKitHitFeedback(), sparkle, trail);
         }
 
         /// <summary>Lyra releases from the bow tip. Other classes keep the old offset.</summary>

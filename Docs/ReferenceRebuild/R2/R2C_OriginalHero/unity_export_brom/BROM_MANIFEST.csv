@@ -12,3 +12,9 @@ Skills/Brom_TauntMark.png,16,16,2,1,8,15,0.5,0.0625,4 Gam Thach: '!' above taunt
 Skills/Brom_IronWall_Back.png,48,48,6,1,24,40,0.5,0.1667,V Tuong Sat: 0-1 appear, 2-3 hold loop, 4-5 break; BEHIND body
 Skills/Brom_IronWall_Front.png,48,48,6,1,24,40,0.5,0.1667,V Tuong Sat: same frames; IN FRONT of body
 Skills/Brom_Quake.png,112,64,2,3,56,40,0.5,0.375,C Dong Dat: rows = wave 1-3 (R 12/20/28), cols = strong/fade; ground layer, BEHIND body
+Extra/Brom_Death_Up_0.png,32,32,1,1,16,30,0.5,0.0625,"death: 0 kneel, 1 fall, 2 lying (hold); Side faces left"
+Extra/Brom_Death_Up_1.png,32,32,1,1,16,30,0.5,0.0625,"death: 0 kneel, 1 fall, 2 lying (hold); Side faces left"
+Extra/Brom_Death_Up_2.png,32,32,1,1,16,30,0.5,0.0625,"death: 0 kneel, 1 fall, 2 lying (hold); Side faces left"
+Extra/Brom_Death_Side_0.png,32,32,1,1,16,30,0.5,0.0625,"death: 0 kneel, 1 fall, 2 lying (hold); Side faces left"
+Extra/Brom_Death_Side_1.png,32,32,1,1,16,30,0.5,0.0625,"death: 0 kneel, 1 fall, 2 lying (hold); Side faces left"
+Extra/Brom_Death_Side_2.png,32,32,1,1,16,30,0.5,0.0625,"death: 0 kneel, 1 fall, 2 lying (hold); Side faces left"

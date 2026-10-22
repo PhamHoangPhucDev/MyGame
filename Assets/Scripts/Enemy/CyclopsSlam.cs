@@ -126,7 +126,8 @@ namespace GameplayPrototype
             Vector2 dir = Facing();
             _ringSr.transform.position = (Vector2)transform.position + dir * 1.5f;
             _ringSr.sprite = _ring[cell];
-            _ringSr.sortingOrder = 4000 + Mathf.RoundToInt(-_ringSr.transform.position.y * 100f) - 80;
+            // Ground layer: tilemaps sit near 0, characters use SpriteSorter's +4000 band.
+            _ringSr.sortingOrder = 8;
             _ringSr.color = new Color(1f, 1f, 1f, alpha);
             _ringSr.enabled = true;
         }
@@ -142,7 +143,7 @@ namespace GameplayPrototype
                 _crackSr.sprite = _crackSprite;
             }
             _crackSr.transform.position = center;
-            _crackSr.sortingOrder = 4000 + Mathf.RoundToInt(-center.y * 100f) - 90;
+            _crackSr.sortingOrder = 7;
             _crackSr.color = Color.white;
             _crackSr.enabled = true;
             _crackLife = 2f;

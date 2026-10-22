@@ -273,7 +273,8 @@ public static class R2CPhase4ClassSetup
         }
         set.hand = sprites["Gear/" + className + "_Hand.png"][0];
         set.slashFrames = sprites["Gear/" + className + "_ComboVfx.png"];
-        set.chargeFrames = className == "Selene" ? sprites["Gear/Selene_Charge.png"] : new Sprite[0];
+        set.chargeFrames = className == "Selene" && sprites.ContainsKey("Gear/Selene_Charge.png")
+            ? sprites["Gear/Selene_Charge.png"] : new Sprite[0];
         set.replaceLegacyRSlash = true;
         EditorUtility.SetDirty(set);
         return set;
@@ -304,7 +305,6 @@ public static class R2CPhase4ClassSetup
         else if (className == "Lyra")
             kit.FillLyra(
                 sprites["Gear/Lyra_Arrow.png"],
-                sprites["Gear/Lyra_ArrowTrail.png"],
                 sprites["Gear/Lyra_ArrowHit.png"],
                 sprites["Skills/Lyra_FanBurst.png"],
                 sprites["Skills/Lyra_LeafBurst.png"],
@@ -313,7 +313,8 @@ public static class R2CPhase4ClassSetup
                 sprites["Skills/Lyra_RainArrow.png"],
                 sprites["Skills/Lyra_WindAura.png"],
                 sprites["Skills/Lyra_DodgePuff.png"],
-                sprites["Skills/Lyra_Beam.png"]);
+                sprites["Skills/Lyra_Beam.png"],
+                sprites.ContainsKey("Gear/Lyra_ArrowTrail.png") ? sprites["Gear/Lyra_ArrowTrail.png"] : null);
         else
             kit.FillBrom(
                 sprites["Skills/Brom_GroundSlam.png"],

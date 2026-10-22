@@ -251,12 +251,23 @@ namespace GameplayPrototype
 
         void BeginSlowOrb(SkillDef d)
         {
-            Vector2 dir = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.right;
+            Vector2 facing = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.right;
+            Vector2 spawn = ArrowSpawn(facing);
+            Vector2 dir = facing;
+            var target = CombatTargeting.FindNearestEnemy(transform.position, d.range > 0.1f ? d.range : 5.5f, enemyMask);
+            if (target != null)
+            {
+                Vector2 aim = target.GetComponent<Collider2D>() != null
+                    ? (Vector2)target.GetComponent<Collider2D>().bounds.center
+                    : (Vector2)target.transform.position + Vector2.up * 0.4f;
+                Vector2 to = aim - spawn;
+                if (to.sqrMagnitude > 0.01f) dir = to.normalized;
+            }
             var sparkle = _kit != null && _kit.combo != null ? _kit.combo.sparkle : null;
-            KitProjectile.Fire(ArrowSpawn(dir), dir, d.projectilePoses,
+            KitProjectile.Fire(spawn, dir, d.projectilePoses,
                 d.speed, d.range, 0, d.knockback, 0, 0.5f, 0f, enemyMask, d.popupColor, null, 1, d.radius, d.vfxFrames, 2, d.damage,
                 () => ApplyKitHitFeedback(), sparkle);
-            _visual?.PlaySlashSwing(dir, false, 0.35f);
+            _visual?.PlaySlashSwing(facing, false, 0.35f);
         }
 
         void BeginBlink(SkillDef d)

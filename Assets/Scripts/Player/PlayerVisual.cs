@@ -363,6 +363,8 @@ namespace GameplayPrototype
             bool walking = movement != null && movement.IsMoving && !attacking;
             string state = (attacking ? "Hero_Attack_" : (walking ? "Hero_Walk_" : "Hero_Idle_")) + dir;
             float speed = frozen ? 0f : (walking ? 1.15f : 1f);
+            if (!frozen && attacking)
+                speed *= DrawHoldScale();
             _bodyAnim.speed = speed;
 
             if (attacking)
@@ -375,25 +377,6 @@ namespace GameplayPrototype
                     _bodyAnim.Play(state, 0, _attackStartNorm);
                 else if (!frozen && info.normalizedTime >= 1f)
                     _bodyAnim.Play(state, 0, 0.99f);
-                if (_drawHoldFor > 0.01f && !frozen)
-                {
-                    _drawElapsed += Time.deltaTime;
-                    float len = 0.26f;
-                    var clips = _bodyAnim.GetCurrentAnimatorClipInfo(0);
-                    if (clips.Length > 0 && clips[0].clip != null)
-                        len = Mathf.Max(0.05f, clips[0].clip.length);
-                    if (_drawElapsed >= _drawHoldAt && _drawElapsed < _drawHoldAt + _drawHoldFor)
-                    {
-                        _bodyAnim.speed = 0f;
-                        _bodyAnim.Play(state, 0, Mathf.Clamp01((_drawHoldAt + 0.02f) / len));
-                    }
-                    else if (_drawElapsed >= _drawHoldAt + _drawHoldFor && !_drawReleased)
-                    {
-                        _drawReleased = true;
-                        _bodyAnim.speed = 1f;
-                        _bodyAnim.Play(state, 0, Mathf.Clamp01((_drawHoldAt + 0.08f) / len));
-                    }
-                }
                 _bodyState = state;
                 return;
             }
@@ -518,6 +501,23 @@ namespace GameplayPrototype
             return true;
         }
 
+        /// <summary>Lyra charged shot: the authored clip holds the draw for 0.08 s. Stretch that window to drawHold.</summary>
+        float DrawHoldScale()
+        {
+            if (combat == null || combat.Kit == null || combat.Kit.combo == null) return 1f;
+            var steps = combat.Kit.combo.steps;
+            int i = combat.CurrentComboStep;
+            if (steps == null || i < 0 || i >= steps.Length || steps[i].drawHold <= 0.05f) return 1f;
+            if (_bodyAnim == null) return 1f;
+            var info = _bodyAnim.GetCurrentAnimatorStateInfo(0);
+            float n = info.normalizedTime;
+            if (n >= 1f) n %= 1f;
+            const float n0 = 0.06f / 0.26f;
+            const float n1 = 0.14f / 0.26f;
+            if (n < n0 || n >= n1) return 1f;
+            return 0.08f / steps[i].drawHold;
+        }
+
         static string ViewOf(Vector2 facing)
         {
             bool side = Mathf.Abs(facing.x) > Mathf.Abs(facing.y) && Mathf.Abs(facing.x) > 0.05f;
@@ -525,18 +525,11 @@ namespace GameplayPrototype
         }
 
         /// <param name="skipWindup">True for instant skills (whirlwind waves) that strike on the same frame.</param>
-        float _drawHoldAt, _drawHoldFor, _drawElapsed;
-        bool _drawReleased;
-
-        public void PlaySlashSwing(Vector2 facing, bool skipWindup = false, float lockSeconds = 0f, float drawHoldAt = 0f, float drawHoldFor = 0f)
+        public void PlaySlashSwing(Vector2 facing, bool skipWindup = false, float lockSeconds = 0f)
         {
             _swingFacing = facing.sqrMagnitude > 0.01f ? facing.normalized : Vector2.right;
             _swinging = true;
             _swingElapsed = 0f;
-            _drawHoldAt = drawHoldAt;
-            _drawHoldFor = drawHoldFor;
-            _drawElapsed = 0f;
-            _drawReleased = false;
             _bodyState = null;
             _hurtTimer = 0f;
             float lockTime = lockSeconds > 0.05f ? lockSeconds : AttackLock;

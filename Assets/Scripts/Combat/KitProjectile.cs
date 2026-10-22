@@ -36,7 +36,6 @@ namespace GameplayPrototype
         readonly System.Collections.Generic.List<Health> _already = new();
         Sprite[] _trail;
         SpriteRenderer _trailSr;
-        int _trailRow;
 
         public static KitProjectile Fire(Vector2 from, Vector2 dir, Sprite[] poses8, float speed, float range, int damage, float knockback,
                                          int bleedDamage, float bleedTick, float bleedDuration, LayerMask mask, Color popup, Sprite[] hitFrames = null,
@@ -51,7 +50,9 @@ namespace GameplayPrototype
             p._bleedDamage = bleedDamage; p._bleedTick = bleedTick; p._bleedDuration = bleedDuration;
             p._mask = mask; p._popup = popup; p._hitFrames = hitFrames; p._onHit = onHit;
             p._pierce = Mathf.Max(1, pierce); p._explode = explodeRadius; p._explodeFrames = explodeFrames; p._explodeDamage = explodeDamage;
-            p._poses = poses8; p._poseRow = poseRow; p._sparkle = sparkle;
+            p._poses = poses8; p._poseRow = poseRow; p._sparkle = sparkle; p._trail = trail;
+            float ang = Mathf.Atan2(p._dir.y, p._dir.x) * Mathf.Rad2Deg;
+            p._dirIndex = ((Mathf.RoundToInt(ang / 45f) % 8) + 8) % 8;
             var sr = go.AddComponent<SpriteRenderer>();
             p._sr = sr;
             if (poses8 != null && poses8.Length >= 2 && poses8.Length < 8)
@@ -61,9 +62,7 @@ namespace GameplayPrototype
             }
             else if (poses8 != null && poses8.Length >= 8)
             {
-                float a = Mathf.Atan2(p._dir.y, p._dir.x) * Mathf.Rad2Deg;
-                int i = ((Mathf.RoundToInt(a / 45f) % 8) + 8) % 8;
-                p._dirIndex = i;
+                int i = p._dirIndex;
                 int index = poseRow * 8 + i;
                 if (index < 0 || index >= poses8.Length) index = i;
                 sr.sprite = poses8[index];
@@ -71,11 +70,9 @@ namespace GameplayPrototype
             sr.sortingOrder = 4000 + Mathf.RoundToInt(-from.y * 100f) + 40;
             if (trail != null && trail.Length >= 8)
             {
-                p._trail = trail;
-                p._trailRow = poseRow > 0 ? 2 : 0;
-                var trailGo = new GameObject("ArrowTrail");
-                trailGo.transform.SetParent(go.transform, false);
-                p._trailSr = trailGo.AddComponent<SpriteRenderer>();
+                var child = new GameObject("Trail");
+                child.transform.SetParent(go.transform, false);
+                p._trailSr = child.AddComponent<SpriteRenderer>();
                 p._trailSr.sortingOrder = sr.sortingOrder - 1;
                 p.ApplyTrail();
             }
@@ -86,10 +83,9 @@ namespace GameplayPrototype
         {
             if (_trailSr == null || _trail == null) return;
             float remain = (_range - _travelled) / Mathf.Max(0.01f, _speed);
-            int row = _trailRow + (remain <= 0.1f ? 1 : 0);
+            int row = (_poseRow >= 1 ? 2 : 0) + (remain <= 0.1f ? 1 : 0);
             int index = row * 8 + _dirIndex;
-            if (index >= 0 && index < _trail.Length && _trail[index] != null)
-                _trailSr.sprite = _trail[index];
+            if (index >= 0 && index < _trail.Length) _trailSr.sprite = _trail[index];
         }
 
         void Update()

@@ -896,6 +896,7 @@ namespace GameplayPrototype
             }
             WhirlWave();
             _whirlLeft--;
+            _whirlTimer = _whirlDef != null ? _whirlDef.interval : whirlWaveInterval;
         }
 
         void TickWhirlwind()

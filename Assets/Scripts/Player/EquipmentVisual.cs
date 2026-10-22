@@ -28,6 +28,7 @@ namespace GameplayPrototype
         [SerializeField] Sprite hand;
         [Tooltip("Blocks of 6 (Down0, Down1, Up0, Up1, Side0, Side1), one block per combo step. Pivot = body pivot.")]
         [SerializeField] Sprite[] slashFrames = new Sprite[6];
+        [Tooltip("Selene gem glow, 2 columns x 2 rows. Shown on Attack frame 0 at the spec gem, not from the anchor.")]
         [SerializeField] Sprite[] chargeFrames = new Sprite[0];
         [SerializeField] bool showSlash = true;
         [Tooltip("This hero draws its own slash at the blade tip, so PlayerCombat skips the legacy R slash sprite. " +
@@ -260,36 +261,43 @@ namespace GameplayPrototype
 
             if (step < 0 && _main != null)
                 _main.transform.localRotation = Quaternion.identity;
-            PlaceCharge(flip, order);
+            PlaceCharge(_lastKey, flip, order, tint, step);
         }
 
-        /// <summary>Selene gem glow on Attack F0. Coordinates are the spec table (gem center), not the anchor CSV.</summary>
-        void PlaceCharge(bool flip, int order)
+        /// <summary>
+        /// Selene gem glow on Attack frame 0. Positions are the spec gem centers (sheet pixels, Side already flipped),
+        /// not the anchor slash cell. Row 0 is a normal shot, row 1 is the finisher.
+        /// </summary>
+        void PlaceCharge(string key, bool flip, int order, Color tint, int step)
         {
             if (_charge == null) return;
-            bool f0 = _lastKey != null && _lastKey.StartsWith("Attack_") && _lastKey.EndsWith("_0")
+            bool draw = key != null && key.StartsWith("Attack_") && key.EndsWith("_0")
                 && chargeFrames != null && chargeFrames.Length >= 2;
-            if (!f0)
+            if (!draw)
             {
                 _charge.enabled = false;
                 return;
             }
-            int step = _combat != null ? _combat.CurrentComboStep : 0;
             int row = step >= 2 ? 1 : 0;
-            int index = row * 2 + (((int)(Time.unscaledTime / 0.08f)) & 1);
-            if (index >= chargeFrames.Length || chargeFrames[index] == null) index = row * 2;
-            _charge.sprite = chargeFrames[index];
-            bool up = _lastKey.Contains("_Up_");
+            int frame = ((int)(Time.time / 0.08f) & 1);
+            int index = row * 2 + frame;
+            if (index >= chargeFrames.Length || chargeFrames[index] == null)
+            {
+                _charge.enabled = false;
+                return;
+            }
+            bool up = key.Contains("_Up_");
             Vector2 local = up ? new Vector2(0.3125f, 1.25f) : new Vector2(-0.375f, 1.25f);
             if (flip) local.x = -local.x;
+            _charge.enabled = true;
+            _charge.sprite = chargeFrames[index];
+            _charge.flipX = false;
+            _charge.color = new Color(1f, 1f, 1f, tint.a);
             _charge.transform.localPosition = local;
             _charge.transform.localRotation = Quaternion.identity;
             _charge.transform.localScale = Vector3.one;
-            _charge.flipX = false;
             _charge.sortingLayerID = body.sortingLayerID;
             _charge.sortingOrder = order + (up ? -3 : 3);
-            _charge.color = Color.white;
-            _charge.enabled = true;
         }
 
         static int Wrap8(int d)

@@ -783,14 +783,43 @@ namespace GameplayPrototype
             {
                 StartCoroutine(ChargeDustTrail(dur));
                 StartCoroutine(ChargeGhostTrail(dur));
+                StartCoroutine(ChargePathHits(d, dir, dur));
             }
             else
+            {
                 ArenKitVfx.PlayChargeDust(transform.position + Vector3.down * 0.2f);
-            ApplyAreaDamage((Vector2)transform.position + dir * 0.4f,
-                d != null ? d.radius : 0.8f,
-                d != null ? d.damage : dashDamage,
-                d != null ? d.knockback : 3f,
-                d != null ? d.popupColor : new Color(0.55f, 0.9f, 1f));
+                ApplyAreaDamage((Vector2)transform.position + dir * 0.4f,
+                    d != null ? d.radius : 0.8f,
+                    d != null ? d.damage : dashDamage,
+                    d != null ? d.knockback : 3f,
+                    d != null ? d.popupColor : new Color(0.55f, 0.9f, 1f));
+            }
+        }
+
+        System.Collections.IEnumerator ChargePathHits(SkillDef d, Vector2 dir, float dur)
+        {
+            var hit = new HashSet<Health>();
+            float radius = d != null ? d.radius : 0.8f;
+            int damage = d != null ? d.damage : dashDamage;
+            float knock = d != null ? d.knockback : 3f;
+            var color = d != null ? d.popupColor : new Color(0.55f, 0.9f, 1f);
+            float t = 0f;
+            while (t < dur)
+            {
+                var list = new List<Health>();
+                CombatTargeting.OverlapEnemies((Vector2)transform.position + dir * 0.4f, radius, list, enemyMask);
+                foreach (var h in list)
+                {
+                    if (h == null || !hit.Add(h)) continue;
+                    if (!h.TakeDamage(damage, h.transform.position, dir * knock)) continue;
+                    if (h.LastDamageApplied > 0)
+                        DamagePopup.Spawn(h.transform.position + Vector3.up * 0.4f, h.LastDamageApplied, color);
+                    HitComboCounter.Instance?.RegisterHit();
+                }
+                t += Time.deltaTime;
+                yield return null;
+            }
+            if (hit.Count > 0) ApplyKitHitFeedback();
         }
 
         System.Collections.IEnumerator ChargeGhostTrail(float dur)

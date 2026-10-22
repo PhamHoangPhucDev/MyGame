@@ -451,11 +451,16 @@ namespace GameplayPrototype
         {
             _rb.linearVelocity = _avoid * 0.15f;
             var shot = GetComponent<R2CMonsterShot>();
+            var slam = GetComponent<CyclopsSlam>();
             if (shot != null && shot.ShowsAim && _player != null)
                 shot.ShowAim(_player.position);
+            if (slam != null)
+                slam.Present(telegraphTime - _stateTimer, telegraphTime);
             _stateTimer -= Time.fixedDeltaTime;
             if (_stateTimer > 0f) return;
-            if (shot != null && shot.Ranged)
+            if (slam != null)
+                slam.Strike(toPlayer);
+            else if (shot != null && shot.Ranged)
                 shot.Fire(_player != null ? _player.position : (Vector2)transform.position + toPlayer);
             else
                 DealDamage(toPlayer, attackDamage, 1.5f);

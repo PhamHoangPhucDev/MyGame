@@ -328,6 +328,11 @@ namespace GameplayPrototype
             go.GetComponent<EnemyVisual>().UseAnimator(def.controller, true);
             if (def.ranged)
                 go.AddComponent<R2CMonsterShot>().Configure(def, def.damage);
+            if (def.telegraph != null && def.telegraph.Length >= 6)
+            {
+                enemy.SetHitDelay(1.2f);
+                go.AddComponent<CyclopsSlam>().Configure(def);
+            }
             if (def.bossBar)
                 go.AddComponent<R2CBossMark>();
             RegisterEnemy(go, def.rider, elite: false, boss: def.bossBar, countTowardWave: false);

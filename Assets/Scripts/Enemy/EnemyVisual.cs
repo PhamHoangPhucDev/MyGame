@@ -51,6 +51,12 @@ namespace GameplayPrototype
                 _aim = worldDir;
         }
 
+        public void HoldAction(float seconds)
+        {
+            if (seconds > _actionTimer)
+                _actionTimer = seconds;
+        }
+
         public void NotifyAttack()
         {
             if (_anim == null || _dead) return;

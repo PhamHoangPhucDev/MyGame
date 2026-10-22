@@ -33,6 +33,11 @@ namespace GameplayPrototype
         public Vector2 spawnDown;
         public Vector2 spawnUp;
         public Vector2 spawnSide;
+        public Sprite[] telegraph;
+        public Sprite crack;
+        public RuntimeAnimatorController enraged;
+        public int slamDamage;
+        public float slamRadius;
     }
 
     /// <summary>Marks a sandbox sub-boss so the HP bar stays visible. Not the Level 5 warlord machine.</summary>

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cyclops_Enraged
+  m_Controller: {fileID: 9100000, guid: ff513f873cde3b24bb286f426bea1634, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f2430be6c0585254287e6b359c60af56, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c43a601df75162f47bf97ccb9b31b860, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: aca282d1dd46fea44af2273a05649285, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7a32b8275867ff3469932645dc2892d0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1b2bebe7528f67446ae02e961f9df4b9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9de96f4146341954bbc68da2d82b3fae, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5f068dcb158cdca46b6d50b89806ce21, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ba224b12c7b79464b965a354e9420a18, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9865ace1b51b71843b81b1244dc84b22, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 797bf00d0eb2d13449533d3fec630a3d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8989edf00bd83ed499e70323ec378d42, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d516ca635a43f3c42aca2cb518d7b5cc, type: 2}

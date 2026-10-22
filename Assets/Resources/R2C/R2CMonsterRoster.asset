@@ -34,6 +34,11 @@ MonoBehaviour:
     spawnDown: {x: 0, y: 0}
     spawnUp: {x: 0, y: 0}
     spawnSide: {x: 0, y: 0}
+    telegraph: []
+    crack: {fileID: 0}
+    enraged: {fileID: 0}
+    slamDamage: 0
+    slamRadius: 3.9
   - label: Goblin Archer Lv.3
     controller: {fileID: 9100000, guid: 6a7653f70a7f0c34c873a02533c0b153, type: 2}
     hp: 60
@@ -63,6 +68,11 @@ MonoBehaviour:
     spawnDown: {x: 0, y: 0.125}
     spawnUp: {x: 0, y: 0.625}
     spawnSide: {x: -0.625, y: 0.4375}
+    telegraph: []
+    crack: {fileID: 0}
+    enraged: {fileID: 0}
+    slamDamage: 0
+    slamRadius: 3.9
   - label: Satyr Lv.3
     controller: {fileID: 9100000, guid: 6e0be758ee7e8734b8b8265436b48d3b, type: 2}
     hp: 60
@@ -84,6 +94,11 @@ MonoBehaviour:
     spawnDown: {x: 0, y: 0}
     spawnUp: {x: 0, y: 0}
     spawnSide: {x: 0, y: 0}
+    telegraph: []
+    crack: {fileID: 0}
+    enraged: {fileID: 0}
+    slamDamage: 0
+    slamRadius: 3.9
   - label: Dryad Lv.3
     controller: {fileID: 9100000, guid: 22fbe251e8b5afc4cbf1f7efda932ca0, type: 2}
     hp: 60
@@ -113,6 +128,11 @@ MonoBehaviour:
     spawnDown: {x: 0, y: 0.25}
     spawnUp: {x: 0, y: 1.125}
     spawnSide: {x: -0.4375, y: 0.375}
+    telegraph: []
+    crack: {fileID: 0}
+    enraged: {fileID: 0}
+    slamDamage: 0
+    slamRadius: 3.9
   - label: Dryad Rider Lv.4
     controller: {fileID: 9100000, guid: 36bb98999776cc94d80b244e96fb60e1, type: 2}
     hp: 78
@@ -142,6 +162,11 @@ MonoBehaviour:
     spawnDown: {x: 0, y: 0.5625}
     spawnUp: {x: 0, y: 1.5}
     spawnSide: {x: -0.625, y: 0.6875}
+    telegraph: []
+    crack: {fileID: 0}
+    enraged: {fileID: 0}
+    slamDamage: 0
+    slamRadius: 3.9
   - label: Gobrider Lv.5
     controller: {fileID: 9100000, guid: 709c33dc509d5a04288b8bffe9cefb79, type: 2}
     hp: 90
@@ -163,6 +188,11 @@ MonoBehaviour:
     spawnDown: {x: 0, y: 0}
     spawnUp: {x: 0, y: 0}
     spawnSide: {x: 0, y: 0}
+    telegraph: []
+    crack: {fileID: 0}
+    enraged: {fileID: 0}
+    slamDamage: 0
+    slamRadius: 3.9
   - label: Elite Gobrider Lv.6
     controller: {fileID: 9100000, guid: bcb0e030c079caa47a26501249892d92, type: 2}
     hp: 120
@@ -184,6 +214,11 @@ MonoBehaviour:
     spawnDown: {x: 0, y: 0}
     spawnUp: {x: 0, y: 0}
     spawnSide: {x: 0, y: 0}
+    telegraph: []
+    crack: {fileID: 0}
+    enraged: {fileID: 0}
+    slamDamage: 0
+    slamRadius: 3.9
   - label: Warlord Lv.7
     controller: {fileID: 9100000, guid: 1679c82e39c669b4cb03c3ce9375da88, type: 2}
     hp: 180
@@ -205,3 +240,40 @@ MonoBehaviour:
     spawnDown: {x: 0, y: 0}
     spawnUp: {x: 0, y: 0}
     spawnSide: {x: 0, y: 0}
+    telegraph: []
+    crack: {fileID: 0}
+    enraged: {fileID: 0}
+    slamDamage: 0
+    slamRadius: 3.9
+  - label: Cyclops
+    controller: {fileID: 9100000, guid: ff513f873cde3b24bb286f426bea1634, type: 2}
+    hp: 280
+    damage: 12
+    speed: 1.15
+    aggro: 7
+    meleeRange: 3.2
+    cooldown: 3.2
+    colliderSize: {x: 2.25, y: 0.875}
+    rider: 0
+    bossBar: 1
+    chargeDamage: 0
+    ranged: 0
+    aimLine: 0
+    standOff: 2.2
+    shotRange: 6.5
+    shotSpeed: 8
+    bolt: []
+    spawnDown: {x: 0, y: 0}
+    spawnUp: {x: 0, y: 0}
+    spawnSide: {x: 0, y: 0}
+    telegraph:
+    - {fileID: 3986861371921548337, guid: 556ecc1d77f66ce489171dffa6195705, type: 3}
+    - {fileID: 1494690475179914802, guid: 556ecc1d77f66ce489171dffa6195705, type: 3}
+    - {fileID: -2803071536954815593, guid: 556ecc1d77f66ce489171dffa6195705, type: 3}
+    - {fileID: 5738203114737489962, guid: 556ecc1d77f66ce489171dffa6195705, type: 3}
+    - {fileID: 4436499854398509345, guid: 556ecc1d77f66ce489171dffa6195705, type: 3}
+    - {fileID: -4548874234673786599, guid: 556ecc1d77f66ce489171dffa6195705, type: 3}
+    crack: {fileID: -1802675545, guid: f9115b1bf15540044848b89fb715e902, type: 3}
+    enraged: {fileID: 22100000, guid: 2fdb544fe62b344438788108f2a4d6ab, type: 2}
+    slamDamage: 22
+    slamRadius: 3.9

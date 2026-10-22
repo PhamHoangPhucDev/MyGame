@@ -590,7 +590,8 @@ namespace GameplayPrototype
         {
             int n = Mathf.Max(1, d.count);
             Vector2 baseDir = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.right;
-            var aim = CombatTargeting.LockedOrNearest(_stickyTarget, transform.position, AutoTargetRadius, enemyMask);
+            float reach = Mathf.Max(AutoTargetRadius, d.range);
+            var aim = CombatTargeting.LockedOrNearest(_stickyTarget, transform.position, reach, enemyMask);
             if (aim != null)
             {
                 bool lyraAim = _kit != null && _kit.classId == "lyra";

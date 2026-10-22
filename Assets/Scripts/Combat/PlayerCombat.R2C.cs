@@ -267,7 +267,8 @@ namespace GameplayPrototype
             Vector2 facing = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.right;
             Vector2 spawn = ArrowSpawn(facing);
             Vector2 dir = facing;
-            var target = CombatTargeting.LockedOrNearest(_stickyTarget, transform.position, AutoTargetRadius, enemyMask);
+            float reach = Mathf.Max(AutoTargetRadius, d.range > 0.1f ? d.range : AutoTargetRadius);
+            var target = CombatTargeting.LockedOrNearest(_stickyTarget, transform.position, reach, enemyMask);
             if (target != null)
             {
                 float speed = d.speed > 0.05f ? d.speed : 5f;

@@ -151,8 +151,24 @@ namespace GameplayPrototype
                 var p = GameObject.FindGameObjectWithTag("Player");
                 if (p != null) _player = p.transform;
             }
+            if (HeroHidden())
+            {
+                _rb.linearVelocity = Vector2.zero;
+                HideTelegraph();
+                if (_state == BossAiState.MeleeTelegraph || _state == BossAiState.ChargeTelegraph
+                    || _state == BossAiState.AreaTelegraph || _state == BossAiState.ChargeActive
+                    || _state == BossAiState.MeleeStrike || _state == BossAiState.AreaStrike)
+                    Enter(BossAiState.Approach);
+                return;
+            }
             TickPhaseFromHp();
             TickState(Time.fixedDeltaTime);
+        }
+
+        bool HeroHidden()
+        {
+            var combat = _player != null ? _player.GetComponent<PlayerCombat>() : null;
+            return combat != null && combat.HidesFrom(true);
         }
 
         void TickPhaseFromHp()

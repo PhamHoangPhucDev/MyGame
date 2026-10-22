@@ -868,7 +868,7 @@ namespace GameplayPrototype
                 CombatVfx.SpawnCrescentTinted(transform.position + Vector3.up * 0.35f, dir, 1.5f, d.tintColor);
                 CombatVfx.SpawnCrescentTinted(transform.position + Vector3.up * 0.35f, -dir, 1.2f, d.tintColor * 0.8f);
             }
-            else if (ArenKitVfx.Active)
+            else if (ArenKitVfx.HasWhirlRing)
                 ArenKitVfx.PlayWhirlRing(transform);
             else
             {

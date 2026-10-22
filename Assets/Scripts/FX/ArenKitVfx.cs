@@ -32,8 +32,19 @@ namespace GameplayPrototype
             }
         }
 
-        /// <summary>True when sheets are loaded AND designed Aren kit is active (Sandbox F1). Campaign stays legacy until explicitly enabled.</summary>
+        /// <summary>True when sheets are loaded and the designed Aren kit is the active class.</summary>
         public static bool Active => PreferDesignedSkills && Ready;
+
+        /// <summary>Whirl ring sheets are loaded. Does not require the designed-kit flag.</summary>
+        public static bool HasWhirlRing
+        {
+            get
+            {
+                EnsureLoaded();
+                return _whirlBack != null && _whirlBack.Length > 0
+                    && _whirlFront != null && _whirlFront.Length > 0;
+            }
+        }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStatic()

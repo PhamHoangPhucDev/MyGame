@@ -460,8 +460,8 @@ namespace GameplayPrototype
             if (_stateTimer > 0f) return;
             if (slam != null)
                 slam.Strike(toPlayer);
-            else if (shot != null && shot.Ranged)
-                shot.Fire(_player != null ? CombatTargeting.BodyPoint(_player) : (Vector2)transform.position + toPlayer);
+            else if (shot != null && shot.Ranged && _player != null)
+                shot.Fire(CombatTargeting.BodyPoint(_player), _player.GetComponent<Rigidbody2D>());
             else
                 DealDamage(toPlayer, attackDamage, 1.5f);
             _attackTimer = attackCooldown;

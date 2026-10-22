@@ -95,12 +95,22 @@ namespace GameplayPrototype
             if (_line != null) _line.gameObject.SetActive(false);
         }
 
-        public void Fire(Vector2 target)
+        public void Fire(Vector2 target, Rigidbody2D targetMotion = null)
         {
             HideAim();
             if (_bolt == null || _bolt.Length < 8) return;
             Vector2 from = (Vector2)transform.position + SpawnLocal();
-            Vector2 dir = target - from;
+            Vector2 aim = target;
+            var motion = targetMotion;
+            if (motion != null)
+            {
+                float dist = Vector2.Distance(from, aim);
+                float flight = _speed > 0.05f ? dist / _speed : 0f;
+                Vector2 extra = motion.linearVelocity * flight;
+                if (extra.sqrMagnitude > 1f) extra = extra.normalized;
+                aim += extra;
+            }
+            Vector2 dir = aim - from;
             if (dir.sqrMagnitude < 0.0001f) dir = Vector2.down;
             R2CBolt.Fire(from, dir, _bolt, _speed, _range, _damage);
         }

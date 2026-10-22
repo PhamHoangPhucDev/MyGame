@@ -11,13 +11,18 @@ namespace GameplayPrototype
             var poses = _kit != null && _kit.combo != null ? _kit.combo.projectilePoses : null;
             var hits = _kit != null && _kit.combo != null ? _kit.combo.projectileHit : null;
             Vector2 hint = _slashFacing.sqrMagnitude > 0.01f ? _slashFacing : _facing;
+            var target = CombatTargeting.LockedOrNearest(_stickyTarget, transform.position, AutoTargetRadius, enemyMask);
+            _stickyTarget = target;
             Vector2 dir = hint;
             Vector2 spawn = ArrowSpawn(dir);
-            if (_hasLockedAim)
+            if (target != null)
             {
-                dir = CombatTargeting.ShotDirection(spawn, _lockedAimPoint, hint);
+                float speed = step.projectileSpeed;
+                Vector2 aim = CombatTargeting.LeadPoint(target, spawn, CombatTargeting.BodyPoint(target), speed);
+                dir = CombatTargeting.ShotDirection(spawn, aim, hint);
                 spawn = ArrowSpawn(dir);
-                dir = CombatTargeting.ShotDirection(spawn, _lockedAimPoint, dir);
+                aim = CombatTargeting.LeadPoint(target, spawn, CombatTargeting.BodyPoint(target), speed);
+                dir = CombatTargeting.ShotDirection(spawn, aim, dir);
             }
             bool burst = step.explodeRadius > 0.05f;
             int explodeDamage = burst ? damage : 0;
@@ -262,12 +267,14 @@ namespace GameplayPrototype
             Vector2 facing = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.right;
             Vector2 spawn = ArrowSpawn(facing);
             Vector2 dir = facing;
-            var target = CombatTargeting.FindNearestEnemy(transform.position, d.range > 0.1f ? d.range : 5.5f, enemyMask);
+            var target = CombatTargeting.LockedOrNearest(_stickyTarget, transform.position, AutoTargetRadius, enemyMask);
             if (target != null)
             {
-                Vector2 chest = CombatTargeting.BodyPoint(target);
+                float speed = d.speed > 0.05f ? d.speed : 5f;
+                Vector2 chest = CombatTargeting.LeadPoint(target, spawn, CombatTargeting.BodyPoint(target), speed);
                 dir = CombatTargeting.ShotDirection(spawn, chest, facing);
                 spawn = ArrowSpawn(dir);
+                chest = CombatTargeting.LeadPoint(target, spawn, CombatTargeting.BodyPoint(target), speed);
                 dir = CombatTargeting.ShotDirection(spawn, chest, dir);
             }
             var sparkle = _kit != null && _kit.combo != null ? _kit.combo.sparkle : null;

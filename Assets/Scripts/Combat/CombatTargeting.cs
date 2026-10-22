@@ -55,6 +55,30 @@ namespace GameplayPrototype
             return best;
         }
 
+        /// <summary>Keep the locked target while it is alive and in range. Otherwise the nearest body in range.</summary>
+        public static Health LockedOrNearest(Health sticky, Vector2 from, float radius, LayerMask mask)
+        {
+            if (sticky != null && !sticky.IsDead)
+            {
+                float body = Vector2.Distance(from, BodyPoint(sticky));
+                float feet = Vector2.Distance(from, sticky.transform.position);
+                if (Mathf.Min(body, feet) <= radius) return sticky;
+            }
+            return FindNearestEnemy(from, radius, mask);
+        }
+
+        /// <summary>Aim a little ahead of a moving target. The lead is capped at one tile.</summary>
+        public static Vector2 LeadPoint(Component target, Vector2 from, Vector2 aim, float speed)
+        {
+            var body = target != null ? target.GetComponent<Rigidbody2D>() : null;
+            Vector2 vel = body != null ? body.linearVelocity : Vector2.zero;
+            float dist = Vector2.Distance(from, aim);
+            float flight = speed > 0.05f ? dist / speed : 0f;
+            Vector2 extra = vel * flight;
+            if (extra.sqrMagnitude > 1f) extra = extra.normalized;
+            return aim + extra;
+        }
+
         /// <summary>Chest of a hurtbox, or a short lift above the feet when none is attached.</summary>
         public static Vector2 BodyPoint(Component target, float lift = 0.45f)
         {

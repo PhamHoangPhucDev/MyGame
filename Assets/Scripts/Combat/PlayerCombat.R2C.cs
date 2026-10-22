@@ -10,14 +10,22 @@ namespace GameplayPrototype
         {
             var poses = _kit != null && _kit.combo != null ? _kit.combo.projectilePoses : null;
             var hits = _kit != null && _kit.combo != null ? _kit.combo.projectileHit : null;
-            Vector2 dir = _slashFacing.sqrMagnitude > 0.01f ? _slashFacing : _facing;
+            Vector2 hint = _slashFacing.sqrMagnitude > 0.01f ? _slashFacing : _facing;
+            Vector2 dir = hint;
+            Vector2 spawn = ArrowSpawn(dir);
+            if (_hasLockedAim)
+            {
+                dir = CombatTargeting.ShotDirection(spawn, _lockedAimPoint, hint);
+                spawn = ArrowSpawn(dir);
+                dir = CombatTargeting.ShotDirection(spawn, _lockedAimPoint, dir);
+            }
             bool burst = step.explodeRadius > 0.05f;
             int explodeDamage = burst ? damage : 0;
             var impact = burst ? null : HitRow(hits, step.arrowRow > 0 ? 1 : 0);
             var boom = burst && _kit.combo != null ? _kit.combo.finisherVfx : null;
             var sparkle = _kit.combo != null ? _kit.combo.sparkle : null;
             var trail = _kit.combo != null ? _kit.combo.projectileTrail : null;
-            KitProjectile.Fire(ArrowSpawn(dir), dir, poses,
+            KitProjectile.Fire(spawn, dir, poses,
                 step.projectileSpeed, step.projectileRange, explodeDamage > 0 ? 0 : damage, _pendingKnockback,
                 0, 0.5f, 0f, enemyMask, new Color(0.78f, 0.45f, 0.95f), impact, step.pierce, step.explodeRadius, boom, step.arrowRow, explodeDamage,
                 () => ApplyKitHitFeedback(), sparkle, trail);
@@ -257,11 +265,10 @@ namespace GameplayPrototype
             var target = CombatTargeting.FindNearestEnemy(transform.position, d.range > 0.1f ? d.range : 5.5f, enemyMask);
             if (target != null)
             {
-                Vector2 aim = target.GetComponent<Collider2D>() != null
-                    ? (Vector2)target.GetComponent<Collider2D>().bounds.center
-                    : (Vector2)target.transform.position + Vector2.up * 0.4f;
-                Vector2 to = aim - spawn;
-                if (to.sqrMagnitude > 0.01f) dir = to.normalized;
+                Vector2 chest = CombatTargeting.BodyPoint(target);
+                dir = CombatTargeting.ShotDirection(spawn, chest, facing);
+                spawn = ArrowSpawn(dir);
+                dir = CombatTargeting.ShotDirection(spawn, chest, dir);
             }
             var sparkle = _kit != null && _kit.combo != null ? _kit.combo.sparkle : null;
             KitProjectile.Fire(spawn, dir, d.projectilePoses,

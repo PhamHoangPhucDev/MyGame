@@ -94,6 +94,8 @@ namespace GameplayPrototype
         int _pendingSlashVariant;
         Vector2 _slashSwing;
         Health _stickyTarget;
+        Vector2 _lockedAimPoint;
+        bool _hasLockedAim;
         bool _debugSwordHeld;
         // R2C: optional class kit (Sandbox, via ClassCombat). Null = the serialized fields below drive everything.
         ClassKit _kit;
@@ -188,6 +190,8 @@ namespace GameplayPrototype
             _visual = GetComponent<PlayerVisual>();
             if (_visual == null) _visual = gameObject.AddComponent<PlayerVisual>();
             _visual.EnsureHierarchy();
+            if (GetComponentInChildren<Hurtbox>() == null)
+                Hurtbox.Attach(gameObject, new Vector2(0.6f, 0.9f));
 
             ApplyCooldownTotals();
         }
@@ -489,6 +493,7 @@ namespace GameplayPrototype
                     if (toSticky.sqrMagnitude > 0.0001f)
                         _facing = toSticky.normalized;
                     _slashFacing = _facing;
+                    LockAimPoint();
                     return;
                 }
             }
@@ -501,6 +506,14 @@ namespace GameplayPrototype
                     _facing = to.normalized;
             }
             _slashFacing = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.right;
+            LockAimPoint();
+        }
+
+        void LockAimPoint()
+        {
+            _hasLockedAim = _stickyTarget != null && !_stickyTarget.IsDead;
+            if (_hasLockedAim)
+                _lockedAimPoint = CombatTargeting.BodyPoint(_stickyTarget);
         }
 
         void TickSlashStrike()
@@ -589,7 +602,15 @@ namespace GameplayPrototype
             int n = Mathf.Max(1, d.count);
             Vector2 baseDir = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.right;
             var aim = CombatTargeting.FindNearestEnemy(transform.position, d.range, enemyMask);
-            if (aim != null) baseDir = ((Vector2)aim.transform.position - (Vector2)transform.position).normalized;
+            if (aim != null)
+            {
+                bool lyraAim = _kit != null && _kit.classId == "lyra";
+                Vector2 from = lyraAim ? ArrowSpawn(baseDir) : (Vector2)transform.position + Vector2.up * 0.45f;
+                Vector2 chest = CombatTargeting.BodyPoint(aim);
+                baseDir = CombatTargeting.ShotDirection(from, chest, baseDir);
+                from = lyraAim ? ArrowSpawn(baseDir) : (Vector2)transform.position + Vector2.up * 0.45f + baseDir * 0.3f;
+                baseDir = CombatTargeting.ShotDirection(from, chest, baseDir);
+            }
             if (!_slashPending) _pendingStep = -1; // skill swing: no combo-step pose/VFX
             _facing = baseDir;
             bool knifePose = _visual != null && _visual.PlaySkillPose("KnifeThrow", baseDir, 0.22f, true);

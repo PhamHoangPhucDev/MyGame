@@ -453,7 +453,7 @@ namespace GameplayPrototype
             var shot = GetComponent<R2CMonsterShot>();
             var slam = GetComponent<CyclopsSlam>();
             if (shot != null && shot.ShowsAim && _player != null)
-                shot.ShowAim(_player.position);
+                shot.ShowAim(CombatTargeting.BodyPoint(_player));
             if (slam != null)
                 slam.Present(telegraphTime - _stateTimer, telegraphTime);
             _stateTimer -= Time.fixedDeltaTime;
@@ -461,7 +461,7 @@ namespace GameplayPrototype
             if (slam != null)
                 slam.Strike(toPlayer);
             else if (shot != null && shot.Ranged)
-                shot.Fire(_player != null ? _player.position : (Vector2)transform.position + toPlayer);
+                shot.Fire(_player != null ? CombatTargeting.BodyPoint(_player) : (Vector2)transform.position + toPlayer);
             else
                 DealDamage(toPlayer, attackDamage, 1.5f);
             _attackTimer = attackCooldown;

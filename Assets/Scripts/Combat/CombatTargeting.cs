@@ -55,6 +55,23 @@ namespace GameplayPrototype
             return best;
         }
 
+        /// <summary>Chest of a hurtbox, or a short lift above the feet when none is attached.</summary>
+        public static Vector2 BodyPoint(Component target, float lift = 0.45f)
+        {
+            if (target == null) return Vector2.zero;
+            var box = target.GetComponentInChildren<Hurtbox>();
+            var col = box != null ? box.GetComponent<Collider2D>() : null;
+            if (col != null) return col.bounds.center;
+            return (Vector2)target.transform.position + Vector2.up * lift;
+        }
+
+        public static Vector2 ShotDirection(Vector2 from, Vector2 aim, Vector2 fallback)
+        {
+            Vector2 to = aim - from;
+            if (to.sqrMagnitude > 0.0001f) return to.normalized;
+            return fallback.sqrMagnitude > 0.01f ? fallback.normalized : Vector2.right;
+        }
+
         /// <summary>Foot colliders stay for movement. Combat queries use the body trigger when one exists.</summary>
         static bool CountsForCombat(Collider2D col)
         {

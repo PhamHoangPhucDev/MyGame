@@ -15,6 +15,8 @@ namespace GameplayPrototype
         Image _fill;
         Image _bg;
         BossWarlordController _boss;
+        Health _health;
+        string _name;
         static Sprite _white;
 
         void Awake()
@@ -37,38 +39,59 @@ namespace GameplayPrototype
         public void Bind(BossWarlordController boss)
         {
             _boss = boss;
+            _health = boss != null ? boss.Health : null;
+            _name = boss != null ? boss.DisplayName : null;
+            Show(_health != null);
+        }
+
+        public void Bind(Health health, string displayName)
+        {
+            _boss = null;
+            _health = health;
+            _name = string.IsNullOrEmpty(displayName) ? "Cyclops" : displayName;
+            Show(_health != null);
+        }
+
+        void Show(bool on)
+        {
             EnsureBuilt();
             if (_root != null)
-                _root.gameObject.SetActive(boss != null);
-            if (_title != null && boss != null)
-                _title.text = boss.DisplayName;
+                _root.gameObject.SetActive(on);
+            if (_title != null && on)
+                _title.text = _name;
             Refresh();
         }
 
         public void Clear()
         {
             _boss = null;
+            _health = null;
+            _name = null;
             if (_root != null)
                 _root.gameObject.SetActive(false);
         }
 
         void LateUpdate()
         {
-            if (_boss == null || _root == null || !_root.gameObject.activeSelf) return;
-            if (_boss.Health == null || _boss.Health.IsDead)
+            if (_root == null || !_root.gameObject.activeSelf) return;
+            var hp = _boss != null ? _boss.Health : _health;
+            if (hp == null || hp.IsDead)
             {
                 Clear();
                 return;
             }
             Refresh();
-            if (_title != null)
-                _title.text = $"{_boss.DisplayName}  —  PHASE {(int)_boss.Phase}";
+            if (_title == null) return;
+            _title.text = _boss != null
+                ? $"{_boss.DisplayName}  —  PHASE {(int)_boss.Phase}"
+                : _name;
         }
 
         void Refresh()
         {
-            if (_fill == null || _boss == null || _boss.Health == null) return;
-            float n = _boss.Health.Normalized;
+            var hp = _boss != null ? _boss.Health : _health;
+            if (_fill == null || hp == null) return;
+            float n = hp.Normalized;
             _fill.rectTransform.sizeDelta = new Vector2(520f * n, 0f);
         }
 

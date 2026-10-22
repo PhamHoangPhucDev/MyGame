@@ -22,7 +22,8 @@ namespace GameplayPrototype
         EnemyController _enemy;
         BossWarlordController _boss;
         bool _alwaysHp;
-        bool AlwaysHp => _boss != null || _alwaysHp;
+        bool _screenBoss;
+        bool AlwaysHp => !_screenBoss && (_boss != null || _alwaysHp);
         RectTransform _root;
         Text _label;
         Image _barBg;
@@ -101,6 +102,23 @@ namespace GameplayPrototype
             Refresh();
             SetLabelText(LabelText);
             ResetHpReveal();
+        }
+
+        void Start()
+        {
+            _screenBoss = GetComponent<CyclopsSlam>() != null;
+            if (_screenBoss)
+            {
+                _alwaysHp = false;
+                SetHpBarVisible(false);
+                BossHudUI.Ensure().Bind(_health, LabelText);
+                return;
+            }
+            if (GetComponent<R2CBossMark>() != null || _boss != null)
+            {
+                _alwaysHp = true;
+                SetHpBarVisible(true);
+            }
         }
 
         void OnDestroy()
@@ -251,7 +269,9 @@ namespace GameplayPrototype
         {
             float heightBoost = 0.95f;
             var sr = GetComponentInChildren<SpriteRenderer>();
-            if (sr != null && sr.sprite != null)
+            if (_screenBoss && sr != null && sr.sprite != null)
+                heightBoost = (sr.bounds.max.y - transform.position.y) + 0.55f;
+            else if (sr != null && sr.sprite != null)
                 heightBoost = Mathf.Max(0.75f, sr.bounds.size.y * 0.55f + 0.35f);
             if (_boss != null)
                 heightBoost += 0.35f;
@@ -495,7 +515,9 @@ namespace GameplayPrototype
 
         void SetHpBarVisible(bool visible)
         {
-            if (AlwaysHp)
+            if (_screenBoss)
+                visible = false;
+            else if (AlwaysHp)
                 visible = true;
             if (_barBg == null || _barBg.gameObject.activeSelf == visible)
                 return;

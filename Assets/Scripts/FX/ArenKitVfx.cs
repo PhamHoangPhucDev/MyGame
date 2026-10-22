@@ -190,6 +190,11 @@ namespace GameplayPrototype
             KitVfx.Play(_dust, feetPos, 14f, false, 2);
         }
 
+        public static void SpawnChargeGhost(SpriteRenderer src)
+        {
+            ChargeGhost.Spawn(src);
+        }
+
         public static Sprite[] StunStarFrames
         {
             get { EnsureLoaded(); return _stun; }
@@ -207,6 +212,55 @@ namespace GameplayPrototype
         public struct BulwarkHandle
         {
             public KitVfx back, front;
+        }
+    }
+
+    /// <summary>Aren charge afterimage. Fades in 0.15 s and never more than four at once.</summary>
+    public class ChargeGhost : MonoBehaviour
+    {
+        static readonly System.Collections.Generic.List<ChargeGhost> Live = new();
+        SpriteRenderer _sr;
+        float _life;
+        const float Fade = 0.15f;
+        static readonly Color Tint = new Color(0.55f, 0.8f, 1f, 0.55f);
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStatic() => Live.Clear();
+
+        public static void Spawn(SpriteRenderer src)
+        {
+            if (src == null || src.sprite == null) return;
+            while (Live.Count >= 4)
+            {
+                var old = Live[0];
+                Live.RemoveAt(0);
+                if (old != null) Destroy(old.gameObject);
+            }
+            var go = new GameObject("ChargeGhost");
+            go.transform.position = src.transform.position;
+            go.transform.rotation = src.transform.rotation;
+            Vector3 scale = src.transform.lossyScale;
+            go.transform.localScale = new Vector3(Mathf.Abs(scale.x), Mathf.Abs(scale.y), Mathf.Abs(scale.z));
+            var sr = go.AddComponent<SpriteRenderer>();
+            sr.sprite = src.sprite;
+            sr.flipX = src.flipX;
+            sr.flipY = src.flipY;
+            sr.sortingLayerID = src.sortingLayerID;
+            sr.sortingOrder = src.sortingOrder - 1;
+            sr.color = Tint;
+            var ghost = go.AddComponent<ChargeGhost>();
+            ghost._sr = sr;
+            Live.Add(ghost);
+        }
+
+        void Update()
+        {
+            _life += Time.deltaTime;
+            float a = Tint.a * (1f - Mathf.Clamp01(_life / Fade));
+            if (_sr != null) _sr.color = new Color(Tint.r, Tint.g, Tint.b, a);
+            if (_life < Fade) return;
+            Live.Remove(this);
+            Destroy(gameObject);
         }
     }
 }

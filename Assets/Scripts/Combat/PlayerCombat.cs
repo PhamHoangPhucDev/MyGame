@@ -780,7 +780,10 @@ namespace GameplayPrototype
                 _movement.OverrideVelocity(dir * speed, dur);
             _visual?.PlaySkillPose("Charge", dir, dur, true);
             if (isActiveAndEnabled)
+            {
                 StartCoroutine(ChargeDustTrail(dur));
+                StartCoroutine(ChargeGhostTrail(dur));
+            }
             else
                 ArenKitVfx.PlayChargeDust(transform.position + Vector3.down * 0.2f);
             ApplyAreaDamage((Vector2)transform.position + dir * 0.4f,
@@ -788,6 +791,22 @@ namespace GameplayPrototype
                 d != null ? d.damage : dashDamage,
                 d != null ? d.knockback : 3f,
                 d != null ? d.popupColor : new Color(0.55f, 0.9f, 1f));
+        }
+
+        System.Collections.IEnumerator ChargeGhostTrail(float dur)
+        {
+            float t = 0f;
+            while (t < dur)
+            {
+                ArenKitVfx.SpawnChargeGhost(BodyRenderer());
+                float w = 0f;
+                while (w < 0.04f)
+                {
+                    w += Time.deltaTime;
+                    yield return null;
+                }
+                t += 0.04f;
+            }
         }
 
         System.Collections.IEnumerator ChargeDustTrail(float dur)

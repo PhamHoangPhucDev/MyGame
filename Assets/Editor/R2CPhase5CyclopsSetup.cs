@@ -67,7 +67,7 @@ public static class R2CPhase5CyclopsSetup
         {
             label = "Cyclops",
             controller = calm,
-            hp = 280,
+            hp = 450,
             damage = 12,
             speed = 1.15f,
             aggro = 7f,

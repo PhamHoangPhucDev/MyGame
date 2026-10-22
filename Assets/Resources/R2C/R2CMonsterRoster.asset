@@ -247,7 +247,7 @@ MonoBehaviour:
     slamRadius: 3.9
   - label: Cyclops
     controller: {fileID: 9100000, guid: ff513f873cde3b24bb286f426bea1634, type: 2}
-    hp: 280
+    hp: 450
     damage: 12
     speed: 1.15
     aggro: 7

@@ -111,6 +111,10 @@ namespace GameplayPrototype
             {
                 _alwaysHp = false;
                 SetHpBarVisible(false);
+                if (_label != null)
+                    _label.gameObject.SetActive(false);
+                if (_root != null)
+                    _root.gameObject.SetActive(false);
                 BossHudUI.Ensure().Bind(_health, LabelText);
                 return;
             }
@@ -150,6 +154,12 @@ namespace GameplayPrototype
 
         void LateUpdate()
         {
+            if (_screenBoss)
+            {
+                if (_root != null && _root.gameObject.activeSelf)
+                    _root.gameObject.SetActive(false);
+                return;
+            }
             if (_root == null || WorldLabelsCanvas.Instance == null || _health == null || _health.IsDead)
                 return;
 

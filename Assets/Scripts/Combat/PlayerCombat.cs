@@ -153,6 +153,7 @@ namespace GameplayPrototype
                 _cooldownRemaining[i] = 0f;
             _whirlTimer = 0f;
             _whirlLeft = 0;
+            if (_guardTimer > 0f || _reflectHook != null) EndGuard();
             _guardTimer = 0f;
             _crescentPending = false;
             _crescentDelay = 0f;
@@ -881,12 +882,22 @@ namespace GameplayPrototype
 
         ArenKitVfx.BulwarkHandle _bulwark;
         bool _bulwarkLooping;
+        System.Action<Health, int, Vector2> _reflectHook;
 
         void BeginGuard(SkillDef d = null)
         {
             _guardTimer = d != null ? d.duration : guardDuration;
             var health = GetComponent<Health>();
             health?.SetDamageTakenMultiplier(d != null ? d.multiplier : guardDamageMultiplier);
+            if (health != null && d != null && d.reflectFraction > 0.01f)
+            {
+                health.SetReflect(d.reflectFraction, _guardTimer);
+                if (_reflectHook == null)
+                {
+                    _reflectHook = OnBulwarkReflect;
+                    health.Damaged += _reflectHook;
+                }
+            }
             if (ArenKitVfx.Active)
             {
                 _bulwark = ArenKitVfx.BeginBulwark(transform);
@@ -917,10 +928,27 @@ namespace GameplayPrototype
             EndGuard();
         }
 
+        void OnBulwarkReflect(Health hp, int applied, Vector2 hit)
+        {
+            if (applied <= 0 || hp == null || hp.ReflectFraction <= 0f) return;
+            var foe = CombatTargeting.FindNearestEnemy(transform.position, 2.5f, enemyMask);
+            if (foe == null || foe.IsDead) return;
+            int back = Mathf.RoundToInt(applied * hp.ReflectFraction);
+            if (back > 0)
+                foe.TakeDamage(back, foe.transform.position, Vector2.zero);
+        }
+
         void EndGuard()
         {
             _guardTimer = 0f;
-            GetComponent<Health>()?.SetDamageTakenMultiplier(1f);
+            var health = GetComponent<Health>();
+            health?.SetDamageTakenMultiplier(1f);
+            if (health != null && _reflectHook != null)
+            {
+                health.Damaged -= _reflectHook;
+                health.SetReflect(0f, 0f);
+            }
+            _reflectHook = null;
             if (_bulwarkLooping || _bulwark.back != null || _bulwark.front != null)
                 ArenKitVfx.EndBulwark(ref _bulwark, transform);
             _bulwarkLooping = false;

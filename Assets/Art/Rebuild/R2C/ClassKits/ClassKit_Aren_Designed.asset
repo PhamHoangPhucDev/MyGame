@@ -17,6 +17,7 @@ MonoBehaviour:
   role: "Aren kit VFX R3D.1 \u2014 Shield Bash stun + layered Whirl/Bulwark/Dawn/Thrust."
   maxHpMultiplier: 1
   moveSpeedMultiplier: 1
+  damageTakenMultiplier: 1
   bodyController: {fileID: 9100000, guid: e3a01f8320c605f49b9038f23a37e8a1, type: 2}
   equipment: {fileID: 11400000, guid: 0582f77d4b4097f4e87c750e692ab297, type: 2}
   combo:
@@ -41,6 +42,15 @@ MonoBehaviour:
       hitstop: 0.048
       shakeAmp: 0.0625
       shakeDur: 0.07
+      shape: 0
+      impactDelay: 0
+      projectileSpeed: 0
+      projectileRange: 0
+      pierce: 1
+      explodeRadius: 0
+      arrowRow: 0
+      bodyLock: 0
+      drawHold: 0
     - swingOffset: -0.85
       damageMul: 1
       radiusMul: 1
@@ -54,6 +64,15 @@ MonoBehaviour:
       hitstop: 0.048
       shakeAmp: 0.0625
       shakeDur: 0.07
+      shape: 0
+      impactDelay: 0
+      projectileSpeed: 0
+      projectileRange: 0
+      pierce: 1
+      explodeRadius: 0
+      arrowRow: 0
+      bodyLock: 0
+      drawHold: 0
     - swingOffset: 0
       damageMul: 1
       radiusMul: 1.35
@@ -67,11 +86,25 @@ MonoBehaviour:
       hitstop: 0.058
       shakeAmp: 0.09
       shakeDur: 0.1
+      shape: 0
+      impactDelay: 0
+      projectileSpeed: 0
+      projectileRange: 0
+      pierce: 1
+      explodeRadius: 0
+      arrowRow: 0
+      bodyLock: 0
+      drawHold: 0
+    projectilePoses: []
+    projectileHit: []
+    projectileTrail: []
+    finisherVfx: []
+    sparkle: []
   slot2:
     displayName: Shield Bash
     behaviour: 10
     cooldown: 5
-    damage: 30
+    damage: 24
     radius: 1.4
     range: 0.5
     knockback: 4
@@ -96,13 +129,14 @@ MonoBehaviour:
     vfxFrames: []
     vfxFps: 12
     projectilePoses: []
-    stunDuration: 0.32
+    stunDuration: 0.6
     dashDistance: 2
     coneDeg: 70
+    reflectFraction: 0
   slot3:
     displayName: Charge
     behaviour: 11
-    cooldown: 4
+    cooldown: 6
     damage: 26
     radius: 0.8
     range: 0
@@ -131,6 +165,7 @@ MonoBehaviour:
     stunDuration: 0
     dashDistance: 4
     coneDeg: 70
+    reflectFraction: 0
   slot4:
     displayName: Whirl Ring
     behaviour: 3
@@ -163,6 +198,7 @@ MonoBehaviour:
     stunDuration: 0
     dashDistance: 2
     coneDeg: 70
+    reflectFraction: 0
   slotV:
     displayName: Bulwark
     behaviour: 4
@@ -195,6 +231,7 @@ MonoBehaviour:
     stunDuration: 0
     dashDistance: 2
     coneDeg: 70
+    reflectFraction: 0.2
   slotC:
     displayName: Dawn
     behaviour: 5
@@ -227,3 +264,4 @@ MonoBehaviour:
     stunDuration: 0
     dashDistance: 2
     coneDeg: 70
+    reflectFraction: 0

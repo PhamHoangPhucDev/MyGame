@@ -146,6 +146,8 @@ namespace GameplayPrototype
         public float dashDistance = 2f;
         [Tooltip("ShieldBash cone half-angle in degrees.")]
         public float coneDeg = 70f;
+        [Tooltip("Guard: fraction of damage taken bounced to the nearest enemy. Thanh Luy is 0.2.")]
+        public float reflectFraction;
     }
 
     /// <summary>
@@ -266,18 +268,19 @@ namespace GameplayPrototype
             slot2 = new SkillDef
             {
                 displayName = "Shield Bash", behaviour = SkillBehaviour.ShieldBash,
-                cooldown = 5f, damage = 30, radius = 1.4f, range = 0.5f, knockback = 4f,
-                speed = 11f, duration = 0.18f, dashDistance = 2f, coneDeg = 70f, stunDuration = 0.32f,
+                cooldown = 5f, damage = 24, radius = 1.4f, range = 0.5f, knockback = 4f,
+                speed = 11f, duration = 0.18f, dashDistance = 2f, coneDeg = 70f, stunDuration = 0.6f,
                 hitstop = 0.05f, shakeAmp = 0.08f, shakeDur = 0.09f, popupColor = gold
             };
             slot3 = new SkillDef
             {
                 displayName = "Charge", behaviour = SkillBehaviour.Charge,
-                cooldown = 4f, damage = 26, radius = 0.8f, speed = 14f, duration = 0.3f, dashDistance = 4f,
+                cooldown = 6f, damage = 26, radius = 0.8f, speed = 14f, duration = 0.3f, dashDistance = 4f,
                 knockback = 3f, hitstop = 0.05f, shakeAmp = 0.06f, shakeDur = 0.08f, popupColor = ice
             };
             slot4.displayName = "Whirl Ring";
             slotV.displayName = "Bulwark";
+            slotV.reflectFraction = 0.2f;
             slotC.displayName = "Dawn";
             slotC.popupColor = pale;
         }

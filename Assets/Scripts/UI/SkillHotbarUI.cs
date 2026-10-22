@@ -263,7 +263,7 @@ namespace GameplayPrototype
             stickKnob.raycastTarget = false;
             stick.gameObject.AddComponent<TouchMovePad>().Bind(stickKnob.rectTransform);
 
-            // BOTTOM-CENTER — skills in one horizontal row: 2, 3, 4, V, C.
+            // BOTTOM-CENTER — skills in one horizontal row: 1, 2, 3, 4, 5.
             var bar = new GameObject("SkillBar");
             bar.transform.SetParent(_safeRoot, false);
             var barRt = bar.AddComponent<RectTransform>();
@@ -274,11 +274,11 @@ namespace GameplayPrototype
 
             var skillDefs = new (SkillId id, string key, string icon)[]
             {
-                (SkillId.FireDash, "2", "flame"),
-                (SkillId.MultiSlash, "3", "slash"),
-                (SkillId.MawBite, "4", "jaws"),
-                (SkillId.Bone, "V", "bone"),
-                (SkillId.Mace, "C", "mace"),
+                (SkillId.FireDash, "1", "flame"),
+                (SkillId.MultiSlash, "2", "slash"),
+                (SkillId.MawBite, "3", "jaws"),
+                (SkillId.Bone, "4", "bone"),
+                (SkillId.Mace, "5", "mace"),
             };
 
             // BOTTOM-RIGHT — large R Attack (hold supported).

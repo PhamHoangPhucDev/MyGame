@@ -202,7 +202,7 @@ namespace GameplayPrototype
                     _cooldownTotal[(int)id] = _kit.Cooldown(id);
                 return;
             }
-            // Key map kept: 2/3/4/R/V/C. Behaviors remapped for Phase 8C (see report).
+            // Skill keys 1–5, attack stays on R.
             _cooldownTotal[(int)SkillId.FireDash] = flameCooldown;
             _cooldownTotal[(int)SkillId.MultiSlash] = dashCooldown;
             _cooldownTotal[(int)SkillId.MawBite] = whirlCooldown;
@@ -269,13 +269,13 @@ namespace GameplayPrototype
             var kb = Keyboard.current;
             if (kb == null) return;
 
-            if (kb.digit2Key.wasPressedThisFrame) TryCast(SkillId.FireDash);
-            if (kb.digit3Key.wasPressedThisFrame) TryCast(SkillId.MultiSlash);
-            if (kb.digit4Key.wasPressedThisFrame) TryCast(SkillId.MawBite);
+            if (kb.digit1Key.wasPressedThisFrame || kb.numpad1Key.wasPressedThisFrame) TryCast(SkillId.FireDash);
+            if (kb.digit2Key.wasPressedThisFrame || kb.numpad2Key.wasPressedThisFrame) TryCast(SkillId.MultiSlash);
+            if (kb.digit3Key.wasPressedThisFrame || kb.numpad3Key.wasPressedThisFrame) TryCast(SkillId.MawBite);
+            if (kb.digit4Key.wasPressedThisFrame || kb.numpad4Key.wasPressedThisFrame) TryCast(SkillId.Bone);
+            if (kb.digit5Key.wasPressedThisFrame || kb.numpad5Key.wasPressedThisFrame) TryCast(SkillId.Mace);
             if (kb.rKey.wasPressedThisFrame || kb.spaceKey.wasPressedThisFrame)
                 TryBufferSwordTap();
-            if (kb.vKey.wasPressedThisFrame) TryCast(SkillId.Bone);
-            if (kb.cKey.wasPressedThisFrame) TryCast(SkillId.Mace);
         }
 
         bool SwordHeld()

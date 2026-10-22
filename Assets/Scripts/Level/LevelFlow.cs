@@ -179,10 +179,10 @@ namespace GameplayPrototype
             cfg.cameraBoundsMax = new Vector2(18f, 15f);
             cfg.waves = new[]
             {
-                new WaveConfig { displayName = "WAVE 1 — FIRST CONTACT", goblins = 3, gobriders = 0, aliveCap = 3, transitionDelay = 1.75f },
-                new WaveConfig { displayName = "WAVE 2 — CAMP DEFENSE", goblins = 5, gobriders = 0, aliveCap = 5, transitionDelay = 1.75f },
-                new WaveConfig { displayName = "WAVE 3 — GOBRIDER AMBUSH", goblins = 4, gobriders = 1, aliveCap = 5, transitionDelay = 2f },
-                new WaveConfig { displayName = "WAVE 4 — FINAL ASSAULT", goblins = 7, gobriders = 2, aliveCap = 6, transitionDelay = 1.75f },
+                new WaveConfig { displayName = "WAVE 1 — FIRST CONTACT", goblins = 2, archers = 1, aliveCap = 3, transitionDelay = 1.75f },
+                new WaveConfig { displayName = "WAVE 2 — CAMP DEFENSE", goblins = 3, archers = 2, aliveCap = 5, transitionDelay = 1.75f },
+                new WaveConfig { displayName = "WAVE 3 — ARCHER LINE", goblins = 3, archers = 2, aliveCap = 5, transitionDelay = 2f },
+                new WaveConfig { displayName = "WAVE 4 — FINAL ASSAULT", goblins = 5, archers = 3, aliveCap = 6, transitionDelay = 1.75f },
             };
             return cfg;
         }
@@ -211,10 +211,10 @@ namespace GameplayPrototype
             cfg.cameraBoundsMax = new Vector2(18f, 14f);
             cfg.waves = new[]
             {
-                new WaveConfig { displayName = "WAVE 1 — TRAIL SCOUTS", goblins = 3, gobriders = 0, aliveCap = 3, transitionDelay = 1.6f },
-                new WaveConfig { displayName = "WAVE 2 — FLANK AMBUSH", goblins = 4, gobriders = 0, aliveCap = 4, transitionDelay = 1.75f },
-                new WaveConfig { displayName = "WAVE 3 — RIDER PATROL", goblins = 3, gobriders = 1, aliveCap = 4, transitionDelay = 1.85f },
-                new WaveConfig { displayName = "WAVE 4 — PATH BLOCKADE", goblins = 4, gobriders = 1, aliveCap = 5, transitionDelay = 1.75f },
+                new WaveConfig { displayName = "WAVE 1 — TRAIL SCOUTS", goblins = 2, archers = 1, aliveCap = 3, transitionDelay = 1.6f },
+                new WaveConfig { displayName = "WAVE 2 — FLANK AMBUSH", goblins = 2, archers = 2, aliveCap = 4, transitionDelay = 1.75f },
+                new WaveConfig { displayName = "WAVE 3 — RIDER PATROL", goblins = 2, archers = 1, gobriders = 1, aliveCap = 4, transitionDelay = 1.85f },
+                new WaveConfig { displayName = "WAVE 4 — PATH BLOCKADE", goblins = 2, archers = 1, gobriders = 2, aliveCap = 5, transitionDelay = 1.75f },
             };
             return cfg;
         }
@@ -245,10 +245,10 @@ namespace GameplayPrototype
             cfg.cameraBoundsMax = new Vector2(18f, 14f);
             cfg.waves = new[]
             {
-                new WaveConfig { displayName = "WAVE 1 — ABANDONED GUARDS", goblins = 3, gobriders = 0, aliveCap = 3, transitionDelay = 1.8f },
-                new WaveConfig { displayName = "WAVE 2 — SIDE AMBUSH", goblins = 5, gobriders = 0, aliveCap = 5, transitionDelay = 1.85f },
-                new WaveConfig { displayName = "WAVE 3 — RIDER ARRIVAL", goblins = 5, gobriders = 1, aliveCap = 5, transitionDelay = 2f },
-                new WaveConfig { displayName = "WAVE 4 — FINAL DEFENSE", goblins = 6, gobriders = 1, aliveCap = 6, transitionDelay = 1.9f },
+                new WaveConfig { displayName = "WAVE 1 — ABANDONED GUARDS", satyrs = 2, dryads = 1, aliveCap = 3, transitionDelay = 1.8f },
+                new WaveConfig { displayName = "WAVE 2 — SIDE AMBUSH", satyrs = 2, dryads = 2, dryadRiders = 1, aliveCap = 5, transitionDelay = 1.85f },
+                new WaveConfig { displayName = "WAVE 3 — RIDER ARRIVAL", satyrs = 2, dryads = 2, dryadRiders = 2, aliveCap = 5, transitionDelay = 2f },
+                new WaveConfig { displayName = "WAVE 4 — FINAL DEFENSE", satyrs = 2, dryads = 2, dryadRiders = 2, aliveCap = 6, transitionDelay = 1.9f },
             };
             return cfg;
         }
@@ -283,10 +283,9 @@ namespace GameplayPrototype
             cfg.cameraBoundsMax = new Vector2(22f, 24f);
             cfg.waves = new[]
             {
-                new WaveConfig { displayName = "WAVE 1 — OUTPOST GUARDS", goblins = 4, gobriders = 0, aliveCap = 4, transitionDelay = 1.85f },
-                new WaveConfig { displayName = "WAVE 2 — SUPPLY AMBUSH", goblins = 4, gobriders = 1, aliveCap = 5, transitionDelay = 1.9f },
-                new WaveConfig { displayName = "WAVE 3 — REINFORCEMENTS", goblins = 6, gobriders = 0, aliveCap = 6, transitionDelay = 2f },
-                new WaveConfig { displayName = "WAVE 4 — OUTPOST COMMANDER", goblins = 5, gobriders = 1, eliteGobrider = 1, aliveCap = 6, transitionDelay = 2.1f },
+                new WaveConfig { displayName = "WAVE 1 — ELITE GATE", gobriders = 4, eliteGobrider = 4, aliveCap = 4, transitionDelay = 1.85f },
+                new WaveConfig { displayName = "WAVE 2 — WARLORD", gobriders = 2, eliteGobrider = 2, warlords = 1, aliveCap = 4, transitionDelay = 1.9f },
+                new WaveConfig { displayName = "WAVE 3 — CYCLOPS", cyclops = 1, aliveCap = 2, allowTopUp = false, transitionDelay = 2f },
             };
             return cfg;
         }

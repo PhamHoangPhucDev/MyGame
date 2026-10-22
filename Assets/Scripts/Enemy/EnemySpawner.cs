@@ -39,9 +39,16 @@ namespace GameplayPrototype
         int _waveIndex = -1;
         int _waveSpawned;
         int _goblinsSpawned;
+        int _archersSpawned;
+        int _satyrsSpawned;
+        int _dryadsSpawned;
+        int _dryadRidersSpawned;
         int _ridersSpawned;
         int _elitesSpawned;
+        int _warlordsSpawned;
+        int _cyclopsSpawned;
         int _bossesSpawned;
+        R2CMonsterRoster _roster;
         int _waveKills;
         int _waveBudget;
         int _sessionKills;
@@ -151,11 +158,18 @@ namespace GameplayPrototype
             _waveIndex = index;
             _waveSpawned = 0;
             _goblinsSpawned = 0;
+            _archersSpawned = 0;
+            _satyrsSpawned = 0;
+            _dryadsSpawned = 0;
+            _dryadRidersSpawned = 0;
             _ridersSpawned = 0;
             _elitesSpawned = 0;
+            _warlordsSpawned = 0;
+            _cyclopsSpawned = 0;
             _bossesSpawned = 0;
             _waveKills = 0;
-            _waveBudget = Mathf.Max(0, wave.goblins + wave.gobriders + wave.bossWarlord);
+            _waveBudget = Mathf.Max(0, wave.goblins + wave.archers + wave.satyrs + wave.dryads
+                + wave.dryadRiders + wave.gobriders + wave.warlords + wave.cyclops + wave.bossWarlord);
             _waveActive = _waveBudget > 0;
             _spawningEnabled = true;
             _topUpTimer = 0.35f;
@@ -169,8 +183,14 @@ namespace GameplayPrototype
         void SpawnRemaining(int count)
         {
             int goblinsLeft = Mathf.Max(0, _activeWave.goblins - _goblinsSpawned);
+            int archersLeft = Mathf.Max(0, _activeWave.archers - _archersSpawned);
+            int satyrsLeft = Mathf.Max(0, _activeWave.satyrs - _satyrsSpawned);
+            int dryadsLeft = Mathf.Max(0, _activeWave.dryads - _dryadsSpawned);
+            int dryadRidersLeft = Mathf.Max(0, _activeWave.dryadRiders - _dryadRidersSpawned);
             int ridersLeft = Mathf.Max(0, _activeWave.gobriders - _ridersSpawned);
             int elitesLeft = Mathf.Max(0, _activeWave.eliteGobrider - _elitesSpawned);
+            int warlordsLeft = Mathf.Max(0, _activeWave.warlords - _warlordsSpawned);
+            int cyclopsLeft = Mathf.Max(0, _activeWave.cyclops - _cyclopsSpawned);
             int bossesLeft = Mathf.Max(0, _activeWave.bossWarlord - _bossesSpawned);
             // Elite riders consume from rider budget visually but track separately.
             ridersLeft = Mathf.Max(0, ridersLeft - elitesLeft);
@@ -178,6 +198,20 @@ namespace GameplayPrototype
             {
                 if (_waveSpawned >= _waveBudget) break;
                 Vector2 camp = _campPoints[UnityEngine.Random.Range(0, _campPoints.Count)];
+
+                if (cyclopsLeft > 0)
+                {
+                    SpawnRoster("Cyclops", camp);
+                    cyclopsLeft--;
+                    continue;
+                }
+
+                if (warlordsLeft > 0)
+                {
+                    SpawnRoster("Warlord", camp);
+                    warlordsLeft--;
+                    continue;
+                }
 
                 if (bossesLeft > 0)
                 {
@@ -188,8 +222,22 @@ namespace GameplayPrototype
 
                 if (elitesLeft > 0)
                 {
-                    SpawnAt(camp, rider: true, elite: true);
+                    SpawnRoster("Elite", camp);
                     elitesLeft--;
+                    continue;
+                }
+
+                if (dryadRidersLeft > 0 && (dryadsLeft <= 0 || UnityEngine.Random.value < 0.4f))
+                {
+                    SpawnRoster("Dryad Rider", camp);
+                    dryadRidersLeft--;
+                    continue;
+                }
+
+                if (ridersLeft > 0 && (goblinsLeft <= 0 || UnityEngine.Random.value < 0.35f))
+                {
+                    SpawnRoster("Gobrider", camp);
+                    ridersLeft--;
                     continue;
                 }
 
@@ -198,6 +246,30 @@ namespace GameplayPrototype
                 {
                     rider = true;
                     ridersLeft--;
+                }
+                else if (archersLeft > 0 && (goblinsLeft <= 0 || UnityEngine.Random.value < 0.45f))
+                {
+                    SpawnRoster("Goblin Archer", camp);
+                    archersLeft--;
+                    continue;
+                }
+                else if (satyrsLeft > 0)
+                {
+                    SpawnRoster("Satyr", camp);
+                    satyrsLeft--;
+                    continue;
+                }
+                else if (dryadsLeft > 0)
+                {
+                    SpawnRoster("Dryad", camp);
+                    dryadsLeft--;
+                    continue;
+                }
+                else if (dryadRidersLeft > 0)
+                {
+                    SpawnRoster("Dryad Rider", camp);
+                    dryadRidersLeft--;
+                    continue;
                 }
                 else if (goblinsLeft > 0)
                 {
@@ -211,8 +283,46 @@ namespace GameplayPrototype
                 }
                 else break;
 
-                SpawnAt(camp, rider, elite: false);
+                if (rider) SpawnRoster("Gobrider", camp);
+                else SpawnRoster("Goblin", camp);
             }
+        }
+
+        R2CMonsterDef FindDef(string key)
+        {
+            if (_roster == null)
+                _roster = Resources.Load<R2CMonsterRoster>("R2C/R2CMonsterRoster");
+            if (_roster == null || _roster.monsters == null) return null;
+            for (int i = 0; i < _roster.monsters.Length; i++)
+            {
+                var m = _roster.monsters[i];
+                if (m != null && m.label != null && m.label.StartsWith(key))
+                    return m;
+            }
+            return null;
+        }
+
+        GameObject SpawnRoster(string key, Vector2 camp)
+        {
+            if (!TryPickSpawn(camp, out Vector2 pos))
+                pos = camp + UnityEngine.Random.insideUnitCircle * 0.3f;
+            var def = FindDef(key);
+            if (def == null)
+            {
+                SpawnGoblin(pos);
+                return null;
+            }
+            var go = SpawnR2C(def, pos, true);
+            if (key.StartsWith("Cyclops")) _cyclopsSpawned++;
+            else if (key.StartsWith("Warlord")) _warlordsSpawned++;
+            else if (key.StartsWith("Elite")) { _elitesSpawned++; _ridersSpawned++; }
+            else if (key.StartsWith("Dryad Rider")) _dryadRidersSpawned++;
+            else if (key.StartsWith("Gobrider")) _ridersSpawned++;
+            else if (key.StartsWith("Goblin Archer")) _archersSpawned++;
+            else if (key.StartsWith("Satyr")) _satyrsSpawned++;
+            else if (key.StartsWith("Dryad")) _dryadsSpawned++;
+            else _goblinsSpawned++;
+            return go;
         }
 
         public void StopWaves()
@@ -316,7 +426,7 @@ namespace GameplayPrototype
             return sp.z > 0f && sp.x > -0.02f && sp.x < 1.02f && sp.y > -0.02f && sp.y < 1.02f;
         }
 
-        public GameObject SpawnR2C(R2CMonsterDef def, Vector2 pos)
+        public GameObject SpawnR2C(R2CMonsterDef def, Vector2 pos, bool countTowardWave = false)
         {
             if (def == null) return null;
             var kind = def.rider ? EnemyKind.Gobrider : EnemyKind.Goblin;
@@ -335,7 +445,7 @@ namespace GameplayPrototype
             }
             if (def.bossBar)
                 go.AddComponent<R2CBossMark>();
-            RegisterEnemy(go, def.rider, elite: false, boss: def.bossBar, countTowardWave: false);
+            RegisterEnemy(go, def.rider, elite: false, boss: def.bossBar, countTowardWave, bucket: !countTowardWave);
             return go;
         }
 
@@ -462,7 +572,7 @@ namespace GameplayPrototype
             return go;
         }
 
-        void RegisterEnemy(GameObject go, bool rider, bool elite = false, bool boss = false, bool countTowardWave = true)
+        void RegisterEnemy(GameObject go, bool rider, bool elite = false, bool boss = false, bool countTowardWave = true, bool bucket = true)
         {
             var health = go.GetComponent<Health>();
             if (health == null) return;
@@ -470,14 +580,17 @@ namespace GameplayPrototype
             if (countTowardWave)
             {
                 _waveSpawned++;
-                if (boss)
-                    _bossesSpawned++;
-                else if (rider)
+                if (bucket)
                 {
-                    _ridersSpawned++;
-                    if (elite) _elitesSpawned++;
+                    if (boss)
+                        _bossesSpawned++;
+                    else if (rider)
+                    {
+                        _ridersSpawned++;
+                        if (elite) _elitesSpawned++;
+                    }
+                    else _goblinsSpawned++;
                 }
-                else _goblinsSpawned++;
             }
             health.Died += OnEnemyDied;
             AliveChanged?.Invoke();

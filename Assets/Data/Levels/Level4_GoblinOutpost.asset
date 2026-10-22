@@ -33,34 +33,48 @@ MonoBehaviour:
   exitPosition: {x: 0.2, y: 10.5}
   exitSize: {x: 2, y: 1.5}
   waves:
-  - displayName: "WAVE 1 \u2014 OUTPOST GUARDS"
-    goblins: 4
-    gobriders: 0
+  - displayName: "WAVE 1 \u2014 ELITE GATE"
+    goblins: 0
+    gobriders: 4
     transitionDelay: 1.85
     aliveCap: 4
     allowTopUp: 1
-    eliteGobrider: 0
-  - displayName: "WAVE 2 \u2014 SUPPLY AMBUSH"
-    goblins: 4
-    gobriders: 1
+    eliteGobrider: 4
+    bossWarlord: 0
+    archers: 0
+    satyrs: 0
+    dryads: 0
+    dryadRiders: 0
+    warlords: 0
+    cyclops: 0
+  - displayName: "WAVE 2 \u2014 WARLORD"
+    goblins: 0
+    gobriders: 2
     transitionDelay: 1.9
-    aliveCap: 5
+    aliveCap: 4
     allowTopUp: 1
-    eliteGobrider: 0
-  - displayName: "WAVE 3 \u2014 REINFORCEMENTS"
-    goblins: 6
+    eliteGobrider: 2
+    bossWarlord: 0
+    archers: 0
+    satyrs: 0
+    dryads: 0
+    dryadRiders: 0
+    warlords: 1
+    cyclops: 0
+  - displayName: "WAVE 3 \u2014 CYCLOPS"
+    goblins: 0
     gobriders: 0
     transitionDelay: 2
-    aliveCap: 6
-    allowTopUp: 1
+    aliveCap: 2
+    allowTopUp: 0
     eliteGobrider: 0
-  - displayName: "WAVE 4 \u2014 OUTPOST COMMANDER"
-    goblins: 5
-    gobriders: 1
-    transitionDelay: 2.1
-    aliveCap: 6
-    allowTopUp: 1
-    eliteGobrider: 1
+    bossWarlord: 0
+    archers: 0
+    satyrs: 0
+    dryads: 0
+    dryadRiders: 0
+    warlords: 0
+    cyclops: 1
   targetCompletionTime: 210
   starHpRatio: 0.4
   recommendedMaxAlive: 9

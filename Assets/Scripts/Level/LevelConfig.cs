@@ -26,6 +26,12 @@ namespace GameplayPrototype
         [Min(0)] public int eliteGobrider;
         [Tooltip("Spawn Gobrider Warlord bosses. Counts toward total wave budget.")]
         [Min(0)] public int bossWarlord;
+        [Min(0)] public int archers;
+        [Min(0)] public int satyrs;
+        [Min(0)] public int dryads;
+        [Min(0)] public int dryadRiders;
+        [Min(0)] public int warlords;
+        [Min(0)] public int cyclops;
     }
 
     [CreateAssetMenu(menuName = "Gameplay Prototype/Level Config", fileName = "LevelConfig")]
@@ -67,7 +73,9 @@ namespace GameplayPrototype
                 int n = 0;
                 if (waves == null) return 0;
                 for (int i = 0; i < waves.Length; i++)
-                    n += waves[i].goblins + waves[i].gobriders + waves[i].bossWarlord;
+                    n += waves[i].goblins + waves[i].archers + waves[i].satyrs + waves[i].dryads
+                        + waves[i].dryadRiders + waves[i].gobriders + waves[i].warlords
+                        + waves[i].cyclops + waves[i].bossWarlord;
                 return n;
             }
         }

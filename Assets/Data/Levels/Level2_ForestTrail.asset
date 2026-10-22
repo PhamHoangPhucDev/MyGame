@@ -31,29 +31,61 @@ MonoBehaviour:
   exitSize: {x: 1.8, y: 1.4}
   waves:
   - displayName: "WAVE 1 \u2014 TRAIL SCOUTS"
-    goblins: 3
+    goblins: 2
     gobriders: 0
     transitionDelay: 1.6
     aliveCap: 3
     allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 1
+    satyrs: 0
+    dryads: 0
+    dryadRiders: 0
+    warlords: 0
+    cyclops: 0
   - displayName: "WAVE 2 \u2014 FLANK AMBUSH"
-    goblins: 4
+    goblins: 2
     gobriders: 0
     transitionDelay: 1.75
     aliveCap: 4
     allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 2
+    satyrs: 0
+    dryads: 0
+    dryadRiders: 0
+    warlords: 0
+    cyclops: 0
   - displayName: "WAVE 3 \u2014 RIDER PATROL"
-    goblins: 3
+    goblins: 2
     gobriders: 1
     transitionDelay: 1.85
     aliveCap: 4
     allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 1
+    satyrs: 0
+    dryads: 0
+    dryadRiders: 0
+    warlords: 0
+    cyclops: 0
   - displayName: "WAVE 4 \u2014 PATH BLOCKADE"
-    goblins: 4
-    gobriders: 1
+    goblins: 2
+    gobriders: 2
     transitionDelay: 1.75
     aliveCap: 5
     allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 1
+    satyrs: 0
+    dryads: 0
+    dryadRiders: 0
+    warlords: 0
+    cyclops: 0
   targetCompletionTime: 140
   starHpRatio: 0.4
   recommendedMaxAlive: 6

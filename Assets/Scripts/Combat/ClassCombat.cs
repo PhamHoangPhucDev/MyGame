@@ -54,12 +54,9 @@ namespace GameplayPrototype
 
         void Start()
         {
-            if (ReferenceSandboxController.IsActive)
-            {
-                LoadIfEmpty(1, "R2C/ClassKit_Brom");
-                LoadIfEmpty(2, "R2C/ClassKit_Lyra");
-                LoadIfEmpty(3, "R2C/ClassKit_Selene");
-            }
+            LoadIfEmpty(1, "R2C/ClassKit_Brom");
+            LoadIfEmpty(2, "R2C/ClassKit_Lyra");
+            LoadIfEmpty(3, "R2C/ClassKit_Selene");
             Select(startSlot);
         }
 

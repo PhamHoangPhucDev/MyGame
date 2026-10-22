@@ -25,29 +25,61 @@ MonoBehaviour:
   exitSize: {x: 1.6, y: 1.2}
   waves:
   - displayName: "WAVE 1 \u2014 FIRST CONTACT"
-    goblins: 3
+    goblins: 2
     gobriders: 0
     transitionDelay: 1.75
     aliveCap: 3
     allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 1
+    satyrs: 0
+    dryads: 0
+    dryadRiders: 0
+    warlords: 0
+    cyclops: 0
   - displayName: "WAVE 2 \u2014 CAMP DEFENSE"
-    goblins: 5
+    goblins: 3
     gobriders: 0
     transitionDelay: 1.75
     aliveCap: 5
     allowTopUp: 1
-  - displayName: "WAVE 3 \u2014 GOBRIDER AMBUSH"
-    goblins: 4
-    gobriders: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 2
+    satyrs: 0
+    dryads: 0
+    dryadRiders: 0
+    warlords: 0
+    cyclops: 0
+  - displayName: "WAVE 3 \u2014 ARCHER LINE"
+    goblins: 3
+    gobriders: 0
     transitionDelay: 2
     aliveCap: 5
     allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 2
+    satyrs: 0
+    dryads: 0
+    dryadRiders: 0
+    warlords: 0
+    cyclops: 0
   - displayName: "WAVE 4 \u2014 FINAL ASSAULT"
-    goblins: 7
-    gobriders: 2
+    goblins: 5
+    gobriders: 0
     transitionDelay: 1.75
     aliveCap: 6
     allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 3
+    satyrs: 0
+    dryads: 0
+    dryadRiders: 0
+    warlords: 0
+    cyclops: 0
   targetCompletionTime: 150
   starHpRatio: 0.4
   recommendedMaxAlive: 6

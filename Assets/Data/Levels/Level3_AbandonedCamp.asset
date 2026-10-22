@@ -34,29 +34,61 @@ MonoBehaviour:
   exitSize: {x: 1.6, y: 1.2}
   waves:
   - displayName: "WAVE 1 \u2014 ABANDONED GUARDS"
-    goblins: 3
+    goblins: 0
     gobriders: 0
     transitionDelay: 1.8
     aliveCap: 3
     allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 0
+    satyrs: 2
+    dryads: 1
+    dryadRiders: 0
+    warlords: 0
+    cyclops: 0
   - displayName: "WAVE 2 \u2014 SIDE AMBUSH"
-    goblins: 5
+    goblins: 0
     gobriders: 0
     transitionDelay: 1.85
     aliveCap: 5
     allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 0
+    satyrs: 2
+    dryads: 2
+    dryadRiders: 1
+    warlords: 0
+    cyclops: 0
   - displayName: "WAVE 3 \u2014 RIDER ARRIVAL"
-    goblins: 5
-    gobriders: 1
+    goblins: 0
+    gobriders: 0
     transitionDelay: 2
     aliveCap: 5
     allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 0
+    satyrs: 2
+    dryads: 2
+    dryadRiders: 2
+    warlords: 0
+    cyclops: 0
   - displayName: "WAVE 4 \u2014 FINAL DEFENSE"
-    goblins: 6
-    gobriders: 1
+    goblins: 0
+    gobriders: 0
     transitionDelay: 1.9
     aliveCap: 6
     allowTopUp: 1
+    eliteGobrider: 0
+    bossWarlord: 0
+    archers: 0
+    satyrs: 2
+    dryads: 2
+    dryadRiders: 2
+    warlords: 0
+    cyclops: 0
   targetCompletionTime: 160
   starHpRatio: 0.4
   recommendedMaxAlive: 8

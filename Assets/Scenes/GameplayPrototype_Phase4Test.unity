@@ -80499,7 +80499,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5129860774514866164, guid: 8e48e32bf488b6241a97ffb626b09e7e, type: 3}
   m_PrefabInstance: {fileID: 5193642696194807063}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5193642696194807064}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5956ffd1e1c23874680b32d235bd2309, type: 3}
@@ -80510,7 +80510,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2152745016103081712, guid: 8e48e32bf488b6241a97ffb626b09e7e, type: 3}
   m_PrefabInstance: {fileID: 5193642696194807063}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5193642696194807064}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5ae9a0e699c9c543be5e27cc63cb6ca, type: 3}
@@ -80521,7 +80521,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1669018443056751044, guid: 8e48e32bf488b6241a97ffb626b09e7e, type: 3}
   m_PrefabInstance: {fileID: 5193642696194807063}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5193642696194807064}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 138359cbfd895ec488746da0841b248a, type: 3}
@@ -106681,8 +106681,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8118972338480895845, guid: 8e48e32bf488b6241a97ffb626b09e7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5193642696194807065}
   m_SourcePrefab: {fileID: 100100000, guid: 8e48e32bf488b6241a97ffb626b09e7e, type: 3}
+--- !u!1 &5193642696194807064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8118972338480895845, guid: 8e48e32bf488b6241a97ffb626b09e7e, type: 3}
+  m_PrefabInstance: {fileID: 5193642696194807063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5193642696194807065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5193642696194807064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921aad619e7d16d49bbc19b921a22d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayPrototype.ClassCombat
+  kits:
+  - {fileID: 11400000, guid: 3b1a7d70ccfde54429c02fb038234eba, type: 2}
+  - {fileID: 11400000, guid: a167b85e63b2ebc40a3c5adee5d128a1, type: 2}
+  - {fileID: 11400000, guid: 9422a2dca9bfbcd40904a41ba824fc96, type: 2}
+  - {fileID: 11400000, guid: b0013c9f1d071794c812c99b5757e768, type: 2}
+  - {fileID: 11400000, guid: e0996327aa1a91f41abb03fdf3e15c8c, type: 2}
+  slotNames:
+  - Aren
+  - Brom
+  - Lyra
+  - Selene
+  - Vex
+  startSlot: 0
+  showLabel: 0
+  uiIcons: {fileID: 11400000, guid: 2f19053892bd7fd4a89ab998d474447b, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

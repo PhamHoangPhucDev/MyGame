@@ -666,6 +666,7 @@ namespace GameplayPrototype
             }
 
             go.AddComponent<EnemyWorldUI>();
+            Hurtbox.Attach(go, Hurtbox.SizeFor(label, kind == EnemyKind.Gobrider));
             return go;
         }
     }

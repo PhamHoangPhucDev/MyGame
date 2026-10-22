@@ -18,6 +18,7 @@ namespace GameplayPrototype
             int count = Physics2D.OverlapCircle(center, radius, filter, Buffer);
             for (int i = 0; i < count; i++)
             {
+                if (!CountsForCombat(Buffer[i])) continue;
                 var health = Buffer[i].GetComponentInParent<Health>();
                 if (health == null || health.IsDead) continue;
                 if (health.GetComponent<EnemyController>() == null) continue;
@@ -39,10 +40,12 @@ namespace GameplayPrototype
             float bestDist = float.MaxValue;
             for (int i = 0; i < count; i++)
             {
+                if (!CountsForCombat(Buffer[i])) continue;
                 var health = Buffer[i].GetComponentInParent<Health>();
                 if (health == null || health.IsDead) continue;
                 if (health.GetComponent<EnemyController>() == null) continue;
-                float d = ((Vector2)health.transform.position - from).sqrMagnitude;
+                Vector2 point = Buffer[i].ClosestPoint(from);
+                float d = (point - from).sqrMagnitude;
                 if (d < bestDist)
                 {
                     bestDist = d;
@@ -50,6 +53,14 @@ namespace GameplayPrototype
                 }
             }
             return best;
+        }
+
+        /// <summary>Foot colliders stay for movement. Combat queries use the body trigger when one exists.</summary>
+        static bool CountsForCombat(Collider2D col)
+        {
+            if (col == null) return false;
+            if (col.GetComponent<Hurtbox>() != null) return true;
+            return col.GetComponentInChildren<Hurtbox>() == null;
         }
     }
 }

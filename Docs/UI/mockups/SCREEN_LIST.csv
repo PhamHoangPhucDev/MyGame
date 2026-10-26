@@ -1,0 +1,51 @@
+file,title,orientation,size
+P01_Splash_Loading.png,"Splash / Loading",portrait,576x1024
+P02_Main_Menu.png,"Main Menu",portrait,576x1024
+P03_Class_Select.png,"Character / Class Selection",portrait,576x1024
+P04_Village_HUD.png,"Village Gameplay HUD",portrait,576x1024
+P05_Pause.png,"Pause Menu",portrait,576x1024
+P06_Settings.png,"Settings",portrait,576x1024
+P07_Dungeon_HUD.png,"Dungeon Gameplay HUD (mobile)",portrait,576x1024
+P08_Training_HUD.png,"Training Ground HUD",portrait,576x1024
+P09_Boss_HUD.png,"Boss Fight HUD",portrait,576x1024
+P10_Dungeon_Select.png,"Dungeon Selection (Warden)",portrait,576x1024
+P11_Level_Complete.png,"Level Complete",portrait,576x1024
+P12_Game_Over.png,"Game Over / Retry",portrait,576x1024
+P13_Reward_Popup.png,"Reward Popup",portrait,576x1024
+P14_Inventory.png,"Inventory / Bag",portrait,576x1024
+P15_Equipment.png,"Equipment",portrait,576x1024
+P16_Hero_Info.png,"Hero Information",portrait,576x1024
+P17_Quest_Journal.png,"Quest Journal",portrait,576x1024
+P18_NPC_Dialogue.png,"NPC Dialogue",portrait,576x1024
+P19_Shop.png,"Shop (Mira)",portrait,576x1024
+P20_Blacksmith.png,"Blacksmith / Crafting (Bram)",portrait,576x1024
+P21_Storage.png,"Storage (Nell)",portrait,576x1024
+P22_Skill_Tree.png,"Skill Tree (concept)",portrait,576x1024
+P23_World_Map.png,"World Map",portrait,576x1024
+P24_Minimap.png,"Minimap Components",portrait,576x1024
+P25_Gathering.png,"Resource Gathering Popup",portrait,576x1024
+P26_Farming.png,"Farming Interface",portrait,576x1024
+P27_Training_Info.png,"Training Information",portrait,576x1024
+P28_Boss_Entrance.png,"Boss Entrance",portrait,576x1024
+P29_Treasure_Reward.png,"Treasure Reward",portrait,576x1024
+P30_Housing.png,"Village Expansion / Housing",portrait,576x1024
+L01_Main_Menu.png,"Main Menu (PC)",landscape,1920x1080
+L02_Village_HUD.png,"Village HUD (PC keyboard)",landscape,1920x1080
+L03_Dungeon_HUD.png,"Dungeon HUD (PC keyboard)",landscape,1920x1080
+L04_Boss_HUD.png,"Boss HUD (PC keyboard)",landscape,1920x1080
+L05_Inventory.png,"Inventory (PC)",landscape,1920x1080
+L06_NPC_Dialogue.png,"NPC Dialogue (PC)",landscape,1920x1080
+L07_Dungeon_Select.png,"Dungeon Selection (PC)",landscape,1920x1080
+L08_World_Map.png,"World Map (PC)",landscape,1920x1080
+B01_Cover.png,"RPG UI MASTER DESIGN SYSTEM",board,1920x1080
+B02_Colors.png,"A. COLOR PALETTE",board,1920x1080
+B03_Typography.png,"B. UI TYPOGRAPHY",board,1920x1080
+B04_Spacing.png,"C. SPACING, GRID + LAYOUT",board,1920x1080
+B05_Panels.png,"D. PANEL + WINDOW STYLES",board,1920x1080
+B06_Buttons.png,"E. BUTTON STYLES + STATES",board,1920x1080
+B07_HUD.png,"F. HUD COMPONENTS",board,1920x1080
+B08_Icons.png,"G. ICON KIT",board,1920x1080
+B09_Slots.png,"H. INVENTORY + EQUIPMENT SLOTS",board,1920x1080
+B10_Bars.png,"I. PROGRESS BAR STYLES",board,1920x1080
+B11_Tooltip_Dialogue.png,"J. TOOLTIP + DIALOGUE STYLES",board,1920x1080
+B12_Asset_Index.png,"UNITY-READY ASSET LIBRARY",board,1920x1080

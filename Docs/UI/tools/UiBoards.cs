@@ -54,7 +54,7 @@ public static class Boards
         int nx = x + 8;
         b.H(nx, 70, "ONE KIT, EVERY SCREEN");
         b.Note(nx, 88, 960 - nx - 16, "Dark wood + charcoal foundations, forest green surfaces, muted gold trim, warm parchment for selected detail panels. Red HP, blue mana, green EXP. Press Start 2P text drawn by Unity, never baked into art.");
-        string[] facts = { "UI PIXEL GRID", "Portrait 288x512 UI px  x2 = 576x1024", "Landscape 640x360 UI px x3 = 1920x1080", "World PPU 16, PPC 144x256 / 480x270 (x4)", "", "DELIVERABLES", Kit.All.Count + " UI PNGs at 1x (transparent)", "30 portrait + 8 landscape mockups", "12 design-system boards", "GAME01_UI_ASSET_MANIFEST.csv" };
+        string[] facts = { "UI PIXEL GRID", "Portrait 288x512 UI px  x2 = 576x1024", "Landscape 640x360 UI px x3 = 1920x1080", "World PPU 16, PPC 144x256 / 480x270 (x4)", "", "DELIVERABLES", Kit.All.Count + " UI PNGs at 1x (transparent)", "30 portrait + 30 landscape mockups", "12 design-system boards", "GAME01_UI_ASSET_MANIFEST.csv" };
         for (int i = 0; i < facts.Length; i++) b.T(nx, 170 + i * 14, facts[i], i == 0 || i == 5 ? P.GoldL : P.TextW);
         b.Note(nx, 330, 960 - nx - 16, "Mockup data is sample data from WorldContent, LevelConfig and the class kits. Purple CONCEPT tags mark UI for systems that are only placeholders in the game today.");
         return b;

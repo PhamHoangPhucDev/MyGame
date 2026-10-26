@@ -6,15 +6,16 @@ UI art and design only. No Unity code, scene, or import setting was changed.
 
 | Design | Content | Link |
 |---|---|---|
-| GAME01 — RPG UI MASTER DESIGN SYSTEM | p1–12: design system (A–J + asset library). p13–20: landscape PC screens L01–L08 | https://www.canva.com/d/M_X3Uer9CvpN3mq |
+| GAME01 — RPG UI MASTER DESIGN SYSTEM | p1–12: design system (A–J + asset library). p13–20: early copy of L01–L08 | https://www.canva.com/d/M_X3Uer9CvpN3mq |
 | GAME01 — UI Screens Portrait 9:16 | 30 portrait screens P01–P30 | https://www.canva.com/d/Ogt-wZaMjf0pyeH |
+| GAME01 — UI Screens Landscape 16:9 (PC) | 30 landscape screens L01–L30 | https://www.canva.com/d/cNDsaLPiIUaJSLE |
 | Folder | Both designs | https://www.canva.com/folder/FAHZGa9_2vI |
 
-Canva export: `canva_export/GAME01_RPG_UI_Master_Design_System.pdf` (all 20 pages).
+Canva exports: `canva_export/GAME01_RPG_UI_Master_Design_System.pdf` (20 pages) and `canva_export/GAME01_UI_Screens_Landscape.pdf` (30 pages).
 
 Canva limits found:
 - Canva MCP exports whole pages (PDF, PNG, JPG, PPTX). It cannot export a single element, so the Unity sprites are exported from the generator here, not from Canva.
-- A separate landscape design could not be generated: Canva returned `quota_exceeded` (AI credits). The 8 landscape screens are pages 13–20 of the Master design.
+- Master pages 13–20 were made while Canva AI credits were out. The landscape design now holds the full set; those 8 pages are duplicates (the Canva MCP has no delete-page action).
 - Canva pages hold the pixel art as flat images. The portrait pages are 1080×1920, so the 576×1024 mockups are scaled ×1.875 and look slightly soft in Canva. The PNGs in `mockups/` are pixel-exact.
 
 ## Folders
@@ -24,7 +25,7 @@ Canva limits found:
 | `export/<Folder>/*.png` | **148 Unity-ready sprites at 1 UI px** (transparent). Panels, Buttons, Controls, HUD, Bars, Slots, Icons, Icons/Items, Icons/Equip, Icons/Minimap |
 | `GAME01_UI_ASSET_MANIFEST.csv` | One row per sprite: ID, name, screen, type, Canva page, file, size, usage, 9-slice borders, state, status |
 | `mockups/portrait/P01–P30` | 576×1024 screen mockups |
-| `mockups/landscape/L01–L08` | 1920×1080 PC mockups |
+| `mockups/landscape/L01–L30` | 1920×1080 PC mockups (L09–L30 reuse the portrait popups or use two-column windows) |
 | `mockups/SCREEN_LIST.csv` | Screen file → title |
 | `boards/B01–B12` | Design-system pages (1920×1080) |
 | `tools/` | Generator (C#, same pattern as the R2C art tools). Re-run to rebuild everything |

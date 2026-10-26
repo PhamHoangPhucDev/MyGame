@@ -37,6 +37,28 @@ L05_Inventory.png,"Inventory (PC)",landscape,1920x1080
 L06_NPC_Dialogue.png,"NPC Dialogue (PC)",landscape,1920x1080
 L07_Dungeon_Select.png,"Dungeon Selection (PC)",landscape,1920x1080
 L08_World_Map.png,"World Map (PC)",landscape,1920x1080
+L09_Splash_Loading.png,"Splash / Loading (PC)",landscape,1920x1080
+L10_Class_Select.png,"Class Selection (PC)",landscape,1920x1080
+L11_Pause.png,"Pause Menu (PC)",landscape,1920x1080
+L12_Settings.png,"Settings (PC)",landscape,1920x1080
+L13_Training_HUD.png,"Training Ground HUD (PC)",landscape,1920x1080
+L14_Level_Complete.png,"Level Complete (PC)",landscape,1920x1080
+L15_Game_Over.png,"Game Over / Retry (PC)",landscape,1920x1080
+L16_Reward_Popup.png,"Reward Popup (PC)",landscape,1920x1080
+L17_Equipment.png,"Equipment (PC)",landscape,1920x1080
+L18_Hero_Info.png,"Hero Information (PC)",landscape,1920x1080
+L19_Quest_Journal.png,"Quest Journal (PC)",landscape,1920x1080
+L20_Shop.png,"Shop (PC)",landscape,1920x1080
+L21_Blacksmith.png,"Blacksmith / Crafting (PC)",landscape,1920x1080
+L22_Storage.png,"Storage (PC)",landscape,1920x1080
+L23_Skill_Tree.png,"Skill Tree concept (PC)",landscape,1920x1080
+L24_Minimap.png,"Minimap Components (PC)",landscape,1920x1080
+L25_Gathering.png,"Resource Gathering (PC)",landscape,1920x1080
+L26_Farming.png,"Farming Interface (PC)",landscape,1920x1080
+L27_Training_Info.png,"Training Information (PC)",landscape,1920x1080
+L28_Boss_Entrance.png,"Boss Entrance (PC)",landscape,1920x1080
+L29_Treasure_Reward.png,"Treasure Reward (PC)",landscape,1920x1080
+L30_Housing.png,"Village Expansion / Housing (PC)",landscape,1920x1080
 B01_Cover.png,"RPG UI MASTER DESIGN SYSTEM",board,1920x1080
 B02_Colors.png,"A. COLOR PALETTE",board,1920x1080
 B03_Typography.png,"B. UI TYPOGRAPHY",board,1920x1080

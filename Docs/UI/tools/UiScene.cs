@@ -280,7 +280,9 @@ public class Shot
             for (int i = 0; i < (int)(26 * hp); i++) Ui.Blit(fb, ux - 13 + i, uy + 11);
         }
     }
-    public void Dim(int a = 150) { Ui.Fill(0, 0, UW, UH, P.A(P.Ink, a)); }
+    public static bool NoDim;
+    public void Dim(int a = 150) { if (!NoDim) Ui.Fill(0, 0, UW, UH, P.A(P.Ink, a)); }
+    public void Tint(Color c) { if (!NoDim) Ui.Fill(0, 0, UW, UH, c); }
     public void PortraitAt(Bitmap face, int x, int y)
     {
         Ui.Blit(Kit.Get("UI_PortraitBack.png"), x + 3, y + 3);

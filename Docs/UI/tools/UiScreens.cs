@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 
 /// <summary>GAME01 screen mockups. Portrait UI canvas 288x512 (x2), landscape 640x360 (x3). Values shown are sample data.</summary>
-public static class Screens
+public static partial class Screens
 {
     // ------------------------------------------------------------- game data (from the project)
     public static readonly string[] Classes = { "Aren", "Brom", "Lyra", "Selene", "Vex" };
@@ -527,7 +527,7 @@ public static class Screens
     {
         var s = new Shot("P12_Game_Over", "Game Over / Retry", true);
         CampWorld(s, 14, false);
-        s.Ui.Fill(0, 0, 288, 512, P.A(P.RedD, 90));
+        s.Tint(P.A(P.RedD, 90));
         s.Dim(140);
         s.Panel("UI_Panel_Main.png", 32, 150, 224, 220);
         s.Ribbon(144, 142, "DEFEATED", "UI_Header_Ribbon_Red.png", 150);
@@ -996,7 +996,7 @@ public static class Screens
     // ============================================================= LANDSCAPE (PC) SCREENS
     public static List<Shot> Landscape()
     {
-        return new List<Shot> { L01(), L02(), L03(), L04(), L05(), L06(), L07(), L08() };
+        var l = new List<Shot> { L01(), L02(), L03(), L04(), L05(), L06(), L07(), L08() }; l.AddRange(Landscape2()); return l;
     }
     static void LTopLeft(Shot s, int hp, int lvl, double exp)
     {

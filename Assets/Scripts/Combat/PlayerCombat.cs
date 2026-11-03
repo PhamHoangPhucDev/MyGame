@@ -140,6 +140,8 @@ namespace GameplayPrototype
         public void SetSwordHeld(bool held) => _debugSwordHeld = held;
 
         public Vector2 Facing => _facing;
+        public LayerMask EnemyMask => enemyMask;
+        public Health StickyTarget => _stickyTarget;
         public SkillId SelectedSkill => _selected;
         public event Action<SkillId> SelectedChanged;
         public event Action CooldownsChanged;

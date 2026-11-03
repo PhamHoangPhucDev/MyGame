@@ -13,6 +13,17 @@ namespace GameplayPrototype
         [SerializeField] Transform sword;
         [SerializeField] SpriteRenderer swordRenderer;
         [SerializeField] PlayerCombat combat;
+
+        /// <summary>Hero facing. The body turns with SpriteRenderer.flipX, not localScale.</summary>
+        public Vector2 Facing
+        {
+            get
+            {
+                if (combat == null) combat = GetComponent<PlayerCombat>();
+                Vector2 f = combat != null ? combat.Facing : Vector2.down;
+                return f.sqrMagnitude > 0.0001f ? f : Vector2.down;
+            }
+        }
         [SerializeField] PlayerMovement movement;
         [SerializeField] Sprite idleSprite;
         [SerializeField] Sprite walkASprite;

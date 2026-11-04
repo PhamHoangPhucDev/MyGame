@@ -50,12 +50,16 @@ const MAPS=[
  gaps:[{x:760,y:1100,r:70}],keep:[{x:760,y:575,r:200}],spawn:[760,1030],portal:[760,1092],rest:[822,1010],fires:[{x:760,y:579,big:1}],
  quests:[['Hạ quân Goblin','kill',8],['Khai thác đá thô','stone',4],['Hái Lam Diệp Thảo','herb',3],['Tìm rương bí mật','chest',1]],killRe:/Goblin|Gobrider/,
  bugs:10,build:buildCamp},
-{name:'Forest Trail',zone:'VÙNG 2 · ĐƯỜNG MÒN RỪNG',sub:'Lv 5–10 · Càng vào sâu rừng càng tối',W:2200,H:900,
- clears:[{x:2050,y:455,rx:112,ry:82,isl:0},{x:1250,y:360,rx:46,ry:30},{x:660,y:250,rx:52,ry:36},{x:110,y:570,rx:70,ry:46}],patches:[],
- paths:[{p:[[0,565],[200,560],[380,470],[600,520],[800,640],[1000,600],[1200,452],[1400,420],[1600,560],[1800,600],[1960,470],[2080,455]],w:13},{p:[[1250,440],[1250,370]],w:7},{p:[[612,515],[640,420],[622,330],[660,262]],w:5}],
- stream:[[1100,80],[1090,250],[1120,400],[1100,560],[1112,700],[1090,910]],ponds:[],fall:1100,
- groves:[],dense:0.9,gaps:[{x:80,y:565,r:80}],keep:[{x:2050,y:455,r:120},{x:1250,y:360,r:50},{x:660,y:250,r:50}],spawn:[150,565],portal:[64,600],rest:[1232,352],fires:[{x:1262,y:366}],
- dark:{x0:800,max:0.42},quests:[['Hạ quân Goblin','kill',10],['Hái Lam Diệp Thảo','herb',3],['Hái Nấm Lân Quang','mush',3],['Hạ Gobrider Captain','boss',1],['Tìm lối tắt bí mật','chest',1]],killRe:/Goblin|Gobrider/,
+{name:'Forest Trail',zone:'VÙNG 2 · ĐƯỜNG MÒN RỪNG',sub:'Lv 5–11 · Đường chính, 6 ngã rẽ tới các bãi quái',W:2200,H:1200,
+ clears:[{x:2060,y:550,rx:112,ry:82,isl:0},{x:430,y:340,rx:92,ry:56,isl:1},{x:660,y:890,rx:96,ry:58,isl:1},{x:930,y:410,rx:86,ry:54,isl:1},{x:1270,y:860,rx:92,ry:56,isl:1},{x:1650,y:360,rx:96,ry:56,isl:1},{x:1850,y:910,rx:92,ry:56,isl:1},{x:1420,y:430,rx:46,ry:30},{x:760,y:480,rx:48,ry:32},{x:110,y:650,rx:70,ry:46}],patches:[],
+ paths:[{p:[[0,640],[200,636],[380,566],[600,604],[800,700],[1000,664],[1200,566],[1400,540],[1600,640],[1800,684],[1960,566],[2080,550]],w:13},
+  {p:[[420,574],[440,470],[430,390]],w:9},{p:[[700,652],[680,760],[660,840]],w:9},{p:[[980,668],[960,560],[935,455]],w:9},{p:[[1260,560],[1280,700],[1270,810]],w:9},{p:[[1640,649],[1660,520],[1650,410]],w:9},{p:[[1840,655],[1860,780],[1850,860]],w:9},
+  {p:[[1420,544],[1420,455]],w:7},{p:[[800,690],[790,600],[770,510]],w:5}],
+ stream:[[1100,80],[1090,250],[1120,400],[1100,560],[1112,700],[1130,850],[1150,990]],ponds:[{x:1150,y:1050,rx:110,ry:58}],fall:1100,
+ groves:[],dense:0.9,gaps:[{x:80,y:650,r:80}],keep:[{x:2060,y:550,r:120},{x:430,y:340,r:100},{x:660,y:890,r:104},{x:930,y:410,r:94},{x:1270,y:860,r:100},{x:1650,y:360,r:104},{x:1850,y:910,r:100},{x:1420,y:430,r:50},{x:760,y:480,r:52}],
+ spawn:[150,650],portal:[64,680],rest:[1402,422],fires:[{x:1432,y:436},{x:430,y:344}],
+ branches:[{n:'Trại Goblin',x:420,y:574,s:-1},{n:'Đồng hoa Pixie',x:700,y:652,s:1},{n:'Ổ cung thủ',x:980,y:668,s:-1},{n:'Bãi Satyr',x:1260,y:560,s:1},{n:'Chuồng Gobrider',x:1640,y:649,s:-1},{n:'Rừng nấm',x:1840,y:655,s:1}],
+ dark:{x0:800,max:0.42},quests:[['Hạ quái ở các bãi','kill',15],['Hái Lam Diệp Thảo','herb',3],['Hái Nấm Lân Quang','mush',3],['Hạ Gobrider Captain','boss',1],['Tìm lối tắt bí mật','chest',1]],killRe:/Goblin|Gobrider|Satyr|Pixie/,
  bugs:6,fireflies:1,build:buildTrail},
 {name:'Abandoned Camp',zone:'VÙNG 3 · TRẠI BỎ HOANG',sub:'Lv 9–14 · Vòng đá quanh cây thiêng',W:1600,H:1120,
  clears:[{x:800,y:610,rx:205,ry:138,isl:1}],patches:[{x:1230,y:300,rx:60,ry:36}],
@@ -400,30 +404,44 @@ function buildCamp(){const C=MAP.clears[0];
  for(let i=0;i<3;i++)spawnMob(DR,'Pixie',ri(1,2),330+ri(-40,40),640+ri(-20,20),{hr:60});
  for(let i=0;i<3;i++)spawnMob(G,'Goblin',ri(1,2),330+ri(-60,60),300+ri(-30,30),{hr:80})}
 
-// ---------- map 2: winding trail between hedges, darker eastward ----------
-function buildTrail(){const path=MAP.paths[0].p;
- // hedges on both sides; a "rustling" bush (no collider) hides the secret spur at x~612
- alongPath(path,9,(x,y,nx,ny)=>{if(x<170||x>1930)return;if(Math.abs(x-1100)<40)return;
-  for(const side of [-1,1]){const off=rnd(24,32),bx=Math.round(x+nx*off*side),by=Math.round(y+ny*off*side);
-   if(side===-1&&Math.abs(x-1250)<34)continue;
-   if(Math.abs(bx-612)<14&&by<515&&by>470){if(!PROPS.rustle){PROPS.rustle=addBush(bx,by,{col:0,rustle:true})}continue}
+// ---------- map 2: one main trail with six side branches to training grounds, darker eastward ----------
+function buildTrail(){const path=MAP.paths[0].p,side=MAP.paths.slice(1);
+ // hedges along the main trail, opened where a branch leaves; the secret spur hides behind a rustling bush
+ alongPath(path,9,(x,y,nx,ny)=>{if(x<170||x>1950)return;if(Math.abs(x-1100)<40)return;
+  for(const sd of [-1,1]){const off=rnd(24,32),bx=Math.round(x+nx*off*sd),by=Math.round(y+ny*off*sd);
+   if(side.some(p=>polyD(bx,by,p.p)<p.w+14))continue;
    if(K[by*W+bx]!==0||!occFree(bx,by,9))continue;addBush(bx,by)}});
+ const sp=side[side.length-1].p;PROPS.rustle=addBush(797,664,{col:0,rustle:true});addBush(782,660);addBush(812,662);
+ // signposts at every fork
+ for(const b of MAP.branches)addSpr(T.Signpost_Up,b.x+18,b.y+(b.s<0?-16:22),{col:3});
  // boss arena: ring of posts open to the west
- for(let a=0;a<44;a++){const t=a/44*Math.PI*2;if(Math.cos(t)<-0.6)continue;const x=Math.round(2050+Math.cos(t)*104),y=Math.round(455+Math.sin(t)*74);if(K[y*W+x]===2)continue;addSpr(makePost(ri(22,27),P.wood,a),x,y,{});addCol(x,y-1,4,3)}
- addSpr(T.Flag,2090,392,{k:'flag'});addSpr(T.Flag,2010,392,{k:'flag'});
- for(const [x,y] of [[1990,500],[2110,500],[2050,400]])addSpr(pick(T.boulders),x,y,{col:7,colry:3});
- // rest glade
- addSpr(PROPS.LOG,1215,378,{col:16,colry:4,coly:4});
- // secret glade with chest
- chest=addSpr(T.chestC,676,240,{k:'chest',opened:false,col:7,colry:3});addSpr(PROPS.LOG,630,250,{col:16,colry:4,coly:4});
- for(const [x,y] of [[340,520],[560,580],[760,690],[980,650],[1360,470],[1540,610],[700,280]])node('herb',x,y);
- for(const [x,y] of [[1460,380],[1680,640],[1760,520],[1900,560],[1230,520],[1850,420]])node('mush',x,y);
- const lv=x=>Math.round(5+(x/W)*5);
- for(const cx of [430,820,1420,1720])for(let i=0;i<3;i++){const x=cx+ri(-40,40);spawnMob(i===2?GA:G,i===2?'Goblin Archer':'Goblin',lv(x),x,polyY(path,x)+ri(-6,6),{hr:50,home:[cx,polyY(path,cx)]})}
+ for(let a=0;a<44;a++){const t=a/44*Math.PI*2;if(Math.cos(t)<-0.6)continue;const x=Math.round(2060+Math.cos(t)*104),y=Math.round(550+Math.sin(t)*74);if(K[y*W+x]===2)continue;addSpr(makePost(ri(22,27),P.wood,a),x,y,{});addCol(x,y-1,4,3)}
+ addSpr(T.Flag,2100,487,{k:'flag'});addSpr(T.Flag,2020,487,{k:'flag'});for(const [x,y] of [[2000,595],[2120,595],[2060,495]])addSpr(pick(T.boulders),x,y,{col:7,colry:3});
+ // 1 goblin camp
+ addSpr(T.Tent,385,318,{col:22,colry:10,coly:8,ay:78});addSpr(T.Tent,478,312,{col:22,colry:10,coly:8,ay:78});addSpr(PROPS.SEAT,400,372,{col:9,colry:3});addSpr(PROPS.SEAT,462,374,{col:9,colry:3});addSpr(PROPS.SPEARS,500,350,{col:5});
+ for(let i=0;i<5;i++)spawnMob(G,'Goblin',5,430+ri(-60,60),350+ri(-25,25),{hr:66,home:[430,350]});
+ // 2 pixie meadow
+ for(const [x,y] of [[610,870],[700,905],[650,930]])node('herb',x,y);for(const [x,y] of [[590,900],[730,870]])addSpr(T.Stump,x,y,{col:6});
+ for(let i=0;i<5;i++)spawnMob(DR,'Pixie',6,660+ri(-60,60),890+ri(-25,25),{hr:70,home:[660,890]});
+ // 3 archer rocks
+ for(const [x,y,i] of [[880,390,2],[975,385,2],[905,440,0],[960,440,1],[930,370,2]])addSpr(T.boulders[i],x,y,{col:9,colry:4});
+ for(let i=0;i<3;i++)spawnMob(GA,'Goblin Archer',7,930+ri(-50,50),415+ri(-20,20),{hr:40,home:[930,415]});for(let i=0;i<2;i++)spawnMob(G,'Goblin',7,930+ri(-50,50),420,{hr:60,home:[930,420]});
+ // 4 satyr glade by the pond
+ for(const [x,y] of [[1220,840],[1320,880]])addSpr(PROPS.LOG,x,y,{col:16,colry:4,coly:4});
+ for(let i=0;i<5;i++)spawnMob(SA,'Satyr',8,1270+ri(-60,60),860+ri(-25,25),{hr:70,home:[1270,860]});
+ // 5 gobrider stable
+ for(const [x,y,n] of [[1590,330,'Hay'],[1608,336,'Hay'],[1710,330,'Barrel'],[1722,336,'Crate']])addSpr(T[n],x,y,{col:6,colry:3});addSpr(PROPS.RACK,1650,315,{col:10,colry:3});addSpr(PROPS.SEAT,1620,390,{col:9,colry:3});
+ for(let i=0;i<4;i++)spawnMob(GR,'Gobrider',9,1650+ri(-60,60),365+ri(-20,20),{hr:72,home:[1650,365],speed:30});
+ // 6 mushroom grove
+ for(const [x,y] of [[1800,890],[1890,880],[1840,940],[1910,935]])node('mush',x,y);for(const [x,y] of [[1790,930],[1920,900]])addSpr(T.Stump,x,y,{col:6});
+ for(let i=0;i<3;i++)spawnMob(DR,'Pixie',10,1850+ri(-55,55),905+ri(-20,20),{hr:60,home:[1850,905]});for(let i=0;i<2;i++)spawnMob(SA,'Satyr',10,1850+ri(-55,55),905,{hr:60,home:[1850,905]});
+ // rest glade + secret glade
+ addSpr(PROPS.LOG,1390,440,{col:16,colry:4,coly:4});
+ chest=addSpr(T.chestC,772,470,{k:'chest',opened:false,col:7,colry:3});addSpr(PROPS.LOG,738,488,{col:16,colry:4,coly:4});
+ for(const [x,y] of [[300,600],[1500,600]])node('herb',x,y);node('mush',1720,700);
+ // patrols on the main trail
  spawnMob(GR,'Gobrider',7,500,polyY(path,500),{patrol:path.slice(1,6),speed:36});spawnMob(GR,'Gobrider',9,1500,polyY(path,1500),{patrol:path.slice(6,11),speed:36});
- for(let i=0;i<3;i++)spawnMob(SA,'Satyr',7,1150+ri(-20,20),680+ri(-20,20),{hr:50});
- for(let i=0;i<2;i++)spawnMob(DR,'Pixie',6,660+ri(-20,20),260+ri(-10,10),{hr:30});
- spawnMob(GE,'Gobrider Captain',11,2060,450,{hr:40,boss:true,hp:420,speed:22})}
+ spawnMob(GE,'Gobrider Captain',11,2070,545,{hr:40,boss:true,hp:420,speed:22})}
 function polyY(pts,x){for(let i=0;i<pts.length-1;i++){const a=pts[i],b=pts[i+1];if(x>=a[0]&&x<=b[0])return a[1]+(b[1]-a[1])*(x-a[0])/(b[0]-a[0]||1)}return pts[pts.length-1][1]}
 
 // ---------- map 3: abandoned camp around a sacred tree ----------

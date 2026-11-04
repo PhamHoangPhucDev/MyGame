@@ -176,7 +176,7 @@ async function exportMap(dir,title,labels,notes){spriteName();const items=[],unk
   items.push({sprite:name,x:Math.round(e.x),y:Math.round(e.y),layer:e.plateau?'plateau':e.k==='tree'?'tree':e.k==='node'?'node':'prop'})}
  const mobsOut=mobs.map(m=>({mob:m.name,sheet:Object.keys(SHT).find(k=>SHT[k]===m.sh),x:Math.round(m.spawn[0]),y:Math.round(m.spawn[1]),lv:m.lv,boss:!!m.boss,home:[Math.round(m.hx),Math.round(m.hy)],radius:m.hr,patrol:m.patrol||null,orbit:m.orb||null,lift:m.lift||0,caged:!!m.caged}));
  const layout={map:MAP.name,units:'pixels at PPU 16; origin top-left, y grows downward (Unity: worldY = -y/16)',size:[W,H],
-  terrain:{clears:MAP.clears,patches:MAP.patches,paths:MAP.paths,stream:MAP.stream,ponds:MAP.ponds,waterfallX:MAP.fall,pave:MAP.pave||null,steps:MAP.steps||null,cave:MAP.cave||null,dark:MAP.dark||null,cliffRimY:'24-38 (noise)',cliffBaseY:'70-93 (noise)',bridges:BRIDGES},
+  terrain:{branches:MAP.branches||null,clears:MAP.clears,patches:MAP.patches,paths:MAP.paths,stream:MAP.stream,ponds:MAP.ponds,waterfallX:MAP.fall,pave:MAP.pave||null,steps:MAP.steps||null,cave:MAP.cave||null,dark:MAP.dark||null,cliffRimY:'24-38 (noise)',cliffBaseY:'70-93 (noise)',bridges:BRIDGES},
   portal:MAP.portal,rest:MAP.rest,fires:fires.map(f=>({x:f.x,y:f.y,big:!!f.big,lift:f.lift})),secretChest:[chest.x,chest.y],items,mobs:mobsOut,notes};
  await saveText(dir+title+'_Layout.json',JSON.stringify(layout,null,1));
  // full-map render without HUD/weather
@@ -211,11 +211,10 @@ async function runTrail(){const D='Trail/';
  await save(D+'Props/Bush_Rustle.png',strip(rustleFrames()),{frames:3,fw:T.bushes[0].width+2,fh:T.bushes[0].height,note:'secret entrance; no collider; shake 3 frames at 20 fps when the hero is within 14px and every ~2s idle'});
  for(let i=0;i<3;i++)await save(D+'Props/Hedge_'+(i+2)+'.png',hedge(i+2,i),{note:'run of '+(i+3)+' overlapping bushes; colliders every 14px'});
  const r=await exportMap(D,'Trail',[
-  ['⛩ Cổng về Làng',MAP.portal[0]+40,MAP.portal[1]-56,'#9fe6dc'],['Dải 1: Goblin + cung thủ',430,520,'#ffc8a0'],['Dải 2',820,600,'#ffc8a0'],['Dải 3 (tối dần)',1420,380,'#ffc8a0'],['Dải 4',1720,560,'#ffc8a0'],
-  ['Gobrider tuần tra',500,470],['Gobrider tuần tra',1500,500],['Cầu + suối + thác',1100,520,'#b6d8cd'],['Trạm nghỉ',1250,320,'#9fe6a0'],
-  ['Bí mật: bụi rung → khoảng rừng có rương',650,215,'#fff2a0'],['Sân boss: Gobrider Captain',2050,370,'#ff9a6a'],['Satyr',1150,640,'#d8c0ff']],
+  ['⛩ Cổng về Làng',MAP.portal[0]+40,MAP.portal[1]-56,'#9fe6dc'],['1 Trại Goblin Lv5',430,262,'#ffc8a0'],['2 Đồng hoa Pixie Lv6',660,975,'#d8c0ff'],['3 Ổ cung thủ Lv7',930,335,'#ffc8a0'],['4 Bãi Satyr Lv8',1270,945,'#d8c0ff'],['5 Chuồng Gobrider Lv9',1650,282,'#ffc8a0'],['6 Rừng nấm Lv10',1850,995,'#9ff0e0'],
+  ['Gobrider tuần tra đường chính',500,540],['Gobrider tuần tra',1500,520],['Cầu + suối → hồ',1100,610,'#b6d8cd'],['Trạm nghỉ',1420,385,'#9fe6a0'],['Bí mật: bụi rung → rương',770,440,'#fff2a0'],['Sân boss: Gobrider Captain',2060,462,'#ff9a6a']],
   ['Trail uses the base (Camp) palette: reuse Camp/Ground and Camp/Trees unchanged.','Depth darkness: world-space gradient from x=800 (0) to the east edge (0.42 black-teal #060e16); spawn fireflies more as it darkens.',
-   'Hedges: the demo scatters Bush_* along both path sides every 9px at 24-32px offset; Hedge_2..4 are pre-composed runs to place faster.','Boss arena posts: Palisade_Post_* ring open to the west.']);
+   'Layout: one main trail (paths[0]) with six side branches (paths[1..6]) to training grounds 1-6, a rest spur (paths[7]) and the secret spur (paths[8]); branch forks are listed in branches[] with a Signpost at each.','Hedges: Bush_* along both main-trail sides every 9px at 24-32px offset, opened where a branch leaves; Hedge_2..4 are pre-composed runs to place faster.','Boss arena posts: Palisade_Post_* ring open to the west.']);
  return r}
 window.ARTGEN={run,runTrail,exportMap,writeBoard,writeManifest,MAN,BOARD,saveText,save,strip,grid,matTile,dualTile,PAIRS,NAMES};
 })();

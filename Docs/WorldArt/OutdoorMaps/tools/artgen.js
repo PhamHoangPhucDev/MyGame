@@ -161,5 +161,61 @@ async function run(){
  await save(C+'Props/Rack_Spears.png',makeSpears());await save(C+'Props/Archer_Platform.png',makeWatch(P.wood),{note:'archer stands 30px above the pivot'});
  await save(C+'Props/Tent_Ruined.png',makeRuinTent(),{pivot:'0.5,0.025',note:'Camp secret: abandoned tent in the NE bush ring'});
  const R1=performance.now();return {files:MAN.length,ms:Math.round(R1-R0)}}
-window.ARTGEN={run,MAN,BOARD,saveText,save,strip,grid,matTile,dualTile,PAIRS,NAMES};
+// ---------- per-map export helpers ----------
+const TN=['Teal','Leaf','TealDark','LeafDark','TealCool'];
+const NODE_FILE={stone:'Stone_Full',herb:'Herb_Full',mush:'Mushroom_Full',spirit:'SpiritFlower_Full',ore:'IronOre_Full'};
+function spriteName(e){const NM=new Map();
+ T.trees.forEach((c,i)=>NM.set(c,'Tree_'+TN[i]));T.bushes.forEach((c,i)=>NM.set(c,'Bush_'+['Teal','Leaf','Dark'][i]));T.boulders.forEach((c,i)=>NM.set(c,'Boulder_'+'SML'[[1,0,2][i]]));
+ for(const n of ['Stump','Barrel','Crate','Crate_Herbs','Sacks','Hay','Bench','Signpost_Up'])NM.set(T[n],n==='Signpost_Up'?'Signpost':n);NM.set(T.Tent,'Tent_Horn');NM.set(T.Flag,'Flag_Tattered');
+ NM.set(PROPS.LOG,'Log_Fallen');NM.set(PROPS.SEAT,'Log_Seat');NM.set(PROPS.RACK,'Hide_Full');NM.set(PROPS.SPEARS,'Rack_Spears');NM.set(PROPS.BRAZ,'Brazier');NM.set(portal.img,'Portal_Frame');NM.set(T.chestC,'Chest_Closed');NM.set(T.chestO,'Chest_Closed');
+ spriteName.NM=NM}
+function nameOf(e){const NM=spriteName.NM;if(e.k==='node')return NODE_FILE[e.type];if(e.rustle)return 'Bush_Rustle';const n=NM.get(e.img);if(n)return n;
+ if(e.img&&e.img.width===8)return 'Palisade_Post_'+e.img.height;return null}
+async function exportMap(dir,title,labels,notes){spriteName();const items=[],unk=new Set();
+ for(const e of ents){if(e.k==='mob')continue;const name=nameOf(e);if(!name){unk.add(e.k+':'+(e.img&&e.img.width+'x'+e.img.height));continue}
+  items.push({sprite:name,x:Math.round(e.x),y:Math.round(e.y),layer:e.plateau?'plateau':e.k==='tree'?'tree':e.k==='node'?'node':'prop'})}
+ const mobsOut=mobs.map(m=>({mob:m.name,sheet:Object.keys(SHT).find(k=>SHT[k]===m.sh),x:Math.round(m.spawn[0]),y:Math.round(m.spawn[1]),lv:m.lv,boss:!!m.boss,home:[Math.round(m.hx),Math.round(m.hy)],radius:m.hr,patrol:m.patrol||null,orbit:m.orb||null,lift:m.lift||0,caged:!!m.caged}));
+ const layout={map:MAP.name,units:'pixels at PPU 16; origin top-left, y grows downward (Unity: worldY = -y/16)',size:[W,H],
+  terrain:{clears:MAP.clears,patches:MAP.patches,paths:MAP.paths,stream:MAP.stream,ponds:MAP.ponds,waterfallX:MAP.fall,pave:MAP.pave||null,steps:MAP.steps||null,cave:MAP.cave||null,dark:MAP.dark||null,cliffRimY:'24-38 (noise)',cliffBaseY:'70-93 (noise)',bridges:BRIDGES},
+  portal:MAP.portal,rest:MAP.rest,fires:fires.map(f=>({x:f.x,y:f.y,big:!!f.big,lift:f.lift})),secretChest:[chest.x,chest.y],items,mobs:mobsOut,notes};
+ await saveText(dir+title+'_Layout.json',JSON.stringify(layout,null,1));
+ // full-map render without HUD/weather
+ const keep={dh:drawHUD,dl:drawLabels,vig:T.vig,S,SW,SH,VWW,VWH};drawHUD=()=>{};drawLabels=()=>{};T.vig=mk(1,1);parts.length=0;streaks.length=0;const cl=clouds.splice(0);bannerT=99;
+ hero.x=MAP.spawn[0];hero.y=MAP.spawn[1];S=1;SW=W;SH=H;cv.width=W;cv.height=H;VWW=W;VWH=H;cam.x=0;cam.y=0;for(const e of ents)if(e.k==='tree')e.a=1;render();
+ const plain=mk(W,H);plain.getContext('2d').drawImage(cv,0,0);await save(dir+title+'_Overview.png',plain,{pivot:'0,1',note:'whole map at 1x from the approved demo; layout reference only'});
+ const an=mk(W,H),g=an.getContext('2d');g.drawImage(plain,0,0);g.font='600 14px "Pixelify Sans"';g.lineJoin='round';g.textAlign='center';
+ const lab=(t,x,y,c)=>{g.lineWidth=4;g.strokeStyle='rgba(10,16,16,0.9)';g.strokeText(t,x,y);g.fillStyle=c||'#f6d860';g.fillText(t,x,y)};
+ for(const l of labels)lab(l[0],l[1],l[2],l[3]);
+ for(const n of nodes){g.fillStyle=NODE[n.type].c;g.fillRect(n.x-3,n.y-3,6,6);g.strokeStyle='#000';g.strokeRect(n.x-3.5,n.y-3.5,7,7)}
+ for(const m of mobs){g.fillStyle=m.boss?'#ff5a3a':m.caged?'#b8a0ff':'#e08a6a';g.beginPath();g.arc(m.spawn[0],m.spawn[1],m.boss?6:3.5,0,7);g.fill()}
+ g.textAlign='left';g.fillStyle='rgba(10,16,16,0.75)';g.fillRect(10,H-70,560,60);g.font='600 13px "Pixelify Sans"';
+ lab('● quái (đỏ: boss)   ■ điểm tài nguyên (màu theo loại)',20,H-46,'#f2efe2');lab('1 px = 1/16 unit · toạ độ khớp '+title+'_Layout.json',20,H-24,'#c8c4b4');
+ await save(dir+title+'_Overview_Annotated.png',an,{pivot:'0,1',note:'annotated layout'});
+ drawHUD=keep.dh;drawLabels=keep.dl;T.vig=keep.vig;clouds.push(...cl);resize();
+ return {items:items.length,mobs:mobsOut.length,unknown:[...unk]}}
+async function writeBoard(file,title,filter){const items=BOARD.filter(it=>!filter||filter(it));const sc=3;const groups={};for(const it of items){const k=it.rel.split('/').slice(0,2).join('/');(groups[k]=groups[k]||[]).push(it)}
+ const BW=1920;let layout=[],y=70;
+ for(const [k,list] of Object.entries(groups)){layout.push({head:k,y});y+=34;let x=20,rowH=0;for(const it of list){const lim=it.c.width>400?1:sc;const w=it.c.width*lim,h=it.c.height*lim;if(x+Math.max(w,160)>BW-20){x=20;y+=rowH+30;rowH=0}layout.push({it,x,y,w,h});x+=Math.max(w,110)+24;rowH=Math.max(rowH,h)}y+=rowH+46}
+ const B=mk(BW,y+20),g=B.getContext('2d');g.fillStyle='#10191a';g.fillRect(0,0,BW,B.height);g.imageSmoothingEnabled=false;
+ g.font='700 30px "Pixelify Sans"';g.fillStyle='#f6d860';g.fillText(title,20,46);
+ for(const L of layout){if(L.head){g.font='700 20px "Pixelify Sans"';g.fillStyle='#9fe6dc';g.fillText(L.head,20,L.y+20);g.fillStyle='#2a3a38';g.fillRect(20,L.y+26,BW-40,2);continue}
+  g.fillStyle='#1b2826';g.fillRect(L.x-4,L.y-4,L.w+8,L.h+8);g.drawImage(L.it.c,L.x,L.y,L.w,L.h);g.font='600 13px "Pixelify Sans"';g.fillStyle='#d8d4c4';g.fillText(L.it.rel.split('/').pop().replace('.png',''),L.x,L.y+L.h+18)}
+ await fetch(SAVE+encodeURIComponent(file),{method:'POST',body:B.toDataURL('image/png')});return [B.width,B.height]}
+async function writeManifest(file){await saveText(file,'file,width,height,frames,frame_w,frame_h,pivot_xy_normalized,note\n'+MAN.map(m=>m.join(',')).join('\n')+'\n')}
+// ---------- Trail ----------
+function rustleFrames(){const b=T.bushes[0],w=b.width,h=b.height;return [-1,0,1].map(o=>{const c=mk(w+2,h),g=pix(c);g.drawImage(b,0,0,w,h-8,1+o,0,w,h-8);g.drawImage(b,0,h-8,w,8,1,h-8,w,8);return c})}
+function hedge(n,s){// a pre-composed run of overlapping bushes for the trail walls
+ const c=mk(28+n*14,30),g=pix(c);for(let i=0;i<n+1;i++){const b=T.bushes[(i+s)%2===0?0:(i%3===2?2:1)];g.drawImage(shadow(28),i*14+4,22);g.drawImage(b,i*14+Math.round(hash(i,s,5)*3),2+Math.round(hash(i,s,6)*3))}return c}
+async function runTrail(){const D='Trail/';
+ for(let h=22;h<=29;h++)await save('Shared/Fortify/Palisade_Post_'+h+'.png',makePost(h,P.wood,h),{note:'wood post; rows of posts every 7px; collider r4'});
+ await save(D+'Props/Bush_Rustle.png',strip(rustleFrames()),{frames:3,fw:T.bushes[0].width+2,fh:T.bushes[0].height,note:'secret entrance; no collider; shake 3 frames at 20 fps when the hero is within 14px and every ~2s idle'});
+ for(let i=0;i<3;i++)await save(D+'Props/Hedge_'+(i+2)+'.png',hedge(i+2,i),{note:'run of '+(i+3)+' overlapping bushes; colliders every 14px'});
+ const r=await exportMap(D,'Trail',[
+  ['⛩ Cổng về Làng',MAP.portal[0]+40,MAP.portal[1]-56,'#9fe6dc'],['Dải 1: Goblin + cung thủ',430,520,'#ffc8a0'],['Dải 2',820,600,'#ffc8a0'],['Dải 3 (tối dần)',1420,380,'#ffc8a0'],['Dải 4',1720,560,'#ffc8a0'],
+  ['Gobrider tuần tra',500,470],['Gobrider tuần tra',1500,500],['Cầu + suối + thác',1100,520,'#b6d8cd'],['Trạm nghỉ',1250,320,'#9fe6a0'],
+  ['Bí mật: bụi rung → khoảng rừng có rương',650,215,'#fff2a0'],['Sân boss: Gobrider Captain',2050,370,'#ff9a6a'],['Satyr',1150,640,'#d8c0ff']],
+  ['Trail uses the base (Camp) palette: reuse Camp/Ground and Camp/Trees unchanged.','Depth darkness: world-space gradient from x=800 (0) to the east edge (0.42 black-teal #060e16); spawn fireflies more as it darkens.',
+   'Hedges: the demo scatters Bush_* along both path sides every 9px at 24-32px offset; Hedge_2..4 are pre-composed runs to place faster.','Boss arena posts: Palisade_Post_* ring open to the west.']);
+ return r}
+window.ARTGEN={run,runTrail,exportMap,writeBoard,writeManifest,MAN,BOARD,saveText,save,strip,grid,matTile,dualTile,PAIRS,NAMES};
 })();

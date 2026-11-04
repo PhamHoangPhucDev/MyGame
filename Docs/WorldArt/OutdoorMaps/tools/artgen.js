@@ -169,7 +169,8 @@ function spriteName(e){const NM=new Map();
  for(const n of ['Stump','Barrel','Crate','Crate_Herbs','Sacks','Hay','Bench','Signpost_Up'])NM.set(T[n],n==='Signpost_Up'?'Signpost':n);NM.set(T.Tent,'Tent_Horn');NM.set(T.Flag,'Flag_Tattered');
  NM.set(PROPS.LOG,'Log_Fallen');NM.set(PROPS.SEAT,'Log_Seat');NM.set(PROPS.RACK,'Hide_Full');NM.set(PROPS.SPEARS,'Rack_Spears');NM.set(PROPS.BRAZ,'Brazier');NM.set(portal.img,'Portal_Frame');NM.set(T.chestC,'Chest_Closed');NM.set(T.chestO,'Chest_Closed');
  spriteName.NM=NM}
-function nameOf(e){const NM=spriteName.NM;if(e.k==='node')return NODE_FILE[e.type];if(e.rustle)return 'Bush_Rustle';const n=NM.get(e.img);if(n)return n;
+const EXTRA=new Map();
+function nameOf(e){const NM=spriteName.NM;if(EXTRA.has(e.img))return EXTRA.get(e.img);if(e.k==='node')return NODE_FILE[e.type];if(e.rustle)return 'Bush_Rustle';const n=NM.get(e.img);if(n)return n;
  if(e.img&&e.img.width===8)return 'Palisade_Post_'+e.img.height;return null}
 async function exportMap(dir,title,labels,notes){spriteName();const items=[],unk=new Set();
  for(const e of ents){if(e.k==='mob')continue;const name=nameOf(e);if(!name){unk.add(e.k+':'+(e.img&&e.img.width+'x'+e.img.height));continue}
@@ -216,5 +217,39 @@ async function runTrail(){const D='Trail/';
   ['Trail uses the base (Camp) palette: reuse Camp/Ground and Camp/Trees unchanged.','Depth darkness: world-space gradient from x=800 (0) to the east edge (0.42 black-teal #060e16); spawn fireflies more as it darkens.',
    'Layout: one main trail (paths[0]) with six side branches (paths[1..6]) to training grounds 1-6, a rest spur (paths[7]) and the secret spur (paths[8]); branch forks are listed in branches[] with a Signpost at each.','Hedges: Bush_* along both main-trail sides every 9px at 24-32px offset, opened where a branch leaves; Hedge_2..4 are pre-composed runs to place faster.','Boss arena posts: Palisade_Post_* ring open to the west.']);
  return r}
-window.ARTGEN={run,runTrail,exportMap,writeBoard,writeManifest,MAN,BOARD,saveText,save,strip,grid,matTile,dualTile,PAIRS,NAMES};
+// ---------- palette kit: ground, grass, decals, trees, bushes recoloured for the current map ----------
+async function runPaletteKit(D,flowers){
+ const mats=['grass','dark','forest','dirt','water','pave'];for(const m of mats){const v=[];for(let i=0;i<4;i++)v.push(matTile(m,i));await save(D+'Ground/Fill_'+m[0].toUpperCase()+m.slice(1)+'.png',strip(v),{frames:4,fw:16,fh:16,pivot:'0,0',note:'4 seamless fill variants'})}
+ for(const pr of PAIRS){const t=[],o=[];for(let m=0;m<16;m++){t.push(dualTile(pr,m,300+PAIRS.indexOf(pr)));o.push(dualTile(pr,m,300+PAIRS.indexOf(pr),true))}
+  await save(D+'Ground/Dual_'+pr.name+'.png',grid(t,4),{frames:16,fw:16,fh:16,pivot:'0,0',note:'dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = '+pr.B+')'});
+  await save(D+'Ground/Dual_'+pr.name+'_Overlay.png',grid(o,4),{frames:16,fw:16,fh:16,pivot:'0,0',note:'side A transparent; for layers painted over another layer'})}
+ const tg=[];for(let p=0;p<2;p++)for(let f=0;f<3;f++)tg.push(TG[f][p]);await save(D+'Ground/TallGrass.png',grid(tg,3),{frames:6,fw:10,fh:9,note:'row 0 light / row 1 dark; frames lean L, up, R'});
+ {const dec=[];const tuft=(col)=>{const c=mk(4,3),g=pix(c);px(g,0,0,col);px(g,2,0,col);px(g,1,1,col);return c};dec.push(tuft(P.T1),tuft(P.T3),tuft(P.G2));
+  for(const cs of flowers){const c=mk(4,4),g=pix(c);px(g,1,2,'#2f564c');px(g,1,3,'#2f564c');g.fillStyle=cs[0];g.fillRect(0,1,3,1);g.fillRect(1,0,1,3);px(g,1,1,cs[1]);dec.push(c)}
+  {const c=mk(4,4),g=pix(c);g.fillStyle='#e7dcc4';g.fillRect(1,2,1,2);g.fillStyle='#b0483c';g.fillRect(0,0,3,2);px(g,1,0,'#f3e6d0');dec.push(c)}
+  {const c=mk(4,4),g=pix(c);g.fillStyle='#8d8a7e';g.fillRect(0,1,2,1);g.fillStyle='#6b675e';g.fillRect(0,2,2,1);px(g,0,1,'#b4b0a2');dec.push(c)}
+  {const c=mk(4,4),g=pix(c);g.fillStyle='#e6dcc6';g.fillRect(0,1,4,1);g.fillStyle='#a89c86';g.fillRect(0,2,4,1);dec.push(c)}
+  const big=dec.map(d=>{const c=mk(4,4);pix(c).drawImage(d,0,0);return c});await save(D+'Ground/Decals.png',strip(big),{frames:big.length,fw:4,fh:4,pivot:'0.5,0',note:'0-2 tufts; 3-'+(2+flowers.length)+' flowers; then mushroom, pebble, bone'})}
+ for(let i=0;i<9;i++)await save(D+'Ground/Deco_'+i+'.png',DECO_TINT[i],{note:'village deco recoloured for this map'});
+ for(let i=0;i<5;i++){const img=T.trees[i];const can=mk(80,72),tr=mk(80,72);pix(can).drawImage(img,0,0,80,50,0,0,80,50);pix(tr).drawImage(img,0,50,80,22,0,50,80,22);
+  await save(D+'Trees/Tree_'+TN[i]+'_Canopy.png',can,{pivot:'0.5,0.028',note:'sways; fades to 42% behind'});await save(D+'Trees/Tree_'+TN[i]+'_Trunk.png',tr,{pivot:'0.5,0.028',note:'static; collider r7'})}
+ for(let i=0;i<3;i++)await save(D+'Trees/Bush_'+['Teal','Leaf','Dark'][i]+'.png',T.bushes[i],{note:'top sways; bottom 8 rows static'})}
+// ---------- Abandoned Camp ----------
+function runeFrame(f){const c=mk(12,30),g=pix(c);const a=[0.35,0.7,1,0.7][f];g.globalAlpha=a*0.35;g.fillStyle='#6fe0d6';g.fillRect(3,6,6,14);g.globalAlpha=a;for(const y of [8,12,16])g.fillRect(5,y,2,2);g.fillRect(4,10,4,1);g.globalAlpha=1;return c}
+async function runAbandoned(){const D='Abandoned/';
+ await runPaletteKit(D,[['#b48ae0','#f0e0ff'],['#8ac8f0','#e8f4ff'],['#c9a6e0','#ffffff']]);
+ const st=PROPS.sacred.img;const can=mk(st.width,st.height),tr=mk(st.width,st.height);pix(can).drawImage(st,0,0,st.width,96,0,0,st.width,96);pix(tr).drawImage(st,0,96,st.width,st.height-96,0,96,st.width,st.height-96);
+ await save(D+'Props/SacredTree_Canopy.png',can,{pivot:'0.5,0.025',note:'sways <=0.35px; fades to 42% when the hero is within 70px sideways and up to 130px above the base'});
+ await save(D+'Props/SacredTree_Trunk.png',tr,{pivot:'0.5,0.025',note:'static; collider 28x12 at the base; Glow_Violet additive under it (220x110, alpha 0.18 +-0.05)'});
+ EXTRA.set(st,'SacredTree');
+ const mh=[...new Set(ents.filter(e=>e.menhir).map(e=>e.img))];for(let i=0;i<mh.length;i++){EXTRA.set(mh[i],'Menhir_'+i);await save(D+'Props/Menhir_'+i+'.png',mh[i],{note:'standing stone; collider r6; rune glow overlay'})}
+ await save(D+'Props/Menhir_RuneGlow.png',strip([0,1,2,3].map(runeFrame)),{frames:4,fw:12,fh:30,pivot:'0.5,0',note:'additive over Menhir_*, ping-pong 6 fps; align bottom; twinkle particles #6fe0d6'});
+ const rt=ents.find(e=>e.img&&e.img.width===64&&e.ay===78&&e.img!==T.Tent);if(rt){EXTRA.set(rt.img,'Tent_Ruined');await save(D+'Props/Tent_Ruined.png',rt.img,{pivot:'0.5,0.025',note:'faded, torn tent; collider 40x18'})}
+ const r=await exportMap(D,'Abandoned',[
+  ['⛩ Cổng về Làng',MAP.portal[0],MAP.portal[1]-52,'#9fe6dc'],['Cây thiêng (Elder Dryad Rider)',800,410,'#e8d0ff'],['Rương dưới rễ cây',830,548,'#fff2a0'],
+  ['Vòng đá dựng (rune)',800,720,'#6fe0d6'],['Dryad Rider chạy vòng',990,770,'#ffc8a0'],['Hồ (Satyr)',330,980,'#b6d8cd'],['Pixie',1230,265,'#d8c0ff'],['Trạm nghỉ',MAP.rest[0]+30,MAP.rest[1]+24,'#9fe6a0'],['Lều rách bỏ hoang',600,470,'#c8c0b0']],
+  ['Palette: Abandoned/Ground and Abandoned/Trees are recoloured (grey-blue grass, desaturated trees); vignette stronger (edge alpha 0.68).','Mist over the whole map: Mist_Blob x6, scale 3-5, alpha 0.16, drifting.',
+   'Resources per the layout spec: SpiritFlower (Hoa linh) + Sap (Nhựa cây). The demo used Herb at the Herb_Full spots: swap to Sap_Full.','Dryad Riders orbit the sacred tree on an ellipse rx170 ry112 at ~34px/s (see mobs[].orbit).','Rings per the layout spec: Satyr outer, Dryad middle, Dryad Rider orbit around the tree.']);
+ return r}
+window.ARTGEN={run,runTrail,runAbandoned,runPaletteKit,exportMap,writeBoard,writeManifest,MAN,BOARD,saveText,save,strip,grid,matTile,dualTile,PAIRS,NAMES};
 })();

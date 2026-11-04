@@ -41,6 +41,8 @@ const OVF='saturate(0.74) brightness(0.86) hue-rotate(8deg)';
 
 // ================= the five maps =================
 // Each map: terrain shapes (clears/paths/water/groves), spawn points and a build() that places its landmarks and mobs.
+// Abandoned ring road: a wobbling ellipse so it reads as a worn trail, not a drawn circle
+function ringPt(d){const t=d*Math.PI/180,f=1+0.045*Math.sin(3*t+1)+0.03*Math.sin(5*t+2);return[Math.round(800+Math.cos(t)*340*f),Math.round(600+Math.sin(t)*245*f)]}
 const MAPS=[
 {name:'Goblin Forest Camp',zone:'VÙNG 1 · KHU HUẤN LUYỆN',sub:'Lv 1–6 · Trại Goblin quanh đống lửa',W:1600,H:1120,
  clears:[{x:760,y:575,rx:158,ry:104,isl:1}],patches:[{x:330,y:285,rx:96,ry:58},{x:1180,y:250,rx:64,ry:40},{x:560,y:880,rx:46,ry:30}],
@@ -61,13 +63,16 @@ const MAPS=[
  branches:[{n:'Trại Goblin',x:420,y:574,s:-1},{n:'Đồng hoa Pixie',x:700,y:652,s:1},{n:'Ổ cung thủ',x:980,y:668,s:-1},{n:'Bãi Satyr',x:1260,y:560,s:1},{n:'Chuồng Gobrider',x:1640,y:649,s:-1},{n:'Rừng nấm',x:1840,y:655,s:1}],
  dark:{x0:800,max:0.42},quests:[['Hạ quái ở các bãi','kill',15],['Hái Lam Diệp Thảo','herb',3],['Hái Nấm Lân Quang','mush',3],['Hạ Gobrider Captain','boss',1],['Tìm lối tắt bí mật','chest',1]],killRe:/Goblin|Gobrider|Satyr|Pixie/,
  bugs:6,fireflies:1,build:buildTrail},
-{name:'Abandoned Camp',zone:'VÙNG 3 · TRẠI BỎ HOANG',sub:'Lv 9–14 · Vòng đá quanh cây thiêng',W:1600,H:1120,
- clears:[{x:800,y:610,rx:205,ry:138,isl:1}],patches:[{x:1230,y:300,rx:60,ry:36}],
- paths:[{p:[[800,1130],[805,960],[796,740]],w:13},{p:[[0,640],[260,620],[600,630]],w:10},{p:[[960,520],[1120,400],[1230,300]],w:8}],
- stream:null,ponds:[{x:330,y:900,rx:84,ry:48}],fall:0,
- groves:[{x:330,y:330,r:110},{x:1300,y:620,r:90},{x:1250,y:950,r:100},{x:500,y:1000,r:70},{x:1080,y:250,r:60}],
- gaps:[{x:800,y:1100,r:70}],keep:[{x:800,y:600,r:230}],spawn:[800,1030],portal:[800,1092],rest:[876,1010],fires:[{x:900,y:1014}],
- mist:1,quests:[['Thanh tẩy linh thể','kill',8],['Hái Hoa Linh Hồn','spirit',4],['Hái Lam Diệp Thảo','herb',3],['Hạ Elder Dryad Rider','boss',1],['Rương dưới rễ cây','chest',1]],killRe:/Dryad|Pixie|Satyr/,
+{name:'Abandoned Camp',zone:'VÙNG 3 · TRẠI BỎ HOANG',sub:'Lv 9–14 · Đường vòng quanh cây thiêng, 6 bãi quái',W:1600,H:1120,
+ clears:[{x:800,y:600,rx:190,ry:128,isl:1},{x:340,y:820,rx:85,ry:52,isl:1},{x:300,y:420,rx:100,ry:60,isl:1},{x:800,y:195,rx:130,ry:52,isl:1},{x:1300,y:400,rx:95,ry:58,isl:1},{x:1330,y:720,rx:100,ry:62,isl:1},{x:1100,y:980,rx:95,ry:55,isl:1}],patches:[],
+ paths:[{p:[[800,1130],[805,960],ringPt(90),[796,780],[800,720]],w:13},
+  {p:Array.from({length:37},(_,i)=>ringPt(i*10)),w:10},
+  {p:[ringPt(270),[806,410],[800,470]],w:9},{p:[ringPt(180),[540,594],[610,600]],w:9},{p:[ringPt(0),[1060,606],[990,600]],w:9},
+  {p:[ringPt(150),[420,780],[350,810]],w:8},{p:[ringPt(210),[400,440],[320,425]],w:8},{p:[ringPt(270),[792,290],[800,240]],w:8},{p:[ringPt(330),[1200,430],[1280,405]],w:8},{p:[ringPt(30),[1170,730],[1240,722]],w:8},{p:[ringPt(60),[1040,900],[1090,960]],w:8}],
+ stream:null,ponds:[{x:300,y:930,rx:84,ry:48}],fall:0,
+ groves:[{x:560,y:240,r:80},{x:1060,y:240,r:80},{x:150,y:620,r:70},{x:1480,y:560,r:70},{x:560,y:1000,r:90},{x:1360,y:960,r:80}],
+ gaps:[{x:800,y:1100,r:70}],keep:[{x:800,y:600,r:220},{x:340,y:820,r:95},{x:300,y:420,r:110},{x:800,y:195,r:140},{x:1300,y:400,r:105},{x:1330,y:720,r:110},{x:1100,y:980,r:105}],spawn:[800,1030],portal:[800,1092],rest:[876,1010],fires:[{x:900,y:1014}],
+ mist:1,quests:[['Thanh tẩy linh thể','kill',20],['Hái Hoa Linh Hồn','spirit',4],['Lấy Nhựa Cây','sap',3],['Hạ Elder Dryad Rider','boss',1],['Rương dưới rễ cây','chest',1]],killRe:/Dryad|Pixie|Satyr/,
  bugs:4,fireflies:1,build:buildRuin,
  pal:{G0:'#2b4447',G1:'#34525a',G1o:'#2b464b',G2:'#41665f',G3:'#4b7166',G4:'#567b6c',T1:'#2e4a4b',T3:'#62887a',Lt:'#567f70',D1:'#9e8466',D2:'#8a7258',D3:'#b09474',De:'#6c5a48',Ds:'#7e6850'},
  treeF:['saturate(0.5) brightness(0.8) hue-rotate(18deg)','saturate(0.45) brightness(0.78) hue-rotate(30deg)','saturate(0.45) brightness(0.66) hue-rotate(22deg)','saturate(0.4) brightness(0.64) hue-rotate(34deg)','saturate(0.55) brightness(0.74) hue-rotate(4deg)']},
@@ -244,6 +249,7 @@ function makeHerb(){const c=mk(14,14),g=c.getContext('2d');
  for(const p of [[3,3],[7,1],[10,4],[6,4]]){R_(g,p[0],p[1],3,3,'#9fd8e8');R_(g,p[0]+1,p[1]+1,1,1,'#ffffff')}R_(g,6,12,2,2,'#2f5a3c');return c}
 function makeMush(){const c=mk(16,14),g=c.getContext('2d');
  for(const [x,y,s] of [[1,6,5],[6,2,6],[11,7,4]]){R_(g,x+(s>>1)-1,y+3,2,14-y-3,'#d8e4d0');R_(g,x,y,s,3,'#3ab0a0');R_(g,x+1,y-1,s-2,1,'#3ab0a0');R_(g,x+1,y,s-2,1,'#9ff0e0');R_(g,x+1,y+1,1,1,'#ffffff');R_(g,x,y+2,s,1,'#22766c')}return c}
+function makeSap(){const c=mk(18,30),g=c.getContext('2d');R_(g,5,0,8,28,'#5e402c');R_(g,5,0,2,28,'#7a5638');R_(g,11,0,2,28,'#3e2a20');R_(g,3,26,12,3,'#3e2a20');R_(g,12,20,6,6,'#8a6a48');R_(g,12,20,6,1,'#5a4430');R_(g,9,10,2,9,'#e0902a');R_(g,9,11,1,1,'#ffc060');R_(g,9,14,1,1,'#ffc060');R_(g,13,21,4,2,'#e0902a');R_(g,12,17,1,2,'#f0a840');return c}
 function makeSpirit(){const c=mk(14,16),g=c.getContext('2d');R_(g,6,8,2,8,'#3f6a52');R_(g,3,11,3,2,'#4f8060');R_(g,8,10,3,2,'#4f8060');
  for(const [x,y] of [[6,2],[3,5],[9,5],[6,7],[6,5]]){R_(g,x,y,2,2,'#b48ae0')}R_(g,4,3,6,5,'#9a6ad0');R_(g,5,4,4,3,'#d8b8ff');R_(g,6,5,2,1,'#ffffff');return c}
 function makeOre(){const c=makeBoulder(20,15,7,false),g=c.getContext('2d');g.globalCompositeOperation='source-atop';g.fillStyle='rgba(40,30,30,0.35)';g.fillRect(0,0,20,15);
@@ -356,7 +362,7 @@ let hero,portal,rest,chest,TG,PROPS={};
 function commonProps(){
  TG=makeTallGrass();
  PROPS={LOG:makeLog(),SEAT:makeSeat(),RACK:makeRack(),SPEARS:makeSpears(),BRAZ:makeBrazier()};
- T.chestC=makeChest(false);T.chestO=makeChest(true);T.node={stone:makeSpire(),herb:makeHerb(),mush:makeMush(),spirit:makeSpirit(),ore:makeOre()};
+ T.chestC=makeChest(false);T.chestO=makeChest(true);T.node={stone:makeSpire(),herb:makeHerb(),mush:makeMush(),spirit:makeSpirit(),ore:makeOre(),sap:makeSap()};
  T.boulders=[makeBoulder(20,13,1),makeBoulder(14,10,2),makeBoulder(26,15,3)];
  // portal + rest point
  const [px,py]=MAP.portal;portal=addSpr(makePortal(),px,py,{k:'portal'});addCol(px-18,py-4,5,3);addCol(px+18,py-4,5,3);
@@ -444,23 +450,39 @@ function buildTrail(){const path=MAP.paths[0].p,side=MAP.paths.slice(1);
  spawnMob(GE,'Gobrider Captain',11,2070,545,{hr:40,boss:true,hp:420,speed:22})}
 function polyY(pts,x){for(let i=0;i<pts.length-1;i++){const a=pts[i],b=pts[i+1];if(x>=a[0]&&x<=b[0])return a[1]+(b[1]-a[1])*(x-a[0])/(b[0]-a[0]||1)}return pts[pts.length-1][1]}
 
-// ---------- map 3: abandoned camp around a sacred tree ----------
+// ---------- map 3: sacred tree at the centre, a ring road and six training grounds around it ----------
 function buildRuin(){const cx=800,cy=600;
  const tree=addSpr(makeSacred(),cx,cy+4,{k:'tree',ax:88,ay:156,split:96,a:1,ph:0,fw:70,fh:130});addCol(cx,cy+1,14,6);occAdd(cx,cy);
  PROPS.sacred=tree;
  for(let k=0;k<11;k++){const t=k/11*Math.PI*2-Math.PI/2;if(Math.abs(Math.cos(t))<0.25&&Math.sin(t)>0)continue;const x=Math.round(cx+Math.cos(t)*136),y=Math.round(cy+Math.sin(t)*90);addSpr(makeMenhir(k),x,y,{col:6,colry:3,menhir:true})}
- const RT=makeRuinTent();for(let k=0;k<6;k++){const t=k/6*Math.PI*2+0.5;const x=Math.round(cx+Math.cos(t)*190),y=Math.round(cy+Math.sin(t)*124);if(Math.abs(x-cx)<40&&y>cy)continue;addSpr(RT,x,y,{col:20,colry:9,coly:8,ay:78})}
- for(const [x,y] of [[640,700],[960,700],[700,500],[920,480]])addSpr(PROPS.SEAT,x,y,{col:9,colry:3});
- for(const [x,y,n] of [[600,640,'Crate'],[1010,610,'Barrel'],[1022,618,'Crate'],[580,520,'Hay']])addSpr(T[n],x,y,{col:6,colry:3});
- for(const [x,y] of [[460,760],[1140,780],[1020,420],[520,420]])addSpr(PROPS.LOG,x,y,{col:18,colry:4,coly:4});
+ const RT=makeRuinTent();
  chest=addSpr(T.chestC,cx+30,cy-36,{k:'chest',opened:false,col:7,colry:3});
- for(const [x,y] of [[700,560],[900,560],[680,660],[920,660],[800,700],[760,480]])node('spirit',x,y);
- for(const [x,y] of [[250,560],[420,880],[1180,660],[1240,470],[1100,1000]])node('herb',x,y);
- for(let i=0;i<3;i++){const ph=i*2.1;spawnMob(DRR,'Dryad Rider',ri(10,12),cx+Math.cos(ph)*170,cy+Math.sin(ph)*112,{orb:{cx,cy,rx:170,ry:112,sp:0.2,ph:0},speed:46});mobs[mobs.length-1].oa=ph}
- for(let i=0;i<4;i++)spawnMob(DR,'Pixie',ri(9,11),cx+ri(-90,90),cy+ri(-50,60),{hr:60,home:[cx,cy+20]});
- for(let i=0;i<3;i++)spawnMob(SA,'Satyr',ri(10,12),330+ri(-70,70),800+ri(-20,20),{hr:60});
- for(let i=0;i<3;i++)spawnMob(DR,'Pixie',10,1230+ri(-30,30),320+ri(-20,20),{hr:40});
- spawnMob(DRR,'Elder Dryad Rider',14,cx,cy-70,{hr:26,boss:true,hp:520,speed:20})}
+ for(const [x,y] of [[700,560],[900,560],[800,700]])node('spirit',x,y);
+ // centre: boss + riders circling the tree + a few pixies
+ for(let i=0;i<3;i++){const ph=i*2.1;spawnMob(DRR,'Dryad Rider',12,cx+Math.cos(ph)*170,cy+Math.sin(ph)*112,{orb:{cx,cy,rx:170,ry:112,sp:0.2,ph:0},speed:46});mobs[mobs.length-1].oa=ph}
+ for(let i=0;i<2;i++)spawnMob(DR,'Pixie',11,cx+ri(-90,90),cy+ri(30,70),{hr:50,home:[cx,cy+40]});
+ spawnMob(DRR,'Elder Dryad Rider',14,cx,cy-70,{hr:26,boss:true,hp:520,speed:20});
+ // 1 satyr pond (SW)
+ for(const [x,y] of [[290,800],[390,840]])addSpr(PROPS.LOG,x,y,{col:18,colry:4,coly:4});
+ for(let i=0;i<5;i++)spawnMob(SA,'Satyr',9,340+ri(-60,60),820+ri(-25,25),{hr:66,home:[340,820]});
+ // 2 abandoned camp (NW): ruined tents, seats, crates
+ for(const [x,y] of [[240,400],[340,384],[260,470]])addSpr(RT,x,y,{col:20,colry:9,coly:8,ay:78});
+ for(const [x,y] of [[310,440],[360,456]])addSpr(PROPS.SEAT,x,y,{col:9,colry:3});for(const [x,y,n] of [[380,410,'Crate'],[392,416,'Barrel'],[220,446,'Hay']])addSpr(T[n],x,y,{col:6,colry:3});
+ for(let i=0;i<5;i++)spawnMob(DR,'Pixie',10,300+ri(-70,70),430+ri(-25,25),{hr:70,home:[300,430]});
+ // 3 spirit-flower field (N, under the cliff)
+ for(const [x,y] of [[720,190],[790,170],[860,200],[900,180]])node('spirit',x,y);
+ for(let i=0;i<3;i++)spawnMob(DR,'Pixie',11,800+ri(-90,90),200+ri(-15,15),{hr:90,home:[800,200]});spawnMob(DRR,'Dryad Rider',11,800,210,{hr:90,home:[800,200],speed:30});
+ // 4 sap grove (NE)
+ for(const [x,y] of [[1250,380],[1340,370],[1320,430]])node('sap',x,y);for(const [x,y] of [[1230,430],[1370,420]])addSpr(T.Stump,x,y,{col:6});
+ for(let i=0;i<4;i++)spawnMob(SA,'Satyr',11,1300+ri(-60,60),400+ri(-20,20),{hr:66,home:[1300,400]});
+ // 5 old stone circle (E)
+ for(let k=0;k<7;k++){const t=k/7*Math.PI*2;if(Math.cos(t)<-0.8)continue;addSpr(makeMenhir(k+20),Math.round(1330+Math.cos(t)*70),Math.round(720+Math.sin(t)*42),{col:6,colry:3,menhir:true})}
+ for(let i=0;i<3;i++)spawnMob(DRR,'Dryad Rider',12,1330+ri(-40,40),720+ri(-15,15),{hr:50,home:[1330,720],speed:28});
+ // 6 mossy log yard (SE)
+ for(const [x,y] of [[1060,960],[1140,1000],[1080,1010]])addSpr(PROPS.LOG,x,y,{col:18,colry:4,coly:4});node('sap',1150,950);
+ for(let i=0;i<2;i++)spawnMob(DR,'Pixie',12,1100+ri(-50,50),980+ri(-15,15),{hr:60,home:[1100,980]});for(let i=0;i<2;i++)spawnMob(SA,'Satyr',12,1100+ri(-50,50),980,{hr:60,home:[1100,980]});
+ // signposts where each branch leaves the ring
+ for(const d of [150,210,270,330,30,60]){const [x,y]=ringPt(d);addSpr(T.Signpost_Up,x+16,y+(d>180?-12:16),{col:3})}}
 
 // ---------- map 4: outpost with three gate walls ----------
 function buildOutpost(){const path=MAP.paths[0].p,wood=['#4a3320','#6b4a2c','#8a6438','#a67c46'];
@@ -523,7 +545,7 @@ cv.addEventListener('click',e=>{for(const p of PILLS)if(e.clientX>=p[0]&&e.clien
 
 // ================= gameplay =================
 const NODE={stone:{label:'Khai thác đá',item:'Đá thô',dur:1.2,chips:['#d2c2ae','#a8917a','#8a735f'],c:'#e2d6c4'},herb:{label:'Hái thảo dược',item:'Lam Diệp Thảo',dur:0.8,chips:['#5e9e66','#9fd8e8','#ffffff'],c:'#a8e6f0',tw:'#bff0ff'},
- mush:{label:'Hái nấm',item:'Nấm Lân Quang',dur:0.8,chips:['#3ab0a0','#9ff0e0'],c:'#9ff0e0',tw:'#9ff0e0'},spirit:{label:'Hái hoa linh',item:'Hoa Linh Hồn',dur:1.0,chips:['#b48ae0','#d8b8ff','#ffffff'],c:'#d8b8ff',tw:'#e8d0ff'},
+ mush:{label:'Hái nấm',item:'Nấm Lân Quang',dur:0.8,chips:['#3ab0a0','#9ff0e0'],c:'#9ff0e0',tw:'#9ff0e0'},sap:{label:'Lấy nhựa cây',item:'Nhựa Cây',dur:1.0,chips:['#e0902a','#ffc060','#7a5638'],c:'#f0b060',tw:'#ffd080'},spirit:{label:'Hái hoa linh',item:'Hoa Linh Hồn',dur:1.0,chips:['#b48ae0','#d8b8ff','#ffffff'],c:'#d8b8ff',tw:'#e8d0ff'},
  ore:{label:'Đào quặng',item:'Quặng sắt',dur:1.5,chips:['#e09a4a','#c8d0d8','#585d64'],c:'#f0c080'}};
 const Q={};for(const q of MAP.quests)Q[q[1]]=0;
 let gold=120;

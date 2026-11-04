@@ -163,7 +163,7 @@ async function run(){
  const R1=performance.now();return {files:MAN.length,ms:Math.round(R1-R0)}}
 // ---------- per-map export helpers ----------
 const TN=['Teal','Leaf','TealDark','LeafDark','TealCool'];
-const NODE_FILE={stone:'Stone_Full',herb:'Herb_Full',mush:'Mushroom_Full',spirit:'SpiritFlower_Full',ore:'IronOre_Full'};
+const NODE_FILE={sap:'Sap_Full',stone:'Stone_Full',herb:'Herb_Full',mush:'Mushroom_Full',spirit:'SpiritFlower_Full',ore:'IronOre_Full'};
 function spriteName(e){const NM=new Map();
  T.trees.forEach((c,i)=>NM.set(c,'Tree_'+TN[i]));T.bushes.forEach((c,i)=>NM.set(c,'Bush_'+['Teal','Leaf','Dark'][i]));T.boulders.forEach((c,i)=>NM.set(c,'Boulder_'+'SML'[[1,0,2][i]]));
  for(const n of ['Stump','Barrel','Crate','Crate_Herbs','Sacks','Hay','Bench','Signpost_Up'])NM.set(T[n],n==='Signpost_Up'?'Signpost':n);NM.set(T.Tent,'Tent_Horn');NM.set(T.Flag,'Flag_Tattered');
@@ -246,10 +246,10 @@ async function runAbandoned(){const D='Abandoned/';
  await save(D+'Props/Menhir_RuneGlow.png',strip([0,1,2,3].map(runeFrame)),{frames:4,fw:12,fh:30,pivot:'0.5,0',note:'additive over Menhir_*, ping-pong 6 fps; align bottom; twinkle particles #6fe0d6'});
  const rt=ents.find(e=>e.img&&e.img.width===64&&e.ay===78&&e.img!==T.Tent);if(rt){EXTRA.set(rt.img,'Tent_Ruined');await save(D+'Props/Tent_Ruined.png',rt.img,{pivot:'0.5,0.025',note:'faded, torn tent; collider 40x18'})}
  const r=await exportMap(D,'Abandoned',[
-  ['⛩ Cổng về Làng',MAP.portal[0],MAP.portal[1]-52,'#9fe6dc'],['Cây thiêng (Elder Dryad Rider)',800,410,'#e8d0ff'],['Rương dưới rễ cây',830,548,'#fff2a0'],
-  ['Vòng đá dựng (rune)',800,720,'#6fe0d6'],['Dryad Rider chạy vòng',990,770,'#ffc8a0'],['Hồ (Satyr)',330,980,'#b6d8cd'],['Pixie',1230,265,'#d8c0ff'],['Trạm nghỉ',MAP.rest[0]+30,MAP.rest[1]+24,'#9fe6a0'],['Lều rách bỏ hoang',600,470,'#c8c0b0']],
+  ['⛩ Cổng về Làng',MAP.portal[0],MAP.portal[1]-52,'#9fe6dc'],['Cây thiêng: Elder Dryad Rider + 3 Rider chạy vòng',800,415,'#e8d0ff'],['Rương dưới rễ',832,552,'#fff2a0'],['Đường vòng',1150,560,'#d8d0b0'],
+  ['1 Bãi Satyr ven hồ Lv9',340,755,'#d8c0ff'],['2 Trại hoang Lv10',300,350,'#c8c0b0'],['3 Đồng hoa linh Lv11',800,135,'#e8d0ff'],['4 Rừng cây nhựa Lv11',1300,335,'#f0b060'],['5 Vòng đá cổ Lv12',1330,650,'#6fe0d6'],['6 Bãi gỗ mục Lv12',1100,915,'#d8c0ff'],['Trạm nghỉ',MAP.rest[0]+40,MAP.rest[1]+24,'#9fe6a0']],
   ['Palette: Abandoned/Ground and Abandoned/Trees are recoloured (grey-blue grass, desaturated trees); vignette stronger (edge alpha 0.68).','Mist over the whole map: Mist_Blob x6, scale 3-5, alpha 0.16, drifting.',
-   'Resources per the layout spec: SpiritFlower (Hoa linh) + Sap (Nhựa cây). The demo used Herb at the Herb_Full spots: swap to Sap_Full.','Dryad Riders orbit the sacred tree on an ellipse rx170 ry112 at ~34px/s (see mobs[].orbit).','Rings per the layout spec: Satyr outer, Dryad middle, Dryad Rider orbit around the tree.']);
+   'Layout: centre clearing with the sacred tree (boss + 3 orbiting riders), a wobbling ring road (paths[1]) with 3 spokes to the centre, and 6 branches (paths[5..10]) to training grounds 1-6; a Signpost where each branch leaves the ring.','Resources: SpiritFlower (Hoa linh) + Sap (Nhựa cây), both in the demo now.','Dryad Riders orbit the sacred tree on an ellipse rx170 ry112 at ~34px/s (see mobs[].orbit).','Rings per the layout spec: Satyr outer, Dryad middle, Dryad Rider orbit around the tree.']);
  return r}
 window.ARTGEN={run,runTrail,runAbandoned,runPaletteKit,exportMap,writeBoard,writeManifest,MAN,BOARD,saveText,save,strip,grid,matTile,dualTile,PAIRS,NAMES};
 })();

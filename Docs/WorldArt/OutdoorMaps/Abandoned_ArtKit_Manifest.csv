@@ -41,17 +41,22 @@ Abandoned/Trees/Bush_Leaf.png,36,26,1,36,26,0.5,0,top sways; bottom 8 rows stati
 Abandoned/Trees/Bush_Dark.png,36,26,1,36,26,0.5,0,top sways; bottom 8 rows static
 Abandoned/Props/SacredTree_Canopy.png,176,160,1,176,160,0.5,0.025,sways <=0.35px; fades to 42% when the hero is within 70px sideways and up to 130px above the base
 Abandoned/Props/SacredTree_Trunk.png,176,160,1,176,160,0.5,0.025,static; collider 28x12 at the base; Glow_Violet additive under it (220x110; alpha 0.18 +-0.05)
-Abandoned/Props/Menhir_0.png,12,22,1,12,22,0.5,0,standing stone; collider r6; rune glow overlay
-Abandoned/Props/Menhir_1.png,12,24,1,12,24,0.5,0,standing stone; collider r6; rune glow overlay
-Abandoned/Props/Menhir_2.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
-Abandoned/Props/Menhir_3.png,12,28,1,12,28,0.5,0,standing stone; collider r6; rune glow overlay
-Abandoned/Props/Menhir_4.png,12,29,1,12,29,0.5,0,standing stone; collider r6; rune glow overlay
-Abandoned/Props/Menhir_5.png,12,26,1,12,26,0.5,0,standing stone; collider r6; rune glow overlay
-Abandoned/Props/Menhir_6.png,12,26,1,12,26,0.5,0,standing stone; collider r6; rune glow overlay
-Abandoned/Props/Menhir_7.png,12,22,1,12,22,0.5,0,standing stone; collider r6; rune glow overlay
-Abandoned/Props/Menhir_8.png,12,26,1,12,26,0.5,0,standing stone; collider r6; rune glow overlay
-Abandoned/Props/Menhir_9.png,12,26,1,12,26,0.5,0,standing stone; collider r6; rune glow overlay
-Abandoned/Props/Menhir_10.png,12,27,1,12,27,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_0.png,12,25,1,12,25,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_1.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_2.png,12,24,1,12,24,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_3.png,12,22,1,12,22,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_4.png,12,25,1,12,25,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_5.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_6.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_7.png,12,29,1,12,29,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_8.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_9.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_10.png,12,28,1,12,28,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_11.png,12,28,1,12,28,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_12.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_13.png,12,26,1,12,26,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_14.png,12,27,1,12,27,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_15.png,12,27,1,12,27,0.5,0,standing stone; collider r6; rune glow overlay
 Abandoned/Props/Menhir_RuneGlow.png,48,30,4,12,30,0.5,0,additive over Menhir_*; ping-pong 6 fps; align bottom; twinkle particles #6fe0d6
 Abandoned/Props/Tent_Ruined.png,64,80,1,64,80,0.5,0.025,faded; torn tent; collider 40x18
 Abandoned/Abandoned_Overview.png,1600,1120,1,1600,1120,0,1,whole map at 1x from the approved demo; layout reference only

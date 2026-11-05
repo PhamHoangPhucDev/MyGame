@@ -1,0 +1,63 @@
+file,width,height,frames,frame_w,frame_h,pivot_xy_normalized,note
+Stronghold/Ground/Fill_Grass.png,64,16,4,16,16,0,0,4 seamless fill variants
+Stronghold/Ground/Fill_Dark.png,64,16,4,16,16,0,0,4 seamless fill variants
+Stronghold/Ground/Fill_Forest.png,64,16,4,16,16,0,0,4 seamless fill variants
+Stronghold/Ground/Fill_Dirt.png,64,16,4,16,16,0,0,4 seamless fill variants
+Stronghold/Ground/Fill_Water.png,64,16,4,16,16,0,0,4 seamless fill variants
+Stronghold/Ground/Fill_Pave.png,64,16,4,16,16,0,0,4 seamless fill variants
+Stronghold/Ground/Dual_GrassToDark.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = dark)
+Stronghold/Ground/Dual_GrassToDark_Overlay.png,64,64,16,16,16,0,0,side A transparent; for layers painted over another layer
+Stronghold/Ground/Dual_DarkToForest.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = forest)
+Stronghold/Ground/Dual_DarkToForest_Overlay.png,64,64,16,16,16,0,0,side A transparent; for layers painted over another layer
+Stronghold/Ground/Dual_GrassToDirt.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = dirt)
+Stronghold/Ground/Dual_GrassToDirt_Overlay.png,64,64,16,16,16,0,0,side A transparent; for layers painted over another layer
+Stronghold/Ground/Dual_GrassToWater.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = water)
+Stronghold/Ground/Dual_GrassToWater_Overlay.png,64,64,16,16,16,0,0,side A transparent; for layers painted over another layer
+Stronghold/Ground/Dual_DirtToPave.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = pave)
+Stronghold/Ground/Dual_DirtToPave_Overlay.png,64,64,16,16,16,0,0,side A transparent; for layers painted over another layer
+Stronghold/Ground/TallGrass.png,30,18,6,10,9,0.5,0,row 0 light / row 1 dark; frames lean L; up; R
+Stronghold/Ground/Decals.png,36,4,9,4,4,0.5,0,0-2 tufts; 3-5 flowers; then mushroom; pebble; bone
+Stronghold/Ground/Deco_0.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Stronghold/Ground/Deco_1.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Stronghold/Ground/Deco_2.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Stronghold/Ground/Deco_3.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Stronghold/Ground/Deco_4.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Stronghold/Ground/Deco_5.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Stronghold/Ground/Deco_6.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Stronghold/Ground/Deco_7.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Stronghold/Ground/Deco_8.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Stronghold/Trees/Tree_Teal_Canopy.png,80,72,1,80,72,0.5,0.028,sways; fades to 42% behind
+Stronghold/Trees/Tree_Teal_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7
+Stronghold/Trees/Tree_Leaf_Canopy.png,80,72,1,80,72,0.5,0.028,sways; fades to 42% behind
+Stronghold/Trees/Tree_Leaf_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7
+Stronghold/Trees/Tree_TealDark_Canopy.png,80,72,1,80,72,0.5,0.028,sways; fades to 42% behind
+Stronghold/Trees/Tree_TealDark_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7
+Stronghold/Trees/Tree_LeafDark_Canopy.png,80,72,1,80,72,0.5,0.028,sways; fades to 42% behind
+Stronghold/Trees/Tree_LeafDark_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7
+Stronghold/Trees/Tree_TealCool_Canopy.png,80,72,1,80,72,0.5,0.028,sways; fades to 42% behind
+Stronghold/Trees/Tree_TealCool_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7
+Stronghold/Trees/Bush_Teal.png,36,26,1,36,26,0.5,0,top sways; bottom 8 rows static
+Stronghold/Trees/Bush_Leaf.png,36,26,1,36,26,0.5,0,top sways; bottom 8 rows static
+Stronghold/Trees/Bush_Dark.png,36,26,1,36,26,0.5,0,top sways; bottom 8 rows static
+Stronghold/Fortify/Wall_Stone_H_0.png,16,30,1,16,30,0.5,0,outer wall; horizontal run: tile every 16px; merlons on top; 2 colliders r6 per segment
+Stronghold/Fortify/Wall_Stone_H_1.png,16,30,1,16,30,0.5,0,outer wall; horizontal run: tile every 16px; merlons on top; 2 colliders r6 per segment
+Stronghold/Fortify/Wall_Stone_H_2.png,16,30,1,16,30,0.5,0,outer wall; horizontal run: tile every 16px; merlons on top; 2 colliders r6 per segment
+Stronghold/Fortify/Wall_Stone_H_3.png,16,30,1,16,30,0.5,0,outer wall; horizontal run: tile every 16px; merlons on top; 2 colliders r6 per segment
+Stronghold/Fortify/Wall_Stone_V.png,16,38,1,16,38,0.5,0,outer wall; vertical run: stack every 16px (each covers the face of the one above); colliders r7 every 5px
+Stronghold/Fortify/Tower_Stone.png,32,58,1,32,58,0.5,0,corners and both sides of every gate; collider 28x12
+Stronghold/Fortify/Palisade_Post_20.png,8,20,1,8,20,0.5,0,inner palisade; 2 staggered rows every 7px; 20-24 also practice posts
+Stronghold/Fortify/Palisade_Post_21.png,8,21,1,8,21,0.5,0,inner palisade; 2 staggered rows every 7px; 20-24 also practice posts
+Stronghold/Fortify/Palisade_Post_22.png,8,22,1,8,22,0.5,0,inner palisade; 2 staggered rows every 7px; 20-24 also practice posts
+Stronghold/Fortify/Palisade_Post_23.png,8,23,1,8,23,0.5,0,inner palisade; 2 staggered rows every 7px; 20-24 also practice posts
+Stronghold/Fortify/Palisade_Post_24.png,8,24,1,8,24,0.5,0,inner palisade; 2 staggered rows every 7px; 20-24 also practice posts
+Stronghold/Fortify/Palisade_Post_25.png,8,25,1,8,25,0.5,0,inner palisade; 2 staggered rows every 7px; 20-24 also practice posts
+Stronghold/Fortify/Palisade_Post_26.png,8,26,1,8,26,0.5,0,inner palisade; 2 staggered rows every 7px; 20-24 also practice posts
+Stronghold/Fortify/Palisade_Post_27.png,8,27,1,8,27,0.5,0,inner palisade; 2 staggered rows every 7px; 20-24 also practice posts
+Stronghold/Fortify/Palisade_Post_28.png,8,28,1,8,28,0.5,0,inner palisade; 2 staggered rows every 7px; 20-24 also practice posts
+Stronghold/Fortify/Palisade_Post_29.png,8,29,1,8,29,0.5,0,inner palisade; 2 staggered rows every 7px; 20-24 also practice posts
+Stronghold/Fortify/Palisade_V.png,12,34,1,12,34,0.5,0,inner palisade; vertical run: stack every 14px; colliders r6 every 5px
+Stronghold/Props/Great_Hall.png,136,96,1,136,96,0.5,0,Warlord hall 136x96; collider 116x24 at the front + 2 boxes behind; door at the pivot
+Stronghold/Props/Tent_Horn.png,64,80,1,64,80,0.5,0.025,
+Stronghold/Props/Flag_Tattered.png,25,54,1,25,54,0.5,0,
+Stronghold/Stronghold_Overview.png,1600,1200,1,1600,1200,0,1,whole map at 1x from the approved demo; layout reference only
+Stronghold/Stronghold_Overview_Annotated.png,1600,1200,1,1600,1200,0,1,annotated layout

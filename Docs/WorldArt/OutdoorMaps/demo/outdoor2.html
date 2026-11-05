@@ -92,15 +92,20 @@ const MAPS=[
  bugs:3,build:buildOutpost,
  pal:{G0:'#3a4733',G1:'#45553a',G1o:'#394731',G2:'#566a45',G3:'#62744d',G4:'#6e7f55',T1:'#3d4c33',T2:'#6a7c50',T3:'#7d8d5c',Lt:'#728458',D1:'#bd9664',D2:'#a6804f',D3:'#d0a874',De:'#836242',Ds:'#987248',PL:['#323d2b','#3b4832','#48573c','#536445'],lip:['#536445','#66784f']},
  treeF:['saturate(0.6) brightness(0.84) hue-rotate(-28deg)','saturate(0.62) brightness(0.86) hue-rotate(-14deg)','saturate(0.55) brightness(0.7) hue-rotate(-24deg)','saturate(0.7) brightness(0.8) hue-rotate(-40deg) sepia(0.2)','saturate(0.6) brightness(0.78) hue-rotate(-30deg)']},
-{name:'Gobrider Stronghold',zone:'VÙNG 5 · THÀNH TRÌ GOBRIDER',sub:'Lv 17–22 · Tường đá và sảnh của Warlord',W:1600,H:1200,
- clears:[{x:800,y:865,rx:400,ry:66,isl:1},{x:1360,y:520,rx:60,ry:40}],patches:[],
- paths:[{p:[[800,1210],[795,1060],[800,950]],w:16},{p:[[1270,650],[1340,560],[1380,470]],w:9},{p:[[1512,278],[1506,200],[1500,110]],w:7}],
+{name:'Gobrider Stronghold',zone:'VÙNG 5 · THÀNH TRÌ GOBRIDER',sub:'Lv 17–22 · Thành hai lớp, 8 bãi quái',W:1600,H:1200,
+ clears:[{x:450,y:870,rx:100,ry:58,isl:1},{x:1150,y:870,rx:100,ry:58,isl:1},{x:445,y:430,rx:95,ry:56,isl:1},{x:1155,y:430,rx:95,ry:56,isl:1},
+  {x:380,y:1075,rx:95,ry:48,isl:1},{x:1220,y:1075,rx:95,ry:48,isl:1},{x:185,y:650,rx:72,ry:62,isl:1},{x:1385,y:530,rx:82,ry:50,isl:1}],patches:[],
+ paths:[{p:[[800,1210],[795,1075],[800,960],[800,890]],w:16},
+  {p:[[450,880],[620,892],[800,890],[980,892],[1150,880]],w:11},{p:[[450,880],[446,760],[450,650],[446,520],[445,450]],w:10},{p:[[1150,880],[1154,760],[1150,650],[1154,520],[1155,450]],w:10},
+  {p:[[185,650],[260,646],[330,650],[446,650]],w:10},{p:[[1150,650],[1270,650],[1330,600],[1380,540]],w:10},
+  {p:[[795,1075],[620,1080],[470,1075]],w:9},{p:[[795,1075],[980,1080],[1130,1075]],w:9},
+  {p:[[1512,278],[1506,200],[1500,110]],w:7}],
  stream:[[1430,60],[1432,180],[1440,250]],ponds:[{x:1440,y:330,rx:92,ry:62}],fall:1430,
  steps:[[1400,415],[1414,398],[1430,384],[1444,370],[1458,350],[1470,330],[1482,310],[1494,292],[1506,276]],
- pave:[{x0:572,y0:416,x1:1028,y1:752},{x0:776,y0:752,x1:824,y1:960}],cave:{x:1500},
- groves:[{x:160,y:1050,r:130},{x:1440,y:1060,r:120},{x:160,y:450,r:110}],
- gaps:[{x:800,y:1180,r:70},{x:1500,y:160,r:80}],keep:[{x:800,y:640,r:480},{x:1500,y:170,r:70}],spawn:[800,1120],portal:[800,1184],rest:[866,1110],fires:[],
- quests:[['Hạ quân Gobrider','kill',10],['Đào quặng sắt','ore',4],['Hái Lam Diệp Thảo','herb',3],['Hạ Gobrider Warlord','boss',1],['Kho vũ khí trong hang','chest',1]],killRe:/Gobrider|Goblin/,
+ pave:[{x0:572,y0:416,x1:1028,y1:752},{x0:776,y0:752,x1:824,y1:886}],cave:{x:1500},
+ groves:[{x:160,y:400,r:80},{x:1450,y:820,r:90},{x:160,y:900,r:80}],
+ gaps:[{x:800,y:1180,r:70},{x:1500,y:160,r:80}],keep:[{x:800,y:640,r:480},{x:1500,y:170,r:70},{x:380,y:1075,r:105},{x:1220,y:1075,r:105},{x:185,y:650,r:85},{x:1385,y:530,r:92}],spawn:[800,1120],portal:[800,1184],rest:[866,1130],fires:[],
+ quests:[['Hạ quân thành trì','kill',20],['Đào quặng sắt','ore',4],['Nhặt chiến lợi phẩm','spoils',3],['Hạ Gobrider Warlord','boss',1],['Kho vũ khí trong hang','chest',1]],killRe:/Gobrider|Goblin/,
  bugs:2,build:buildHold,
  pal:{G0:'#29423f',G1:'#32504a',G1o:'#2a443f',G2:'#3e655c',G3:'#487064',G4:'#527a6b',T1:'#2c4844',T3:'#5d8676',Lt:'#517c6c',D1:'#a48160',D2:'#8e6f52',D3:'#b8936e',De:'#6e5642',Ds:'#80644a'},
  treeF:['saturate(0.66) brightness(0.78) hue-rotate(10deg)','saturate(0.6) brightness(0.76) hue-rotate(16deg)','saturate(0.6) brightness(0.64) hue-rotate(14deg)','saturate(0.55) brightness(0.62) hue-rotate(22deg)','saturate(0.7) brightness(0.72) hue-rotate(0deg)']}
@@ -167,8 +172,8 @@ function bake(){
    o=nk?c.Wb:w<2.5?c.W3:w<6?c.W2:w<16?c.W1:c.W0}
   else if(k===5){const b=inBridge(x,y);const along=b.hor?x-b.x0:y-b.y0,across=b.hor?y-b.y0:x-b.x0,len=b.hor?b.y1-b.y0:b.x1-b.x0;
    o=along%4===3?B0:((across+Math.floor(along/4)*7)%17===0)?B0:along%4===0?B2:B1;if(across===0||across===len)o=B0}
-  else if(k===6){const row=Math.floor(y/6),tx=(x+(row%2)*5)%10,ty=y%6;const h=hash(Math.floor((x+(row%2)*5)/10),row,71);
-   o=(tx===0||ty===0)?(hash(x,y,72)<0.25?moss:pv[0]):h<0.2?pv[3]:h<0.6?pv[2]:pv[1];if(ty===1&&tx>0)o=pv[3]}
+  else if(k===6){const cx0=Math.floor(x/10),cy0=Math.floor(y/8);let d1=1e9,d2=1e9,id=0;for(let a=-1;a<=1;a++)for(let b=-1;b<=1;b++){const gx=cx0+a,gy=cy0+b,sx=gx*10+hash(gx,gy,81)*10,sy=gy*8+hash(gx,gy,82)*8,d=(x-sx)*(x-sx)*0.8+(y-sy)*(y-sy);if(d<d1){d2=d1;d1=d;id=gx*7919+gy}else if(d<d2)d2=d}
+   const h=hash(id,1,83);o=(Math.sqrt(d2)-Math.sqrt(d1)<1.3)?(hash(x,y,72)<0.3?moss:pv[0]):h<0.22?pv[3]:h<0.62?pv[2]:pv[1];if(o!==pv[0]&&o!==moss&&hash(x,y,84)<0.04)o=pv[0]}
   else{const sx=x%12,o2=hash(x>>2,y>>2,73);o=o2<0.5?st[1]:st[2];if(K[i+W]!==7)o=st[0]}
   u32[i]=o}
  GROUND=mk(W,H);const g=GROUND.getContext('2d');g.putImageData(id,0,0);
@@ -258,6 +263,7 @@ function makeHerb(){const c=mk(14,14),g=c.getContext('2d');
 function makeMush(){const c=mk(16,14),g=c.getContext('2d');
  for(const [x,y,s] of [[1,6,5],[6,2,6],[11,7,4]]){R_(g,x+(s>>1)-1,y+3,2,14-y-3,'#d8e4d0');R_(g,x,y,s,3,'#3ab0a0');R_(g,x+1,y-1,s-2,1,'#3ab0a0');R_(g,x+1,y,s-2,1,'#9ff0e0');R_(g,x+1,y+1,1,1,'#ffffff');R_(g,x,y+2,s,1,'#22766c')}return c}
 function makeSap(){const c=mk(18,30),g=c.getContext('2d');R_(g,5,0,8,28,'#5e402c');R_(g,5,0,2,28,'#7a5638');R_(g,11,0,2,28,'#3e2a20');R_(g,3,26,12,3,'#3e2a20');R_(g,12,20,6,6,'#8a6a48');R_(g,12,20,6,1,'#5a4430');R_(g,9,10,2,9,'#e0902a');R_(g,9,11,1,1,'#ffc060');R_(g,9,14,1,1,'#ffc060');R_(g,13,21,4,2,'#e0902a');R_(g,12,17,1,2,'#f0a840');return c}
+function makeSpoils(){const c=mk(26,18),g=c.getContext('2d');R_(g,2,8,9,9,'#8a2a22');R_(g,5,10,3,3,'#e6dcc6');R_(g,2,8,9,1,'#4a2c1a');R_(g,13,2,1,12,'#a8aeb0');R_(g,13,1,1,1,'#e0e6e8');R_(g,11,11,5,1,'#6a4a32');R_(g,16,9,8,6,'#7a8088');R_(g,17,9,6,2,'#9aa0a6');R_(g,19,12,2,2,'#c9a24a');R_(g,7,4,5,4,'#5a5f66');R_(g,6,4,1,1,'#e6dcc6');R_(g,12,4,1,1,'#e6dcc6');return c}
 function makeSpirit(){const c=mk(14,16),g=c.getContext('2d');R_(g,6,8,2,8,'#3f6a52');R_(g,3,11,3,2,'#4f8060');R_(g,8,10,3,2,'#4f8060');
  for(const [x,y] of [[6,2],[3,5],[9,5],[6,7],[6,5]]){R_(g,x,y,2,2,'#b48ae0')}R_(g,4,3,6,5,'#9a6ad0');R_(g,5,4,4,3,'#d8b8ff');R_(g,6,5,2,1,'#ffffff');return c}
 function makeOre(){const c=makeBoulder(20,15,7,false),g=c.getContext('2d');g.globalCompositeOperation='source-atop';g.fillStyle='rgba(40,30,30,0.35)';g.fillRect(0,0,20,15);
@@ -370,7 +376,7 @@ let hero,portal,rest,chest,TG,PROPS={};
 function commonProps(){
  TG=makeTallGrass();
  PROPS={LOG:makeLog(),SEAT:makeSeat(),RACK:makeRack(),SPEARS:makeSpears(),BRAZ:makeBrazier()};
- T.chestC=makeChest(false);T.chestO=makeChest(true);T.node={stone:makeSpire(),herb:makeHerb(),mush:makeMush(),spirit:makeSpirit(),ore:makeOre(),sap:makeSap()};
+ T.chestC=makeChest(false);T.chestO=makeChest(true);T.node={stone:makeSpire(),herb:makeHerb(),mush:makeMush(),spirit:makeSpirit(),ore:makeOre(),sap:makeSap(),spoils:makeSpoils()};
  T.boulders=[makeBoulder(20,13,1),makeBoulder(14,10,2),makeBoulder(26,15,3)];
  // portal + rest point
  const [px,py]=MAP.portal;portal=addSpr(makePortal(),px,py,{k:'portal'});addCol(px-18,py-4,5,3);addCol(px+18,py-4,5,3);
@@ -537,31 +543,51 @@ function buildOutpost(){const path=MAP.paths[0].p,wood=['#4a3320','#6b4a2c','#8a
  for(const [x,y] of [[640,220],[980,220]])node('ore',x,y)}
 function pathX(y){const p=MAP.paths[0].p;for(let i=0;i<p.length-1;i++){const a=p[i],b=p[i+1];if((y<=a[1]&&y>=b[1])||(y>=a[1]&&y<=b[1]))return Math.round(a[0]+(b[0]-a[0])*(y-a[1])/(b[1]-a[1]||1))}return p[0][0]}
 
-// ---------- map 5: stronghold with stone walls, hall and waterfall cave ----------
+// ---------- map 5: two-wall stronghold, four grounds between the walls and four outside ----------
 function buildHold(){const st=P.stone,wood=P.wood;
- // outer stone wall (south gate + east gate)
- stoneH(330,1270,330,[],st);stoneH(330,1270,960,[[800,48]],st);stoneV(330,330,944,[],st);stoneV(1270,330,944,[[650,40]],st);
- const TS=makeTowerS(st);for(const [x,y] of [[330,346],[1270,346],[330,976],[1270,976],[760,976],[840,976]]){addSpr(TS,x,y,{col:14,colry:6})}
+ // outer stone wall with south, west and east gates
+ stoneH(330,1270,330,[],st);stoneH(330,1270,960,[[800,48]],st);stoneV(330,330,944,[[650,40]],st);stoneV(1270,330,944,[[650,40]],st);
+ const TS=makeTowerS(st);for(const [x,y] of [[330,346],[1270,346],[330,976],[1270,976],[760,976],[840,976],[330,622],[330,694],[1270,622],[1270,694]])addSpr(TS,x,y,{col:14,colry:6});
  for(const x of [740,860]){addSpr(PROPS.BRAZ,x,994,{col:3});addFire(x,994,{lift:14})}
- // inner palisade
+ // inner palisade + courtyard
  palisadeH(560,1040,410,[],wood);palisadeH(560,1040,760,[[800,40]],wood);palisadeV(560,410,746,[],wood);palisadeV(1040,410,746,[],wood);
- // the great hall + banners and braziers
  addSpr(makeHall(wood),800,560,{col:58,colry:12,coly:10});addCol(745,525,20,20);addCol(855,525,20,20);
  for(const x of [760,840]){addSpr(PROPS.BRAZ,x,600,{col:3});addFire(x,600,{lift:14})}
  addSpr(T.Flag,700,600,{k:'flag'});addSpr(T.Flag,900,600,{k:'flag'});
- for(const [x,y] of [[620,700],[980,700],[640,470],[960,470]])addSpr(PROPS.RACK,x,y,{col:10,colry:3});
- for(const [x,y,n] of [[600,650,'Barrel'],[612,656,'Crate'],[1000,640,'Sacks'],[990,660,'Barrel']])addSpr(T[n],x,y,{col:6,colry:3});
- for(const [x,y] of [[460,860],[1140,860],[420,500],[1180,500]])addSpr(T.Tent,x,y,{col:22,colry:10,coly:8,ay:78});
- // weapon cache inside the cave
- const cx=MAP.cave.x;chest=addSpr(T.chestC,cx,base[cx]+10,{k:'chest',opened:false,col:7,colry:3});addSpr(PROPS.SPEARS,cx-24,base[cx]+12,{col:5});
- for(const [x,y] of [[420,420],[1180,420],[900,880],[380,700],[1200,720]])node('ore',x,y);
- for(const [x,y] of [[1360,430],[1340,240],[1530,420],[1560,250],[1300,760]])node('herb',x,y);
- for(let i=0;i<5;i++)spawnMob(GR,'Gobrider',ri(18,20),800+ri(-380,380),865+ri(-30,30),{hr:360,home:[800,865],speed:34});
- for(let i=0;i<3;i++)spawnMob(GR,'Gobrider',19,ri(420,500),ri(450,850),{hr:120,home:[450,650],speed:30});
- for(let i=0;i<3;i++)spawnMob(GR,'Gobrider',19,ri(1100,1180),ri(450,850),{hr:120,home:[1150,650],speed:30});
- for(const x of [770,830])spawnMob(GE,'Gobrider Elite',20,x,990,{hr:12});spawnMob(GE,'Gobrider Elite',20,1290,650,{hr:12});
- for(let i=0;i<4;i++)spawnMob(G,'Goblin',17,800+ri(-180,180),660+ri(-30,60),{hr:120,home:[800,670]});
- spawnMob(GW,'Gobrider Warlord',22,800,618,{hr:40,boss:true,hp:900,speed:20})}
+ for(const [x,y] of [[620,700],[980,700]])addSpr(PROPS.RACK,x,y,{col:10,colry:3});for(const [x,y,n] of [[600,650,'Barrel'],[612,656,'Crate'],[1000,640,'Sacks'],[990,660,'Barrel']])addSpr(T[n],x,y,{col:6,colry:3});
+ node('spoils',650,470);
+ spawnMob(GW,'Gobrider Warlord',22,800,618,{hr:40,boss:true,hp:900,speed:20});for(const x of [740,860])spawnMob(GE,'Gobrider Elite',21,x,640,{hr:24});
+ for(let i=0;i<3;i++)spawnMob(G,'Goblin',19,800+ri(-160,160),700+ri(-20,20),{hr:100,home:[800,700]});
+ // gate guards
+ for(const x of [770,830])spawnMob(GE,'Gobrider Elite',20,x,990,{hr:12});spawnMob(GE,'Gobrider Elite',20,300,650,{hr:12});spawnMob(GE,'Gobrider Elite',20,1300,650,{hr:12});
+ const sign=(x,y)=>addSpr(T.Signpost_Up,x,y,{col:3});
+ // --- between the walls ---
+ // B1 barracks (SW)
+ for(const [x,y] of [[400,850],[505,846]])addSpr(T.Tent,x,y,{col:22,colry:10,coly:8,ay:78});addSpr(PROPS.SEAT,450,900,{col:9,colry:3});
+ for(let i=0;i<5;i++)spawnMob(G,'Goblin',18,450+ri(-70,70),875+ri(-20,20),{hr:72,home:[450,875]});
+ // B2 forge (SE)
+ for(const [x,y] of [[1100,860],[1200,860]]){addSpr(PROPS.BRAZ,x,y,{col:3});addFire(x,y,{lift:14})}addSpr(PROPS.SPEARS,1150,846,{col:5});addSpr(PROPS.RACK,1220,900,{col:10,colry:3});for(const [x,y] of [[1110,900],[1190,900]])node('ore',x,y);
+ for(let i=0;i<4;i++)spawnMob(GR,'Gobrider',19,1150+ri(-70,70),875+ri(-20,20),{hr:72,home:[1150,875],speed:30});
+ // B3 wolf stable (NW)
+ for(const [x,y,n] of [[400,410,'Hay'],[416,416,'Hay'],[490,410,'Barrel'],[500,416,'Sacks']])addSpr(T[n],x,y,{col:6,colry:3});addSpr(PROPS.RACK,445,400,{col:10,colry:3});
+ for(let i=0;i<4;i++)spawnMob(GR,'Gobrider',19,445+ri(-60,60),440+ri(-15,15),{hr:66,home:[445,440],speed:30});
+ // B4 training yard (NE)
+ for(let k=0;k<6;k++){const x=1105+(k%3)*50,y=410+Math.floor(k/3)*40;addSpr(makePost(ri(20,24),wood,k),x,y,{});addCol(x,y-1,4,3)}for(const [x,y] of [[1100,460],[1210,460]])node('spoils',x,y);
+ for(let i=0;i<4;i++)spawnMob(GE,'Gobrider Elite',20,1155+ri(-60,60),440+ri(-15,15),{hr:66,home:[1155,440],speed:28});
+ sign(470,866);sign(1130,866);
+ // --- outside the walls ---
+ // O1 outpost camp (SW)
+ addSpr(T.Tent,330,1060,{col:22,colry:10,coly:8,ay:78});addSpr(PROPS.SEAT,400,1100,{col:9,colry:3});node('ore',440,1080);
+ for(let i=0;i<5;i++)spawnMob(G,'Goblin',17,380+ri(-60,60),1080+ri(-15,15),{hr:66,home:[380,1080]});sign(770,1062);
+ // O2 lumber yard (SE)
+ for(const [x,y] of [[1180,1060],[1260,1090]])addSpr(PROPS.LOG,x,y,{col:18,colry:4,coly:4});for(const [x,y] of [[1220,1050],[1300,1060]])addSpr(T.Stump,x,y,{col:6});node('spoils',1150,1090);
+ for(let i=0;i<4;i++)spawnMob(G,'Goblin',17,1220+ri(-60,60),1080+ri(-15,15),{hr:66,home:[1220,1080]});spawnMob(GA,'Goblin Archer',17,1240,1070,{hr:40,home:[1240,1070]});sign(828,1062);
+ // O3 hunters camp outside the west gate
+ addSpr(PROPS.RACK,170,630,{col:10,colry:3});addSpr(PROPS.RACK,205,660,{col:10,colry:3});addSpr(PROPS.SEAT,160,680,{col:9,colry:3});
+ for(let i=0;i<4;i++)spawnMob(G,'Goblin',17,185+ri(-45,45),655+ri(-25,25),{hr:55,home:[185,655]});
+ // O4 waterfall bank outside the east gate (the cave cache is the secret)
+ for(let i=0;i<4;i++)spawnMob(GR,'Gobrider',19,1385+ri(-55,55),535+ri(-15,15),{hr:60,home:[1385,535],speed:30});node('ore',1420,560);
+ const cx=MAP.cave.x;chest=addSpr(T.chestC,cx,base[cx]+10,{k:'chest',opened:false,col:7,colry:3});addSpr(PROPS.SPEARS,cx-24,base[cx]+12,{col:5})}
 
 // ================= input =================
 const keys={};
@@ -574,7 +600,7 @@ cv.addEventListener('click',e=>{for(const p of PILLS)if(e.clientX>=p[0]&&e.clien
 
 // ================= gameplay =================
 const NODE={stone:{label:'Khai thác đá',item:'Đá thô',dur:1.2,chips:['#d2c2ae','#a8917a','#8a735f'],c:'#e2d6c4'},herb:{label:'Hái thảo dược',item:'Lam Diệp Thảo',dur:0.8,chips:['#5e9e66','#9fd8e8','#ffffff'],c:'#a8e6f0',tw:'#bff0ff'},
- mush:{label:'Hái nấm',item:'Nấm Lân Quang',dur:0.8,chips:['#3ab0a0','#9ff0e0'],c:'#9ff0e0',tw:'#9ff0e0'},sap:{label:'Lấy nhựa cây',item:'Nhựa Cây',dur:1.0,chips:['#e0902a','#ffc060','#7a5638'],c:'#f0b060',tw:'#ffd080'},spirit:{label:'Hái hoa linh',item:'Hoa Linh Hồn',dur:1.0,chips:['#b48ae0','#d8b8ff','#ffffff'],c:'#d8b8ff',tw:'#e8d0ff'},
+ mush:{label:'Hái nấm',item:'Nấm Lân Quang',dur:0.8,chips:['#3ab0a0','#9ff0e0'],c:'#9ff0e0',tw:'#9ff0e0'},spoils:{label:'Nhặt chiến lợi phẩm',item:'Chiến lợi phẩm',dur:1.2,chips:['#a8aeb0','#c9a24a','#8a2a22'],c:'#d8c090'},sap:{label:'Lấy nhựa cây',item:'Nhựa Cây',dur:1.0,chips:['#e0902a','#ffc060','#7a5638'],c:'#f0b060',tw:'#ffd080'},spirit:{label:'Hái hoa linh',item:'Hoa Linh Hồn',dur:1.0,chips:['#b48ae0','#d8b8ff','#ffffff'],c:'#d8b8ff',tw:'#e8d0ff'},
  ore:{label:'Đào quặng',item:'Quặng sắt',dur:1.5,chips:['#e09a4a','#c8d0d8','#585d64'],c:'#f0c080'}};
 const Q={};for(const q of MAP.quests)Q[q[1]]=0;
 let gold=120;

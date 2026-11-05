@@ -21,8 +21,9 @@ const MAT={
  forest:(x,y,v)=>{const h=hash(x&15,y&15,80+v);if(h<0.03)return P.T1;if(h>0.95)return P.G1;return P.G0},
  dirt:(x,y,v)=>{const h=hash(x&15,y&15,100+v);return h<0.05?P.D2:h>0.965?P.D3:P.D1},
  water:(x,y,v)=>{const h=hash(x&15,y&15,120+v);return h>0.96?P.W2:h<0.03?P.W0:P.W1},
- pave:(x,y,v)=>{const row=Math.floor((y&15)/4),xx=((x&15)+(row%2)*4)&15,tx=xx%8,ty=(y&15)%4;const id=Math.floor(xx/8)+row*2;const h=hash(id,v,130);
-  if(tx===0||ty===0)return hash(x&15,y&15,131+v)<0.2?'#4e7458':P.pave[0];if(ty===1)return P.pave[3];return h<0.25?P.pave[3]:h<0.6?P.pave[2]:P.pave[1]}};
+ pave:(x,y,v)=>{const cx0=Math.floor((x&15)/8),cy0=Math.floor((y&15)/8);let d1=1e9,d2=1e9,id=0;for(let i=-1;i<=2;i++)for(let j=-1;j<=2;j++){const gx=cx0+i,gy=cy0+j,wx=((gx%2)+2)%2,wy=((gy%2)+2)%2,sx=gx*8+1+hash(wx,wy,130+v)*6,sy=gy*8+1+hash(wx,wy,131+v)*6,dx=(x&15)-sx,dy=(y&15)-sy,d=dx*dx*0.8+dy*dy;if(d<d1){d2=d1;d1=d;id=wx+wy*2}else if(d<d2)d2=d}
+  if(Math.sqrt(d2)-Math.sqrt(d1)<1.2)return hash(x&15,y&15,132+v)<0.3?'#4e7458':P.pave[0];const h=hash(id,v,133);return h<0.25?P.pave[3]:h<0.6?P.pave[2]:P.pave[1]},
+};
 function matTile(m,v){const c=mk(16,16),g=pix(c);for(let y=0;y<16;y++)for(let x=0;x<16;x++)px(g,x,y,MAT[m](x,y,v));
  if(m==='grass'||m==='dark')for(let k=0;k<3;k++){const x=Math.floor(hash(k,v,141+m.length)*13)+1,y=Math.floor(hash(k,v,142)*14)+1;const col=m==='grass'?(k%2?P.T1:P.T3):P.G2;px(g,x,y,col);px(g,x+2,y,col);px(g,x+1,y+1,col)}
  return c}
@@ -163,7 +164,7 @@ async function run(){
  const R1=performance.now();return {files:MAN.length,ms:Math.round(R1-R0)}}
 // ---------- per-map export helpers ----------
 const TN=['Teal','Leaf','TealDark','LeafDark','TealCool'];
-const NODE_FILE={sap:'Sap_Full',stone:'Stone_Full',herb:'Herb_Full',mush:'Mushroom_Full',spirit:'SpiritFlower_Full',ore:'IronOre_Full'};
+const NODE_FILE={spoils:'Spoils_Full',sap:'Sap_Full',stone:'Stone_Full',herb:'Herb_Full',mush:'Mushroom_Full',spirit:'SpiritFlower_Full',ore:'IronOre_Full'};
 function spriteName(e){const NM=new Map();
  T.trees.forEach((c,i)=>NM.set(c,'Tree_'+TN[i]));T.bushes.forEach((c,i)=>NM.set(c,'Bush_'+['Teal','Leaf','Dark'][i]));T.boulders.forEach((c,i)=>NM.set(c,'Boulder_'+'SML'[[1,0,2][i]]));
  for(const n of ['Stump','Barrel','Crate','Crate_Herbs','Sacks','Hay','Bench','Signpost_Up'])NM.set(T[n],n==='Signpost_Up'?'Signpost':n);NM.set(T.Tent,'Tent_Horn');NM.set(T.Flag,'Flag_Tattered');
@@ -171,7 +172,7 @@ function spriteName(e){const NM=new Map();
  spriteName.NM=NM}
 const EXTRA=new Map();
 function nameOf(e){const NM=spriteName.NM;if(EXTRA.has(e.img))return EXTRA.get(e.img);if(e.k==='node')return NODE_FILE[e.type];if(e.rustle)return 'Bush_Rustle';const n=NM.get(e.img);if(n)return n;
- if(e.img&&e.img.width===8)return 'Palisade_Post_'+e.img.height;if(e.img&&e.img.width===32&&e.img.height===60)return 'Watchtower';if(e.img&&e.img.width===108)return e.img.height===58?'Cage_Back':'Cage_Front';return null}
+ if(e.img&&e.img.width===8)return 'Palisade_Post_'+e.img.height;if(e.img&&e.img.width===32&&e.img.height===60)return 'Watchtower';if(e.img&&e.img.width===108)return e.img.height===58?'Cage_Back':'Cage_Front';if(e.img&&e.img.width===16&&e.img.height===30)return 'Wall_Stone_H_'+(Math.round(e.x-8)/16%4+4)%4;if(e.img&&e.img.width===16&&e.img.height===38)return 'Wall_Stone_V';if(e.img&&e.img.width===12&&e.img.height===34)return 'Palisade_V';if(e.img&&e.img.width===32&&e.img.height===58)return 'Tower_Stone';if(e.img&&e.img.width===136)return 'Great_Hall';return null}
 async function exportMap(dir,title,labels,notes){spriteName();const items=[],unk=new Set();
  for(const e of ents){if(e.k==='mob')continue;const name=nameOf(e);if(!name){unk.add(e.k+':'+(e.img&&e.img.width+'x'+e.img.height));continue}
   items.push({sprite:name,x:Math.round(e.x),y:Math.round(e.y),layer:e.plateau?'plateau':e.k==='tree'?'tree':e.k==='node'?'node':'prop'})}
@@ -270,5 +271,24 @@ async function runOutpost(){const D='Outpost/',wood=['#4a3320','#6b4a2c','#8a643
    'Secret: 18px dog hole in wall 2 at x=1395 into a bush-ringed pocket with the stash chest.',
    'Mob mix per the layout spec: Gobrider after gate 1, Elite after gate 2, Warlord holds gate 3; the Cyclops sits caged in the back yard (boss per the layout spec).']);
  return r}
-window.ARTGEN={run,runTrail,runAbandoned,runOutpost,runPaletteKit,exportMap,writeBoard,writeManifest,MAN,BOARD,saveText,save,strip,grid,matTile,dualTile,PAIRS,NAMES};
+// ---------- Gobrider Stronghold ----------
+async function runHold(){const D='Stronghold/',st=P.stone,wood=P.wood;
+ await runPaletteKit(D,[['#c9a6e0','#ffffff'],['#f2e6a0','#ffffff'],['#a6c8f0','#e8f4ff']]);
+ for(let i=0;i<4;i++)await save(D+'Fortify/Wall_Stone_H_'+i+'.png',makeStoneH(st,i*16+8),{note:'outer wall, horizontal run: tile every 16px; merlons on top; 2 colliders r6 per segment'});
+ await save(D+'Fortify/Wall_Stone_V.png',makeStoneV(st),{pivot:'0.5,0',note:'outer wall, vertical run: stack every 16px (each covers the face of the one above); colliders r7 every 5px'});
+ await save(D+'Fortify/Tower_Stone.png',makeTowerS(st),{note:'corners and both sides of every gate; collider 28x12'});
+ for(let h=20;h<=29;h++)await save(D+'Fortify/Palisade_Post_'+h+'.png',makePost(h,wood,h),{note:'inner palisade, 2 staggered rows every 7px; 20-24 also practice posts'});
+ await save(D+'Fortify/Palisade_V.png',makePalV(wood),{pivot:'0.5,0',note:'inner palisade, vertical run: stack every 14px; colliders r6 every 5px'});
+ await save(D+'Props/Great_Hall.png',spriteName.NM?[...ents].find(e=>e.img&&e.img.width===136).img:makeHall(wood),{note:'Warlord hall 136x96; collider 116x24 at the front + 2 boxes behind; door at the pivot'});
+ await save(D+'Props/Tent_Horn.png',T.Tent,{pivot:'0.5,0.025'});await save(D+'Props/Flag_Tattered.png',T.Flag);
+ const r=await exportMap(D,'Stronghold',[
+  ['⛩ Cổng về Làng',MAP.portal[0],MAP.portal[1]-52,'#9fe6dc'],['Cổng nam',800,1015,'#e8dcb8'],['Cổng tây',300,610,'#e8dcb8'],['Cổng đông',1300,610,'#e8dcb8'],['Sảnh Warlord (boss)',800,450,'#ff9a6a'],['Sân lát đá · tường cọc',800,740,'#d8d4c4'],
+  ['B1 Doanh trại Lv18',450,800,'#ffc8a0'],['B2 Lò rèn Lv19',1150,800,'#ffb43c'],['B3 Chuồng sói Lv19',445,370,'#ffc8a0'],['B4 Bãi tập Lv20',1155,370,'#ffc8a0'],
+  ['O1 Trại tiền tiêu Lv17',380,1015,'#ffc8a0'],['O2 Bãi đốn gỗ Lv17',1220,1015,'#ffc8a0'],['O3 Trại thợ săn Lv17',185,575,'#ffc8a0'],['O4 Bãi ven thác Lv19',1385,470,'#b6d8cd'],['Bí mật: hang kho vũ khí',1500,70,'#fff2a0'],['Trạm nghỉ',MAP.rest[0]+40,MAP.rest[1]+24,'#9fe6a0']],
+  ['Palette: Stronghold/Ground and Trees are the cooler, darker set; Ground/Fill_Pave + Dual_DirtToPave are irregular flagstones (the courtyard and the road to the hall).',
+   'Layout: outer stone wall x330-1270 y330-960 with gates S (800), W and E (y650); inner palisade x560-1040 y410-760 with a south gate; a ring road between the walls links grounds B1-B4; outside, cross roads and gate roads lead to O1-O4.',
+   'Resources per the layout spec: iron (IronOre_*) and spoils (Spoils_*).','Secret: stepping stones across the waterfall pond and a trail to the cave mouth with the weapon cache chest.',
+   'Mob mix per the layout spec: Goblin at the outer wall and outside, Gobrider between the walls, Warlord in the hall.']);
+ return r}
+window.ARTGEN={run,runTrail,runAbandoned,runOutpost,runHold,runPaletteKit,exportMap,writeBoard,writeManifest,MAN,BOARD,saveText,save,strip,grid,matTile,dualTile,PAIRS,NAMES};
 })();

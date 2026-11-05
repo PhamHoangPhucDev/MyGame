@@ -1,0 +1,63 @@
+file,width,height,frames,frame_w,frame_h,pivot_xy_normalized,note
+Abandoned/Ground/Fill_Grass.png,64,16,4,16,16,0,0,4 seamless fill variants
+Abandoned/Ground/Fill_Dark.png,64,16,4,16,16,0,0,4 seamless fill variants
+Abandoned/Ground/Fill_Forest.png,64,16,4,16,16,0,0,4 seamless fill variants
+Abandoned/Ground/Fill_Dirt.png,64,16,4,16,16,0,0,4 seamless fill variants
+Abandoned/Ground/Fill_Water.png,64,16,4,16,16,0,0,4 seamless fill variants
+Abandoned/Ground/Fill_Pave.png,64,16,4,16,16,0,0,4 seamless fill variants
+Abandoned/Ground/Dual_GrassToDark.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = dark)
+Abandoned/Ground/Dual_GrassToDark_Overlay.png,64,64,16,16,16,0,0,side A transparent; for layers painted over another layer
+Abandoned/Ground/Dual_DarkToForest.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = forest)
+Abandoned/Ground/Dual_DarkToForest_Overlay.png,64,64,16,16,16,0,0,side A transparent; for layers painted over another layer
+Abandoned/Ground/Dual_GrassToDirt.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = dirt)
+Abandoned/Ground/Dual_GrassToDirt_Overlay.png,64,64,16,16,16,0,0,side A transparent; for layers painted over another layer
+Abandoned/Ground/Dual_GrassToWater.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = water)
+Abandoned/Ground/Dual_GrassToWater_Overlay.png,64,64,16,16,16,0,0,side A transparent; for layers painted over another layer
+Abandoned/Ground/Dual_DirtToPave.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = pave)
+Abandoned/Ground/Dual_DirtToPave_Overlay.png,64,64,16,16,16,0,0,side A transparent; for layers painted over another layer
+Abandoned/Ground/TallGrass.png,30,18,6,10,9,0.5,0,row 0 light / row 1 dark; frames lean L; up; R
+Abandoned/Ground/Decals.png,36,4,9,4,4,0.5,0,0-2 tufts; 3-5 flowers; then mushroom; pebble; bone
+Abandoned/Ground/Deco_0.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Abandoned/Ground/Deco_1.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Abandoned/Ground/Deco_2.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Abandoned/Ground/Deco_3.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Abandoned/Ground/Deco_4.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Abandoned/Ground/Deco_5.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Abandoned/Ground/Deco_6.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Abandoned/Ground/Deco_7.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Abandoned/Ground/Deco_8.png,16,16,1,16,16,0.5,0,village deco recoloured for this map
+Abandoned/Trees/Tree_Teal_Canopy.png,80,72,1,80,72,0.5,0.028,sways; fades to 42% behind
+Abandoned/Trees/Tree_Teal_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7
+Abandoned/Trees/Tree_Leaf_Canopy.png,80,72,1,80,72,0.5,0.028,sways; fades to 42% behind
+Abandoned/Trees/Tree_Leaf_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7
+Abandoned/Trees/Tree_TealDark_Canopy.png,80,72,1,80,72,0.5,0.028,sways; fades to 42% behind
+Abandoned/Trees/Tree_TealDark_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7
+Abandoned/Trees/Tree_LeafDark_Canopy.png,80,72,1,80,72,0.5,0.028,sways; fades to 42% behind
+Abandoned/Trees/Tree_LeafDark_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7
+Abandoned/Trees/Tree_TealCool_Canopy.png,80,72,1,80,72,0.5,0.028,sways; fades to 42% behind
+Abandoned/Trees/Tree_TealCool_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7
+Abandoned/Trees/Bush_Teal.png,36,26,1,36,26,0.5,0,top sways; bottom 8 rows static
+Abandoned/Trees/Bush_Leaf.png,36,26,1,36,26,0.5,0,top sways; bottom 8 rows static
+Abandoned/Trees/Bush_Dark.png,36,26,1,36,26,0.5,0,top sways; bottom 8 rows static
+Abandoned/Props/SacredTree_Canopy.png,176,160,1,176,160,0.5,0.025,sways <=0.35px; fades to 42% when the hero is within 70px sideways and up to 130px above the base
+Abandoned/Props/SacredTree_Trunk.png,176,160,1,176,160,0.5,0.025,static; collider 28x12 at the base; Glow_Violet additive under it (220x110; alpha 0.18 +-0.05)
+Abandoned/Props/Menhir_0.png,12,25,1,12,25,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_1.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_2.png,12,24,1,12,24,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_3.png,12,22,1,12,22,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_4.png,12,25,1,12,25,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_5.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_6.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_7.png,12,29,1,12,29,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_8.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_9.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_10.png,12,28,1,12,28,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_11.png,12,28,1,12,28,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_12.png,12,23,1,12,23,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_13.png,12,26,1,12,26,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_14.png,12,27,1,12,27,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_15.png,12,27,1,12,27,0.5,0,standing stone; collider r6; rune glow overlay
+Abandoned/Props/Menhir_RuneGlow.png,48,30,4,12,30,0.5,0,additive over Menhir_*; ping-pong 6 fps; align bottom; twinkle particles #6fe0d6
+Abandoned/Props/Tent_Ruined.png,64,80,1,64,80,0.5,0.025,faded; torn tent; collider 40x18
+Abandoned/Abandoned_Overview.png,1600,1120,1,1600,1120,0,1,whole map at 1x from the approved demo; layout reference only
+Abandoned/Abandoned_Overview_Annotated.png,1600,1120,1,1600,1120,0,1,annotated layout

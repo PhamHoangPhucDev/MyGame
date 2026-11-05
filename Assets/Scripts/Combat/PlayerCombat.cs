@@ -118,10 +118,19 @@ namespace GameplayPrototype
         /// <summary>Combo step of the swing in flight (0..n-1). EquipmentVisual picks per-step poses/VFX. -1 when idle/skills.</summary>
         public int CurrentComboStep => _pendingStep;
         public bool IsStealthed => _stealthTimer > 0f;
+
+        /// <summary>True while smoke bomb hides this hero. Bosses only lose the hero for the first second.</summary>
+        public bool HidesFrom(bool boss)
+        {
+            if (_stealthTimer <= 0f) return false;
+            if (!boss) return true;
+            return _stealthDuration - _stealthTimer < 1f;
+        }
         public float NextHitMultiplier => _nextHitMul;
 
         float _nextHitMul = 1f;
         float _stealthTimer;
+        float _stealthDuration;
         float _stealthAlpha = 1f;
 
         public int SlashChainStep => _slashChain;
@@ -131,6 +140,8 @@ namespace GameplayPrototype
         public void SetSwordHeld(bool held) => _debugSwordHeld = held;
 
         public Vector2 Facing => _facing;
+        public LayerMask EnemyMask => enemyMask;
+        public Health StickyTarget => _stickyTarget;
         public SkillId SelectedSkill => _selected;
         public event Action<SkillId> SelectedChanged;
         public event Action CooldownsChanged;
@@ -202,7 +213,7 @@ namespace GameplayPrototype
                     _cooldownTotal[(int)id] = _kit.Cooldown(id);
                 return;
             }
-            // Key map kept: 2/3/4/R/V/C. Behaviors remapped for Phase 8C (see report).
+            // Skill keys 1–5, attack stays on R.
             _cooldownTotal[(int)SkillId.FireDash] = flameCooldown;
             _cooldownTotal[(int)SkillId.MultiSlash] = dashCooldown;
             _cooldownTotal[(int)SkillId.MawBite] = whirlCooldown;
@@ -269,13 +280,13 @@ namespace GameplayPrototype
             var kb = Keyboard.current;
             if (kb == null) return;
 
-            if (kb.digit2Key.wasPressedThisFrame) TryCast(SkillId.FireDash);
-            if (kb.digit3Key.wasPressedThisFrame) TryCast(SkillId.MultiSlash);
-            if (kb.digit4Key.wasPressedThisFrame) TryCast(SkillId.MawBite);
+            if (kb.digit1Key.wasPressedThisFrame || kb.numpad1Key.wasPressedThisFrame) TryCast(SkillId.FireDash);
+            if (kb.digit2Key.wasPressedThisFrame || kb.numpad2Key.wasPressedThisFrame) TryCast(SkillId.MultiSlash);
+            if (kb.digit3Key.wasPressedThisFrame || kb.numpad3Key.wasPressedThisFrame) TryCast(SkillId.MawBite);
+            if (kb.digit4Key.wasPressedThisFrame || kb.numpad4Key.wasPressedThisFrame) TryCast(SkillId.Bone);
+            if (kb.digit5Key.wasPressedThisFrame || kb.numpad5Key.wasPressedThisFrame) TryCast(SkillId.Mace);
             if (kb.rKey.wasPressedThisFrame || kb.spaceKey.wasPressedThisFrame)
                 TryBufferSwordTap();
-            if (kb.vKey.wasPressedThisFrame) TryCast(SkillId.Bone);
-            if (kb.cKey.wasPressedThisFrame) TryCast(SkillId.Mace);
         }
 
         bool SwordHeld()
@@ -344,6 +355,8 @@ namespace GameplayPrototype
                 if (def == null || def.behaviour == SkillBehaviour.None)
                     return false;
                 _activeSkill = id;
+                if (IsStealthed && BreaksStealth(def.behaviour))
+                    EndStealth();
                 if (!RunBehaviour(def))
                     return false;
                 StartCooldown(id);
@@ -351,6 +364,8 @@ namespace GameplayPrototype
             }
 
             _activeSkill = id;
+            if (IsStealthed)
+                EndStealth();
             switch (id)
             {
                 case SkillId.Sword: PerformSlash(); GameAudio.Play(Sfx.SlashSwing); break;
@@ -628,12 +643,13 @@ namespace GameplayPrototype
             }
         }
 
-        // Vex V: translucent + immune for the duration (enemy AI is untouched, they just cannot hurt the hero).
+        // Vex V: hidden for the skill duration. Trash loses the hero the whole time; bosses for 1 s.
         void BeginStealth(SkillDef d)
         {
             KitVfx.Play(d.vfxFrames, (Vector2)transform.position + Vector2.up * 0.5f, d.vfxFps);
             _visual?.PlaySkillPose("SmokeBomb", _facing, 0.15f, true);
-            _stealthTimer = Mathf.Max(0.1f, d.duration);
+            _stealthDuration = Mathf.Max(0.1f, d.duration);
+            _stealthTimer = _stealthDuration;
             _stealthAlpha = Mathf.Clamp01(d.alpha);
             GetComponent<Health>()?.SetDamageTakenMultiplier(0f);
         }
@@ -653,6 +669,24 @@ namespace GameplayPrototype
             var sr = BodyRenderer();
             if (sr != null) { var c = sr.color; c.a = 1f; sr.color = c; }
             if (_guardTimer <= 0f) GetComponent<Health>()?.SetDamageTakenMultiplier(1f);
+        }
+
+        static bool BreaksStealth(SkillBehaviour behaviour)
+        {
+            switch (behaviour)
+            {
+                case SkillBehaviour.Stealth:
+                case SkillBehaviour.Guard:
+                case SkillBehaviour.IronWall:
+                case SkillBehaviour.ManaShield:
+                case SkillBehaviour.WindStep:
+                case SkillBehaviour.ShadowStep:
+                case SkillBehaviour.Blink:
+                case SkillBehaviour.LeapBack:
+                    return false;
+                default:
+                    return true;
+            }
         }
 
         SpriteRenderer BodyRenderer()

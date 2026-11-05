@@ -317,6 +317,17 @@ namespace GameplayPrototype
                 return;
             }
 
+            if (HeroHidden())
+            {
+                if (_state != EnemyAiState.Dead && _state != EnemyAiState.Idle && _state != EnemyAiState.Patrol)
+                    Enter(EnemyAiState.Patrol);
+                _rb.linearVelocity = Vector2.zero;
+                ReleaseAttackSlot();
+                GetComponent<R2CMonsterShot>()?.HideAim();
+                GetComponent<CyclopsSlam>()?.CancelWindup();
+                return;
+            }
+
             _attackTimer -= Time.fixedDeltaTime;
             _chargeCd -= Time.fixedDeltaTime;
             if (_slotHoldTimer > 0f)
@@ -530,6 +541,14 @@ namespace GameplayPrototype
             _stateTimer -= Time.fixedDeltaTime;
             if (_stateTimer > 0f) return;
             Enter(centerDist > loseAggroRadius ? EnemyAiState.Patrol : EnemyAiState.Chase);
+        }
+
+        bool HeroHidden()
+        {
+            var combat = _player != null ? _player.GetComponent<PlayerCombat>() : null;
+            if (combat == null) return false;
+            bool boss = GetComponent<R2CBossMark>() != null || GetComponent<CyclopsSlam>() != null;
+            return combat.HidesFrom(boss);
         }
 
         bool CanDetect(float centerDist)

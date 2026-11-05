@@ -1,0 +1,6531 @@
+{
+ "map": "Abandoned Camp",
+ "units": "pixels at PPU 16; origin top-left, y grows downward (Unity: worldY = -y/16)",
+ "size": [
+  1600,
+  1120
+ ],
+ "terrain": {
+  "branches": null,
+  "clears": [
+   {
+    "x": 800,
+    "y": 600,
+    "rx": 190,
+    "ry": 128,
+    "isl": 1
+   },
+   {
+    "x": 340,
+    "y": 820,
+    "rx": 85,
+    "ry": 52,
+    "isl": 1
+   },
+   {
+    "x": 300,
+    "y": 420,
+    "rx": 100,
+    "ry": 60,
+    "isl": 1
+   },
+   {
+    "x": 800,
+    "y": 195,
+    "rx": 130,
+    "ry": 52,
+    "isl": 1
+   },
+   {
+    "x": 1300,
+    "y": 400,
+    "rx": 95,
+    "ry": 58,
+    "isl": 1
+   },
+   {
+    "x": 1330,
+    "y": 720,
+    "rx": 100,
+    "ry": 62,
+    "isl": 1
+   },
+   {
+    "x": 1100,
+    "y": 980,
+    "rx": 95,
+    "ry": 55,
+    "isl": 1
+   }
+  ],
+  "patches": [],
+  "paths": [
+   {
+    "p": [
+     [
+      800,
+      1130
+     ],
+     [
+      805,
+      960
+     ],
+     [
+      800,
+      836
+     ],
+     [
+      796,
+      780
+     ],
+     [
+      800,
+      720
+     ]
+    ],
+    "w": 13
+   },
+   {
+    "p": [
+     [
+      1162,
+      600
+     ],
+     [
+      1153,
+      645
+     ],
+     [
+      1127,
+      686
+     ],
+     [
+      1093,
+      722
+     ],
+     [
+      1055,
+      754
+     ],
+     [
+      1015,
+      784
+     ],
+     [
+      968,
+      809
+     ],
+     [
+      914,
+      827
+     ],
+     [
+      857,
+      835
+     ],
+     [
+      800,
+      836
+     ],
+     [
+      743,
+      834
+     ],
+     [
+      684,
+      829
+     ],
+     [
+      624,
+      820
+     ],
+     [
+      567,
+      800
+     ],
+     [
+      521,
+      768
+     ],
+     [
+      493,
+      728
+     ],
+     [
+      482,
+      683
+     ],
+     [
+      481,
+      641
+     ],
+     [
+      482,
+      600
+     ],
+     [
+      483,
+      560
+     ],
+     [
+      488,
+      518
+     ],
+     [
+      504,
+      477
+     ],
+     [
+      535,
+      439
+     ],
+     [
+      577,
+      409
+     ],
+     [
+      628,
+      385
+     ],
+     [
+      682,
+      366
+     ],
+     [
+      739,
+      352
+     ],
+     [
+      800,
+      346
+     ],
+     [
+      861,
+      351
+     ],
+     [
+      917,
+      369
+     ],
+     [
+      964,
+      395
+     ],
+     [
+      1004,
+      425
+     ],
+     [
+      1042,
+      454
+     ],
+     [
+      1082,
+      483
+     ],
+     [
+      1121,
+      516
+     ],
+     [
+      1151,
+      555
+     ],
+     [
+      1162,
+      600
+     ]
+    ],
+    "w": 10
+   },
+   {
+    "p": [
+     [
+      800,
+      346
+     ],
+     [
+      806,
+      410
+     ],
+     [
+      800,
+      470
+     ]
+    ],
+    "w": 9
+   },
+   {
+    "p": [
+     [
+      482,
+      600
+     ],
+     [
+      540,
+      594
+     ],
+     [
+      610,
+      600
+     ]
+    ],
+    "w": 9
+   },
+   {
+    "p": [
+     [
+      1162,
+      600
+     ],
+     [
+      1060,
+      606
+     ],
+     [
+      990,
+      600
+     ]
+    ],
+    "w": 9
+   },
+   {
+    "p": [
+     [
+      493,
+      728
+     ],
+     [
+      420,
+      780
+     ],
+     [
+      350,
+      810
+     ]
+    ],
+    "w": 8
+   },
+   {
+    "p": [
+     [
+      504,
+      477
+     ],
+     [
+      400,
+      440
+     ],
+     [
+      320,
+      425
+     ]
+    ],
+    "w": 8
+   },
+   {
+    "p": [
+     [
+      800,
+      346
+     ],
+     [
+      792,
+      290
+     ],
+     [
+      800,
+      240
+     ]
+    ],
+    "w": 8
+   },
+   {
+    "p": [
+     [
+      1082,
+      483
+     ],
+     [
+      1200,
+      430
+     ],
+     [
+      1280,
+      405
+     ]
+    ],
+    "w": 8
+   },
+   {
+    "p": [
+     [
+      1093,
+      722
+     ],
+     [
+      1170,
+      730
+     ],
+     [
+      1240,
+      722
+     ]
+    ],
+    "w": 8
+   },
+   {
+    "p": [
+     [
+      968,
+      809
+     ],
+     [
+      1040,
+      900
+     ],
+     [
+      1090,
+      960
+     ]
+    ],
+    "w": 8
+   }
+  ],
+  "stream": null,
+  "ponds": [
+   {
+    "x": 300,
+    "y": 930,
+    "rx": 84,
+    "ry": 48
+   }
+  ],
+  "waterfallX": 0,
+  "pave": null,
+  "steps": null,
+  "cave": null,
+  "dark": null,
+  "cliffRimY": "24-38 (noise)",
+  "cliffBaseY": "70-93 (noise)",
+  "bridges": []
+ },
+ "portal": [
+  800,
+  1092
+ ],
+ "rest": [
+  876,
+  1010
+ ],
+ "fires": [
+  {
+   "x": 900,
+   "y": 1014,
+   "big": false,
+   "lift": 0
+  }
+ ],
+ "secretChest": [
+  830,
+  564
+ ],
+ "items": [
+  {
+   "sprite": "Portal_Frame",
+   "x": 800,
+   "y": 1092,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bench",
+   "x": 876,
+   "y": 1012,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Barrel",
+   "x": 898,
+   "y": 1008,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Signpost",
+   "x": 754,
+   "y": 1002,
+   "layer": "prop"
+  },
+  {
+   "sprite": "SacredTree",
+   "x": 800,
+   "y": 604,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Menhir_0",
+   "x": 800,
+   "y": 510,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_1",
+   "x": 874,
+   "y": 524,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_2",
+   "x": 924,
+   "y": 563,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_3",
+   "x": 935,
+   "y": 613,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_4",
+   "x": 903,
+   "y": 659,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_5",
+   "x": 838,
+   "y": 686,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_6",
+   "x": 762,
+   "y": 686,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_7",
+   "x": 697,
+   "y": 659,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_8",
+   "x": 665,
+   "y": 613,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_9",
+   "x": 676,
+   "y": 563,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_10",
+   "x": 726,
+   "y": 524,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Chest_Closed",
+   "x": 830,
+   "y": 564,
+   "layer": "prop"
+  },
+  {
+   "sprite": "SpiritFlower_Full",
+   "x": 700,
+   "y": 560,
+   "layer": "node"
+  },
+  {
+   "sprite": "SpiritFlower_Full",
+   "x": 900,
+   "y": 560,
+   "layer": "node"
+  },
+  {
+   "sprite": "SpiritFlower_Full",
+   "x": 800,
+   "y": 700,
+   "layer": "node"
+  },
+  {
+   "sprite": "Log_Fallen",
+   "x": 290,
+   "y": 800,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Log_Fallen",
+   "x": 390,
+   "y": 840,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Tent_Ruined",
+   "x": 240,
+   "y": 400,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Tent_Ruined",
+   "x": 340,
+   "y": 384,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Tent_Ruined",
+   "x": 260,
+   "y": 470,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Log_Seat",
+   "x": 310,
+   "y": 440,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Log_Seat",
+   "x": 360,
+   "y": 456,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Crate",
+   "x": 380,
+   "y": 410,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Barrel",
+   "x": 392,
+   "y": 416,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Hay",
+   "x": 220,
+   "y": 446,
+   "layer": "prop"
+  },
+  {
+   "sprite": "SpiritFlower_Full",
+   "x": 720,
+   "y": 190,
+   "layer": "node"
+  },
+  {
+   "sprite": "SpiritFlower_Full",
+   "x": 790,
+   "y": 170,
+   "layer": "node"
+  },
+  {
+   "sprite": "SpiritFlower_Full",
+   "x": 860,
+   "y": 200,
+   "layer": "node"
+  },
+  {
+   "sprite": "SpiritFlower_Full",
+   "x": 900,
+   "y": 180,
+   "layer": "node"
+  },
+  {
+   "sprite": "Sap_Full",
+   "x": 1250,
+   "y": 380,
+   "layer": "node"
+  },
+  {
+   "sprite": "Sap_Full",
+   "x": 1340,
+   "y": 370,
+   "layer": "node"
+  },
+  {
+   "sprite": "Sap_Full",
+   "x": 1320,
+   "y": 430,
+   "layer": "node"
+  },
+  {
+   "sprite": "Stump",
+   "x": 1230,
+   "y": 430,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Stump",
+   "x": 1370,
+   "y": 420,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_11",
+   "x": 1400,
+   "y": 720,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_12",
+   "x": 1374,
+   "y": 753,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_13",
+   "x": 1314,
+   "y": 761,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_14",
+   "x": 1314,
+   "y": 679,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Menhir_15",
+   "x": 1374,
+   "y": 687,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Log_Fallen",
+   "x": 1060,
+   "y": 960,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Log_Fallen",
+   "x": 1140,
+   "y": 1000,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Log_Fallen",
+   "x": 1080,
+   "y": 1010,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Sap_Full",
+   "x": 1150,
+   "y": 950,
+   "layer": "node"
+  },
+  {
+   "sprite": "Signpost",
+   "x": 509,
+   "y": 744,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Signpost",
+   "x": 520,
+   "y": 465,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Signpost",
+   "x": 816,
+   "y": 334,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Signpost",
+   "x": 1098,
+   "y": 471,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Signpost",
+   "x": 1109,
+   "y": 738,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Signpost",
+   "x": 984,
+   "y": 825,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": -10,
+   "y": 17,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 14,
+   "y": 17,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 44,
+   "y": 16,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 68,
+   "y": 20,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 102,
+   "y": 17,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 131,
+   "y": 25,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 162,
+   "y": 14,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 192,
+   "y": 22,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 217,
+   "y": 24,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 247,
+   "y": 26,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 272,
+   "y": 19,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 303,
+   "y": 26,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 337,
+   "y": 28,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 367,
+   "y": 25,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 391,
+   "y": 20,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 417,
+   "y": 17,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 450,
+   "y": 29,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 474,
+   "y": 27,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 499,
+   "y": 17,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 531,
+   "y": 26,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 564,
+   "y": 24,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 593,
+   "y": 24,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 619,
+   "y": 25,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 650,
+   "y": 25,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 678,
+   "y": 21,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 708,
+   "y": 20,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 734,
+   "y": 19,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 765,
+   "y": 29,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 797,
+   "y": 19,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 827,
+   "y": 21,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 852,
+   "y": 21,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 877,
+   "y": 16,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 906,
+   "y": 25,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 938,
+   "y": 25,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 966,
+   "y": 29,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1000,
+   "y": 17,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1027,
+   "y": 24,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1060,
+   "y": 24,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1087,
+   "y": 15,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1115,
+   "y": 24,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1139,
+   "y": 22,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1171,
+   "y": 20,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1202,
+   "y": 21,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1235,
+   "y": 16,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1268,
+   "y": 24,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1296,
+   "y": 26,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1320,
+   "y": 20,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1347,
+   "y": 20,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1372,
+   "y": 26,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1401,
+   "y": 21,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1430,
+   "y": 20,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1460,
+   "y": 24,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1487,
+   "y": 23,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1511,
+   "y": 21,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1544,
+   "y": 21,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_LeafDark",
+   "x": 1575,
+   "y": 28,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1605,
+   "y": 26,
+   "layer": "plateau"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 9,
+   "y": 109,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 46,
+   "y": 104,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 68,
+   "y": 107,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 88,
+   "y": 100,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1491,
+   "y": 101,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1522,
+   "y": 99,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1542,
+   "y": 106,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1578,
+   "y": 107,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 47,
+   "y": 124,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 67,
+   "y": 127,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1505,
+   "y": 124,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1533,
+   "y": 130,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1554,
+   "y": 127,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 23,
+   "y": 152,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 46,
+   "y": 148,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 75,
+   "y": 147,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 97,
+   "y": 146,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1519,
+   "y": 146,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1553,
+   "y": 157,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1572,
+   "y": 148,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 12,
+   "y": 174,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 41,
+   "y": 169,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 68,
+   "y": 174,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1042,
+   "y": 168,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1505,
+   "y": 171,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1529,
+   "y": 171,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1551,
+   "y": 176,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1577,
+   "y": 177,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 75,
+   "y": 194,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 556,
+   "y": 196,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1077,
+   "y": 189,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1103,
+   "y": 192,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1524,
+   "y": 196,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 18,
+   "y": 206,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 61,
+   "y": 209,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 86,
+   "y": 214,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 502,
+   "y": 204,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 538,
+   "y": 206,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 595,
+   "y": 204,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1026,
+   "y": 211,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1049,
+   "y": 213,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1072,
+   "y": 208,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1545,
+   "y": 213,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1567,
+   "y": 209,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 20,
+   "y": 233,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 89,
+   "y": 233,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 487,
+   "y": 223,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 533,
+   "y": 230,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 571,
+   "y": 226,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 999,
+   "y": 224,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1101,
+   "y": 234,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1556,
+   "y": 230,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1579,
+   "y": 234,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 10,
+   "y": 251,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 35,
+   "y": 249,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 68,
+   "y": 247,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 521,
+   "y": 253,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 540,
+   "y": 249,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 568,
+   "y": 247,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 985,
+   "y": 243,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1010,
+   "y": 252,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1055,
+   "y": 249,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1083,
+   "y": 253,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1518,
+   "y": 252,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1551,
+   "y": 249,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1590,
+   "y": 251,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 24,
+   "y": 268,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 74,
+   "y": 270,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 98,
+   "y": 270,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 537,
+   "y": 275,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 575,
+   "y": 267,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 598,
+   "y": 268,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1011,
+   "y": 275,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1040,
+   "y": 265,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1068,
+   "y": 268,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1133,
+   "y": 264,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1485,
+   "y": 275,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1522,
+   "y": 274,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1581,
+   "y": 274,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 10,
+   "y": 289,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 48,
+   "y": 289,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 97,
+   "y": 297,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 544,
+   "y": 293,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 572,
+   "y": 298,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1012,
+   "y": 296,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1092,
+   "y": 296,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1526,
+   "y": 296,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1545,
+   "y": 292,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 7,
+   "y": 314,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 35,
+   "y": 310,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 60,
+   "y": 304,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1575,
+   "y": 315,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 12,
+   "y": 334,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 42,
+   "y": 329,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1515,
+   "y": 336,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1546,
+   "y": 333,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 10,
+   "y": 354,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 39,
+   "y": 356,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1520,
+   "y": 359,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1555,
+   "y": 357,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1577,
+   "y": 350,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 25,
+   "y": 372,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 61,
+   "y": 379,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1548,
+   "y": 376,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1574,
+   "y": 375,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 9,
+   "y": 390,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 47,
+   "y": 396,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1505,
+   "y": 393,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1536,
+   "y": 396,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 19,
+   "y": 419,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 49,
+   "y": 419,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 69,
+   "y": 415,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 96,
+   "y": 410,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1493,
+   "y": 421,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1553,
+   "y": 411,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 47,
+   "y": 439,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1541,
+   "y": 438,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 25,
+   "y": 461,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 51,
+   "y": 463,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1527,
+   "y": 460,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1564,
+   "y": 453,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 13,
+   "y": 479,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1513,
+   "y": 485,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1543,
+   "y": 480,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1569,
+   "y": 481,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 13,
+   "y": 502,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 47,
+   "y": 505,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1476,
+   "y": 494,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1508,
+   "y": 505,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1557,
+   "y": 504,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1589,
+   "y": 496,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 15,
+   "y": 522,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 38,
+   "y": 523,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 65,
+   "y": 521,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1466,
+   "y": 526,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1501,
+   "y": 525,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1529,
+   "y": 524,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 12,
+   "y": 543,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 41,
+   "y": 545,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1462,
+   "y": 550,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1487,
+   "y": 540,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1545,
+   "y": 544,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1591,
+   "y": 543,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 14,
+   "y": 574,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 48,
+   "y": 569,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 84,
+   "y": 567,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 148,
+   "y": 570,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 173,
+   "y": 575,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1460,
+   "y": 571,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1487,
+   "y": 566,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1516,
+   "y": 563,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1569,
+   "y": 565,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 33,
+   "y": 596,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 61,
+   "y": 588,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 120,
+   "y": 595,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 190,
+   "y": 596,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1448,
+   "y": 586,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1478,
+   "y": 593,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1507,
+   "y": 596,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1537,
+   "y": 585,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1562,
+   "y": 587,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1581,
+   "y": 587,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 22,
+   "y": 614,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 52,
+   "y": 614,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 83,
+   "y": 611,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 104,
+   "y": 611,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 134,
+   "y": 612,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 163,
+   "y": 609,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 200,
+   "y": 614,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1470,
+   "y": 612,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1509,
+   "y": 617,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1543,
+   "y": 611,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1576,
+   "y": 611,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 47,
+   "y": 635,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 91,
+   "y": 635,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 127,
+   "y": 630,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 146,
+   "y": 635,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 184,
+   "y": 640,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1534,
+   "y": 636,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1588,
+   "y": 634,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 17,
+   "y": 658,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 59,
+   "y": 659,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 84,
+   "y": 658,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 119,
+   "y": 661,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 194,
+   "y": 661,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1537,
+   "y": 658,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1557,
+   "y": 655,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1589,
+   "y": 664,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 22,
+   "y": 685,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 59,
+   "y": 681,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 90,
+   "y": 685,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 125,
+   "y": 680,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1524,
+   "y": 681,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1549,
+   "y": 682,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1571,
+   "y": 681,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 21,
+   "y": 706,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 74,
+   "y": 705,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 103,
+   "y": 707,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1534,
+   "y": 701,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1562,
+   "y": 701,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1588,
+   "y": 702,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 13,
+   "y": 729,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 39,
+   "y": 726,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 75,
+   "y": 728,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1532,
+   "y": 723,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1553,
+   "y": 723,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1581,
+   "y": 721,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 43,
+   "y": 745,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 101,
+   "y": 748,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1529,
+   "y": 747,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1569,
+   "y": 752,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 21,
+   "y": 768,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 70,
+   "y": 771,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1526,
+   "y": 768,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1544,
+   "y": 759,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 11,
+   "y": 792,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 36,
+   "y": 782,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 56,
+   "y": 788,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1510,
+   "y": 787,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1538,
+   "y": 785,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1564,
+   "y": 781,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1591,
+   "y": 786,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 7,
+   "y": 813,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 32,
+   "y": 809,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1533,
+   "y": 807,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1554,
+   "y": 805,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1591,
+   "y": 808,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 41,
+   "y": 828,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 75,
+   "y": 827,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1505,
+   "y": 831,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1528,
+   "y": 829,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1578,
+   "y": 825,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 8,
+   "y": 848,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 40,
+   "y": 850,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 62,
+   "y": 850,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 110,
+   "y": 841,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1549,
+   "y": 846,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 24,
+   "y": 863,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 43,
+   "y": 869,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1507,
+   "y": 863,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1541,
+   "y": 869,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1586,
+   "y": 872,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 19,
+   "y": 892,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 69,
+   "y": 887,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 97,
+   "y": 887,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1513,
+   "y": 882,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1547,
+   "y": 892,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 19,
+   "y": 918,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 34,
+   "y": 906,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 53,
+   "y": 906,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 78,
+   "y": 913,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1335,
+   "y": 909,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1380,
+   "y": 913,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1533,
+   "y": 911,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1561,
+   "y": 914,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 46,
+   "y": 931,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 74,
+   "y": 940,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 565,
+   "y": 932,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 586,
+   "y": 938,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1314,
+   "y": 932,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1337,
+   "y": 936,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1362,
+   "y": 930,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1383,
+   "y": 939,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1412,
+   "y": 930,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1505,
+   "y": 934,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1524,
+   "y": 936,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1557,
+   "y": 934,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1585,
+   "y": 940,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 23,
+   "y": 956,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 515,
+   "y": 956,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 543,
+   "y": 955,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1327,
+   "y": 961,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1350,
+   "y": 954,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1391,
+   "y": 962,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1421,
+   "y": 956,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1557,
+   "y": 957,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1581,
+   "y": 962,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 37,
+   "y": 982,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 76,
+   "y": 980,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 518,
+   "y": 981,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 569,
+   "y": 971,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 589,
+   "y": 976,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1329,
+   "y": 982,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1352,
+   "y": 977,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1514,
+   "y": 978,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1540,
+   "y": 976,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 22,
+   "y": 998,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 65,
+   "y": 1003,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 125,
+   "y": 1003,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 378,
+   "y": 1003,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 481,
+   "y": 997,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 511,
+   "y": 1001,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 555,
+   "y": 996,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 584,
+   "y": 1003,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 617,
+   "y": 996,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1335,
+   "y": 1002,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1387,
+   "y": 1003,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1416,
+   "y": 996,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1531,
+   "y": 1000,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1562,
+   "y": 1002,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 15,
+   "y": 1016,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 53,
+   "y": 1021,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 79,
+   "y": 1022,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 104,
+   "y": 1017,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 186,
+   "y": 1027,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 304,
+   "y": 1016,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 345,
+   "y": 1023,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 419,
+   "y": 1026,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 444,
+   "y": 1018,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 512,
+   "y": 1026,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 563,
+   "y": 1023,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 583,
+   "y": 1022,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 612,
+   "y": 1020,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 686,
+   "y": 1022,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 746,
+   "y": 1027,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 936,
+   "y": 1022,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 977,
+   "y": 1015,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1309,
+   "y": 1025,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1358,
+   "y": 1015,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1461,
+   "y": 1023,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1488,
+   "y": 1021,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1542,
+   "y": 1016,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1593,
+   "y": 1024,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 15,
+   "y": 1038,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 35,
+   "y": 1039,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 75,
+   "y": 1041,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 116,
+   "y": 1044,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 140,
+   "y": 1039,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 163,
+   "y": 1045,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 219,
+   "y": 1045,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 276,
+   "y": 1046,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 297,
+   "y": 1038,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 362,
+   "y": 1037,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 435,
+   "y": 1040,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 454,
+   "y": 1042,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 502,
+   "y": 1048,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 537,
+   "y": 1043,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 557,
+   "y": 1042,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 586,
+   "y": 1047,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 610,
+   "y": 1041,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 651,
+   "y": 1044,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 702,
+   "y": 1047,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 851,
+   "y": 1040,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 904,
+   "y": 1041,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 923,
+   "y": 1048,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 961,
+   "y": 1046,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 986,
+   "y": 1038,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1034,
+   "y": 1047,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1165,
+   "y": 1048,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1201,
+   "y": 1037,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1291,
+   "y": 1038,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1318,
+   "y": 1042,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1368,
+   "y": 1039,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1415,
+   "y": 1036,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1443,
+   "y": 1044,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1530,
+   "y": 1041,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1561,
+   "y": 1039,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1587,
+   "y": 1044,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 23,
+   "y": 1065,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 43,
+   "y": 1063,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 64,
+   "y": 1062,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 89,
+   "y": 1067,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 122,
+   "y": 1064,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 144,
+   "y": 1065,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 180,
+   "y": 1061,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 201,
+   "y": 1072,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 225,
+   "y": 1067,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 279,
+   "y": 1071,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 322,
+   "y": 1067,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 346,
+   "y": 1064,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 374,
+   "y": 1067,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 394,
+   "y": 1061,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 422,
+   "y": 1067,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 455,
+   "y": 1066,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 483,
+   "y": 1063,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 527,
+   "y": 1067,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 583,
+   "y": 1068,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 620,
+   "y": 1068,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 661,
+   "y": 1067,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 684,
+   "y": 1072,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 709,
+   "y": 1068,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 883,
+   "y": 1066,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 902,
+   "y": 1063,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 940,
+   "y": 1070,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 959,
+   "y": 1068,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 985,
+   "y": 1065,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1010,
+   "y": 1070,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1038,
+   "y": 1068,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1081,
+   "y": 1071,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1113,
+   "y": 1070,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1208,
+   "y": 1064,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1243,
+   "y": 1068,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1265,
+   "y": 1061,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1294,
+   "y": 1069,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1323,
+   "y": 1072,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1344,
+   "y": 1061,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1373,
+   "y": 1062,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1408,
+   "y": 1068,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1456,
+   "y": 1068,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1500,
+   "y": 1066,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1534,
+   "y": 1064,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1563,
+   "y": 1062,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 11,
+   "y": 1086,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 37,
+   "y": 1083,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 62,
+   "y": 1090,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 83,
+   "y": 1095,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 116,
+   "y": 1094,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 143,
+   "y": 1086,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 179,
+   "y": 1093,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 219,
+   "y": 1088,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 249,
+   "y": 1087,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 294,
+   "y": 1094,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 313,
+   "y": 1094,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 337,
+   "y": 1093,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 384,
+   "y": 1093,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 406,
+   "y": 1091,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 445,
+   "y": 1088,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 466,
+   "y": 1089,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 489,
+   "y": 1086,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 547,
+   "y": 1095,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 571,
+   "y": 1090,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 598,
+   "y": 1085,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 627,
+   "y": 1092,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 652,
+   "y": 1089,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 727,
+   "y": 1085,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 873,
+   "y": 1094,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 910,
+   "y": 1092,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 942,
+   "y": 1089,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 971,
+   "y": 1085,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1022,
+   "y": 1094,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1051,
+   "y": 1091,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1100,
+   "y": 1089,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1134,
+   "y": 1086,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1161,
+   "y": 1090,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1206,
+   "y": 1086,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1253,
+   "y": 1094,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1292,
+   "y": 1090,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1344,
+   "y": 1086,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1371,
+   "y": 1088,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1390,
+   "y": 1095,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1417,
+   "y": 1092,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1474,
+   "y": 1090,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1500,
+   "y": 1087,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1525,
+   "y": 1095,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1550,
+   "y": 1090,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1574,
+   "y": 1084,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": -2,
+   "y": 1114,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 21,
+   "y": 1118,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 42,
+   "y": 1118,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 101,
+   "y": 1107,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 156,
+   "y": 1116,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 208,
+   "y": 1116,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 253,
+   "y": 1109,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 327,
+   "y": 1114,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 366,
+   "y": 1109,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 405,
+   "y": 1115,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 448,
+   "y": 1109,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 471,
+   "y": 1112,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 495,
+   "y": 1116,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 525,
+   "y": 1107,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 598,
+   "y": 1118,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 630,
+   "y": 1118,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 671,
+   "y": 1115,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 691,
+   "y": 1114,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 719,
+   "y": 1116,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 911,
+   "y": 1116,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 938,
+   "y": 1114,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 988,
+   "y": 1112,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1018,
+   "y": 1113,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1040,
+   "y": 1116,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1074,
+   "y": 1108,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1096,
+   "y": 1113,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1127,
+   "y": 1107,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1185,
+   "y": 1110,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1220,
+   "y": 1113,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1246,
+   "y": 1116,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1268,
+   "y": 1115,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1325,
+   "y": 1112,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1347,
+   "y": 1110,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1416,
+   "y": 1112,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1466,
+   "y": 1110,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1503,
+   "y": 1107,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1550,
+   "y": 1109,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1600,
+   "y": 1116,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": -13,
+   "y": 1134,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 64,
+   "y": 1128,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 103,
+   "y": 1126,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 130,
+   "y": 1133,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 174,
+   "y": 1129,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 204,
+   "y": 1136,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 231,
+   "y": 1138,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 255,
+   "y": 1130,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 293,
+   "y": 1127,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 345,
+   "y": 1126,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 377,
+   "y": 1131,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 402,
+   "y": 1136,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 427,
+   "y": 1135,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 453,
+   "y": 1138,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 514,
+   "y": 1127,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 557,
+   "y": 1127,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 668,
+   "y": 1135,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 691,
+   "y": 1136,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 869,
+   "y": 1136,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 889,
+   "y": 1130,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 970,
+   "y": 1137,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1002,
+   "y": 1137,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1025,
+   "y": 1131,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1052,
+   "y": 1138,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1131,
+   "y": 1126,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1178,
+   "y": 1132,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1202,
+   "y": 1132,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1272,
+   "y": 1134,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1309,
+   "y": 1135,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1336,
+   "y": 1132,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1369,
+   "y": 1133,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1428,
+   "y": 1136,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1453,
+   "y": 1131,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealDark",
+   "x": 1488,
+   "y": 1132,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1512,
+   "y": 1132,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1536,
+   "y": 1131,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1562,
+   "y": 1134,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1581,
+   "y": 1137,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1621,
+   "y": 1132,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 162,
+   "y": 233,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 252,
+   "y": 254,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1265,
+   "y": 876,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 959,
+   "y": 912,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1270,
+   "y": 478,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 193,
+   "y": 193,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1315,
+   "y": 569,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 301,
+   "y": 539,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 151,
+   "y": 863,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 961,
+   "y": 725,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1449,
+   "y": 358,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1218,
+   "y": 558,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1404,
+   "y": 536,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1005,
+   "y": 709,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 511,
+   "y": 896,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1168,
+   "y": 771,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 509,
+   "y": 560,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 484,
+   "y": 275,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1313,
+   "y": 230,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 304,
+   "y": 647,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1371,
+   "y": 269,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 206,
+   "y": 837,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1438,
+   "y": 763,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1215,
+   "y": 864,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1039,
+   "y": 377,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 668,
+   "y": 887,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 873,
+   "y": 302,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 664,
+   "y": 156,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 232,
+   "y": 164,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1090,
+   "y": 521,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 162,
+   "y": 513,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 306,
+   "y": 309,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 644,
+   "y": 461,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 425,
+   "y": 592,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1164,
+   "y": 816,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 943,
+   "y": 440,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 190,
+   "y": 277,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1217,
+   "y": 163,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1044,
+   "y": 826,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 925,
+   "y": 886,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1019,
+   "y": 542,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 470,
+   "y": 777,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 569,
+   "y": 569,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1069,
+   "y": 895,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 989,
+   "y": 172,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 432,
+   "y": 323,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 234,
+   "y": 216,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 542,
+   "y": 501,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 634,
+   "y": 797,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1381,
+   "y": 813,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 275,
+   "y": 611,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1204,
+   "y": 221,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 762,
+   "y": 329,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1179,
+   "y": 383,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1266,
+   "y": 917,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1466,
+   "y": 689,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 244,
+   "y": 781,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 116,
+   "y": 467,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1267,
+   "y": 973,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 398,
+   "y": 504,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 243,
+   "y": 572,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 367,
+   "y": 266,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 377,
+   "y": 705,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 425,
+   "y": 243,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 93,
+   "y": 340,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 941,
+   "y": 958,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1413,
+   "y": 233,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 747,
+   "y": 809,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 150,
+   "y": 817,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Leaf",
+   "x": 1321,
+   "y": 186,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1087,
+   "y": 680,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1206,
+   "y": 350,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 447,
+   "y": 963,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 198,
+   "y": 369,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 676,
+   "y": 324,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 1309,
+   "y": 851,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 189,
+   "y": 885,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_Teal",
+   "x": 188,
+   "y": 967,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Tree_TealCool",
+   "x": 1031,
+   "y": 657,
+   "layer": "tree"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 497,
+   "y": 367,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 513,
+   "y": 359,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 482,
+   "y": 373,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 114,
+   "y": 337,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 107,
+   "y": 349,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 631,
+   "y": 884,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 649,
+   "y": 874,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 563,
+   "y": 498,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 67,
+   "y": 618,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 153,
+   "y": 449,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 157,
+   "y": 462,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 130,
+   "y": 457,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1150,
+   "y": 816,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1158,
+   "y": 830,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1090,
+   "y": 415,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1071,
+   "y": 402,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1489,
+   "y": 400,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1474,
+   "y": 394,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 119,
+   "y": 313,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 92,
+   "y": 315,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 105,
+   "y": 311,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1510,
+   "y": 957,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1496,
+   "y": 958,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 99,
+   "y": 525,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 83,
+   "y": 520,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 124,
+   "y": 838,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 152,
+   "y": 836,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 455,
+   "y": 359,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 448,
+   "y": 372,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 327,
+   "y": 307,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 342,
+   "y": 301,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 96,
+   "y": 819,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1064,
+   "y": 304,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1079,
+   "y": 294,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 937,
+   "y": 170,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 503,
+   "y": 318,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 519,
+   "y": 322,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1264,
+   "y": 1036,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 189,
+   "y": 797,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 167,
+   "y": 792,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 603,
+   "y": 1057,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 433,
+   "y": 549,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 418,
+   "y": 551,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1500,
+   "y": 634,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1201,
+   "y": 908,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1142,
+   "y": 694,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1154,
+   "y": 708,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1032,
+   "y": 276,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 478,
+   "y": 298,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 457,
+   "y": 301,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1057,
+   "y": 162,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 238,
+   "y": 532,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1475,
+   "y": 926,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1456,
+   "y": 937,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 207,
+   "y": 507,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 182,
+   "y": 513,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1077,
+   "y": 280,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1104,
+   "y": 271,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 955,
+   "y": 742,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 412,
+   "y": 484,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 58,
+   "y": 222,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 470,
+   "y": 990,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 454,
+   "y": 990,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1415,
+   "y": 323,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1429,
+   "y": 330,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1403,
+   "y": 318,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 333,
+   "y": 256,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 262,
+   "y": 540,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 252,
+   "y": 552,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1019,
+   "y": 263,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 995,
+   "y": 260,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 104,
+   "y": 671,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 397,
+   "y": 975,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1234,
+   "y": 910,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 114,
+   "y": 900,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 96,
+   "y": 904,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1481,
+   "y": 260,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1513,
+   "y": 264,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1300,
+   "y": 275,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1353,
+   "y": 253,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1204,
+   "y": 296,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1184,
+   "y": 293,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 468,
+   "y": 128,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 481,
+   "y": 123,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1521,
+   "y": 311,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1546,
+   "y": 314,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 961,
+   "y": 288,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 942,
+   "y": 295,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1291,
+   "y": 125,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 180,
+   "y": 360,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 144,
+   "y": 357,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 442,
+   "y": 585,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 485,
+   "y": 454,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1551,
+   "y": 191,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 452,
+   "y": 892,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 474,
+   "y": 892,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 575,
+   "y": 648,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 549,
+   "y": 656,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1002,
+   "y": 943,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 988,
+   "y": 948,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 572,
+   "y": 458,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 45,
+   "y": 483,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 63,
+   "y": 484,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 76,
+   "y": 489,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 240,
+   "y": 177,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 937,
+   "y": 246,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 918,
+   "y": 243,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1071,
+   "y": 352,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1045,
+   "y": 357,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1061,
+   "y": 361,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 328,
+   "y": 678,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 347,
+   "y": 682,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 951,
+   "y": 225,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 922,
+   "y": 220,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 468,
+   "y": 342,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 442,
+   "y": 336,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 952,
+   "y": 205,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 123,
+   "y": 745,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 118,
+   "y": 757,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 442,
+   "y": 975,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 303,
+   "y": 153,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 281,
+   "y": 145,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 300,
+   "y": 137,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1299,
+   "y": 154,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1314,
+   "y": 153,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 386,
+   "y": 529,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 400,
+   "y": 530,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 400,
+   "y": 758,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 422,
+   "y": 753,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1130,
+   "y": 745,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1150,
+   "y": 753,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1037,
+   "y": 418,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 194,
+   "y": 727,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 211,
+   "y": 740,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 184,
+   "y": 824,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 213,
+   "y": 821,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 507,
+   "y": 345,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 528,
+   "y": 351,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1025,
+   "y": 291,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 89,
+   "y": 731,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 109,
+   "y": 324,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 451,
+   "y": 631,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1521,
+   "y": 1029,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1294,
+   "y": 170,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1316,
+   "y": 304,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1302,
+   "y": 320,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1415,
+   "y": 819,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1401,
+   "y": 810,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 72,
+   "y": 433,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 89,
+   "y": 431,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1083,
+   "y": 666,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1067,
+   "y": 671,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 127,
+   "y": 703,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1492,
+   "y": 938,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 572,
+   "y": 477,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 1052,
+   "y": 315,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1067,
+   "y": 325,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1085,
+   "y": 330,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 125,
+   "y": 205,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 146,
+   "y": 211,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 906,
+   "y": 756,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 927,
+   "y": 748,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1172,
+   "y": 856,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1165,
+   "y": 867,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 1184,
+   "y": 865,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 571,
+   "y": 665,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 111,
+   "y": 500,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 598,
+   "y": 425,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 595,
+   "y": 438,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 1424,
+   "y": 245,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 903,
+   "y": 334,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Stump",
+   "x": 629,
+   "y": 933,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_L",
+   "x": 147,
+   "y": 689,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_S",
+   "x": 990,
+   "y": 992,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_L",
+   "x": 193,
+   "y": 535,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Stump",
+   "x": 1244,
+   "y": 966,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Stump",
+   "x": 541,
+   "y": 896,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_L",
+   "x": 718,
+   "y": 466,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_S",
+   "x": 604,
+   "y": 699,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Stump",
+   "x": 1492,
+   "y": 297,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_S",
+   "x": 198,
+   "y": 148,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_S",
+   "x": 625,
+   "y": 308,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_M",
+   "x": 817,
+   "y": 284,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_M",
+   "x": 52,
+   "y": 706,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_S",
+   "x": 1313,
+   "y": 642,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Stump",
+   "x": 1360,
+   "y": 218,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Stump",
+   "x": 303,
+   "y": 619,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_M",
+   "x": 737,
+   "y": 397,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_L",
+   "x": 1189,
+   "y": 249,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_L",
+   "x": 196,
+   "y": 1002,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_M",
+   "x": 1451,
+   "y": 258,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_M",
+   "x": 731,
+   "y": 916,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_S",
+   "x": 188,
+   "y": 683,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_M",
+   "x": 769,
+   "y": 543,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_M",
+   "x": 744,
+   "y": 580,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 897,
+   "y": 503,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 726,
+   "y": 672,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 639,
+   "y": 616,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_S",
+   "x": 676,
+   "y": 678,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Leaf",
+   "x": 753,
+   "y": 658,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 892,
+   "y": 547,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_L",
+   "x": 710,
+   "y": 583,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 664,
+   "y": 636,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_S",
+   "x": 800,
+   "y": 537,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 785,
+   "y": 640,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Boulder_M",
+   "x": 675,
+   "y": 543,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Dark",
+   "x": 879,
+   "y": 560,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 898,
+   "y": 602,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 791,
+   "y": 557,
+   "layer": "prop"
+  },
+  {
+   "sprite": "Bush_Teal",
+   "x": 877,
+   "y": 655,
+   "layer": "prop"
+  }
+ ],
+ "mobs": [
+  {
+   "mob": "Dryad Rider",
+   "sheet": "DryadRider_DryadRider_Sheet",
+   "x": 970,
+   "y": 600,
+   "lv": 12,
+   "boss": false,
+   "home": [
+    970,
+    600
+   ],
+   "radius": 60,
+   "patrol": null,
+   "orbit": {
+    "cx": 800,
+    "cy": 600,
+    "rx": 170,
+    "ry": 112,
+    "sp": 0.2,
+    "ph": 0
+   },
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Dryad Rider",
+   "sheet": "DryadRider_DryadRider_Sheet",
+   "x": 714,
+   "y": 697,
+   "lv": 12,
+   "boss": false,
+   "home": [
+    714,
+    697
+   ],
+   "radius": 60,
+   "patrol": null,
+   "orbit": {
+    "cx": 800,
+    "cy": 600,
+    "rx": 170,
+    "ry": 112,
+    "sp": 0.2,
+    "ph": 0
+   },
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Dryad Rider",
+   "sheet": "DryadRider_DryadRider_Sheet",
+   "x": 717,
+   "y": 502,
+   "lv": 12,
+   "boss": false,
+   "home": [
+    717,
+    502
+   ],
+   "radius": 60,
+   "patrol": null,
+   "orbit": {
+    "cx": 800,
+    "cy": 600,
+    "rx": 170,
+    "ry": 112,
+    "sp": 0.2,
+    "ph": 0
+   },
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 794,
+   "y": 670,
+   "lv": 11,
+   "boss": false,
+   "home": [
+    800,
+    640
+   ],
+   "radius": 50,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 774,
+   "y": 630,
+   "lv": 11,
+   "boss": false,
+   "home": [
+    800,
+    640
+   ],
+   "radius": 50,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Elder Dryad Rider",
+   "sheet": "DryadRider_DryadRider_Sheet",
+   "x": 800,
+   "y": 530,
+   "lv": 14,
+   "boss": true,
+   "home": [
+    800,
+    530
+   ],
+   "radius": 26,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Satyr",
+   "sheet": "Satyr_Satyr_Sheet",
+   "x": 342,
+   "y": 825,
+   "lv": 9,
+   "boss": false,
+   "home": [
+    340,
+    820
+   ],
+   "radius": 66,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Satyr",
+   "sheet": "Satyr_Satyr_Sheet",
+   "x": 353,
+   "y": 795,
+   "lv": 9,
+   "boss": false,
+   "home": [
+    340,
+    820
+   ],
+   "radius": 66,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Satyr",
+   "sheet": "Satyr_Satyr_Sheet",
+   "x": 296,
+   "y": 845,
+   "lv": 9,
+   "boss": false,
+   "home": [
+    340,
+    820
+   ],
+   "radius": 66,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Satyr",
+   "sheet": "Satyr_Satyr_Sheet",
+   "x": 380,
+   "y": 829,
+   "lv": 9,
+   "boss": false,
+   "home": [
+    340,
+    820
+   ],
+   "radius": 66,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Satyr",
+   "sheet": "Satyr_Satyr_Sheet",
+   "x": 321,
+   "y": 810,
+   "lv": 9,
+   "boss": false,
+   "home": [
+    340,
+    820
+   ],
+   "radius": 66,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 294,
+   "y": 437,
+   "lv": 10,
+   "boss": false,
+   "home": [
+    300,
+    430
+   ],
+   "radius": 70,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 260,
+   "y": 417,
+   "lv": 10,
+   "boss": false,
+   "home": [
+    300,
+    430
+   ],
+   "radius": 70,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 297,
+   "y": 412,
+   "lv": 10,
+   "boss": false,
+   "home": [
+    300,
+    430
+   ],
+   "radius": 70,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 337,
+   "y": 410,
+   "lv": 10,
+   "boss": false,
+   "home": [
+    300,
+    430
+   ],
+   "radius": 70,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 235,
+   "y": 409,
+   "lv": 10,
+   "boss": false,
+   "home": [
+    300,
+    430
+   ],
+   "radius": 70,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 801,
+   "y": 207,
+   "lv": 11,
+   "boss": false,
+   "home": [
+    800,
+    200
+   ],
+   "radius": 90,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 726,
+   "y": 209,
+   "lv": 11,
+   "boss": false,
+   "home": [
+    800,
+    200
+   ],
+   "radius": 90,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 880,
+   "y": 211,
+   "lv": 11,
+   "boss": false,
+   "home": [
+    800,
+    200
+   ],
+   "radius": 90,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Dryad Rider",
+   "sheet": "DryadRider_DryadRider_Sheet",
+   "x": 800,
+   "y": 210,
+   "lv": 11,
+   "boss": false,
+   "home": [
+    800,
+    200
+   ],
+   "radius": 90,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Satyr",
+   "sheet": "Satyr_Satyr_Sheet",
+   "x": 1286,
+   "y": 407,
+   "lv": 11,
+   "boss": false,
+   "home": [
+    1300,
+    400
+   ],
+   "radius": 66,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Satyr",
+   "sheet": "Satyr_Satyr_Sheet",
+   "x": 1349,
+   "y": 386,
+   "lv": 11,
+   "boss": false,
+   "home": [
+    1300,
+    400
+   ],
+   "radius": 66,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Satyr",
+   "sheet": "Satyr_Satyr_Sheet",
+   "x": 1344,
+   "y": 399,
+   "lv": 11,
+   "boss": false,
+   "home": [
+    1300,
+    400
+   ],
+   "radius": 66,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Satyr",
+   "sheet": "Satyr_Satyr_Sheet",
+   "x": 1332,
+   "y": 395,
+   "lv": 11,
+   "boss": false,
+   "home": [
+    1300,
+    400
+   ],
+   "radius": 66,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Dryad Rider",
+   "sheet": "DryadRider_DryadRider_Sheet",
+   "x": 1311,
+   "y": 722,
+   "lv": 12,
+   "boss": false,
+   "home": [
+    1330,
+    720
+   ],
+   "radius": 50,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Dryad Rider",
+   "sheet": "DryadRider_DryadRider_Sheet",
+   "x": 1326,
+   "y": 708,
+   "lv": 12,
+   "boss": false,
+   "home": [
+    1330,
+    720
+   ],
+   "radius": 50,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Dryad Rider",
+   "sheet": "DryadRider_DryadRider_Sheet",
+   "x": 1291,
+   "y": 705,
+   "lv": 12,
+   "boss": false,
+   "home": [
+    1330,
+    720
+   ],
+   "radius": 50,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 1113,
+   "y": 976,
+   "lv": 12,
+   "boss": false,
+   "home": [
+    1100,
+    980
+   ],
+   "radius": 60,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Pixie",
+   "sheet": "Dryad_Dryad_Sheet",
+   "x": 1060,
+   "y": 977,
+   "lv": 12,
+   "boss": false,
+   "home": [
+    1100,
+    980
+   ],
+   "radius": 60,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Satyr",
+   "sheet": "Satyr_Satyr_Sheet",
+   "x": 1090,
+   "y": 980,
+   "lv": 12,
+   "boss": false,
+   "home": [
+    1100,
+    980
+   ],
+   "radius": 60,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  },
+  {
+   "mob": "Satyr",
+   "sheet": "Satyr_Satyr_Sheet",
+   "x": 1050,
+   "y": 980,
+   "lv": 12,
+   "boss": false,
+   "home": [
+    1100,
+    980
+   ],
+   "radius": 60,
+   "patrol": null,
+   "orbit": null,
+   "lift": 0,
+   "caged": false
+  }
+ ],
+ "notes": [
+  "Palette: Abandoned/Ground and Abandoned/Trees are recoloured (grey-blue grass, desaturated trees); vignette stronger (edge alpha 0.68).",
+  "Mist over the whole map: Mist_Blob x6, scale 3-5, alpha 0.16, drifting.",
+  "Layout: centre clearing with the sacred tree (boss + 3 orbiting riders), a wobbling ring road (paths[1]) with 3 spokes to the centre, and 6 branches (paths[5..10]) to training grounds 1-6; a Signpost where each branch leaves the ring.",
+  "Resources: SpiritFlower (Hoa linh) + Sap (Nhựa cây), both in the demo now.",
+  "Dryad Riders orbit the sacred tree on an ellipse rx170 ry112 at ~34px/s (see mobs[].orbit).",
+  "Rings per the layout spec: Satyr outer, Dryad middle, Dryad Rider orbit around the tree."
+ ]
+}

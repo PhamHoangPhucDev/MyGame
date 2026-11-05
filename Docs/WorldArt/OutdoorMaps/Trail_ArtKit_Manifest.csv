@@ -1,0 +1,15 @@
+file,width,height,frames,frame_w,frame_h,pivot_xy_normalized,note
+Shared/Fortify/Palisade_Post_22.png,8,22,1,8,22,0.5,0,wood post; rows of posts every 7px; collider r4
+Shared/Fortify/Palisade_Post_23.png,8,23,1,8,23,0.5,0,wood post; rows of posts every 7px; collider r4
+Shared/Fortify/Palisade_Post_24.png,8,24,1,8,24,0.5,0,wood post; rows of posts every 7px; collider r4
+Shared/Fortify/Palisade_Post_25.png,8,25,1,8,25,0.5,0,wood post; rows of posts every 7px; collider r4
+Shared/Fortify/Palisade_Post_26.png,8,26,1,8,26,0.5,0,wood post; rows of posts every 7px; collider r4
+Shared/Fortify/Palisade_Post_27.png,8,27,1,8,27,0.5,0,wood post; rows of posts every 7px; collider r4
+Shared/Fortify/Palisade_Post_28.png,8,28,1,8,28,0.5,0,wood post; rows of posts every 7px; collider r4
+Shared/Fortify/Palisade_Post_29.png,8,29,1,8,29,0.5,0,wood post; rows of posts every 7px; collider r4
+Trail/Props/Bush_Rustle.png,114,26,3,38,26,0.5,0,secret entrance; no collider; shake 3 frames at 20 fps when the hero is within 14px and every ~2s idle
+Trail/Props/Hedge_2.png,56,30,1,56,30,0.5,0,run of 3 overlapping bushes; colliders every 14px
+Trail/Props/Hedge_3.png,70,30,1,70,30,0.5,0,run of 4 overlapping bushes; colliders every 14px
+Trail/Props/Hedge_4.png,84,30,1,84,30,0.5,0,run of 5 overlapping bushes; colliders every 14px
+Trail/Trail_Overview.png,2200,1200,1,2200,1200,0,1,whole map at 1x from the approved demo; layout reference only
+Trail/Trail_Overview_Annotated.png,2200,1200,1,2200,1200,0,1,annotated layout

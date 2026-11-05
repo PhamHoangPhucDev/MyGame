@@ -83,6 +83,13 @@ namespace GameplayPrototype
             }
         }
 
+        public void CancelWindup()
+        {
+            if (_ringFade > 0f) return;
+            if (_ringSr != null) _ringSr.enabled = false;
+            if (_anim != null) _anim.speed = 1f;
+        }
+
         void Update()
         {
             if (_ringFade > 0f && _ringSr != null)

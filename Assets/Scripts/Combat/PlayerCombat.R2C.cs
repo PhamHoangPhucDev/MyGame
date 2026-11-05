@@ -373,28 +373,87 @@ namespace GameplayPrototype
 
         void BeginMeteor(SkillDef d)
         {
-            var target = CombatTargeting.FindNearestEnemy(transform.position, 8f, enemyMask);
-            Vector2 dir = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.down;
-            Vector2 center = target != null ? (Vector2)target.transform.position : (Vector2)transform.position + dir * 4f;
-            StartCoroutine(MeteorRoutine(d, center));
+            float zone = d.radius > 0.1f ? d.radius : 3f;
+            Vector2 center;
+            if (!TryDensestEnemyPoint(8f, zone, out center))
+            {
+                Vector2 dir = _facing.sqrMagnitude > 0.01f ? _facing.normalized : Vector2.down;
+                center = (Vector2)transform.position + dir * 4f;
+            }
+            StartCoroutine(MeteorRoutine(d, center, zone));
         }
 
-        IEnumerator MeteorRoutine(SkillDef d, Vector2 center)
+        /// <summary>Enemy who has the most neighbours inside the zone, among enemies in search range.</summary>
+        bool TryDensestEnemyPoint(float searchRange, float zoneRadius, out Vector2 point)
+        {
+            point = Vector2.zero;
+            var pool = new List<Health>();
+            CombatTargeting.OverlapEnemies(transform.position, searchRange, pool, enemyMask);
+            Health best = null;
+            int bestCount = 0;
+            float bestDist = float.MaxValue;
+            for (int i = 0; i < pool.Count; i++)
+            {
+                var h = pool[i];
+                if (h == null) continue;
+                int n = 0;
+                for (int j = 0; j < pool.Count; j++)
+                {
+                    if (pool[j] == null) continue;
+                    if (Vector2.Distance(h.transform.position, pool[j].transform.position) <= zoneRadius)
+                        n++;
+                }
+                float dist = Vector2.Distance(transform.position, h.transform.position);
+                if (n > bestCount || (n == bestCount && dist < bestDist))
+                {
+                    best = h;
+                    bestCount = n;
+                    bestDist = dist;
+                }
+            }
+            if (best == null) return false;
+            point = best.transform.position;
+            return true;
+        }
+
+        IEnumerator MeteorRoutine(SkillDef d, Vector2 center, float zoneRadius)
         {
             if (d.vfxFrames != null && d.vfxFrames.Length > 0)
                 KitVfx.PlayAttached(d.vfxFrames, NewAnchor(center), Vector3.zero, 6f, false, -20, true);
             int stars = Mathf.Max(1, d.count);
+            var struck = new List<Health>();
             for (int i = 0; i < stars; i++)
             {
-                Vector2 at = center + Random.insideUnitCircle * d.radius;
+                Vector2 at = StarPoint(center, zoneRadius, struck);
                 if (d.projectilePoses != null && d.projectilePoses.Length > 0)
                     KitVfx.Play(d.projectilePoses, at, 12f, false, 40);
-                ApplyAreaDamage(at, 0.8f, d.damage, d.knockback, d.popupColor);
+                ApplyAreaDamage(at, 1f, d.damage, d.knockback, d.popupColor);
                 if (d.hitstop > 0f && HitStop.Instance != null) HitStop.Instance.Trigger(d.hitstop);
                 if (d.shakeAmp > 0f) _cameraFollow?.Shake(d.shakeAmp, d.shakeDur);
                 if (i == 0) KitVfx.ScreenTint(new Color(0.45f, 0.2f, 0.7f, 0.08f), 0.1f);
                 if (i < stars - 1) yield return new WaitForSeconds(d.interval > 0.01f ? d.interval : 0.3f);
             }
+        }
+
+        Vector2 StarPoint(Vector2 center, float zoneRadius, List<Health> struck)
+        {
+            var pool = new List<Health>();
+            CombatTargeting.OverlapEnemies(center, zoneRadius, pool, enemyMask);
+            Health pick = null;
+            var fresh = new List<Health>();
+            for (int i = 0; i < pool.Count; i++)
+                if (pool[i] != null && !struck.Contains(pool[i]))
+                    fresh.Add(pool[i]);
+            if (fresh.Count > 0)
+                pick = fresh[Random.Range(0, fresh.Count)];
+            else if (pool.Count > 0)
+                pick = pool[Random.Range(0, pool.Count)];
+            if (pick == null)
+                return center + Random.insideUnitCircle * zoneRadius;
+            if (!struck.Contains(pick))
+                struck.Add(pick);
+            Vector2 offset = Random.insideUnitCircle * 0.3f;
+            return (Vector2)pick.transform.position + offset;
         }
 
         void TileBeam(Sprite[] frames, Vector2 dir)

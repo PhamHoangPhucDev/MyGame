@@ -1,0 +1,111 @@
+file,width,height,frames,frame_w,frame_h,pivot_xy_normalized,note
+Shared/Cliff/Cliff_Face.png,96,56,6,16,56,0,0,6 variants; rows 0-5 plateau; 6-8 grass lip; 52-55 shadow cast on grass; offset tiles 1-3px vertically to jag the rim
+Shared/Cliff/Vine_0.png,3,7,1,3,7,0,1,hang from the lip
+Shared/Cliff/Vine_1.png,3,11,1,3,11,0,1,hang from the lip
+Shared/Cliff/Vine_2.png,3,14,1,3,14,0,1,hang from the lip
+Shared/Cliff/Vine_3.png,3,17,1,3,17,0,1,hang from the lip
+Shared/Cliff/Waterfall.png,120,48,6,20,48,0.5,1,loop 12 fps; tile vertically for taller cliffs
+Shared/Cliff/Waterfall_Foam.png,112,6,4,28,6,0.5,0,loop 10 fps at the waterfall base
+Shared/Cliff/Cave_Mouth.png,40,36,1,40,36,0.5,0,sits on the cliff base
+Shared/Fire/Fire_Big.png,66,9,6,11,9,0.5,0,10 fps; pivot at fire base
+Shared/Fire/Fire_Small.png,42,7,6,7,7,0.5,0,10 fps; braziers and rest-point fires
+Shared/Fire/FireRing_Big.png,44,28,1,44,28,0.5,0.5,ground decal under Fire_Big
+Shared/Fire/FireRing_Small.png,28,18,1,28,18,0.5,0.5,
+Shared/Fire/Brazier.png,12,16,1,12,16,0.5,0,Fire_Small sits 14px above the pivot
+Shared/Fire/Glow_Warm.png,64,64,1,64,64,0.5,0.5,additive; flicker 0.85-1.0
+Shared/Fire/Glow_Violet.png,64,64,1,64,64,0.5,0.5,additive; sacred tree
+Shared/Particles/Px_White.png,1,1,1,1,1,0.5,0.5,tint per particle: sparks #ffd36a #ff9a3c #fff0b0; twinkle; motes #f4f2d0; dust
+Shared/Particles/Smoke.png,28,7,4,7,7,0.5,0.5,grow over 3s; alpha 0.35 to 0
+Shared/Particles/Leaf.png,8,1,4,2,1,0.5,0.5,fall 6-12px/s with sine sway
+Shared/Particles/Ripple.png,68,9,4,17,9,0.5,0.5,1.6s per ripple
+Shared/Particles/Firefly.png,3,3,1,3,3,0.5,0.5,additive; blink with sin
+Shared/Particles/Wind_Streak.png,32,9,1,32,9,0,0,moves 150;38 px/s; alpha max 0.22
+Shared/Particles/Mist_Blob.png,64,40,1,64,40,0.5,0.5,scale x3-5; alpha 0.16
+Shared/Particles/Cloud_Shadow.png,64,40,1,64,40,0.5,0.5,scale x3-5; alpha 0.14; drift 9;3 px/s
+Shared/Portal/Portal_Frame.png,44,46,1,44,46,0.5,0,colliders on both pillars
+Shared/Portal/Portal_Swirl.png,144,30,6,24,30,0.5,0.5,additive; 8 fps; centre 22px above the frame pivot
+Shared/Props/Chest_Closed.png,16,14,1,16,14,0.5,0,
+Shared/Props/Chest_Open.png,16,14,1,16,14,0.5,0,
+Shared/Props/Bench.png,32,20,1,32,20,0.5,0,
+Shared/Props/Signpost.png,24,30,1,24,30,0.5,0,
+Shared/Props/Barrel.png,14,18,1,14,18,0.5,0,
+Shared/Props/Crate.png,16,14,1,16,14,0.5,0,
+Shared/Props/Crate_Herbs.png,20,16,1,20,16,0.5,0,
+Shared/Props/Sacks.png,24,18,1,24,18,0.5,0,
+Shared/Props/Hay.png,24,18,1,24,18,0.5,0,
+Shared/Props/Log_Fallen.png,42,16,1,42,16,0.5,0,sprout on top; collider 36x8
+Shared/Props/Log_Seat.png,22,8,1,22,8,0.5,0,
+Shared/Props/Boulder_M.png,20,13,1,20,13,0.5,0,
+Shared/Props/Boulder_S.png,14,10,1,14,10,0.5,0,
+Shared/Props/Boulder_L.png,26,15,1,26,15,0.5,0,
+Shared/Bridge/Bridge_Deck_H.png,16,19,1,16,19,0,0,tile horizontally across the water
+Shared/Bridge/Bridge_Rail_H.png,16,5,1,16,5,0,0,top edge of the deck; posts every 16px
+Shared/Bridge/Bridge_Deck_V.png,19,16,1,19,16,0,0,
+Shared/Bridge/Stepping_Stone.png,13,10,1,13,10,0.5,0.5,
+Shared/Nodes/Wood_Full.png,26,18,1,26,18,0.5,0,gatherable
+Shared/Nodes/Wood_Depleted.png,26,18,1,26,18,0.5,0,shown while respawning
+Shared/Nodes/Hide_Full.png,26,22,1,26,22,0.5,0,gatherable
+Shared/Nodes/Hide_Depleted.png,26,22,1,26,22,0.5,0,shown while respawning
+Shared/Nodes/Herb_Full.png,14,14,1,14,14,0.5,0,gatherable
+Shared/Nodes/Herb_Depleted.png,10,6,1,10,6,0.5,0,shown while respawning
+Shared/Nodes/Mushroom_Full.png,16,14,1,16,14,0.5,0,gatherable
+Shared/Nodes/Mushroom_Depleted.png,10,6,1,10,6,0.5,0,shown while respawning
+Shared/Nodes/Sap_Full.png,18,30,1,18,30,0.5,0,gatherable
+Shared/Nodes/Sap_Depleted.png,18,30,1,18,30,0.5,0,shown while respawning
+Shared/Nodes/SpiritFlower_Full.png,14,16,1,14,16,0.5,0,gatherable
+Shared/Nodes/SpiritFlower_Depleted.png,10,6,1,10,6,0.5,0,shown while respawning
+Shared/Nodes/Stone_Full.png,16,24,1,16,24,0.5,0,gatherable
+Shared/Nodes/Stone_Depleted.png,14,6,1,14,6,0.5,0,shown while respawning
+Shared/Nodes/IronOre_Full.png,20,15,1,20,15,0.5,0,gatherable
+Shared/Nodes/IronOre_Depleted.png,14,6,1,14,6,0.5,0,shown while respawning
+Shared/Nodes/IronScrap_Full.png,24,15,1,24,15,0.5,0,gatherable
+Shared/Nodes/IronScrap_Depleted.png,24,15,1,24,15,0.5,0,shown while respawning
+Shared/Nodes/Spoils_Full.png,26,18,1,26,18,0.5,0,gatherable
+Shared/Nodes/Spoils_Depleted.png,26,18,1,26,18,0.5,0,shown while respawning
+Camp/Ground/Fill_Grass.png,64,16,4,16,16,0,0,4 seamless fill variants
+Camp/Ground/Fill_Dark.png,64,16,4,16,16,0,0,4 seamless fill variants
+Camp/Ground/Fill_Forest.png,64,16,4,16,16,0,0,4 seamless fill variants
+Camp/Ground/Fill_Dirt.png,64,16,4,16,16,0,0,4 seamless fill variants
+Camp/Ground/Fill_Water.png,64,16,4,16,16,0,0,4 seamless fill variants
+Camp/Ground/Fill_Pave.png,64,16,4,16,16,0,0,4 seamless fill variants
+Camp/Ground/Dual_GrassToDark.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = dark); laid out 4 per row
+Camp/Ground/Dual_DarkToForest.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = forest); laid out 4 per row
+Camp/Ground/Dual_GrassToDirt.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = dirt); laid out 4 per row
+Camp/Ground/Dual_GrassToWater.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = water); laid out 4 per row
+Camp/Ground/Dual_DirtToPave.png,64,64,16,16,16,0,0,dual-grid; index = TL + 2*TR + 4*BL + 8*BR (1 = pave); laid out 4 per row
+Camp/Ground/TallGrass.png,30,18,6,10,9,0.5,0,row 0 light / row 1 dark; frames lean L; up; R; drive with a wind wave
+Camp/Ground/Decals.png,40,4,10,4,4,0.5,0,0-2 grass tufts; 3-6 flowers (cluster 4-9); 7 mushroom; 8 pebble; 9 bone
+Camp/Ground/Deco_0.png,16,16,1,16,16,0.5,0,village deco recoloured for Camp
+Camp/Ground/Deco_1.png,16,16,1,16,16,0.5,0,village deco recoloured for Camp
+Camp/Ground/Deco_2.png,16,16,1,16,16,0.5,0,village deco recoloured for Camp
+Camp/Ground/Deco_3.png,16,16,1,16,16,0.5,0,village deco recoloured for Camp
+Camp/Ground/Deco_4.png,16,16,1,16,16,0.5,0,village deco recoloured for Camp
+Camp/Ground/Deco_5.png,16,16,1,16,16,0.5,0,village deco recoloured for Camp
+Camp/Ground/Deco_6.png,16,16,1,16,16,0.5,0,village deco recoloured for Camp
+Camp/Ground/Deco_7.png,16,16,1,16,16,0.5,0,village deco recoloured for Camp
+Camp/Ground/Deco_8.png,16,16,1,16,16,0.5,0,village deco recoloured for Camp
+Camp/Trees/Tree_Teal_Canopy.png,80,72,1,80,72,0.5,0.028,sways <=0.55px; fades to 42% when the hero stands behind
+Camp/Trees/Tree_Teal_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7 at the base
+Camp/Trees/Tree_Leaf_Canopy.png,80,72,1,80,72,0.5,0.028,sways <=0.55px; fades to 42% when the hero stands behind
+Camp/Trees/Tree_Leaf_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7 at the base
+Camp/Trees/Tree_TealDark_Canopy.png,80,72,1,80,72,0.5,0.028,sways <=0.55px; fades to 42% when the hero stands behind
+Camp/Trees/Tree_TealDark_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7 at the base
+Camp/Trees/Tree_LeafDark_Canopy.png,80,72,1,80,72,0.5,0.028,sways <=0.55px; fades to 42% when the hero stands behind
+Camp/Trees/Tree_LeafDark_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7 at the base
+Camp/Trees/Tree_TealCool_Canopy.png,80,72,1,80,72,0.5,0.028,sways <=0.55px; fades to 42% when the hero stands behind
+Camp/Trees/Tree_TealCool_Trunk.png,80,72,1,80,72,0.5,0.028,static; collider r7 at the base
+Camp/Trees/Tree_Shadow.png,52,18,1,52,18,0.5,0.55,
+Camp/Trees/Bush_Teal.png,36,26,1,36,26,0.5,0,top part sways 0.35px; bottom 8 rows static
+Camp/Trees/Bush_Leaf.png,36,26,1,36,26,0.5,0,top part sways 0.35px; bottom 8 rows static
+Camp/Trees/Bush_Dark.png,36,26,1,36,26,0.5,0,top part sways 0.35px; bottom 8 rows static
+Camp/Trees/Stump.png,24,18,1,24,18,0.5,0,
+Camp/Props/Tent_Horn.png,64,80,1,64,80,0.5,0.025,collider 44x20
+Camp/Props/Flag_Tattered.png,25,54,1,25,54,0.5,0,wave per column: sin(t*4.2-col*0.45)*1.3; pole cols 0-3 fixed
+Camp/Props/Rack_Spears.png,16,26,1,16,26,0.5,0,
+Camp/Props/Archer_Platform.png,32,60,1,32,60,0.5,0,archer stands 30px above the pivot
+Camp/Props/Tent_Ruined.png,64,80,1,64,80,0.5,0.025,Camp secret: abandoned tent in the NE bush ring
+Camp/Ground/Dual_GrassToDark_Overlay.png,64,64,16,16,16,0,0,same as Dual_GrassToDark but side A transparent: use for layers painted over another layer
+Camp/Ground/Dual_DarkToForest_Overlay.png,64,64,16,16,16,0,0,same as Dual_DarkToForest but side A transparent: use for layers painted over another layer
+Camp/Ground/Dual_GrassToDirt_Overlay.png,64,64,16,16,16,0,0,same as Dual_GrassToDirt but side A transparent: use for layers painted over another layer
+Camp/Ground/Dual_GrassToWater_Overlay.png,64,64,16,16,16,0,0,same as Dual_GrassToWater but side A transparent: use for layers painted over another layer
+Camp/Ground/Dual_DirtToPave_Overlay.png,64,64,16,16,16,0,0,same as Dual_DirtToPave but side A transparent: use for layers painted over another layer

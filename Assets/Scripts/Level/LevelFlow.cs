@@ -11,6 +11,7 @@ namespace GameplayPrototype
     {
         public static LevelFlow Instance { get; private set; }
 
+        public const int CampaignLevelCount = 4;
         const int HeroMaxHp = 400;
         const float HeroInvuln = 0.50f;
 
@@ -86,10 +87,14 @@ namespace GameplayPrototype
             if (ui == null)
                 ui = GetComponent<LevelFlowUI>() ?? gameObject.AddComponent<LevelFlowUI>();
             ui.Bind(this);
+            if (GetComponent<WorldNavigator>() == null)
+                gameObject.AddComponent<WorldNavigator>();
 
+            Gear.BaseMaxHp = HeroMaxHp;
             if (playerHealth != null)
             {
                 playerHealth.Configure(HeroMaxHp, true);
+                Gear.ApplyToHero(playerHealth, true);
                 playerHealth.SetSurvival(HeroInvuln, blink: true);
             }
 
@@ -267,7 +272,7 @@ namespace GameplayPrototype
             cfg.targetCompletionTime = 210f;
             cfg.starHpRatio = 0.4f;
             cfg.recommendedMaxAlive = 9;
-            cfg.nextLevelNumber = 5;
+            cfg.nextLevelNumber = 0;
             cfg.spawnZones = new[]
             {
                 // Gate / approach flanks
@@ -343,7 +348,7 @@ namespace GameplayPrototype
                     AdvanceToNextWave();
             }
 
-            if (_state == LevelState.Playing && UnityEngine.InputSystem.Keyboard.current != null &&
+            if (_state == LevelState.Playing && !PlayerChat.Typing && UnityEngine.InputSystem.Keyboard.current != null &&
                 UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame)
                 TogglePause();
         }
@@ -376,6 +381,55 @@ namespace GameplayPrototype
             HudChanged?.Invoke();
         }
 
+        public EnemySpawner Spawner => spawner;
+
+        public void ReleaseToWorld()
+        {
+            _ending = false;
+            Unbind();
+            RestoreTime();
+            if (spawner != null)
+            {
+                spawner.ResetSession();
+                spawner.SetSpawningEnabled(false);
+            }
+            BossHudUI.Instance?.Clear();
+            if (mapController == null)
+                mapController = FindFirstObjectByType<LevelMapController>();
+            mapController?.HideAllLayouts();
+            CampMap.Hide();
+            ResolveRefs();
+            if (playerHealth != null && playerHealth.IsDead)
+                playerHealth.ReviveFull();
+            LockGameplay(false);
+            SetState(LevelState.MainMenu);
+            ui?.HideAllPopups();
+        }
+
+        public void BeginOutdoor()
+        {
+            _ending = false;
+            Unbind();
+            RestoreTime();
+            if (spawner != null)
+            {
+                spawner.ResetSession();
+                spawner.SetSpawningEnabled(false);
+            }
+            BossHudUI.Instance?.Clear();
+            if (mapController == null)
+                mapController = FindFirstObjectByType<LevelMapController>();
+            mapController?.HideAllLayouts();
+            ResolveRefs();
+            if (playerHealth != null && playerHealth.IsDead)
+                playerHealth.ReviveFull();
+            LockGameplay(false);
+            ObjectiveText = "";
+            BannerText = null;
+            SetState(LevelState.MainMenu);
+            ui?.HideAllPopups();
+        }
+
         public void EnterMainMenu()
         {
             _ending = false;
@@ -389,18 +443,21 @@ namespace GameplayPrototype
             LockGameplay(true);
             SetState(LevelState.MainMenu);
             ui?.ShowMainMenu();
+            Pets.Appear();
         }
 
         public void PlayFromMenu(bool continueProgress)
         {
             EnsureDefaultConfigs();
-            int unlock = GameProgress.HighestUnlockedLevel;
+            int unlock = Mathf.Clamp(GameProgress.HighestUnlockedLevel, 1, CampaignLevelCount);
             LevelConfig cfg = GetLevelConfig(continueProgress ? unlock : 1) ?? level1;
             StartLevel(cfg, fromMenu: true);
         }
 
         public void StartLevelByNumber(int levelNumber)
         {
+            if (levelNumber < 1 || levelNumber > CampaignLevelCount)
+                return;
             if (!GameProgress.IsLevelUnlocked(levelNumber))
                 return;
             var cfg = GetLevelConfig(levelNumber);
@@ -411,6 +468,7 @@ namespace GameplayPrototype
         public void StartLevel(LevelConfig config, bool fromMenu)
         {
             if (config == null) return;
+            WorldNavigator.Instance?.NotifyDungeonEntered();
             EnsureDefaultConfigs();
             SetState(LevelState.Loading);
             _ending = false;
@@ -443,6 +501,7 @@ namespace GameplayPrototype
                 playerHealth.Died -= OnHeroDied;
                 playerHealth.Died += OnHeroDied;
                 playerHealth.Configure(HeroMaxHp, true);
+                Gear.ApplyToHero(playerHealth, true);
                 playerHealth.SetSurvival(HeroInvuln, blink: true);
                 playerHealth.ReviveFull();
             }
@@ -460,12 +519,25 @@ namespace GameplayPrototype
                 if (rb != null) rb.linearVelocity = Vector2.zero;
             }
 
+            if (config.mapLayoutId == "Camp")
+                CampMap.Show(player);
+            else
+                CampMap.Hide();
+
             ui?.HideAllPopups();
             SetState(LevelState.Preparing);
             LockGameplay(false);
             ShowBanner($"LEVEL {config.levelNumber}\n{config.levelTitle}", 1.6f);
             SetState(LevelState.Playing);
-            BeginWave(0);
+            if (config.mapLayoutId == "Camp")
+            {
+                int placed = CampMap.SpawnFoes(spawner);
+                _waveIndex = config.waves != null && config.waves.Length > 0 ? config.waves.Length - 1 : 0;
+                spawner?.BeginPlaced(placed);
+            }
+            else
+                BeginWave(0);
+            Pets.Appear();
             HudChanged?.Invoke();
         }
 
@@ -601,6 +673,8 @@ namespace GameplayPrototype
             int score = ComputeScore();
             int stars = ComputeStars();
             GameProgress.RecordRun(_activeLevel.levelNumber, score, BestCombo, stars, _runTimer);
+            if (_activeLevel != null)
+                WorldEvents.RaiseDungeonCleared(_activeLevel.levelNumber);
             int next = _activeLevel != null ? _activeLevel.nextLevelNumber : 2;
             if (next > 0)
                 GameProgress.UnlockLevel(next);
@@ -611,8 +685,11 @@ namespace GameplayPrototype
             SetState(LevelState.Victory);
             bool chapter = _activeLevel != null &&
                 _activeLevel.objectiveType == LevelObjectiveType.DefeatBossChapterComplete;
+            bool journeyEnd = next <= 0;
             if (chapter)
                 ui?.ShowChapterComplete(BuildStats(), score, stars);
+            else if (journeyEnd)
+                ui?.ShowJourneyComplete(BuildStats(), score, stars);
             else
                 ui?.ShowVictory(BuildStats(), score, stars);
         }
@@ -724,7 +801,8 @@ namespace GameplayPrototype
             HudChanged?.Invoke();
         }
 
-        // Debug helpers for MCP tests
+#if UNITY_EDITOR
+        // Editor-only. Release players do not compile these.
         public void DebugForceClearWave()
         {
             if (_state != LevelState.Playing) return;
@@ -737,6 +815,7 @@ namespace GameplayPrototype
             if (playerHealth == null || playerHealth.IsDead) return;
             playerHealth.TakeDamage(9999, playerHealth.transform.position, Vector2.zero);
         }
+#endif
     }
 
     public struct LevelRunStats

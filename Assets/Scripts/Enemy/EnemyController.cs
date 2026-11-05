@@ -119,6 +119,18 @@ namespace GameplayPrototype
         public void SetHitDelay(float seconds) => telegraphTime = Mathf.Max(0.02f, seconds);
         public void SetChargeDamage(int damage) => chargeDamage = damage;
 
+        public void PinInPlace(float notice)
+        {
+            moveSpeed = 0f;
+            chaseSpeed = 0f;
+            patrolSpeed = 0f;
+            patrolRadius = 0f;
+            detectionRadius = notice;
+            loseAggroRadius = notice + 0.4f;
+        }
+
+        public void SetPatrol(float radius) => patrolRadius = Mathf.Max(0.4f, radius);
+
         public void Setup(EnemyKind enemyKind, string nameLabel, int hp, float speed, float aggro, float range, int damage, float cooldown)
         {
             kind = enemyKind;

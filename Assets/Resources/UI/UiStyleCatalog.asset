@@ -1,0 +1,482 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d4e7a2b1c6f4b8e8a3d0f5c2e7b1a64, type: 3}
+  m_Name: UiStyleCatalog
+  m_EditorClassIdentifier: 
+  font: {fileID: 12800000, guid: f8b59729f1212134b96390bb3c14ec84, type: 3}
+  sprites:
+  - name: UI_AttackButton_Normal
+    sprite: {fileID: 21300000, guid: 8756558dc13e23b4a9ed50a0a560622a, type: 3}
+  - name: UI_AttackButton_Pressed
+    sprite: {fileID: 21300000, guid: 917be5c43c214e24388107404d920913, type: 3}
+  - name: UI_Badge_Alert
+    sprite: {fileID: 21300000, guid: 4c2875fca7dc1924b8ce0f9e11c44e22, type: 3}
+  - name: UI_Bar_Fill_Boss
+    sprite: {fileID: 21300000, guid: 482b867ebcb26f84eb96c1f2c0f99fb2, type: 3}
+  - name: UI_Bar_Fill_EXP
+    sprite: {fileID: 21300000, guid: d9a0112dff9976a46b1e357d9928e3f4, type: 3}
+  - name: UI_Bar_Fill_Enemy
+    sprite: {fileID: 21300000, guid: b68bf3187c3533540b41a0e22d6f8719, type: 3}
+  - name: UI_Bar_Fill_Ghost
+    sprite: {fileID: 21300000, guid: 7e8e80d1eeabc264282e81ba5777383b, type: 3}
+  - name: UI_Bar_Fill_HP
+    sprite: {fileID: 21300000, guid: d58050e52f1672f4fa0655377be934b8, type: 3}
+  - name: UI_Bar_Fill_Mana
+    sprite: {fileID: 21300000, guid: e46f557086616e042af1982a44929e9d, type: 3}
+  - name: UI_Bar_Fill_Progress
+    sprite: {fileID: 21300000, guid: bcdd87d17bb86db448c9a57ed0932326, type: 3}
+  - name: UI_Bar_Fill_Shield
+    sprite: {fileID: 21300000, guid: dce6501b66f2670498207abaa730ed40, type: 3}
+  - name: UI_Bar_Frame
+    sprite: {fileID: 21300000, guid: f205a24ef4246d940a44445bf808b85a, type: 3}
+  - name: UI_Bar_Frame_Thin
+    sprite: {fileID: 21300000, guid: e7346377c03bb314e9432a079f755a4d, type: 3}
+  - name: UI_BossBar_Frame
+    sprite: {fileID: 21300000, guid: 42da6aa2c759a444d885098c2ef5460d, type: 3}
+  - name: UI_Button_Close_Normal
+    sprite: {fileID: 21300000, guid: 2496dfa0ca2b13446b11699c61b16954, type: 3}
+  - name: UI_Button_Close_Pressed
+    sprite: {fileID: 21300000, guid: 5124cdcf5651ed943a671fc2c33446c0, type: 3}
+  - name: UI_Button_Danger_Disabled
+    sprite: {fileID: 21300000, guid: 8d0ef258f64fa95488a0f3eb48c611f0, type: 3}
+  - name: UI_Button_Danger_Hover
+    sprite: {fileID: 21300000, guid: 37b42fd10c0c3d8419aaa5b03817434e, type: 3}
+  - name: UI_Button_Danger_Normal
+    sprite: {fileID: 21300000, guid: e75556576491df9478f300df59ec130a, type: 3}
+  - name: UI_Button_Danger_Pressed
+    sprite: {fileID: 21300000, guid: c079c89393978ce4e967330dc2ddeb20, type: 3}
+  - name: UI_Button_Danger_Selected
+    sprite: {fileID: 21300000, guid: 114dacfa2478efa4598ffe518eba2f93, type: 3}
+  - name: UI_Button_Icon_Disabled
+    sprite: {fileID: 21300000, guid: 7c2d2d7ddefae134b8f86cff97d7635a, type: 3}
+  - name: UI_Button_Icon_Hover
+    sprite: {fileID: 21300000, guid: c163c9c8daba2384e8839077edf56b25, type: 3}
+  - name: UI_Button_Icon_Normal
+    sprite: {fileID: 21300000, guid: efea88d2544a3174e88ad4ab5a9dee45, type: 3}
+  - name: UI_Button_Icon_Pressed
+    sprite: {fileID: 21300000, guid: 5aa54bec7d541784d8b828087fdc8770, type: 3}
+  - name: UI_Button_Icon_Selected
+    sprite: {fileID: 21300000, guid: cf09a656e9da3934981225fc16684498, type: 3}
+  - name: UI_Button_Positive_Disabled
+    sprite: {fileID: 21300000, guid: 836982700b9e0e54b9484506f5376410, type: 3}
+  - name: UI_Button_Positive_Hover
+    sprite: {fileID: 21300000, guid: ee37c8f15d29ffd47ae61a812cfbee3c, type: 3}
+  - name: UI_Button_Positive_Normal
+    sprite: {fileID: 21300000, guid: 78644c0467799a44a8999c616bdb3c05, type: 3}
+  - name: UI_Button_Positive_Pressed
+    sprite: {fileID: 21300000, guid: 3ebb95a4268807841bde319c42985807, type: 3}
+  - name: UI_Button_Positive_Selected
+    sprite: {fileID: 21300000, guid: b792cccdefc00a24592548c02a724a2b, type: 3}
+  - name: UI_Button_Primary_Disabled
+    sprite: {fileID: 21300000, guid: 5137677e5c6973b4a8ef952686e359d9, type: 3}
+  - name: UI_Button_Primary_Hover
+    sprite: {fileID: 21300000, guid: 93cffe35acd40c2409d95f5dfa369bf5, type: 3}
+  - name: UI_Button_Primary_Normal
+    sprite: {fileID: 21300000, guid: 1968cb09ebcc88346ba72776b419ac52, type: 3}
+  - name: UI_Button_Primary_Pressed
+    sprite: {fileID: 21300000, guid: 5173baecd41472948a99c9e2a2f6d0ec, type: 3}
+  - name: UI_Button_Primary_Selected
+    sprite: {fileID: 21300000, guid: 04f5e961b8188b94eb67ffa06498db35, type: 3}
+  - name: UI_Button_Secondary_Disabled
+    sprite: {fileID: 21300000, guid: c8b020a1a3ea05f4ea37296ec1691b7a, type: 3}
+  - name: UI_Button_Secondary_Hover
+    sprite: {fileID: 21300000, guid: d7fd13230eaf29844bf2b4e8124af761, type: 3}
+  - name: UI_Button_Secondary_Normal
+    sprite: {fileID: 21300000, guid: 3c29fef42efaa1c4bab99fce75c22de0, type: 3}
+  - name: UI_Button_Secondary_Pressed
+    sprite: {fileID: 21300000, guid: 46aa304eee23b4e4e8ed4ee08b32a5fc, type: 3}
+  - name: UI_Button_Secondary_Selected
+    sprite: {fileID: 21300000, guid: 6514d150c169a5a4582bdee5859b45d6, type: 3}
+  - name: UI_Checkbox_Off
+    sprite: {fileID: 21300000, guid: d6af5adbec7e0b543a91b3f0b8be1d74, type: 3}
+  - name: UI_Checkbox_On
+    sprite: {fileID: 21300000, guid: e7db438b66d8e754e90a057f854000bb, type: 3}
+  - name: UI_Cursor_Arrow
+    sprite: {fileID: 21300000, guid: d8ce443a48883ab40942b625d489cc68, type: 3}
+  - name: UI_Dialogue_Next
+    sprite: {fileID: 21300000, guid: b2ec3e1394a4ff149b29537ba5f8f34d, type: 3}
+  - name: UI_Divider_Gem
+    sprite: {fileID: 21300000, guid: 9ce110cfc469b114e94dae98a4f13edf, type: 3}
+  - name: UI_Divider_Line
+    sprite: {fileID: 21300000, guid: 273e2303cd3cfd84095fa99edaeadfe7, type: 3}
+  - name: UI_EnemyBar_Frame
+    sprite: {fileID: 21300000, guid: e8f99cbbd6f83354d99f8416c27496d0, type: 3}
+  - name: UI_Equip_Armor_Ghost
+    sprite: {fileID: 21300000, guid: 902e3c5478fd27f4189906cbe5df5396, type: 3}
+  - name: UI_Equip_Boots_Ghost
+    sprite: {fileID: 21300000, guid: 1ef53dedcb2afb6499df9e7bf2bf613b, type: 3}
+  - name: UI_Equip_Helmet_Ghost
+    sprite: {fileID: 21300000, guid: d5badc38830847846b12d51dc838fbb9, type: 3}
+  - name: UI_Equip_Ring_Ghost
+    sprite: {fileID: 21300000, guid: 7df6411ac207d034fafa1c84beb9e546, type: 3}
+  - name: UI_Equip_Shield_Ghost
+    sprite: {fileID: 21300000, guid: b6b086db1ea2f0e4c8c83c8d51e2cb65, type: 3}
+  - name: UI_Equip_Slot
+    sprite: {fileID: 21300000, guid: 39b424b7f60f1164eb4e3156a458bed4, type: 3}
+  - name: UI_Equip_Slot_Locked
+    sprite: {fileID: 21300000, guid: 53700562012e1bb46be024a7af4dd097, type: 3}
+  - name: UI_Equip_Slot_Selected
+    sprite: {fileID: 21300000, guid: c1122dff721548748a499c76b9c902cc, type: 3}
+  - name: UI_Equip_Weapon_Ghost
+    sprite: {fileID: 21300000, guid: 3a39d8529287835468a6f187ae8ad7b0, type: 3}
+  - name: UI_Header_Ribbon
+    sprite: {fileID: 21300000, guid: 7c736c622a52dc44398132a53e4af657, type: 3}
+  - name: UI_Header_Ribbon_Gold
+    sprite: {fileID: 21300000, guid: f687314640fd0624ba7788157ee32e81, type: 3}
+  - name: UI_Header_Ribbon_Red
+    sprite: {fileID: 21300000, guid: d70af259357ebfb4a9a13887aedab828, type: 3}
+  - name: UI_Icon_Attack
+    sprite: {fileID: 21300000, guid: c8c2e57005f2ce8449af081cbaae22d0, type: 3}
+  - name: UI_Icon_Back
+    sprite: {fileID: 21300000, guid: c386428751180e340b427c55180531a2, type: 3}
+  - name: UI_Icon_Boss
+    sprite: {fileID: 21300000, guid: 3da88a8572bf2b7468425cbca9deacb2, type: 3}
+  - name: UI_Icon_Close
+    sprite: {fileID: 21300000, guid: 5ffc43b462d14254f90f6b48fa349e58, type: 3}
+  - name: UI_Icon_Confirm
+    sprite: {fileID: 21300000, guid: 36fb1524e8fd19c498dd0fad88505e92, type: 3}
+  - name: UI_Icon_Crafting
+    sprite: {fileID: 21300000, guid: 64c78f0cacc4c874198b13b6ed85c678, type: 3}
+  - name: UI_Icon_Currency
+    sprite: {fileID: 21300000, guid: 2f1004d7b03a8994e8ab32454f34e71f, type: 3}
+  - name: UI_Icon_Dungeon
+    sprite: {fileID: 21300000, guid: 39f18f8ce3a184341a0e341b80e3814e, type: 3}
+  - name: UI_Icon_EXP
+    sprite: {fileID: 21300000, guid: 0f02e3e15bf67db40bfc3c98c0ceea5b, type: 3}
+  - name: UI_Icon_Equipment
+    sprite: {fileID: 21300000, guid: 2680df77de8dcdd46b449ab43aea413c, type: 3}
+  - name: UI_Icon_Farming
+    sprite: {fileID: 21300000, guid: f49c39cbda377dd44896b3c21d4c1aba, type: 3}
+  - name: UI_Icon_HP
+    sprite: {fileID: 21300000, guid: 18540ca1292c00b44b8c4446f3d34bce, type: 3}
+  - name: UI_Icon_Housing
+    sprite: {fileID: 21300000, guid: c4a0287e10fedbb47af5a5ea286060b6, type: 3}
+  - name: UI_Icon_Inventory
+    sprite: {fileID: 21300000, guid: e9dc3531650eee940bbfc70ac8402ad6, type: 3}
+  - name: UI_Icon_Lock
+    sprite: {fileID: 21300000, guid: e0788c801ea82cf4384cd4c14b362a85, type: 3}
+  - name: UI_Icon_Mining
+    sprite: {fileID: 21300000, guid: cddf8ea802fd495419daec4407155454, type: 3}
+  - name: UI_Icon_Pause
+    sprite: {fileID: 21300000, guid: ac3d42344d2b7064993b98c024279c30, type: 3}
+  - name: UI_Icon_Quests
+    sprite: {fileID: 21300000, guid: 091ba1e666ca9884bb59c77529000f4a, type: 3}
+  - name: UI_Icon_Settings
+    sprite: {fileID: 21300000, guid: 7d0ef33dddb2970448c76b0343eaa1ef, type: 3}
+  - name: UI_Icon_Shop
+    sprite: {fileID: 21300000, guid: 7069642ffc336c0478b7435550521598, type: 3}
+  - name: UI_Icon_Skill
+    sprite: {fileID: 21300000, guid: 84d79c72dd993884486dccf43f77dc17, type: 3}
+  - name: UI_Icon_Star
+    sprite: {fileID: 21300000, guid: ca646e957559602439b49cf9665b7b76, type: 3}
+  - name: UI_Icon_StarEmpty
+    sprite: {fileID: 21300000, guid: 87b52ca4d6626f04cbbd2267e64f6409, type: 3}
+  - name: UI_Icon_Storage
+    sprite: {fileID: 21300000, guid: aa7c666689ea71441951761b736c1eb6, type: 3}
+  - name: UI_Icon_Talk
+    sprite: {fileID: 21300000, guid: 0f92ad623ddfaa94591d27770436bc41, type: 3}
+  - name: UI_Icon_Training
+    sprite: {fileID: 21300000, guid: 5100577f0abb18d45a4e2e643d1f53c7, type: 3}
+  - name: UI_Icon_Treasure
+    sprite: {fileID: 21300000, guid: 396d5e1ee10923c43b9da7b5f6c3f543, type: 3}
+  - name: UI_Icon_WorldMap
+    sprite: {fileID: 21300000, guid: f4139b28498ddfa409cc852b4b7be733, type: 3}
+  - name: UI_InteractButton_Normal
+    sprite: {fileID: 21300000, guid: 036bb5001513de043afdac0bb670209f, type: 3}
+  - name: UI_InteractButton_Pressed
+    sprite: {fileID: 21300000, guid: 74c31b86386a6164babdf9f56be1cb3a, type: 3}
+  - name: UI_Inventory_Slot
+    sprite: {fileID: 21300000, guid: d505ad35b7b52bc4b8211eb1ccd060d7, type: 3}
+  - name: UI_Inventory_Slot_Disabled
+    sprite: {fileID: 21300000, guid: aa8c7f13796b43449a89f4ec6a9890f5, type: 3}
+  - name: UI_Inventory_Slot_Hover
+    sprite: {fileID: 21300000, guid: ef8622162be9e754385f589a4291b9ca, type: 3}
+  - name: UI_Inventory_Slot_Selected
+    sprite: {fileID: 21300000, guid: c4365a4599bdd424c80a7aab7b8ed477, type: 3}
+  - name: UI_Item_Coin
+    sprite: {fileID: 21300000, guid: e4faec1f8c6eb4749800b0e9aba57a8d, type: 3}
+  - name: UI_Item_Herb
+    sprite: {fileID: 21300000, guid: bd9a1cb216ade0947b7b8a07ee91060a, type: 3}
+  - name: UI_Item_Hide
+    sprite: {fileID: 21300000, guid: ddc97163173f32c41beff7a895f512d3, type: 3}
+  - name: UI_Item_IronIngot
+    sprite: {fileID: 21300000, guid: 16841db668cb3c24396f59ab9aa564bd, type: 3}
+  - name: UI_Item_Mushroom
+    sprite: {fileID: 21300000, guid: 0ad888e000120534f9ee37b2c928c4ec, type: 3}
+  - name: UI_Item_MysteryPetEgg
+    sprite: {fileID: 21300000, guid: e82fce965b3d724279f0ab6de80c395f, type: 3}
+  - name: UI_Item_Ore
+    sprite: {fileID: 21300000, guid: 7b631984eca57924aac329b01bb7d0f0, type: 3}
+  - name: UI_Item_PetEggShard
+    sprite: {fileID: 21300000, guid: 737d95c5551e4bf89ab9dbe288fc381e, type: 3}
+  - name: UI_Item_Potion
+    sprite: {fileID: 21300000, guid: 803ad98fcd1de804aa7f8a0d2bf56ed8, type: 3}
+  - name: UI_Item_QuestToken
+    sprite: {fileID: 21300000, guid: 85322f62a3d60154bbbde39674d83f71, type: 3}
+  - name: UI_Item_SpiritBloom
+    sprite: {fileID: 21300000, guid: 7aea4372b92298348aac76271c254193, type: 3}
+  - name: UI_Item_Spoils
+    sprite: {fileID: 21300000, guid: f9af2c482c0595b489b1f2e920cf7918, type: 3}
+  - name: UI_Item_Sprout
+    sprite: {fileID: 21300000, guid: 3495d7a815bd2d14984653d30f74b022, type: 3}
+  - name: UI_Item_Stone
+    sprite: {fileID: 21300000, guid: 7e1215f1db4a1b6419347ea8eda98758, type: 3}
+  - name: UI_Item_TrainingBlade
+    sprite: {fileID: 21300000, guid: ab3e4b9a6f635e24f8008a635688abdc, type: 3}
+  - name: UI_Item_TreeSap
+    sprite: {fileID: 21300000, guid: ca103122da7134a49bcad0f0b136b2ad, type: 3}
+  - name: UI_Item_Wood
+    sprite: {fileID: 21300000, guid: 6865f138b809db84386866440b20ee97, type: 3}
+  - name: UI_Joystick_Base
+    sprite: {fileID: 21300000, guid: 008f25c30d78b14468ae941556da5844, type: 3}
+  - name: UI_Joystick_Knob
+    sprite: {fileID: 21300000, guid: 88deddf804b0a144eaceaa74396a975e, type: 3}
+  - name: UI_KeyCap
+    sprite: {fileID: 21300000, guid: eaa6ae75c3050094c8fe297fc94f80dc, type: 3}
+  - name: UI_LevelBadge
+    sprite: {fileID: 21300000, guid: 72647556f1ad47545a457a67e4b8047c, type: 3}
+  - name: UI_ListRow_Disabled
+    sprite: {fileID: 21300000, guid: 71625caf184779346996dcaf398b7d8b, type: 3}
+  - name: UI_ListRow_Normal
+    sprite: {fileID: 21300000, guid: 53630790564da854aa04f59d137408e7, type: 3}
+  - name: UI_ListRow_Selected
+    sprite: {fileID: 21300000, guid: 9a370a0f68e18c44096ecbca34535ed6, type: 3}
+  - name: UI_Mask_Circle32
+    sprite: {fileID: 21300000, guid: 788ee8d154176584591a6543d46b0e62, type: 3}
+  - name: UI_Minimap_Back
+    sprite: {fileID: 21300000, guid: fdb628417a960934fb8fb92ccc81d3a2, type: 3}
+  - name: UI_Minimap_Frame
+    sprite: {fileID: 21300000, guid: f5665d7f595bd274db3c5d1929adfa60, type: 3}
+  - name: UI_Minimap_Marker_Boss
+    sprite: {fileID: 21300000, guid: 92ebceea37334654c8e727b3fe68309e, type: 3}
+  - name: UI_Minimap_Marker_Chest
+    sprite: {fileID: 21300000, guid: e1304704ca1e7bb4199bf8d5f2b6337a, type: 3}
+  - name: UI_Minimap_Marker_Enemy
+    sprite: {fileID: 21300000, guid: e107b39cb02111c47940f3911d7dfeaa, type: 3}
+  - name: UI_Minimap_Marker_Gate
+    sprite: {fileID: 21300000, guid: 635fe9b5fbb81734e8729d34edeeb97d, type: 3}
+  - name: UI_Minimap_Marker_NPC
+    sprite: {fileID: 21300000, guid: 78c203fd277df454cb0d76572f1a7934, type: 3}
+  - name: UI_Minimap_Marker_Node
+    sprite: {fileID: 21300000, guid: 70306cc5cf81175418f3eb13a37452c0, type: 3}
+  - name: UI_Minimap_Marker_Player
+    sprite: {fileID: 21300000, guid: 2c4dffce1aa02dd498b96fb19979ecfd, type: 3}
+  - name: UI_Minimap_Marker_Portal
+    sprite: {fileID: 21300000, guid: ffac8aef025451e48b998908d36665ac, type: 3}
+  - name: UI_Minimap_Marker_Quest
+    sprite: {fileID: 21300000, guid: 837a817aa8f9115438d5b3da5c2dda93, type: 3}
+  - name: UI_Minimap_Marker_Rest
+    sprite: {fileID: 21300000, guid: 535e2062e130dd1489184a3aa619e80e, type: 3}
+  - name: UI_Minimap_Marker_Secret
+    sprite: {fileID: 21300000, guid: 02f545df1eb0cfc4f9a3b89ca1d83d63, type: 3}
+  - name: UI_NPC_DialoguePanel
+    sprite: {fileID: 21300000, guid: ba6c4dbf2117ea2489b75d9be79d0afc, type: 3}
+  - name: UI_NamePlate
+    sprite: {fileID: 21300000, guid: 65b33aca529dea940b4817e2bd537ace, type: 3}
+  - name: UI_Panel_Confirm
+    sprite: {fileID: 21300000, guid: 2100c6602797f8b47967a04e221393eb, type: 3}
+  - name: UI_Panel_HUD
+    sprite: {fileID: 21300000, guid: fccc3dfc0741def4187dc0bb3efeed14, type: 3}
+  - name: UI_Panel_Inset
+    sprite: {fileID: 21300000, guid: b02c248be737fbc4f96d8872dce90783, type: 3}
+  - name: UI_Panel_Main
+    sprite: {fileID: 21300000, guid: f9c99907db80ab6478fb2ade73e73734, type: 3}
+  - name: UI_Panel_Parchment
+    sprite: {fileID: 21300000, guid: 1a253532e758b5c47b831508ca0a44b1, type: 3}
+  - name: UI_Panel_Popup
+    sprite: {fileID: 21300000, guid: 6c03812534db5aa45880fdc88bbcf170, type: 3}
+  - name: UI_Panel_Reward
+    sprite: {fileID: 21300000, guid: ccfd0477ebefbe5418eef9ad3fc1e6a3, type: 3}
+  - name: UI_Panel_Tooltip
+    sprite: {fileID: 21300000, guid: 116b9e9a42a2b544c9f219caaadbf31e, type: 3}
+  - name: UI_PetBoard_ActiveDot
+    sprite: {fileID: 21300000, guid: b6a24b0e8ca14831ac191320d61b4dc8, type: 3}
+  - name: UI_PetBoard_Badge_Common
+    sprite: {fileID: 21300000, guid: 25f35c4c11b8422db116909114a2841c, type: 3}
+  - name: UI_PetBoard_Badge_Epic
+    sprite: {fileID: 21300000, guid: a5e9da44da3b45008ac95098eb27b8f1, type: 3}
+  - name: UI_PetBoard_Badge_Legendary
+    sprite: {fileID: 21300000, guid: 78093a4319734048933239d4ef133380, type: 3}
+  - name: UI_PetBoard_Badge_Mythic
+    sprite: {fileID: 21300000, guid: 4f88adc057ae42d7a43dfd216f563994, type: 3}
+  - name: UI_PetBoard_Badge_Rare
+    sprite: {fileID: 21300000, guid: 443b9eb2b2dd4ed39837baa569f1e7ca, type: 3}
+  - name: UI_PetBoard_Badge_Supreme
+    sprite: {fileID: 21300000, guid: eb8b9b935c9040ec9f5de1fb056253cf, type: 3}
+  - name: UI_PetBoard_Button_Danger_Disabled
+    sprite: {fileID: 21300000, guid: 102830a893e5497c9f70f05c62e045d1, type: 3}
+  - name: UI_PetBoard_Button_Danger_Hover
+    sprite: {fileID: 21300000, guid: 0f06756949474bffb3e246cfd932d821, type: 3}
+  - name: UI_PetBoard_Button_Danger_Normal
+    sprite: {fileID: 21300000, guid: 2f22a2dddce348c18402d168f54fb638, type: 3}
+  - name: UI_PetBoard_Button_Danger_Pressed
+    sprite: {fileID: 21300000, guid: 760054d6f27c48d29d0c4ec6802b169a, type: 3}
+  - name: UI_PetBoard_Button_Disabled
+    sprite: {fileID: 21300000, guid: 42d0da3457b44603b64bdf70004049b3, type: 3}
+  - name: UI_PetBoard_Button_Hover
+    sprite: {fileID: 21300000, guid: 9365a0bb8ca9424e8464d3be37303a01, type: 3}
+  - name: UI_PetBoard_Button_Normal
+    sprite: {fileID: 21300000, guid: efc6bcfd7e7741f0886b719189b0a9ed, type: 3}
+  - name: UI_PetBoard_Button_Pressed
+    sprite: {fileID: 21300000, guid: 0ce918f6e019417692d4f402ae89e878, type: 3}
+  - name: UI_PetBoard_Button_Summon_Disabled
+    sprite: {fileID: 21300000, guid: 52da2e7db84c41dba7b90ff1124dc162, type: 3}
+  - name: UI_PetBoard_Button_Summon_Hover
+    sprite: {fileID: 21300000, guid: 08fdd1bc01454d8094962b9eabb0d12f, type: 3}
+  - name: UI_PetBoard_Button_Summon_Normal
+    sprite: {fileID: 21300000, guid: e9396be9dcd04e3bab53bbdbd129fd92, type: 3}
+  - name: UI_PetBoard_Button_Summon_Pressed
+    sprite: {fileID: 21300000, guid: 7e190efbd06043f59ddc6ac53cc2baf7, type: 3}
+  - name: UI_PetBoard_Close
+    sprite: {fileID: 21300000, guid: f2f47ff4007f43ff8e6e33b56acf60b4, type: 3}
+  - name: UI_PetBoard_HoldFill
+    sprite: {fileID: 21300000, guid: 5ab861ef38bc426b8b1ccd31d66f65be, type: 3}
+  - name: UI_PetBoard_Modal
+    sprite: {fileID: 21300000, guid: c3036b1e6a63481f969086c5c741721c, type: 3}
+  - name: UI_PetBoard_Panel
+    sprite: {fileID: 21300000, guid: f195ad06972d4fa8963ae8a91f49fb0b, type: 3}
+  - name: UI_PetBoard_PortraitFrame_Common
+    sprite: {fileID: 21300000, guid: fee8eb860f424022a398b85a632b84a2, type: 3}
+  - name: UI_PetBoard_PortraitFrame_Epic
+    sprite: {fileID: 21300000, guid: 6516c0e9a7b944668b0f9a111c3e46c3, type: 3}
+  - name: UI_PetBoard_PortraitFrame_Legendary
+    sprite: {fileID: 21300000, guid: b2326931044e4063b1920cfd30d6987f, type: 3}
+  - name: UI_PetBoard_PortraitFrame_Mythic
+    sprite: {fileID: 21300000, guid: cc199f29399b4788a11e53326fc61cee, type: 3}
+  - name: UI_PetBoard_PortraitFrame_Rare
+    sprite: {fileID: 21300000, guid: d4dde299116b4fb7b0626492ca9ee188, type: 3}
+  - name: UI_PetBoard_PortraitFrame_Supreme
+    sprite: {fileID: 21300000, guid: 1c8193d20da243afbfd643fd0a06eb39, type: 3}
+  - name: UI_PetBoard_Row_Normal
+    sprite: {fileID: 21300000, guid: e15d406089f5420e91f8b8ccaf81a8b9, type: 3}
+  - name: UI_PetBoard_Row_Selected
+    sprite: {fileID: 21300000, guid: ef9cbdcfa4734da88aa16cb9d2c32b38, type: 3}
+  - name: UI_PetBoard_XP_Fill
+    sprite: {fileID: 21300000, guid: c9c3164016974aeba01ea30e9a814d8f, type: 3}
+  - name: UI_PetBoard_XP_Track
+    sprite: {fileID: 21300000, guid: fdb7cfe0958f4409a368ece40e85b17c, type: 3}
+  - name: UI_PetBuff_Frame_Epic
+    sprite: {fileID: 21300000, guid: 64f0400a02544c68b9d52957105ef510, type: 3}
+  - name: UI_PetBuff_Frame_Legendary
+    sprite: {fileID: 21300000, guid: 028441f1c88e4826b8c5c5d3ca5b26f2, type: 3}
+  - name: UI_PetBuff_Frame_Mythic
+    sprite: {fileID: 21300000, guid: ffc8a0da66fb48b291be8cb85ac34f90, type: 3}
+  - name: UI_PetBuff_Frame_Supreme
+    sprite: {fileID: 21300000, guid: ad38e1ae4b464db8829543f3b559ae3f, type: 3}
+  - name: UI_PetBuff_Paw
+    sprite: {fileID: 21300000, guid: 0b573774db4b44bd80453f7bbd9fa4d1, type: 3}
+  - name: UI_PetBuff_cat_agile
+    sprite: {fileID: 21300000, guid: f6726bc327a143c1bea491712f8dca32, type: 3}
+  - name: UI_PetBuff_cat_ninelives
+    sprite: {fileID: 21300000, guid: d9029a5b80bb49fe8eba40f0b609153f, type: 3}
+  - name: UI_PetBuff_dog_charge
+    sprite: {fileID: 21300000, guid: acfab06f92144a0e90ac46b61b2d6026, type: 3}
+  - name: UI_PetBuff_dog_guard
+    sprite: {fileID: 21300000, guid: e8e1d7c1cd2c4cf29cd7a00150ec985c, type: 3}
+  - name: UI_PetBuff_dog_loyal
+    sprite: {fileID: 21300000, guid: 53d200771afc48c680c303226ac24e10, type: 3}
+  - name: UI_PetBuff_dragon_scale
+    sprite: {fileID: 21300000, guid: 35623b4efb794686bbf50372fc471664, type: 3}
+  - name: UI_PetBuff_dragon_ward
+    sprite: {fileID: 21300000, guid: e8296acca20943ca926a975472b4d721, type: 3}
+  - name: UI_PetBuff_fox_blessing
+    sprite: {fileID: 21300000, guid: 956c6383eb554a989efbbb190916ffbd, type: 3}
+  - name: UI_PetBuff_fox_trick
+    sprite: {fileID: 21300000, guid: 14b87026ed2a4368a49d13290af496b0, type: 3}
+  - name: UI_PetBuff_rabbit_hop
+    sprite: {fileID: 21300000, guid: a86cb6f5b4fb4e789f5ad1200c12abd8, type: 3}
+  - name: UI_PetBuff_rabbit_spring
+    sprite: {fileID: 21300000, guid: 1509518d57f94a158b555ecdfd679528, type: 3}
+  - name: UI_PetBuff_wolf_alpha
+    sprite: {fileID: 21300000, guid: 95352788372d4d928e13b361eeabd6ee, type: 3}
+  - name: UI_PetBuff_wolf_howl
+    sprite: {fileID: 21300000, guid: f71e983ac146456fa36569a92a3465c4, type: 3}
+  - name: UI_PetBuff_wolf_pack
+    sprite: {fileID: 21300000, guid: 9045a8ff689b435e8664cf4d14d0e81d, type: 3}
+  - name: UI_PetEggShard_32
+    sprite: {fileID: 21300000, guid: 7351fe33be83482891777f2169bccf68, type: 3}
+  - name: UI_PortraitBack
+    sprite: {fileID: 21300000, guid: b85744357373f7c4394aaa574998b7f5, type: 3}
+  - name: UI_PortraitFrame
+    sprite: {fileID: 21300000, guid: 4433f0b7b830c9d4ebf6902500fd09ad, type: 3}
+  - name: UI_Scroll_Thumb
+    sprite: {fileID: 21300000, guid: ef0881091934b7b4f8068d45c99da642, type: 3}
+  - name: UI_Scroll_Track
+    sprite: {fileID: 21300000, guid: ec93dbda30bb32742926f3881393d5f9, type: 3}
+  - name: UI_SkillSlot_CooldownFill
+    sprite: {fileID: 21300000, guid: d2cdc2c5d489d2f4784bbece46a7c3d2, type: 3}
+  - name: UI_SkillSlot_Default
+    sprite: {fileID: 21300000, guid: c59ba525ae5c5bf4cb8978677f6c4e1a, type: 3}
+  - name: UI_SkillSlot_Disabled
+    sprite: {fileID: 21300000, guid: e3f857b3d984fe943ad59815f9212f3b, type: 3}
+  - name: UI_SkillSlot_ReadyFlash
+    sprite: {fileID: 21300000, guid: f770b45fa45a746448df2283807902af, type: 3}
+  - name: UI_SkillSlot_Selected
+    sprite: {fileID: 21300000, guid: 6dd51f60975f0ac4d86d7018f8b8858a, type: 3}
+  - name: UI_Slider_Fill
+    sprite: {fileID: 21300000, guid: 6369f5a6d31759a4c98547bf5ea41e1b, type: 3}
+  - name: UI_Slider_Knob
+    sprite: {fileID: 21300000, guid: 4190fb1dc2c6c4044af549f188ba9067, type: 3}
+  - name: UI_Slider_Track
+    sprite: {fileID: 21300000, guid: 8dbb04f856a91f84c8681ed6b261bf08, type: 3}
+  - name: UI_Star_Large_Empty
+    sprite: {fileID: 21300000, guid: badef64c334b9bc488d90ef2ec31c4f4, type: 3}
+  - name: UI_Star_Large_Filled
+    sprite: {fileID: 21300000, guid: 2bdfdaaaf41884b4f8c3ae2afd02b5c9, type: 3}
+  - name: UI_Tab_Normal
+    sprite: {fileID: 21300000, guid: 96800f8e2e220e94db5f1ac65d905844, type: 3}
+  - name: UI_Tab_Selected
+    sprite: {fileID: 21300000, guid: 3727cc373d3ae1c4381772344cf4bdfa, type: 3}
+  - name: UI_Toggle_Off
+    sprite: {fileID: 21300000, guid: 1812e1c6d9821b741962f5344b954bcc, type: 3}
+  - name: UI_Toggle_On
+    sprite: {fileID: 21300000, guid: 720be2e13927d2245bb5dc4010b583ca, type: 3}
+  - name: UI_WorldMap_Button_Travel
+    sprite: {fileID: 21300000, guid: 05c761e1fc734037a9b1efd5c1ca4eae, type: 3}
+  - name: UI_WorldMap_Compass
+    sprite: {fileID: 21300000, guid: d4a8b63fd1cf4028ae088b0acba0a144, type: 3}
+  - name: UI_WorldMap_Fog_Region1
+    sprite: {fileID: 21300000, guid: bf1be6fc97e3471fa95deda214563997, type: 3}
+  - name: UI_WorldMap_Fog_Region2
+    sprite: {fileID: 21300000, guid: 9c03175bb48a428794ce3d8a9e157610, type: 3}
+  - name: UI_WorldMap_Fog_Region3
+    sprite: {fileID: 21300000, guid: 50f4e5ba05a740d28748863dccfbd023, type: 3}
+  - name: UI_WorldMap_Fog_Region4
+    sprite: {fileID: 21300000, guid: b9ea4e76d5ed4381a629eb74216ad1af, type: 3}
+  - name: UI_WorldMap_Fog_Region5
+    sprite: {fileID: 21300000, guid: a545a4846cdc47fbba5efd17441bb297, type: 3}
+  - name: UI_WorldMap_Frame
+    sprite: {fileID: 21300000, guid: 8c1e6c5f79d04fc68ce2ad79213c2921, type: 3}
+  - name: UI_WorldMap_Outdoor_Art
+    sprite: {fileID: 21300000, guid: 084ddc52a3984023896a93010546fe1d, type: 3}
+  - name: UI_WorldMap_Pin_Check
+    sprite: {fileID: 21300000, guid: cbf9e4013cbe4b529eb68f81e3d7980c, type: 3}
+  - name: UI_WorldMap_Pin_Cleared
+    sprite: {fileID: 21300000, guid: 8c3b3bb1c9bf432db93563c22361cd47, type: 3}
+  - name: UI_WorldMap_Pin_Locked
+    sprite: {fileID: 21300000, guid: 70ede394845a446eaa5b6a6aa2f40a7d, type: 3}
+  - name: UI_WorldMap_Pin_SelectHalo
+    sprite: {fileID: 21300000, guid: a9804ef72f7a42678bb98656c747ea45, type: 3}
+  - name: UI_WorldMap_Pin_Selected
+    sprite: {fileID: 21300000, guid: 357849ce0dc3458f88b3cda60e055c9b, type: 3}
+  - name: UI_WorldMap_Pin_Unlocked
+    sprite: {fileID: 21300000, guid: 0f9aec8fc3fd428d82a04e27128ef30e, type: 3}
+  - name: UI_WorldMap_Pin_Village
+    sprite: {fileID: 21300000, guid: 4de9dabefe484102a546de7cf67fc800, type: 3}
+  - name: UI_WorldMap_Row
+    sprite: {fileID: 21300000, guid: 8e1d244c96414d86b1fbe5843159a783, type: 3}
+  - name: UI_WorldMap_Row_Selected
+    sprite: {fileID: 21300000, guid: b104842bf7b547f38019ac6925e7d7fd, type: 3}
+  - name: UI_WorldMap_SidePanel
+    sprite: {fileID: 21300000, guid: 76ea512cdeba478fb89477faccd10131, type: 3}
+  - name: UI_WorldMap_YouMarker
+    sprite: {fileID: 21300000, guid: e6864424f913439880babae92f2c303a, type: 3}

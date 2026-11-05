@@ -325,6 +325,52 @@ namespace GameplayPrototype
             return go;
         }
 
+        public GameObject SpawnCampMob(string mob, Vector2 pos, int level, bool boss, float leashPx)
+        {
+            bool archer = mob.IndexOf("Archer", System.StringComparison.Ordinal) >= 0;
+            bool chief = boss || mob.IndexOf("Chief", System.StringComparison.Ordinal) >= 0;
+            var def = FindDef(chief ? "Goblin" : mob);
+            if (def == null) return null;
+            float mul = Mathf.Max(0.75f, level / 3f);
+            int hp = Mathf.RoundToInt(def.hp * (chief ? 3f : mul));
+            int dmg = Mathf.RoundToInt(def.damage * (chief ? 2f : mul));
+            var kind = def.rider ? EnemyKind.Gobrider : EnemyKind.Goblin;
+            string label = chief ? "Goblin Chief" : mob + " Lv." + level;
+            var go = CreateEnemy(pos, kind, label, hp, chief ? def.speed * 0.85f : def.speed, def.aggro,
+                def.meleeRange, dmg, def.cooldown, null, Color.white, def.colliderSize);
+            var enemy = go.GetComponent<EnemyController>();
+            enemy.SetHitDelay(0.1f);
+            go.GetComponent<EnemyVisual>().UseAnimator(def.controller, true);
+            if (chief)
+            {
+                go.transform.localScale = new Vector3(2.2f, 2.2f, 1f);
+                go.AddComponent<R2CBossMark>();
+            }
+            else if (def.ranged || archer)
+            {
+                var shot = go.AddComponent<R2CMonsterShot>();
+                shot.Configure(def, dmg);
+                shot.SetRange(130f / 16f);
+            }
+            if (archer)
+                enemy.PinInPlace(130f / 16f);
+            else
+                enemy.SetPatrol(Mathf.Max(0.8f, leashPx / 16f));
+            RegisterEnemy(go, def.rider, elite: false, boss: chief, countTowardWave: true, bucket: true);
+            return go;
+        }
+
+        public void BeginPlaced(int count)
+        {
+            _spawningEnabled = false;
+            _activeWave = null;
+            _waveActive = count > 0;
+            _waveBudget = count;
+            _waveKills = 0;
+            _waveSpawned = count;
+            _topUpTimer = 999f;
+        }
+
         public void StopWaves()
         {
             _spawningEnabled = false;
@@ -338,7 +384,11 @@ namespace GameplayPrototype
             if (_enemyRoot != null)
             {
                 for (int i = _enemyRoot.childCount - 1; i >= 0; i--)
-                    Destroy(_enemyRoot.GetChild(i).gameObject);
+                {
+                    var child = _enemyRoot.GetChild(i).gameObject;
+                    child.SetActive(false);
+                    Destroy(child);
+                }
             }
             _alive.Clear();
             _countedDeaths.Clear();

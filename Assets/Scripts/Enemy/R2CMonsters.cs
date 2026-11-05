@@ -76,6 +76,8 @@ namespace GameplayPrototype
             _side = def.spawnSide;
         }
 
+        public void SetRange(float range) => _range = range;
+
         public void ShowAim(Vector2 target)
         {
             if (!_aimLine) return;

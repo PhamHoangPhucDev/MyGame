@@ -171,7 +171,7 @@ function spriteName(e){const NM=new Map();
  spriteName.NM=NM}
 const EXTRA=new Map();
 function nameOf(e){const NM=spriteName.NM;if(EXTRA.has(e.img))return EXTRA.get(e.img);if(e.k==='node')return NODE_FILE[e.type];if(e.rustle)return 'Bush_Rustle';const n=NM.get(e.img);if(n)return n;
- if(e.img&&e.img.width===8)return 'Palisade_Post_'+e.img.height;return null}
+ if(e.img&&e.img.width===8)return 'Palisade_Post_'+e.img.height;if(e.img&&e.img.width===32&&e.img.height===60)return 'Watchtower';if(e.img&&e.img.width===108)return e.img.height===58?'Cage_Back':'Cage_Front';return null}
 async function exportMap(dir,title,labels,notes){spriteName();const items=[],unk=new Set();
  for(const e of ents){if(e.k==='mob')continue;const name=nameOf(e);if(!name){unk.add(e.k+':'+(e.img&&e.img.width+'x'+e.img.height));continue}
   items.push({sprite:name,x:Math.round(e.x),y:Math.round(e.y),layer:e.plateau?'plateau':e.k==='tree'?'tree':e.k==='node'?'node':'prop'})}
@@ -251,5 +251,24 @@ async function runAbandoned(){const D='Abandoned/';
   ['Palette: Abandoned/Ground and Abandoned/Trees are recoloured (grey-blue grass, desaturated trees); vignette stronger (edge alpha 0.68).','Mist over the whole map: Mist_Blob x6, scale 3-5, alpha 0.16, drifting.',
    'Layout: centre clearing with the sacred tree (boss + 3 orbiting riders), a wobbling ring road (paths[1]) with 3 spokes to the centre, and 6 branches (paths[5..10]) to training grounds 1-6; a Signpost where each branch leaves the ring.','Resources: SpiritFlower (Hoa linh) + Sap (Nhựa cây), both in the demo now.','Dryad Riders orbit the sacred tree on an ellipse rx170 ry112 at ~34px/s (see mobs[].orbit).','Rings per the layout spec: Satyr outer, Dryad middle, Dryad Rider orbit around the tree.']);
  return r}
-window.ARTGEN={run,runTrail,runAbandoned,runPaletteKit,exportMap,writeBoard,writeManifest,MAN,BOARD,saveText,save,strip,grid,matTile,dualTile,PAIRS,NAMES};
+// ---------- Goblin Outpost ----------
+async function runOutpost(){const D='Outpost/',wood=['#4a3320','#6b4a2c','#8a6438','#a67c46'];
+ await runPaletteKit(D,[['#f2d870','#ffffff'],['#e8a070','#fff0d0'],['#d8d0b0','#ffffff']]);
+ for(let h=20;h<=29;h++)await save(D+'Fortify/Palisade_Post_'+h+'.png',makePost(h,wood,h),{note:'outpost wood; walls = 2 staggered rows every 7px (back row 3px up, +3px x); collider r4 on the front row; 20-24 also used as practice posts'});
+ await save(D+'Fortify/Watchtower.png',makeWatch(wood),{note:'collider 24x10; archer stands 30px above the pivot and shoots arrows'});
+ await save(D+'Props/Cage_Back.png',makeCage(false),{note:'draw behind the Cyclops; straw floor; collider along the back bars'});
+ await save(D+'Props/Cage_Front.png',makeCage(true),{note:'draw in front of the Cyclops (pivot 62px lower than Cage_Back); lock plate in the middle'});
+ {const c=mk(6,1),g=pix(c);g.fillStyle='#e8dcc0';g.fillRect(0,0,5,1);g.fillStyle='#c8ccd0';g.fillRect(5,0,1,1);await save(D+'Props/Arrow.png',c,{pivot:'0.5,0.5',note:'rotate along flight; arc 14px high'})}
+ await save(D+'Props/Tent_Horn.png',T.Tent,{pivot:'0.5,0.025'});await save(D+'Props/Flag_Tattered.png',T.Flag);
+ const r=await exportMap(D,'Outpost',[
+  ['⛩ Cổng về Làng',MAP.portal[0],MAP.portal[1]-52,'#9fe6dc'],['Tường 1 · cổng + 2 tháp canh',800,1000,'#e8dcb8'],['Tường 2',620,712,'#e8dcb8'],['Tường 3',620,462,'#e8dcb8'],
+  ['1 Mỏ quặng Lv13',330,1000,'#f0c080'],['2 Trạm gác ngoài Lv13',1270,995,'#ffc8a0'],['3 Trại lều Lv14',400,770,'#ffc8a0'],['4 Chuồng Gobrider Lv15',1220,775,'#ffc8a0'],
+  ['5 Lò rèn Lv16',380,530,'#ffb43c'],['6 Kho hàng Lv16',1220,530,'#ffc8a0'],['Lỗ chó → kho giấu',1395,760,'#fff2a0'],['7 Bãi tập Lv17',400,225,'#ffc8a0'],['Cyclops bị nhốt',1120,215,'#c8b4ff'],['Goblin Warlord giữ cổng 3',800,380,'#ff9a6a'],['Trạm nghỉ',MAP.rest[0]+40,MAP.rest[1]+24,'#9fe6a0']],
+  ['Palette: Outpost/Ground and Outpost/Trees are recoloured olive/dry; wood posts use the outpost wood palette (Outpost/Fortify).',
+   'Layout: main road south to north through 3 palisade walls (y 960 / 720 / 470, x 150-1450) = 4 zones; in each zone a cross road with Signposts leads to a training ground on each side (8 grounds incl. the back yard).',
+   'Each gate: 34px gap, a Watchtower on each side with a Goblin Archer standing 30px up (shoots arrows), a Brazier + Fire_Small (14px lift) each side.',
+   'Secret: 18px dog hole in wall 2 at x=1395 into a bush-ringed pocket with the stash chest.',
+   'Mob mix per the layout spec: Gobrider after gate 1, Elite after gate 2, Warlord holds gate 3; the Cyclops sits caged in the back yard (boss per the layout spec).']);
+ return r}
+window.ARTGEN={run,runTrail,runAbandoned,runOutpost,runPaletteKit,exportMap,writeBoard,writeManifest,MAN,BOARD,saveText,save,strip,grid,matTile,dualTile,PAIRS,NAMES};
 })();

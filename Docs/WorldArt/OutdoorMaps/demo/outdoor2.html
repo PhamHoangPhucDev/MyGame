@@ -76,13 +76,19 @@ const MAPS=[
  bugs:4,fireflies:1,build:buildRuin,
  pal:{G0:'#2b4447',G1:'#34525a',G1o:'#2b464b',G2:'#41665f',G3:'#4b7166',G4:'#567b6c',T1:'#2e4a4b',T3:'#62887a',Lt:'#567f70',D1:'#9e8466',D2:'#8a7258',D3:'#b09474',De:'#6c5a48',Ds:'#7e6850'},
  treeF:['saturate(0.5) brightness(0.8) hue-rotate(18deg)','saturate(0.45) brightness(0.78) hue-rotate(30deg)','saturate(0.45) brightness(0.66) hue-rotate(22deg)','saturate(0.4) brightness(0.64) hue-rotate(34deg)','saturate(0.55) brightness(0.74) hue-rotate(4deg)']},
-{name:'Goblin Outpost',zone:'VÙNG 4 · TIỀN ĐỒN GOBLIN',sub:'Lv 13–18 · Ba lớp tường cọc',W:1600,H:1200,
- clears:[{x:800,y:300,rx:280,ry:118,isl:1},{x:560,y:845,rx:130,ry:62,isl:1},{x:1050,y:595,rx:150,ry:62,isl:1}],patches:[{x:300,y:620,rx:70,ry:40}],
- paths:[{p:[[800,1210],[790,1050],[815,900],[785,760],[800,620],[790,470],[800,330],[800,190]],w:15},{p:[[1180,740],[1250,700],[1330,610]],w:6}],
+{name:'Goblin Outpost',zone:'VÙNG 4 · TIỀN ĐỒN GOBLIN',sub:'Lv 13–18 · Ba lớp tường cọc, 8 bãi quái',W:1600,H:1200,
+ clears:[{x:800,y:300,rx:210,ry:100,isl:1},{x:1120,y:285,rx:110,ry:62,isl:0},{x:400,y:290,rx:110,ry:58,isl:1},
+  {x:380,y:595,rx:105,ry:58,isl:1},{x:1220,y:595,rx:110,ry:58,isl:1},{x:400,y:840,rx:110,ry:58,isl:1},{x:1220,y:840,rx:105,ry:58,isl:1},{x:330,y:1060,rx:95,ry:50,isl:1},{x:1270,y:1060,rx:95,ry:50,isl:1},{x:1395,y:670,rx:34,ry:22}],patches:[],
+ paths:[{p:[[800,1210],[790,1050],[815,900],[785,760],[800,620],[790,470],[800,330],[800,190]],w:15},
+  {p:[[792,1060],[600,1072],[420,1060]],w:9},{p:[[792,1060],[1000,1048],[1180,1060]],w:9},
+  {p:[[808,840],[620,850],[500,840]],w:9},{p:[[808,840],[1000,830],[1120,840]],w:9},
+  {p:[[796,595],[600,602],[480,595]],w:9},{p:[[796,595],[1000,588],[1110,595]],w:9},
+  {p:[[700,300],[600,296],[505,290]],w:9},{p:[[1395,760],[1385,730],[1395,690]],w:5}],
  stream:null,ponds:[],fall:0,
- groves:[{x:200,y:1050,r:120},{x:1400,y:1050,r:120},{x:180,y:300,r:90},{x:1420,y:300,r:90}],
- gaps:[{x:800,y:1180,r:70}],keep:[{x:800,y:300,r:260},{x:800,y:960,r:60},{x:800,y:720,r:60},{x:800,y:470,r:60}],spawn:[800,1120],portal:[800,1184],rest:[866,1110],fires:[],
- quests:[['Hạ quân tiền đồn','kill',10],['Đào quặng sắt','ore',4],['Khai thác đá thô','stone',3],['Hạ Goblin Warlord','boss',1],['Kho giấu sau lỗ chó','chest',1]],killRe:/Goblin|Gobrider/,
+ groves:[{x:180,y:300,r:70},{x:1460,y:300,r:70}],
+ gaps:[{x:800,y:1180,r:70}],keep:[{x:800,y:300,r:230},{x:1120,y:285,r:120},{x:400,y:290,r:120},{x:380,y:595,r:115},{x:1220,y:595,r:120},{x:400,y:840,r:120},{x:1220,y:840,r:115},{x:330,y:1060,r:105},{x:1270,y:1060,r:105},{x:800,y:960,r:60},{x:800,y:720,r:60},{x:800,y:470,r:60}],
+ spawn:[800,1120],portal:[800,1184],rest:[866,1110],fires:[],
+ quests:[['Hạ quân tiền đồn','kill',20],['Đào quặng sắt','ore',4],['Khai thác đá thô','stone',3],['Hạ Goblin Warlord','boss',1],['Kho giấu sau lỗ chó','chest',1]],killRe:/Goblin|Gobrider/,
  bugs:3,build:buildOutpost,
  pal:{G0:'#3a4733',G1:'#45553a',G1o:'#394731',G2:'#566a45',G3:'#62744d',G4:'#6e7f55',T1:'#3d4c33',T2:'#6a7c50',T3:'#7d8d5c',Lt:'#728458',D1:'#bd9664',D2:'#a6804f',D3:'#d0a874',De:'#836242',Ds:'#987248',PL:['#323d2b','#3b4832','#48573c','#536445'],lip:['#536445','#66784f']},
  treeF:['saturate(0.6) brightness(0.84) hue-rotate(-28deg)','saturate(0.62) brightness(0.86) hue-rotate(-14deg)','saturate(0.55) brightness(0.7) hue-rotate(-24deg)','saturate(0.7) brightness(0.8) hue-rotate(-40deg) sepia(0.2)','saturate(0.6) brightness(0.78) hue-rotate(-30deg)']},
@@ -224,6 +230,8 @@ let DECO_TINT=[];
 function makeTrees(){
  const F=MAP.treeF||[OVF,OVF,'saturate(0.7) brightness(0.74) hue-rotate(10deg)','saturate(0.62) brightness(0.72) hue-rotate(18deg)','saturate(0.8) brightness(0.8) hue-rotate(-6deg)'];
  T.trees=[tint(IMG.Tree_Teal,F[0]),tint(IMG.Tree_Leaf,F[1]),tint(IMG.Tree_Teal,F[2]),tint(IMG.Tree_Leaf,F[3]),tint(IMG.Tree_Teal,F[4])];
+ // Outpost's autumn hue shift turns trunks pink: put back the natural brown trunk (rows 50+)
+ if(MI===3)T.trees.forEach((t,i)=>{const src=tint(i%2?IMG.Tree_Leaf:IMG.Tree_Teal,i>=2&&i<4?'saturate(0.7) brightness(0.74)':OVF),g=t.getContext('2d');g.clearRect(0,50,80,22);g.drawImage(src,0,50,80,22,0,50,80,22)});
  T.bushes=[tint(IMG.Bush_Teal,F[0]),tint(IMG.Bush_Leaf,F[1]),tint(IMG.Bush_Teal,F[2])];
  for(const n of ['Shadow_TreeV3','Stump','Barrel','Crate','Crate_Herbs','Sacks','Hay','Bench','Signpost_Up'])T[n]=tint(IMG[n],OVF);
  T.Tent=tint(IMG.Tent_GoblinHorn,'saturate(0.85) brightness(0.9)');T.Flag=tint(IMG.Goblin_Flag_Tattered,'saturate(0.9) brightness(0.92)');
@@ -484,28 +492,49 @@ function buildRuin(){const cx=800,cy=600;
  // signposts where each branch leaves the ring
  for(const d of [150,210,270,330,30,60]){const [x,y]=ringPt(d);addSpr(T.Signpost_Up,x+16,y+(d>180?-12:16),{col:3})}}
 
-// ---------- map 4: outpost with three gate walls ----------
+// ---------- map 4: outpost, three gate walls cut it into four zones with a training ground on each side ----------
 function buildOutpost(){const path=MAP.paths[0].p,wood=['#4a3320','#6b4a2c','#8a6438','#a67c46'];
- const walls=[[960,[[pathX(960),34]]],[720,[[pathX(720),34],[1250,10]]],[470,[[pathX(470),34]]]];
+ const walls=[[960,[[pathX(960),34]]],[720,[[pathX(720),34],[1395,18]]],[470,[[pathX(470),34]]]];
  for(const [y,gaps] of walls){palisadeH(150,1450,y,gaps,wood);const gx=pathX(y);
-  for(const s of [-1,1]){const tx=gx+s*34;const tw=addSpr(makeWatch(wood),tx,y+6,{col:12,colry:5});spawnMob(GA,'Goblin Archer',14+walls.findIndex(w=>w[0]===y),tx,y+6,{lift:30,hr:0,tower:true});
-   const b=addSpr(PROPS.BRAZ,gx+s*18,y+14,{col:3});addFire(gx+s*18,y+14,{lift:14})}}
- // tents and racks between the walls
- for(const [x,y] of [[470,830],[640,860],[1000,580],[1160,600],[420,610]])addSpr(T.Tent,x,y,{col:22,colry:10,coly:8,ay:78});
- for(const [x,y] of [[560,800],[1080,560],[700,1000]])addSpr(PROPS.RACK,x,y,{col:10,colry:3});
- for(const [x,y,n] of [[520,880,'Barrel'],[532,886,'Crate'],[1120,630,'Sacks'],[960,620,'Barrel'],[900,880,'Hay'],[700,870,'Crate']])addSpr(T[n],x,y,{col:6,colry:3});
+  for(const s of [-1,1]){const tx=gx+s*34;addSpr(makeWatch(wood),tx,y+6,{col:12,colry:5});spawnMob(GA,'Goblin Archer',14+walls.findIndex(w=>w[0]===y),tx,y+6,{lift:30,hr:0,tower:true});
+   addSpr(PROPS.BRAZ,gx+s*18,y+14,{col:3});addFire(gx+s*18,y+14,{lift:14})}}
+ const sign=(x,y)=>addSpr(T.Signpost_Up,x,y,{col:3});
+ // --- outside wall 1 ---
+ // S-W ore quarry
+ for(const [x,y,i] of [[270,1040,2],[300,1085,1],[400,1080,0]])addSpr(T.boulders[i],x,y,{col:8,colry:4});for(const [x,y] of [[300,1050],[350,1040],[380,1070],[250,1075]])node('ore',x,y);
+ for(let i=0;i<5;i++)spawnMob(G,'Goblin',13,330+ri(-60,60),1060+ri(-20,20),{hr:66,home:[330,1060]});sign(770,1046);
+ // S-E outer guard post
+ addSpr(makeWatch(wood),1300,1050,{col:12,colry:5});spawnMob(GA,'Goblin Archer',13,1300,1050,{lift:30,hr:0,tower:true});addSpr(T.Tent,1220,1040,{col:22,colry:10,coly:8,ay:78});
+ for(const [x,y] of [[1240,1080],[1330,1086]])node('stone',x,y);
+ for(let i=0;i<3;i++)spawnMob(G,'Goblin',13,1260+ri(-50,50),1065+ri(-15,15),{hr:60,home:[1260,1065]});spawnMob(GA,'Goblin Archer',13,1250,1070,{hr:50,home:[1250,1070]});sign(828,1046);
+ // --- between wall 1 and wall 2 ---
+ // A-W tent camp
+ for(const [x,y] of [[340,820],[450,812]])addSpr(T.Tent,x,y,{col:22,colry:10,coly:8,ay:78});addSpr(PROPS.SEAT,400,866,{col:9,colry:3});addSpr(PROPS.RACK,480,856,{col:10,colry:3});
+ for(let i=0;i<5;i++)spawnMob(GR,'Gobrider',14,400+ri(-70,70),845+ri(-20,20),{hr:72,home:[400,845],speed:30});sign(786,826);
+ // A-E stable
+ for(const [x,y,n] of [[1160,820,'Hay'],[1176,826,'Hay'],[1290,822,'Barrel'],[1302,828,'Sacks']])addSpr(T[n],x,y,{col:6,colry:3});addSpr(PROPS.RACK,1230,812,{col:10,colry:3});addSpr(PROPS.SEAT,1210,870,{col:9,colry:3});
+ for(let i=0;i<4;i++)spawnMob(GR,'Gobrider',15,1220+ri(-70,70),845+ri(-20,20),{hr:72,home:[1220,845],speed:30});sign(830,826);
+ // --- between wall 2 and wall 3 ---
+ // B-W forge
+ for(const [x,y] of [[330,585],[430,585]]){addSpr(PROPS.BRAZ,x,y,{col:3});addFire(x,y,{lift:14})}addSpr(PROPS.SPEARS,380,570,{col:5});addSpr(PROPS.SPEARS,300,610,{col:5});addSpr(PROPS.RACK,460,620,{col:10,colry:3});
+ for(const [x,y] of [[340,620],[420,630]])node('stone',x,y);
+ for(let i=0;i<4;i++)spawnMob(GE,'Gobrider Elite',16,380+ri(-60,60),600+ri(-20,20),{hr:66,home:[380,600],speed:28});sign(774,580);
+ // B-E storehouse
+ for(const [x,y,n] of [[1160,575,'Crate'],[1172,581,'Crate'],[1184,575,'Barrel'],[1270,570,'Sacks'],[1282,576,'Crate_Herbs'],[1300,620,'Barrel'],[1150,620,'Hay']])addSpr(T[n],x,y,{col:6,colry:3});addSpr(T.Tent,1240,560,{col:22,colry:10,coly:8,ay:78});
+ for(let i=0;i<3;i++)spawnMob(GE,'Gobrider Elite',16,1220+ri(-60,60),605+ri(-15,15),{hr:66,home:[1220,605],speed:28});spawnMob(GA,'Goblin Archer',16,1200,615,{hr:40,home:[1200,615]});sign(822,580);
+ // secret stash: through the dog hole in wall 2, a bush-ringed pocket
+ chest=addSpr(T.chestC,1395,664,{k:'chest',opened:false,col:7,colry:3});
+ for(let k=0;k<10;k++){const t=k/10*Math.PI*2;if(Math.sin(t)>0.6)continue;addBush(Math.round(1395+Math.cos(t)*40),Math.round(668+Math.sin(t)*24))}
+ // --- back yard behind wall 3 ---
  addSpr(T.Flag,840,452,{k:'flag'});addSpr(T.Flag,760,452,{k:'flag'});
- // cyclops cage in the back yard
- addSpr(makeCage(false),1060,250,{noShadow:true});addSpr(makeCage(true),1060,312,{noShadow:true});addCol(1060,250,54,6);addCol(1060,311,54,4);addCol(1006,280,4,30);addCol(1114,280,4,30);
- spawnMob(CY,'Cyclops',20,1060,290,{caged:true,hr:0});mobs[mobs.length-1].x=1060;mobs[mobs.length-1].y=290;
- // secret stash behind the dog hole
- chest=addSpr(T.chestC,1330,604,{k:'chest',opened:false,col:7,colry:3});for(const [x,y] of [[1300,640],[1360,640],[1290,600]])addBush(x,y);
- for(const [x,y] of [[300,240],[420,220],[1240,230],[1340,260],[620,250],[980,200]])node('ore',x,y);
- for(const [x,y] of [[290,620],[330,640],[1250,860],[350,1040]])node('stone',x,y);
- for(let i=0;i<4;i++)spawnMob(G,'Goblin',14,560+ri(-90,90),845+ri(-30,30),{hr:90,home:[560,845]});
- for(let i=0;i<4;i++)spawnMob(G,'Goblin',15,1050+ri(-100,100),595+ri(-30,30),{hr:100,home:[1050,595]});
- for(let i=0;i<3;i++)spawnMob(GR,'Gobrider',16,800+ri(-200,200),300+ri(-40,40),{hr:220,home:[800,300],speed:34});
- spawnMob(GW,'Goblin Warlord',18,800,432,{hr:30,boss:true,hp:640,speed:18})}
+ spawnMob(GW,'Goblin Warlord',18,800,420,{hr:30,boss:true,hp:640,speed:18});for(const x of [740,860])spawnMob(GE,'Gobrider Elite',17,x,410,{hr:20});
+ // C-W training yard: practice posts
+ for(let k=0;k<6;k++){const x=350+(k%3)*50,y=270+Math.floor(k/3)*40;addSpr(makePost(ri(20,24),wood,k),x,y,{});addCol(x,y-1,4,3)}addSpr(PROPS.RACK,470,250,{col:10,colry:3});
+ for(let i=0;i<4;i++)spawnMob(GE,'Gobrider Elite',17,400+ri(-60,60),290+ri(-20,20),{hr:66,home:[400,290],speed:28});sign(690,286);
+ // C-E cyclops cage
+ addSpr(makeCage(false),1120,250,{noShadow:true});addSpr(makeCage(true),1120,312,{noShadow:true});addCol(1120,250,54,6);addCol(1120,311,54,4);addCol(1066,280,4,30);addCol(1174,280,4,30);
+ spawnMob(CY,'Cyclops',20,1120,290,{caged:true,hr:0});mobs[mobs.length-1].x=1120;mobs[mobs.length-1].y=290;
+ for(const [x,y] of [[640,220],[980,220]])node('ore',x,y)}
 function pathX(y){const p=MAP.paths[0].p;for(let i=0;i<p.length-1;i++){const a=p[i],b=p[i+1];if((y<=a[1]&&y>=b[1])||(y>=a[1]&&y<=b[1]))return Math.round(a[0]+(b[0]-a[0])*(y-a[1])/(b[1]-a[1]||1))}return p[0][0]}
 
 // ---------- map 5: stronghold with stone walls, hall and waterfall cave ----------

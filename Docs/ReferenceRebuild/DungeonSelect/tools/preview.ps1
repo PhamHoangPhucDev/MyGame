@@ -19,6 +19,17 @@ function Box($x, $y, $w, $h, $fill, $border) {
   $g.FillRectangle((New-Object System.Drawing.SolidBrush (Col $fill)), $x, $y, $w, $h)
   $p = New-Object System.Drawing.Pen (Col $border), 3; $g.DrawRectangle($p, $x, $y, $w, $h)
 }
+# 9-slice draw: keeps a $b-pixel border (in source pixels) at scale $s, stretches the middle
+function Slice9($name, $x, $y, $w, $h, $s, $b) {
+  $img = Img (Join-Path $ex ($name + '.png')); $iw = $img.Width; $ih = $img.Height; $d = $b * $s
+  $sx = @(0, $b, ($iw - $b)); $sw = @($b, ($iw - 2 * $b), $b)
+  $sy = @(0, $b, ($ih - $b)); $shh = @($b, ($ih - 2 * $b), $b)
+  $dx = @($x, ($x + $d), ($x + $w - $d)); $dw = @($d, ($w - 2 * $d), $d)
+  $dy = @($y, ($y + $d), ($y + $h - $d)); $dh = @($d, ($h - 2 * $d), $d)
+  for ($j = 0; $j -lt 3; $j++) { for ($i = 0; $i -lt 3; $i++) {
+    $dst = New-Object System.Drawing.Rectangle ([int]$dx[$i]), ([int]$dy[$j]), ([int]$dw[$i]), ([int]$dh[$j])
+    $g.DrawImage($img, $dst, $sx[$i], $sy[$j], $sw[$i], $shh[$j], [System.Drawing.GraphicsUnit]::Pixel) } }
+}
 function Txt($s, $x, $y, $size, $col, [switch]$center) {
   $f = New-Object System.Drawing.Font 'Consolas', $size, ([System.Drawing.FontStyle]::Bold), ([System.Drawing.GraphicsUnit]::Pixel)
   $sf = New-Object System.Drawing.StringFormat; if ($center) { $sf.Alignment = 'Center' }
@@ -29,9 +40,9 @@ function Txt($s, $x, $y, $size, $col, [switch]$center) {
 
 # header and dungeon tabs
 Txt 'Bản đồ phó bản' 40 34 34 '#F2D84A'
-$tabs = @(@('Trại Goblin', '#F4F4F0', '#F2D84A', '#252A33'), @('Đầm Lầy Mục', '#6A7080', '#4A5260', '#1C1F26'), @('Hẻm Núi Xương', '#6A7080', '#4A5260', '#1C1F26'))
+$tabs = @(@('Trại Goblin', '#F4F4F0', 'UI_Dungeon_Tab_Selected'), @('Đầm Lầy Mục', '#6A7080', 'UI_Dungeon_Tab_Locked'), @('Hẻm Núi Xương', '#6A7080', 'UI_Dungeon_Tab_Locked'))
 $tx = 560
-foreach ($t in $tabs) { Box $tx 28 300 54 $t[3] $t[2]; Txt $t[0] ($tx + 136) 40 26 $t[1] -center; $tx += 316 }
+foreach ($t in $tabs) { Slice9 $t[2] $tx 27 300 57 3 2; Txt $t[0] ($tx + 136) 40 26 $t[1] -center; $tx += 316 }
 $lock = Img (Join-Path $wm 'UI_WorldMap_Pin_Locked.png')
 Draw $lock 1130 35 3; Draw $lock 1446 35 3
 Txt 'X' 1862 34 30 '#AEB6C8'
@@ -70,7 +81,7 @@ Txt 'Đề nghị Lv.8' ($sx + 28) ($sy + 194) 28 '#5ED0E0'
 $g.FillRectangle((New-Object System.Drawing.SolidBrush (Col '#4A5260')), ($sx + 28), ($sy + 246), ($sw - 56), 3)
 Txt 'Phần thưởng' ($sx + 28) ($sy + 270) 24 '#AEB6C8'
 $rx = $sx + 28
-foreach ($r in 0..2) { Box $rx ($sy + 310) 96 96 '#20202A' '#5A5E6A'; $rx += 112 }
+foreach ($r in 0..2) { Slice9 'UI_Dungeon_RewardSlot' $rx ($sy + 310) 96 96 3 3; $rx += 112 }
 $g.FillPolygon((New-Object System.Drawing.SolidBrush (Col '#D8B040')), [System.Drawing.Point[]]@((New-Object System.Drawing.Point ($sx + 76), ($sy + 330)), (New-Object System.Drawing.Point ($sx + 104), ($sy + 358)), (New-Object System.Drawing.Point ($sx + 76), ($sy + 386)), (New-Object System.Drawing.Point ($sx + 48), ($sy + 358))))
 Box ($sx + 162) ($sy + 340) 52 38 '#8A5A2A' '#D8B040'
 $g.FillEllipse((New-Object System.Drawing.SolidBrush (Col '#BFE6EE')), ($sx + 290), ($sy + 336), 44, 44)
@@ -79,12 +90,9 @@ Box ($sx + 28) ($sy + 500) ($sw - 56) 90 '#4A3140' '#B89AA0'
 Txt 'Dịch chuyển' ($sx + $sw / 2) ($sy + 524) 36 '#7ED67E' -center
 
 # guard strip at the bottom of the panel
-Box ($sx + 28) ($sy + 640) ($sw - 56) 260 '#1E2230' '#AEB6C8'
-Box ($sx + 48) ($sy + 664) 96 96 '#3A4250' '#5A5E6A'
-$g.FillRectangle((New-Object System.Drawing.SolidBrush (Col '#8A94A6')), ($sx + 66), ($sy + 676), 60, 30)
-$g.FillRectangle((New-Object System.Drawing.SolidBrush (Col '#C9A58A')), ($sx + 72), ($sy + 706), 48, 42)
-$g.FillRectangle((New-Object System.Drawing.SolidBrush (Col '#141018')), ($sx + 82), ($sy + 718), 8, 8)
-$g.FillRectangle((New-Object System.Drawing.SolidBrush (Col '#141018')), ($sx + 102), ($sy + 718), 8, 8)
+Slice9 'UI_Dungeon_GuardStrip' ($sx + 28) ($sy + 640) ($sw - 56) 260 3 2
+Slice9 'UI_Dungeon_RewardSlot' ($sx + 48) ($sy + 664) 96 96 3 3
+Draw (Img (Join-Path $ex 'UI_Dungeon_Guard_Portrait.png')) ($sx + 48) ($sy + 664) 4
 Txt 'Lính canh' ($sx + 164) ($sy + 676) 28 '#F2D84A'
 Txt "Bọn goblin dựng lửa trại`nngay giữa bãi trống.`nCoi chừng bị vây đấy." ($sx + 48) ($sy + 780) 26 '#F6EFE2'
 

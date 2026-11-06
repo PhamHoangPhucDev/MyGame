@@ -686,6 +686,75 @@ public static class DungeonBoardArt
         }
     }
 
+    // 9-slice panels: 8x8, 1px border, notched corners (same build as UI_WorldMap_Frame).
+    static void Slice(string path, int size, Color fill, Color border, Color bevel)
+    {
+        var a = Blank(size, size);
+        for (int y = 0; y < size; y++)
+            for (int x = 0; x < size; x++)
+            {
+                bool edgeX = x == 0 || x == size - 1, edgeY = y == 0 || y == size - 1;
+                if (edgeX && edgeY) continue;
+                a[x, y] = edgeX || edgeY ? border : fill;
+            }
+        if (bevel != Color.Empty)
+        {
+            for (int i = 1; i < size - 1; i++) { a[i, 1] = bevel; a[1, i] = bevel; }
+        }
+        Save(path, a, size, size);
+    }
+
+    public static void Panels(string dir)
+    {
+        Slice(Path.Combine(dir, "UI_Dungeon_Tab.png"), 8, Hex("#1C1F26"), Hex("#4A5260"), Color.Empty);
+        Slice(Path.Combine(dir, "UI_Dungeon_Tab_Selected.png"), 8, Hex("#252A33"), Hex("#F2D84A"), Color.Empty);
+        Slice(Path.Combine(dir, "UI_Dungeon_Tab_Locked.png"), 8, Hex("#16181E"), Hex("#3A4050"), Color.Empty);
+        Slice(Path.Combine(dir, "UI_Dungeon_GuardStrip.png"), 8, Hex("#1E2230"), Hex("#AEB6C8"), Color.Empty);
+        Slice(Path.Combine(dir, "UI_Dungeon_RewardSlot.png"), 10, Hex("#20202A"), Hex("#5A5E6A"), Hex("#2C2E38"));
+    }
+
+    // Camp guard bust, 24x24, original design: steel helm with red plume, moustache, blue tabard.
+    public static void GuardPortrait(string path)
+    {
+        string[] g = {
+            "...........rr...........",
+            "..........rRrr..........",
+            ".........orrrro.........",
+            "........ooHHhhoo........",
+            ".......oHHhhhhhdo.......",
+            "......oHHhhhhhhhdo......",
+            "......oHhhhhhhhhdo......",
+            ".....oHhhhhhhhhhhdo.....",
+            ".....oddddddddddddo.....",
+            ".....odsssshhssssdo.....",
+            ".....osssssHhssssSo.....",
+            ".....oseessHhseesSo.....",
+            ".....osssssHhsssSSo.....",
+            ".....osssssSSsssSSo.....",
+            ".....osmmmmmmmmmmSo.....",
+            "......osmsssssmsSo......",
+            ".......osssssssSo.......",
+            "........oooooooo........",
+            "....oooogttttttgoooo....",
+            "...ohhhogTTttttgohhho...",
+            "..oHhhhdotTttttodhhhdo..",
+            "..oHhhhdotTttgttodhhdo..",
+            "..oddddootTtttttoodddo..",
+            "..ooooooottttttttoooooo."
+        };
+        var map = new Dictionary<char, Color>();
+        map['o'] = Hex("#141018"); map['h'] = Hex("#8A94A6"); map['H'] = Hex("#C4CCD8"); map['d'] = Hex("#5A6274");
+        map['s'] = Hex("#C9A58A"); map['S'] = Hex("#A07E66"); map['e'] = Hex("#141018"); map['m'] = Hex("#6A4428");
+        map['t'] = Hex("#2E62A8"); map['T'] = Hex("#4A86C8"); map['g'] = Hex("#D8B040"); map['r'] = Red; map['R'] = Hex("#E04848");
+        var a = Blank(24, 24);
+        for (int y = 0; y < 24; y++)
+        {
+            string row = g[y].PadRight(24, '.');
+            for (int x = 0; x < 24; x++) { Color c; if (map.TryGetValue(row[x], out c)) a[x, y] = c; }
+        }
+        Save(path, a, 24, 24);
+    }
+
     static Color[,] Load(string path)
     {
         using (var b = new Bitmap(path))

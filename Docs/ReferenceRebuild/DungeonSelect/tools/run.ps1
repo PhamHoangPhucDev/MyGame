@@ -15,4 +15,6 @@ Add-Type -TypeDefinition (Get-Content -Raw (Join-Path $here 'DungeonBoardArt.cs'
 [DungeonBoardArt]::Fog($out, 'UI_Dungeon_Fog_GoblinCamp_Stage')
 [DungeonBoardArt]::BossPins($out, (Join-Path $wm 'UI_WorldMap_Pin_Locked.png'), (Join-Path $wm 'UI_WorldMap_Pin_Unlocked.png'))
 [DungeonBoardArt]::MapTypeIcons($out)
+[DungeonBoardArt]::Panels($out)
+[DungeonBoardArt]::GuardPortrait((Join-Path $out 'UI_Dungeon_Guard_Portrait.png'))
 Get-ChildItem $out -Filter *.png | ForEach-Object { $_.Name }

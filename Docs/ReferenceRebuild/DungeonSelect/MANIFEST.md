@@ -1,8 +1,8 @@
-# Dungeon stage select: Goblin Camp (candidate 1, awaiting approval)
+# Dungeon stage select: Goblin Camp (approved 2026-11-06)
 
 Spec: `Docs/superpowers/specs/2026-11-05-dungeon-stage-select-design.md`
 Rebuild: `tools/run.ps1` (art), then `tools/preview.ps1` (1920x1080 preview, text is a stand-in for Unity text).
-Do not copy into `Assets/` until the user approves this candidate.
+The board candidate was approved by the user on 2026-11-06. Cursor imports these into `Assets/Art/UI/Game01/Dungeon/` with Point filter, no compression, and 9-slice borders as listed.
 
 | File | Size | Notes |
 |---|---|---|
@@ -11,6 +11,13 @@ Do not copy into `Assets/` until the user approves this candidate.
 | `export/UI_Dungeon_Pin_Boss.png` | 13x13 | Stage 5 when open. Same shape as world-map pins, red border, skull. |
 | `export/UI_Dungeon_Pin_Boss_Locked.png` | 13x13 | Stage 5 while locked. |
 | `export/UI_Dungeon_MapType_Winding / Maze / Field / Ledge.png` | 11x11 | Map-type badge under each pin and in the side panel. |
+
+| `export/UI_Dungeon_Tab.png` / `_Selected` / `_Locked` | 8x8 | 9-slice, border 2 px. Open / selected (gold) / locked dungeon tab. Put the lock pin from the world map at the tab's right end. |
+| `export/UI_Dungeon_GuardStrip.png` | 8x8 | 9-slice, border 2 px. Guard dialogue box. |
+| `export/UI_Dungeon_RewardSlot.png` | 10x10 | 9-slice, border 3 px. Reward slot; also frames the guard portrait. |
+| `export/UI_Dungeon_Guard_Portrait.png` | 24x24 | Camp guard bust (steel helm, red plume, blue tabard). Show at 4x inside a reward slot. |
+
+Side panel, its rows and the Travel button reuse `UI_WorldMap_SidePanel`, `UI_WorldMap_Row(_Selected)` and `UI_WorldMap_Button_Travel`.
 
 Stages 1-4 reuse the world-map pins (`UI_WorldMap_Pin_Cleared / Selected / Unlocked / Locked`, `Pin_Check`, `Pin_SelectHalo`, `YouMarker`) so both maps read the same.
 

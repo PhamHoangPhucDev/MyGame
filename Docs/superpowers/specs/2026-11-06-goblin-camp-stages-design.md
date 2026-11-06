@@ -126,7 +126,7 @@ Bảng ải → layout: 1 `Trail` · 2 `FenceMaze` (mới) · 3 `Camp` · 4 `Gob
 
 1. **[Cursor]** A6, rồi A1 + A2 + A3 + A4 + A5 (chỉ code, dùng map có sẵn). Ải 2 tạm dùng `Trail` cho tới khi có map mê cung.
 2. **[Claude] ✅ Xong:** art ải 1, 3, 4, 5 nằm trong `Docs/WorldArt/DungeonStages/Stage{1,3,4,5}/`. Mỗi thư mục có README ghi thông số import và cách dùng.
-3. **[Claude]** Art tile mê cung (ải 2). **[Cursor]** dựng root `FenceMaze`.
+3. **[Claude] ✅ Xong:** tile mê cung ải 2 (`Docs/WorldArt/DungeonStages/Stage2/`). **[Cursor]** dựng root `FenceMaze`.
 4. **[Cursor]** UI riêng từng ải theo mục C.
 
 ## F. Quyết định của Claude (bạn kiểm tra giúp)

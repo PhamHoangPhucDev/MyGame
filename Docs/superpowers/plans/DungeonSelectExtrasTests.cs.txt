@@ -1,0 +1,99 @@
+using UnityEngine;
+
+namespace GameplayPrototype
+{
+    /// <summary>Challenge line, record line, level warning and stage keys on the dungeon select. Run() returns "OK" or the first failed check.</summary>
+    public static class DungeonSelectExtrasTests
+    {
+        static readonly string[] Keys = { "gp.bestScore.l1", "gp.bestStars.l1", "gp.bestTime.l1", "gp.bestScore.l2", "gp.bestStars.l2", "gp.bestTime.l2" };
+
+        public static string Run()
+        {
+            int saved = DungeonProgress.Cleared(0);
+            var prefs = new string[Keys.Length];
+            for (int i = 0; i < Keys.Length; i++) prefs[i] = PlayerPrefs.HasKey(Keys[i]) ? Read(Keys[i]) : null;
+            try
+            {
+                UiKit.Ensure();
+                string r = Lines();
+                if (r != "OK") return r;
+                return Panel();
+            }
+            finally
+            {
+                var canvas = GameObject.Find("DungeonSelectCanvas");
+                if (canvas != null) Object.DestroyImmediate(canvas);
+                DungeonProgress.SetCleared(0, saved);
+                for (int i = 0; i < Keys.Length; i++) Restore(Keys[i], prefs[i]);
+                PlayerPrefs.Save();
+                DungeonSelectPanel.Remember(-1);
+            }
+        }
+
+        static string Lines()
+        {
+            var cfg = ScriptableObject.CreateInstance<LevelConfig>();
+            cfg.objectiveType = LevelObjectiveType.ClearWaves;
+            cfg.waves = new[] { new WaveConfig(), new WaveConfig(), new WaveConfig(), new WaveConfig() };
+            string a = DungeonSelectPanel.ChallengeLine(cfg);
+            if (a != "4 wave · Không boss · Diệt hết quái") return "challenge plain got " + a;
+
+            cfg.objectiveType = LevelObjectiveType.ClearWavesThenReachExit;
+            cfg.waves = new[] { new WaveConfig(), new WaveConfig { warlords = 1 }, new WaveConfig { goblins = 0, cyclops = 1 } };
+            string b = DungeonSelectPanel.ChallengeLine(cfg);
+            if (b != "3 wave · Boss Cyclops · Diệt quái, tới cổng") return "challenge exit got " + b;
+
+            cfg.objectiveType = LevelObjectiveType.DefeatBossChapterComplete;
+            cfg.waves = new[] { new WaveConfig(), new WaveConfig { bossWarlord = 1 } };
+            string c = DungeonSelectPanel.ChallengeLine(cfg);
+            if (c != "2 wave · Boss Tướng Gobrider · Hạ boss") return "challenge boss got " + c;
+            if (DungeonSelectPanel.ChallengeLine(null) != "") return "challenge null";
+            Object.DestroyImmediate(cfg);
+
+            if (!DungeonSelectPanel.LevelWarn(5, 8)) return "warn 5/8";
+            if (DungeonSelectPanel.LevelWarn(6, 8)) return "warn 6/8";
+            if (DungeonSelectPanel.RecordLine(1174, 141.2f) != "1174 điểm · 02:21") return "record got " + DungeonSelectPanel.RecordLine(1174, 141.2f);
+            if (DungeonSelectPanel.RecordLine(800, 0f) != "800 điểm · --:--") return "record no time";
+            return "OK";
+        }
+
+        static string Panel()
+        {
+            PlayerPrefs.SetInt("gp.bestScore.l1", 1174);
+            PlayerPrefs.SetInt("gp.bestStars.l1", 2);
+            PlayerPrefs.SetFloat("gp.bestTime.l1", 141.2f);
+            PlayerPrefs.SetInt("gp.bestScore.l2", 0);
+            DungeonProgress.SetCleared(0, 1);
+            DungeonSelectPanel.Remember(2);
+            DungeonSelectPanel.Open();
+            var p = Object.FindFirstObjectByType<DungeonSelectPanel>();
+            if (p.Selected != 1) return "auto select got " + p.Selected;
+            if (p.RecordVisible) return "record shown on stage 2 without score";
+            DungeonSelectPanel.Step(-1);
+            if (p.Selected != 0) return "step left got " + p.Selected;
+            if (!p.RecordVisible) return "record hidden on stage 1";
+            if (p.RecordText != "1174 điểm · 02:21") return "record text got " + p.RecordText;
+            if (p.StarsShown != 2) return "stars got " + p.StarsShown;
+            DungeonSelectPanel.Step(-1);
+            if (p.Selected != 0) return "step clamps low";
+            for (int i = 0; i < 6; i++) DungeonSelectPanel.Step(1);
+            if (p.Selected != 4) return "step clamps high got " + p.Selected;
+            if (p.TravelOn) return "travel on locked boss";
+            DungeonSelectPanel.Close();
+            return "OK";
+        }
+
+        static string Read(string key)
+        {
+            if (key.StartsWith("gp.bestTime")) return "f" + PlayerPrefs.GetFloat(key).ToString("R");
+            return "i" + PlayerPrefs.GetInt(key);
+        }
+
+        static void Restore(string key, string value)
+        {
+            if (value == null) { PlayerPrefs.DeleteKey(key); return; }
+            if (value[0] == 'f') PlayerPrefs.SetFloat(key, float.Parse(value.Substring(1)));
+            else PlayerPrefs.SetInt(key, int.Parse(value.Substring(1)));
+        }
+    }
+}

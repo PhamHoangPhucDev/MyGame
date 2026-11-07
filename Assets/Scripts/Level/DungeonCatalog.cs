@@ -42,6 +42,8 @@ namespace GameplayPrototype
     /// <summary>Stage-select data. Progress is per dungeon and is not the world-map level.</summary>
     public static class DungeonCatalog
     {
+        /// <summary>First clear pays this many times. Set to 1 to turn the bonus off.</summary>
+        public const int FirstClearRewardMultiplier = 2;
         public static readonly string[] SpriteNames =
         {
             "UI_Dungeon_Board_GoblinCamp",
@@ -72,7 +74,7 @@ namespace GameplayPrototype
                 if (_dungeons != null) return _dungeons;
                 var camp = new[]
                 {
-                    Stage("Đường đất đỏ", DungeonMapKind.Winding, 3, "Trail", LevelObjectiveType.ClearWavesThenReachExit, 140,
+                    Stage("Đường đất đỏ", DungeonMapKind.Winding, 3, DungeonStageMap.RedTrail, LevelObjectiveType.ClearWavesThenReachExit, 140,
                         Loot(120, 6, 1),
                         new[]
                         {
@@ -96,7 +98,7 @@ namespace GameplayPrototype
                         "Bên trong là hàng rào. Dễ lạc ở ngõ cụt.",
                         "Lính canh", "Đừng rẽ vào ngõ cụt.", "",
                         "Goblin", "Chặn lối!", "spawn"),
-                    Stage("Bãi lửa trại", DungeonMapKind.Field, 8, "Camp", LevelObjectiveType.ClearWaves, 170,
+                    Stage("Bãi lửa trại", DungeonMapKind.Field, 8, DungeonStageMap.FireCamp, LevelObjectiveType.ClearWaves, 170,
                         Loot(220, 12, 2),
                         new[]
                         {
@@ -108,7 +110,7 @@ namespace GameplayPrototype
                         "Bọn goblin dựng lửa trại ngay giữa bãi trống. Coi chừng bị vây đấy.",
                         "Hero", "Bãi trống. Chúng sẽ kéo đến.", "",
                         "Goblin", "Vây lấy!", "spawn"),
-                    Stage("Cầu vực", DungeonMapKind.Ledge, 11, "GoblinOutpost", LevelObjectiveType.ClearWavesThenReachExit, 210,
+                    Stage("Cầu vực", DungeonMapKind.Ledge, 11, DungeonStageMap.Chasm, LevelObjectiveType.ClearWavesThenReachExit, 210,
                         Loot(320, 14, 3),
                         new[]
                         {
@@ -119,7 +121,7 @@ namespace GameplayPrototype
                         "Cầu gỗ bắc qua vực. Một hàng, không có chỗ né.",
                         "Lính canh", "Chúng chặn cả hai đầu cầu.", "",
                         "Goblin", "Đẩy xuống!", "spawn"),
-                    Stage("Lều xương", DungeonMapKind.Boss, 14, "GobriderStronghold", LevelObjectiveType.DefeatBossChapterComplete, 280,
+                    Stage("Lều xương", DungeonMapKind.Boss, 14, DungeonStageMap.BoneYard, LevelObjectiveType.DefeatBossChapterComplete, 280,
                         Loot(500, 20, 5),
                         new[]
                         {
@@ -210,6 +212,27 @@ namespace GameplayPrototype
                 cfg.cameraBoundsMin = new Vector2(-18f, -13f);
                 cfg.cameraBoundsMax = new Vector2(18f, 15f);
             }
+            if (DungeonStageMap.Handles(s.layoutId))
+            {
+                // Stages 1, 3, 4, 5 have their own runtime maps (mockups S1/S3/S4/S5).
+                var map = DungeonStageMap.Get(s.layoutId);
+                cfg.heroSpawn = map.spawn;
+                cfg.exitPosition = map.exit;
+                cfg.exitSize = new Vector2(1.6f, 1.6f);
+                cfg.spawnZones = map.zones;
+                cfg.cameraBoundsMin = map.min;
+                cfg.cameraBoundsMax = map.max;
+            }
+            if (s.layoutId == "FenceMaze")
+            {
+                // The maze is built at runtime; take hero, gate, spawns and camera from it, not from Trail.
+                cfg.heroSpawn = DungeonFenceMaze.HeroSpawn;
+                cfg.exitPosition = DungeonFenceMaze.ExitPosition;
+                cfg.exitSize = DungeonFenceMaze.ExitSize;
+                cfg.spawnZones = DungeonFenceMaze.SpawnZones;
+                cfg.cameraBoundsMin = DungeonFenceMaze.BoundsMin;
+                cfg.cameraBoundsMax = DungeonFenceMaze.BoundsMax;
+            }
             cfg.levelNumber = 100 + dungeon * 10 + stage;
             cfg.levelId = "dg_" + Get(dungeon).id + "_" + stage;
             cfg.levelTitle = s.name;
@@ -222,12 +245,29 @@ namespace GameplayPrototype
             return cfg;
         }
 
+        /// <summary>Stage 3 sides each wave pours in from (spec C: lửa bùng, vây trái phải, kỵ xông, vòng vây).</summary>
+        public static Vector2[] CampWaveSides(int wave)
+        {
+            switch (wave)
+            {
+                case 1: return new[] { Vector2.up };
+                case 2: return new[] { Vector2.left, Vector2.right };
+                case 3: return new[] { Vector2.up, Vector2.down };
+                case 4: return new[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
+                default: return new Vector2[0];
+            }
+        }
+
+        /// <summary>Multiplier of the last Grant (2 on a first clear), so the result screen shows what was paid.</summary>
+        public static int LastGrantMultiplier { get; private set; } = 1;
+
         public static void Grant(int dungeon, int stage)
         {
             var rewards = StageAt(dungeon, stage).rewards;
             if (rewards == null) return;
             string paid = "dg.paid." + dungeon + "." + stage;
-            int mul = PlayerPrefs.HasKey(paid) ? 1 : 2;
+            int mul = PlayerPrefs.HasKey(paid) ? 1 : FirstClearRewardMultiplier;
+            LastGrantMultiplier = mul;
             PlayerPrefs.SetInt(paid, 1);
             for (int i = 0; i < rewards.Length; i++)
             {
@@ -243,15 +283,20 @@ namespace GameplayPrototype
         {
             var a = BuildRun(0, 1);
             var b = BuildRun(0, 2);
-            string layouts = a.mapLayoutId + " " + b.mapLayoutId + " w" + a.waves.Length + " g" + b.waves[0].goblins;
+            var c = BuildRun(0, 3);
+            string layouts = a.mapLayoutId + " " + b.mapLayoutId + " " + c.mapLayoutId + " w" + a.waves.Length + " g" + b.waves[0].goblins
+                + " maze spawn=" + b.heroSpawn + " exit=" + b.exitPosition + " zones=" + (b.spawnZones != null ? b.spawnZones.Length : 0)
+                + " camp spawn=" + c.heroSpawn;
             Object.DestroyImmediate(a);
             Object.DestroyImmediate(b);
+            Object.DestroyImmediate(c);
             return layouts;
         }
 
         static int TemplateNumber(string layout)
         {
-            if (layout == "Camp") return 3;
+            // Level 1 is the circular Camp; level 3 is AbandonedCamp and puts the hero outside the camp ring.
+            if (layout == "Camp") return 1;
             if (layout == "GoblinOutpost") return 4;
             if (layout == "GobriderStronghold") return 5;
             return 2;

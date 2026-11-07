@@ -55,6 +55,19 @@ namespace GameplayPrototype
             }
         }
 
+        public void HideAllLayouts()
+        {
+            ResolveRoots();
+            if (campRoot != null) campRoot.SetActive(false);
+            if (trailRoot != null) trailRoot.SetActive(false);
+            if (abandonedCampRoot != null) abandonedCampRoot.SetActive(false);
+            if (goblinOutpostRoot != null) goblinOutpostRoot.SetActive(false);
+            if (gobriderStrongholdRoot != null) gobriderStrongholdRoot.SetActive(false);
+            DungeonFenceMaze.Hide();
+            DungeonStageMap.HideAll();
+            ActiveLayoutId = "";
+        }
+
         public void ApplyLayout(LevelConfig config)
         {
             if (config == null) return;
@@ -73,6 +86,15 @@ namespace GameplayPrototype
             if (abandonedCampRoot != null) abandonedCampRoot.SetActive(isAbandoned);
             if (goblinOutpostRoot != null) goblinOutpostRoot.SetActive(isOutpost);
             if (gobriderStrongholdRoot != null) gobriderStrongholdRoot.SetActive(isStronghold);
+            if (id.Equals("FenceMaze", System.StringComparison.OrdinalIgnoreCase))
+                DungeonFenceMaze.Show();
+            else
+                DungeonFenceMaze.Hide();
+            // Dungeon stage maps (Goblin Camp stages 1, 3, 4, 5) are built at runtime like the maze.
+            if (DungeonStageMap.Handles(id))
+                DungeonStageMap.Show(id);
+            else
+                DungeonStageMap.HideAll();
 
             var forestGrid = GameObject.Find("ForestGrid");
             var forestProps = GameObject.Find("ForestProps");

@@ -33,6 +33,8 @@ namespace GameplayPrototype
         }
 
         static CampMap _live;
+
+        public static bool IsOn => _live != null;
         static readonly List<UnityEngine.Object> Owned = new List<UnityEngine.Object>();
 
         readonly Dictionary<string, Art> _art = new Dictionary<string, Art>();
@@ -1267,11 +1269,19 @@ namespace GameplayPrototype
 
     public class CampGate : MonoBehaviour
     {
+        bool _left;
+
         void Update()
         {
             var hero = GameObject.FindGameObjectWithTag("Player");
             if (hero == null) return;
-            if (Vector2.Distance(hero.transform.position, transform.position) > 0.85f) return;
+            float d = Vector2.Distance(hero.transform.position, transform.position);
+            if (!_left)
+            {
+                if (d > 0.85f) _left = true;
+                return;
+            }
+            if (d > 0.85f) return;
             var nav = WorldNavigator.Instance;
             if (nav != null) nav.Show(WorldZone.Hub);
         }

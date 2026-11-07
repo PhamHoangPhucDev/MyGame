@@ -33,6 +33,12 @@ namespace GameplayPrototype
             box.size = Vector2.one;
             transform.localScale = new Vector3(Mathf.Max(0.5f, size.x), Mathf.Max(0.5f, size.y), 1f);
             if (visual == null) visual = GetComponent<SpriteRenderer>();
+            if (visual != null && visual.sprite == null)
+            {
+                visual.sprite = ProceduralSprites.Ring;
+                visual.sharedMaterial = ProceduralSprites.Unlit;
+                visual.sortingOrder = 40;
+            }
             SetUnlocked(unlocked);
             _consumed = false;
             gameObject.SetActive(true);

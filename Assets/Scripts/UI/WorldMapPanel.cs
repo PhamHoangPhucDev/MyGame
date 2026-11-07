@@ -325,13 +325,14 @@ namespace GameplayPrototype
                 return;
             }
             if (nav != null) nav.CloseDungeonBoard();
-            var flow = LevelFlow.Instance;
-            var cfg = flow != null ? flow.GetLevelConfig(sel) : null;
-            if (cfg != null) flow.StartLevel(cfg, true);
+            // Regions 1-5 used to start the old campaign levels; those are retired in favour of the
+            // Goblin Camp dungeon, so they open its stage select from the village.
+            if (nav != null && nav.Current == WorldZone.None) nav.ReturnFromDungeon();
+            DungeonSelectPanel.Open();
         }
 
-        public static bool RegionLocked(int region) => region >= 1 && region <= 5 && !GameProgress.IsLevelUnlocked(region);
-        public static bool RegionCleared(int region) => region >= 1 && region < 5 && GameProgress.IsLevelUnlocked(region + 1);
+        public static bool RegionLocked(int region) => false;
+        public static bool RegionCleared(int region) => false;
         public static bool CanTravel(int index) => index == 0 || (index >= 1 && index <= 5 && !RegionLocked(index));
 
         static Text Body(Transform parent, string name, string title, float y, Color body)

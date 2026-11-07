@@ -39,6 +39,7 @@ namespace GameplayPrototype
         float _transitionTimer;
         float _runTimer;
         float _bannerTimer;
+        float _firstWaveDelay;
         bool _ending;
         bool _wavesComplete;
         bool _exitUnlocked;
@@ -330,7 +331,8 @@ namespace GameplayPrototype
 
         void Update()
         {
-            if (_state == LevelState.Playing || _state == LevelState.WaveTransition)
+            // The stage clock (3-star mark) does not run while the opening talk is up.
+            if ((_state == LevelState.Playing || _state == LevelState.WaveTransition) && !DungeonTalk.IsOpen)
                 _runTimer += Time.unscaledDeltaTime;
 
             if (_bannerTimer > 0f)
@@ -339,6 +341,13 @@ namespace GameplayPrototype
                 if (_bannerTimer <= 0f)
                     BannerText = null;
                 HudChanged?.Invoke();
+            }
+
+            if (_firstWaveDelay > 0f && _state == LevelState.Playing)
+            {
+                _firstWaveDelay -= Time.unscaledDeltaTime;
+                if (_firstWaveDelay <= 0f)
+                    BeginWave(0);
             }
 
             if (_state == LevelState.WaveTransition)
@@ -398,6 +407,8 @@ namespace GameplayPrototype
                 mapController = FindFirstObjectByType<LevelMapController>();
             mapController?.HideAllLayouts();
             CampMap.Hide();
+            DungeonRun.Leave();
+            DungeonHud.End();
             ResolveRefs();
             if (playerHealth != null && playerHealth.IsDead)
                 playerHealth.ReviveFull();
@@ -441,6 +452,8 @@ namespace GameplayPrototype
                 spawner.SetSpawningEnabled(false);
             }
             LockGameplay(true);
+            DungeonRun.Leave();
+            DungeonHud.End();
             SetState(LevelState.MainMenu);
             ui?.ShowMainMenu();
             Pets.Appear();
@@ -477,13 +490,9 @@ namespace GameplayPrototype
             _activeLevel = config;
             _waveIndex = -1;
             _runTimer = 0f;
+            _firstWaveDelay = 0f;
             BannerText = null;
-            if (config.objectiveType == LevelObjectiveType.ClearWavesThenReachExit)
-                ObjectiveText = "CLEAR WAVES TO OPEN EXIT";
-            else if (config.objectiveType == LevelObjectiveType.DefeatBossChapterComplete)
-                ObjectiveText = "CLEAR ENCOUNTERS — DEFEAT THE WARLORD";
-            else
-                ObjectiveText = "CLEAR WAVES";
+            ObjectiveText = DungeonAim(config, false);
 
             BossHudUI.Instance?.Clear();
             ResolveRefs();
@@ -519,26 +528,65 @@ namespace GameplayPrototype
                 if (rb != null) rb.linearVelocity = Vector2.zero;
             }
 
-            if (config.mapLayoutId == "Camp")
+            // Dungeon stage 3 uses the circular Camp root with waves; CampMap is the open training map.
+            if (config.mapLayoutId == "Camp" && !DungeonRun.Active)
                 CampMap.Show(player);
             else
+            {
                 CampMap.Hide();
+                if (config.mapLayoutId == "Camp") ShowOldCamp();
+            }
+            if (DungeonRun.Active) DungeonHud.Begin(config);
+            else DungeonHud.End();
 
             ui?.HideAllPopups();
             SetState(LevelState.Preparing);
             LockGameplay(false);
-            ShowBanner($"LEVEL {config.levelNumber}\n{config.levelTitle}", 1.6f);
+            ShowBanner(DungeonRun.Active
+                ? $"ẢI {DungeonRun.Stage}\n{config.levelTitle}"
+                : $"LEVEL {config.levelNumber}\n{config.levelTitle}", 1.6f);
             SetState(LevelState.Playing);
-            if (config.mapLayoutId == "Camp")
+            if (DungeonRun.Hold)
+                DungeonTalk.Begin(DungeonCatalog.Talk(DungeonRun.Dungeon, DungeonRun.Stage), ReleaseDungeonWave);
+            else
+                StartDungeonWave();
+            Pets.Appear();
+            HudChanged?.Invoke();
+        }
+
+        public void ReleaseDungeonWave()
+        {
+            DungeonRun.ReleaseHold();
+            StartDungeonWave();
+        }
+
+        /// <summary>CampMap switches the Camp root and its ForestGrid/ForestProps off; turn them back on.</summary>
+        static void ShowOldCamp()
+        {
+            var maps = GameObject.Find("LevelMaps");
+            var camp = maps != null ? maps.transform.Find("Camp") : null;
+            if (camp == null) return;
+            camp.gameObject.SetActive(true);
+            foreach (Transform child in camp)
+                child.gameObject.SetActive(true);
+        }
+
+        void StartDungeonWave()
+        {
+            if (_activeLevel != null && _activeLevel.mapLayoutId == "Camp" && CampMap.IsOn)
             {
                 int placed = CampMap.SpawnFoes(spawner);
-                _waveIndex = config.waves != null && config.waves.Length > 0 ? config.waves.Length - 1 : 0;
+                _waveIndex = _activeLevel.waves != null && _activeLevel.waves.Length > 0 ? _activeLevel.waves.Length - 1 : 0;
                 spawner?.BeginPlaced(placed);
+            }
+            else if (DungeonRun.Active && _activeLevel != null)
+            {
+                // Stage banner first ("ẢI N" + name), then the first wave banner once it fades.
+                ShowBanner("ẢI " + DungeonRun.Stage + "\n" + _activeLevel.levelTitle.ToUpperInvariant(), 1.6f);
+                _firstWaveDelay = 1.6f;
             }
             else
                 BeginWave(0);
-            Pets.Appear();
-            HudChanged?.Invoke();
         }
 
         void SetupExitGate(LevelConfig config)
@@ -572,21 +620,33 @@ namespace GameplayPrototype
                 sr.sprite = ProceduralSprites.Ring;
                 sr.sortingOrder = 40;
                 go.transform.localScale = new Vector3(config.exitSize.x * 0.55f, config.exitSize.y * 0.55f, 1f);
+                // LevelExitGate requires a Collider2D; without one AddComponent returns null.
+                go.AddComponent<BoxCollider2D>().isTrigger = true;
                 gate = go.AddComponent<LevelExitGate>();
             }
 
             exitGate = gate;
             exitGate.Configure(config.exitPosition, config.exitSize, unlocked: false);
-            ObjectiveText = "CLEAR WAVES TO OPEN EXIT";
+            // In a dungeon the stage draws its own gate (maze gate, glow); hide the debug ring.
+            var ring = exitGate.GetComponent<SpriteRenderer>();
+            if (ring != null) ring.enabled = !DungeonRun.Active;
+            ObjectiveText = DungeonAim(config, false);
         }
 
         void BeginWave(int index)
         {
             if (_activeLevel == null || _activeLevel.waves == null || index < 0 || index >= _activeLevel.waves.Length)
                 return;
+            _firstWaveDelay = 0f;
             _waveIndex = index;
             var wave = _activeLevel.waves[index];
             ShowBanner(wave.displayName, 1.35f);
+            if (DungeonRun.Active && DungeonStageMap.Handles(_activeLevel.mapLayoutId))
+            {
+                // Each stage map says where this wave enters (sides of the fire, bridge segment, ritual ring).
+                var zones = DungeonStageMap.WaveZones(_activeLevel.mapLayoutId, index + 1);
+                if (zones != null && zones.Length > 0) spawner?.SetSpawnZones(zones);
+            }
             spawner?.BeginWave(index, wave);
             SetState(LevelState.Playing);
             HudChanged?.Invoke();
@@ -596,7 +656,7 @@ namespace GameplayPrototype
         {
             if (_ending) return;
             if (_state != LevelState.Playing) return;
-            ShowBanner("WAVE CLEAR", 1.1f);
+            ShowBanner(DungeonRun.Active ? "HẾT ĐỢT" : "WAVE CLEAR", 1.1f);
             SetState(LevelState.WaveTransition);
             float delay = 1.75f;
             if (_activeLevel != null && _waveIndex >= 0 && _waveIndex < _activeLevel.waves.Length)
@@ -625,8 +685,10 @@ namespace GameplayPrototype
             {
                 _exitUnlocked = true;
                 exitGate?.SetUnlocked(true);
-                ObjectiveText = "REACH THE EXIT";
-                ShowBanner("EXIT OPEN", 1.4f);
+                if (_activeLevel != null && _activeLevel.mapLayoutId == "FenceMaze")
+                    DungeonFenceMaze.OpenGate();
+                ObjectiveText = DungeonAim(_activeLevel, true);
+                ShowBanner(DungeonRun.Active ? "CỔNG MỞ" : "EXIT OPEN", 1.4f);
                 SetState(LevelState.Playing);
                 HudChanged?.Invoke();
                 return;
@@ -672,21 +734,32 @@ namespace GameplayPrototype
 
             int score = ComputeScore();
             int stars = ComputeStars();
-            GameProgress.RecordRun(_activeLevel.levelNumber, score, BestCombo, stars, _runTimer);
-            if (_activeLevel != null)
-                WorldEvents.RaiseDungeonCleared(_activeLevel.levelNumber);
             int next = _activeLevel != null ? _activeLevel.nextLevelNumber : 2;
-            if (next > 0)
-                GameProgress.UnlockLevel(next);
-            else if (_activeLevel != null)
-                GameProgress.UnlockLevel(_activeLevel.levelNumber);
+            if (DungeonRun.Active)
+            {
+                DungeonRecords.Save(DungeonRun.Dungeon, DungeonRun.Stage, score, stars, _runTimer);
+                DungeonCatalog.Grant(DungeonRun.Dungeon, DungeonRun.Stage);
+                DungeonRun.NoteClear();
+            }
+            else
+            {
+                GameProgress.RecordRun(_activeLevel.levelNumber, score, BestCombo, stars, _runTimer);
+                if (_activeLevel != null)
+                    WorldEvents.RaiseDungeonCleared(_activeLevel.levelNumber);
+                if (next > 0)
+                    GameProgress.UnlockLevel(next);
+                else if (_activeLevel != null)
+                    GameProgress.UnlockLevel(_activeLevel.levelNumber);
+            }
 
             BossHudUI.Instance?.Clear();
             SetState(LevelState.Victory);
             bool chapter = _activeLevel != null &&
                 _activeLevel.objectiveType == LevelObjectiveType.DefeatBossChapterComplete;
             bool journeyEnd = next <= 0;
-            if (chapter)
+            if (DungeonRun.Active)
+                ui?.ShowVictory(BuildStats(), score, stars);
+            else if (chapter)
                 ui?.ShowChapterComplete(BuildStats(), score, stars);
             else if (journeyEnd)
                 ui?.ShowJourneyComplete(BuildStats(), score, stars);
@@ -739,6 +812,20 @@ namespace GameplayPrototype
 
         public void NextLevel()
         {
+            if (DungeonRun.Active)
+            {
+                int dungeon = DungeonRun.Dungeon;
+                int nextStage = DungeonRun.Stage + 1;
+                if (nextStage > 5 || !DungeonProgress.StageUnlocked(dungeon, nextStage))
+                {
+                    WorldNavigator.Instance?.ReturnFromDungeon();
+                    return;
+                }
+                var run = DungeonCatalog.BuildRun(dungeon, nextStage);
+                DungeonRun.Arm(dungeon, nextStage);
+                StartLevel(run, fromMenu: false);
+                return;
+            }
             EnsureDefaultConfigs();
             int nextNum = _activeLevel != null ? _activeLevel.nextLevelNumber : 2;
             var next = GetLevelConfig(nextNum);
@@ -792,6 +879,23 @@ namespace GameplayPrototype
                 HitStop.Instance.SetBlocked(false);
             }
             Time.timeScale = 1f;
+        }
+
+        static string DungeonAim(LevelConfig config, bool exitOpen)
+        {
+            if (config == null) return "";
+            if (DungeonRun.Active)
+            {
+                if (config.objectiveType == LevelObjectiveType.DefeatBossChapterComplete) return "HẠ BOSS";
+                if (config.objectiveType == LevelObjectiveType.ClearWavesThenReachExit)
+                    return exitOpen ? "TỚI CỔNG THOÁT" : "DIỆT HẾT QUÁI";
+                return "DIỆT HẾT QUÁI";
+            }
+            if (config.objectiveType == LevelObjectiveType.ClearWavesThenReachExit)
+                return exitOpen ? "REACH THE EXIT" : "CLEAR WAVES TO OPEN EXIT";
+            if (config.objectiveType == LevelObjectiveType.DefeatBossChapterComplete)
+                return "CLEAR ENCOUNTERS — DEFEAT THE WARLORD";
+            return "CLEAR WAVES";
         }
 
         void ShowBanner(string text, float seconds)

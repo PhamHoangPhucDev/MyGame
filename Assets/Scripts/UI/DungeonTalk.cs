@@ -13,6 +13,7 @@ namespace GameplayPrototype
         int _index;
         Action _done;
         Text _body;
+        Text _speaker;
 
         public static bool IsOpen => _one != null && _one.gameObject.activeSelf;
 
@@ -56,28 +57,48 @@ namespace GameplayPrototype
             rt.anchorMin = new Vector2(0.5f, 0f);
             rt.anchorMax = new Vector2(0.5f, 0f);
             rt.pivot = new Vector2(0.5f, 0f);
-            rt.anchoredPosition = new Vector2(0f, 18f);
-            rt.sizeDelta = new Vector2(420f, 48f);
+            rt.anchoredPosition = new Vector2(0f, 14f);
+            rt.sizeDelta = new Vector2(360f, 58f);
             var img = plate.AddComponent<Image>();
-            img.color = new Color(0.965f, 0.937f, 0.886f, 1f);
-            var textGo = new GameObject("Line", typeof(RectTransform));
-            textGo.transform.SetParent(plate.transform, false);
-            var tr = (RectTransform)textGo.transform;
-            tr.anchorMin = Vector2.zero;
-            tr.anchorMax = Vector2.one;
-            tr.offsetMin = new Vector2(8f, 4f);
-            tr.offsetMax = new Vector2(-8f, -4f);
-            var text = textGo.AddComponent<Text>();
-            text.font = UiKit.Font;
-            text.fontSize = 8;
-            text.color = new Color(0.16f, 0.13f, 0.16f, 1f);
-            text.alignment = TextAnchor.MiddleLeft;
-            text.horizontalOverflow = HorizontalWrapMode.Wrap;
+            // Kit dialogue panel (same as the guard card on the stage select); flat plate only as a fallback.
+            if (!UiKit.Put(img, "UI_NPC_DialoguePanel", true))
+                img.color = new Color(0.12f, 0.1f, 0.12f, 0.95f);
+            // Speaker on the top band, line inside the dark inner box, hint on the bottom band.
+            var speaker = Line(plate.transform, "Speaker", new Vector2(16f, 45f), new Vector2(-16f, -1f), true);
+            speaker.color = new Color32(0xF2, 0xD8, 0x4A, 0xFF);
+            _one._speaker = speaker;
+            var text = Line(plate.transform, "Line", new Vector2(20f, 14f), new Vector2(-40f, -15f), false);
+            text.color = new Color32(0xF4, 0xF1, 0xE8, 0xFF);
             _one._body = text;
+            var hint = Line(plate.transform, "Hint", new Vector2(10f, 1f), new Vector2(-14f, -46f), false);
+            hint.alignment = TextAnchor.LowerRight;
+            hint.color = new Color32(0xAE, 0xB6, 0xC8, 0xFF);
+            hint.text = "E ▶";
             var btn = plate.AddComponent<Button>();
             btn.targetGraphic = img;
             btn.onClick.AddListener(() => _one.Advance());
             return _one;
+        }
+
+        /// <summary>Text row inside the plate: offsets are from the bottom-left / top-right corners.</summary>
+        static Text Line(Transform parent, string name, Vector2 min, Vector2 max, bool title)
+        {
+            var go = new GameObject(name, typeof(RectTransform));
+            go.transform.SetParent(parent, false);
+            var tr = (RectTransform)go.transform;
+            tr.anchorMin = Vector2.zero;
+            tr.anchorMax = Vector2.one;
+            tr.offsetMin = min;
+            tr.offsetMax = max;
+            var text = go.AddComponent<Text>();
+            text.font = UiKit.Font;
+            text.fontSize = UiKit.Fs(8);
+            text.alignment = title ? TextAnchor.UpperLeft : TextAnchor.MiddleLeft;
+            text.horizontalOverflow = HorizontalWrapMode.Wrap;
+            text.verticalOverflow = VerticalWrapMode.Overflow;
+            text.raycastTarget = false;
+            WorldLabelsCanvas.ApplyPixelOutline(text, new Color32(0x14, 0x10, 0x18, 0xFF));
+            return text;
         }
 
         void OnDestroy()
@@ -95,7 +116,8 @@ namespace GameplayPrototype
         void Show()
         {
             var line = _lines[_index];
-            _body.text = line.speaker + ": " + line.text;
+            if (_speaker != null) _speaker.text = (line.speaker ?? "").ToUpperInvariant();
+            _body.text = line.text;
         }
 
         void Advance()

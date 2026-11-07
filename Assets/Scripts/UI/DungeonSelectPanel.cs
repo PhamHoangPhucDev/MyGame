@@ -121,7 +121,9 @@ namespace GameplayPrototype
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(640f, 360f);
             scaler.matchWidthOrHeight = 0.5f;
-            scaler.referencePixelsPerUnit = 16f;
+            // Kit sprites are PPU 100: at 16 their 9-slice borders shrank to ~1/6 and the window, tabs and
+            // buttons looked flat. 100 keeps one art pixel = one kit pixel on this 640×360 canvas.
+            scaler.referencePixelsPerUnit = 100f;
             go.AddComponent<GraphicRaycaster>();
             _one = go.AddComponent<DungeonSelectPanel>();
             _one.Build();
@@ -182,7 +184,7 @@ namespace GameplayPrototype
                 btn.transition = Selectable.Transition.None;
                 btn.targetGraphic = tab;
                 btn.onClick.AddListener(() => ChooseDungeon(captured));
-                var label = Label(tab.rectTransform, "Label", DungeonCatalog.Get(i).name, 0f, 3f, 100f, 14f, White, 8, TextAnchor.UpperCenter);
+                var label = Label(tab.rectTransform, "Label", DungeonCatalog.Get(i).name.ToUpperInvariant(), 0f, 1f, 104f, 16f, White, 8, TextAnchor.MiddleCenter);
                 var lockPin = Sprite(tab.rectTransform, "Lock", "UI_Icon_Lock", false);
                 Corner(lockPin.rectTransform, 108f, 2f, 14f, 14f);
                 lockPin.raycastTarget = false;
@@ -261,7 +263,8 @@ namespace GameplayPrototype
             Corner(side.rectTransform, 436f, 40f, 188f, 312f);
             side.raycastTarget = true;
             _status = Outline(Label(side.rectTransform, "Status", "", 10f, 6f, 168f, 12f, Gold, 8, TextAnchor.UpperLeft));
-            _name = Outline(Label(side.rectTransform, "Name", "", 10f, 17f, 168f, 22f, White, 20, TextAnchor.UpperLeft));
+            _name = Outline(Label(side.rectTransform, "Name", "", 10f, 17f, 168f, 22f, White, 14, TextAnchor.UpperLeft));
+            OneLine(_name);
             _kindIcon = Sprite(side.rectTransform, "KindIcon", "UI_Dungeon_MapType_Field", false);
             Corner(_kindIcon.rectTransform, 10f, 40f, 13f, 13f);
             _kind = Label(side.rectTransform, "Kind", "", 26f, 40f, 150f, 14f, Hex(0xAEB6C8), 8, TextAnchor.UpperLeft);
@@ -295,7 +298,7 @@ namespace GameplayPrototype
             _unlock = Label(side.rectTransform, "Unlock", "", 10f, 178f, 168f, 16f, Green, 8, TextAnchor.UpperLeft);
             var travel = Sprite(side.rectTransform, "Travel", "UI_Button_Positive_Normal", true);
             Corner(travel.rectTransform, 10f, 192f, 168f, 22f);
-            _travelText = Label(travel.rectTransform, "Label", "DỊCH CHUYỂN", 0f, 4f, 140f, 14f, Green, 8, TextAnchor.UpperCenter);
+            _travelText = Outline(Label(travel.rectTransform, "Label", "DỊCH CHUYỂN", 0f, 2f, 146f, 18f, White, 8, TextAnchor.MiddleCenter));
             var key = Sprite(travel.rectTransform, "Key", "UI_KeyCap", false);
             Corner(key.rectTransform, 146f, 3f, 16f, 16f);
             Label(key.rectTransform, "E", "E", 0f, 2f, 16f, 12f, Ink, 8, TextAnchor.UpperCenter);
@@ -307,6 +310,8 @@ namespace GameplayPrototype
             _travel.colors = colors;
             _travel.onClick.AddListener(Go);
 
+            foreach (var line in new[] { _status, _kind, _level, _waves, _goal, _record, _unlock }) OneLine(line);
+
             var strip = Sprite(side.rectTransform, "Guard", "UI_NPC_DialoguePanel", true);
             Corner(strip.rectTransform, 10f, 222f, 168f, 84f);
             var portraitSlot = Sprite(strip.rectTransform, "Slot", "UI_PortraitFrame", true);
@@ -314,7 +319,7 @@ namespace GameplayPrototype
             var portrait = Sprite(strip.rectTransform, "Portrait", "UI_Dungeon_Guard_Portrait", false);
             Corner(portrait.rectTransform, 8f, 8f, 26f, 26f);
             Outline(Label(strip.rectTransform, "Who", "LÍNH CANH", 40f, 6f, 120f, 12f, Gold, 8, TextAnchor.UpperLeft));
-            _guardLine = Label(strip.rectTransform, "Line", "", 6f, 40f, 156f, 40f, Cream, 8, TextAnchor.UpperLeft);
+            _guardLine = Label(strip.rectTransform, "Line", "", 11f, 40f, 148f, 40f, Cream, 8, TextAnchor.UpperLeft);
         }
 
         void ChooseDungeon(int index)
@@ -391,9 +396,9 @@ namespace GameplayPrototype
             var place = def.stages[_sel];
             bool stageLocked = !DungeonProgress.StageUnlocked(_dungeon, _sel + 1);
             bool stageCleared = DungeonProgress.StageCleared(_dungeon, _sel + 1);
-            _status.text = "Ải " + (_sel + 1) + " · " + (stageLocked ? "Bị khoá" : stageCleared ? "Đã qua" : "Đang mở");
-            _name.text = place.name;
-            _kind.text = DungeonCatalog.KindName(place.kind);
+            _status.text = ("Ải " + (_sel + 1) + " · " + (stageLocked ? "Bị khoá" : stageCleared ? "Đã qua" : "Đang mở")).ToUpperInvariant();
+            _name.text = place.name.ToUpperInvariant();
+            _kind.text = DungeonCatalog.KindName(place.kind).ToUpperInvariant();
             var kindSprite = UiKit.Get(DungeonCatalog.KindSprite(place.kind));
             _kindIcon.gameObject.SetActive(kindSprite != null);
             if (kindSprite != null) _kindIcon.sprite = kindSprite;
@@ -419,6 +424,7 @@ namespace GameplayPrototype
             if (stageLocked) _unlock.text = "Hạ ải " + _sel + " để mở ải " + (_sel + 1);
             else if (_sel < 4) _unlock.text = stageCleared ? "Đã mở ải " + (_sel + 2) : "Hạ ải " + (_sel + 1) + " để mở ải " + (_sel + 2);
             else _unlock.text = stageCleared ? "Đã mở phó bản sau" : "Hạ boss để mở phó bản sau";
+            _unlock.text = _unlock.text.ToUpperInvariant();
             _guardLine.text = place.guard;
             if (place.talk != null && place.talk.Length > 0)
             {
@@ -428,7 +434,8 @@ namespace GameplayPrototype
             }
             _travel.interactable = !stageLocked;
             _travelText.text = stageLocked ? "BỊ KHOÁ" : stageCleared ? "VÀO LẠI" : "DỊCH CHUYỂN";
-            _travelText.color = stageLocked ? Mute : Green;
+            _travelText.color = stageLocked ? Mute : White;
+            PaintLinks();
         }
 
         void Go()
@@ -464,10 +471,26 @@ namespace GameplayPrototype
             btn.onClick.AddListener(Close);
         }
 
-        static void DrawLinks(RectTransform map)
+        readonly System.Collections.Generic.List<Image>[] _links = new System.Collections.Generic.List<Image>[4];
+        static Sprite _dotSprite;
+
+        /// <summary>Dotted path between pins (handoff §1): 2×2 dot in a 4×4 ink outline, every 6 kit px.</summary>
+        void DrawLinks(RectTransform map)
         {
+            if (_dotSprite == null)
+            {
+                var tex = new Texture2D(1, 1, TextureFormat.RGBA32, false) { filterMode = FilterMode.Point };
+                tex.SetPixel(0, 0, Color.white);
+                tex.Apply(false, true);
+                _dotSprite = UnityEngine.Sprite.Create(tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
+            }
+            var layer = New("Links", map);
+            Stretch(layer);
+            // Above the board and fog, under the pins.
+            layer.SetSiblingIndex(_board.transform.GetSiblingIndex() + _fog.Length + 1);
             for (int i = 0; i < PinAt.Length - 1; i++)
             {
+                _links[i] = new System.Collections.Generic.List<Image>();
                 Vector2 a = PinAt[i];
                 Vector2 b = PinAt[i + 1];
                 float dist = Vector2.Distance(a, b);
@@ -475,16 +498,46 @@ namespace GameplayPrototype
                 for (int s = 1; s < steps; s++)
                 {
                     Vector2 p = Vector2.Lerp(a, b, s / (float)steps);
-                    var dot = new GameObject("Link", typeof(RectTransform));
-                    dot.transform.SetParent(map, false);
-                    var img = dot.AddComponent<Image>();
-                    img.sprite = UiKit.Get("UI_Divider_Line");
-                    img.color = Hex(0x7A8090);
-                    img.raycastTarget = false;
-                    dot.transform.SetAsFirstSibling();
-                    Mid((RectTransform)dot.transform, p.x, p.y, 2f, 2f);
+                    // Skip dots hidden under the pins (13 px) at either end.
+                    if (Vector2.Distance(p, a) < 9f || Vector2.Distance(p, b) < 9f) continue;
+                    var rim = New("Dot", layer).gameObject.AddComponent<Image>();
+                    rim.sprite = _dotSprite;
+                    rim.color = Ink;
+                    rim.raycastTarget = false;
+                    Mid(rim.rectTransform, Mathf.Round(p.x), Mathf.Round(p.y), 4f, 4f);
+                    var core = New("Core", rim.transform).gameObject.AddComponent<Image>();
+                    core.sprite = _dotSprite;
+                    core.raycastTarget = false;
+                    var crt = core.rectTransform;
+                    crt.anchorMin = crt.anchorMax = crt.pivot = new Vector2(0.5f, 0.5f);
+                    crt.anchoredPosition = Vector2.zero;
+                    crt.sizeDelta = new Vector2(2f, 2f);
+                    _links[i].Add(core);
                 }
             }
+        }
+
+        /// <summary>Gold for the legs already walked (stage cleared), grey for the rest.</summary>
+        void PaintLinks()
+        {
+            var gold = Gold;
+            var grey = Hex(0x7A8090);
+            for (int i = 0; i < _links.Length; i++)
+            {
+                if (_links[i] == null) continue;
+                bool walked = DungeonProgress.StageCleared(_dungeon, i + 1);
+                foreach (var dot in _links[i]) dot.color = walked ? gold : grey;
+            }
+        }
+
+        /// <summary>Single-line row: shrink to fit instead of wrapping onto the next row.</summary>
+        static void OneLine(Text text)
+        {
+            text.horizontalOverflow = HorizontalWrapMode.Wrap;
+            text.verticalOverflow = VerticalWrapMode.Truncate;
+            text.resizeTextForBestFit = true;
+            text.resizeTextMinSize = 8;
+            text.resizeTextMaxSize = text.fontSize;
         }
 
         static Text Outline(Text text)
@@ -511,7 +564,8 @@ namespace GameplayPrototype
             go.transform.SetParent(parent, false);
             var t = go.AddComponent<Text>();
             t.font = UiKit.Font;
-            t.fontSize = size;
+            // Sizes are Press Start 2P kit sizes; VT323 needs ×1.5 (UiKit.Fs) to read at the mockup's size.
+            t.fontSize = UiKit.Fs(size);
             t.text = text;
             t.color = color;
             t.alignment = align;

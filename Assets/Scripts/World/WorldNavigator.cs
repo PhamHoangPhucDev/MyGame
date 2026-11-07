@@ -326,57 +326,9 @@ namespace GameplayPrototype
             Build();
             WorldServices.Instance?.HidePanel();
             CloseBag();
-            if (_boardWin == null) return;
-            _board.SetActive(true);
-            _boardWin.Clear();
-            var body = _boardWin.body;
-            var flow = LevelFlow.Instance;
-            for (int level = 1; level <= LevelFlow.CampaignLevelCount + 1; level++)
-            {
-                var cfg = flow != null ? flow.GetLevelConfig(level) : null;
-                bool campaign = level <= LevelFlow.CampaignLevelCount;
-                if (!campaign && cfg == null) break;
-                string title = cfg != null ? cfg.levelTitle : ("LEVEL " + level);
-                bool open = campaign && GameProgress.IsLevelUnlocked(level);
-                var row = UiKit.Rect(body, "Dungeon" + level);
-                row.gameObject.AddComponent<UiLayout>()
-                    .Portrait(UiLayout.Spec.Stretch(new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -(level - 1) * 60f), new Vector2(0f, 56f)))
-                    .Landscape(UiLayout.Spec.Stretch(new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -(level - 1) * 44f), new Vector2(0f, 40f)));
-                UiKit.Fill(UiKit.Row(row, "Bg", open ? "" : "Disabled", Vector2.zero));
-                UiKit.Icon(row, !open ? "UI_Icon_Lock" : level == LevelFlow.CampaignLevelCount ? "UI_Icon_Boss" : "UI_Icon_Dungeon", new Vector2(0f, 0.5f), new Vector2(14f, 0f));
-                Line(row, level + ". " + title, new Vector2(28f, -6f), open ? Pal.GoldL : Pal.TextMute);
-                if (!campaign)
-                {
-                    Line(row, "COMING SOON", new Vector2(28f, -20f), Pal.TextMute);
-                    continue;
-                }
-                if (!open)
-                {
-                    Line(row, "LOCKED", new Vector2(28f, -20f), Pal.TextMute);
-                    continue;
-                }
-                int stars = GameProgress.GetBestStars(level);
-                Line(row, "BEST " + GameProgress.GetBestScore(level), new Vector2(28f, -20f), Pal.TextW);
-                for (int k = 0; k < 3; k++)
-                    UiKit.Icon(row, k < stars ? "UI_Icon_Star" : "UI_Icon_StarEmpty", new Vector2(0f, 1f), new Vector2(124f + k * 16f, -24f));
-                int captured = level;
-                var start = UiKit.Button(row, "Start", "Primary", "START", new Vector2(56f, 18f), () =>
-                {
-                    if (!GameProgress.IsLevelUnlocked(captured)) return;
-                    EnterDungeon(captured);
-                });
-                Corner(start, new Vector2(1f, 0.5f), new Vector2(1f, 0.5f), new Vector2(-6f, 0f));
-            }
-            var note = Line(body, "WARDEN  Unlocks follow the dungeon save.", Vector2.zero, Pal.TextMute);
-            UiKit.Place(note, new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(0f, 2f), new Vector2(260f, 10f));
-        }
-
-        public void EnterDungeon(int level)
-        {
-            if (_board != null) _board.SetActive(false);
-            var flow = LevelFlow.Instance;
-            if (flow == null) return;
-            flow.StartLevelByNumber(level);
+            CloseDungeonBoard();
+            // The old campaign board (levels 1-5) is retired: every dungeon entry opens the Goblin Camp stage select.
+            DungeonSelectPanel.Open();
         }
 
         void Build()
